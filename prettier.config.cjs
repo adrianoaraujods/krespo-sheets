@@ -23,7 +23,6 @@ module.exports = {
     "<TYPES>",
     "",
     "^@/lib/(.*)$",
-    "^@/config/(.*)$",
     "",
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",
