@@ -8,6 +8,24 @@ describe("Internationalization", () => {
       await import(`@/locales/${defaultLocale}.ts`)
     ).default;
 
+    type Obj = { [key: string]: any };
+
+    function hasAllKeysOf(source: Obj, target: Obj): boolean {
+      for (const key in target) {
+        if (!(key in source)) {
+          return false;
+        }
+
+        if (typeof target[key] === "object" && target[key] !== null) {
+          if (!hasAllKeysOf(source[key], target[key])) {
+            return false;
+          }
+        }
+      }
+
+      return true;
+    }
+
     locales.forEach(async (locale) => {
       const localeMessages = (await import(`@/locales/${locale}.ts`)).default;
 
@@ -15,21 +33,3 @@ describe("Internationalization", () => {
     });
   });
 });
-
-type Obj = { [key: string]: any };
-
-function hasAllKeysOf(source: Obj, target: Obj): boolean {
-  for (const key in target) {
-    if (!(key in source)) {
-      return false;
-    }
-
-    if (typeof target[key] === "object" && target[key] !== null) {
-      if (!hasAllKeysOf(source[key], target[key])) {
-        return false;
-      }
-    }
-  }
-
-  return true;
-}

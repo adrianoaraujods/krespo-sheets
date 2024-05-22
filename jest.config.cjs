@@ -17,6 +17,7 @@ const jestConfig = {
     "^@/components/(.*)$": "<rootDir>/components/$1",
     "^@/lib/(.*)$": "<rootDir>/lib/$1",
     "^@/styles/(.*)$": "<rootDir>/styles/$1",
+    "^@/tests/(.*)$": "<rootDir>/tests/$1",
   },
   preset: "ts-jest",
 };

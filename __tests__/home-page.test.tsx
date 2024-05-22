@@ -1,7 +1,10 @@
 import { describe, expect, it } from "@jest/globals";
-import { render, screen } from "@testing-library/react";
+
+import { render, screen } from "@/tests/test-utilts";
 
 import HomePage from "@/app/[locale]/page";
+
+import "@/tests/match-media";
 
 describe("HomePage", () => {
   it("must have <main> tag", async () => {

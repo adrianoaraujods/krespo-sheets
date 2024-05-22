@@ -1,4 +1,6 @@
+import { GeistSans } from "geist/font/sans";
 import {
+  getMessages,
   getTranslations,
   unstable_setRequestLocale as setRequestLocale,
 } from "next-intl/server";
@@ -6,6 +8,10 @@ import {
 import { Locale, locales } from "@/lib/config";
 
 import "@/styles/globals.css";
+import "@/styles/themes.css";
+
+import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "next-themes";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -24,7 +30,7 @@ export async function generateMetadata({
   };
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
   params: { locale },
 }: Readonly<{
@@ -32,10 +38,22 @@ export default function RootLayout({
   params: { locale: Locale };
 }>) {
   setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body>{children}</body>
+      <body className={`${GeistSans.className} font-sans`}>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+        </NextIntlClientProvider>
+      </body>
     </html>
   );
 }
