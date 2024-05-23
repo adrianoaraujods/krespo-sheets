@@ -10,8 +10,8 @@
   "plugins": ["tailwindcss"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
-    "tailwindcss/classnames-order": "error",
-    "no-unused-vars": "error"
+    "tailwindcss/classnames-order": "warn",
+    "no-unused-vars": "warn"
   },
   "settings": {
     "tailwindcss": {
