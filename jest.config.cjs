@@ -19,6 +19,7 @@ const jestConfig = {
     "^@/styles/(.*)$": "<rootDir>/styles/$1",
     "^@/tests/(.*)$": "<rootDir>/tests/$1",
   },
+  testPathIgnorePatterns: ["<rootDir>/__tests__/utils/"],
   preset: "ts-jest",
 };
 
