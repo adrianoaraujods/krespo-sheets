@@ -6,7 +6,7 @@ import HomePage from "@/app/[locale]/(pages)/(home)/page";
 import "@/__tests__/utils/match-media";
 
 describe("HomePage", () => {
-  it("must have <main> tag", async () => {
+  it("should have the <main> tag", async () => {
     render(<HomePage />);
 
     const el = screen.getByRole("main");

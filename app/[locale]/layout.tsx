@@ -7,28 +7,12 @@ import {
 
 import { Locale, locales } from "@/lib/config";
 
+import "fumadocs-ui/style.css";
 import "@/styles/globals.css";
 import "@/styles/themes.css";
 
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({
-  params: { locale },
-}: {
-  params: { locale: Locale };
-}) {
-  const t = await getTranslations({ locale, namespace: "metadata" });
-
-  return {
-    title: t("title"),
-    description: t("description"),
-  };
-}
 
 export default async function RootLayout({
   children,
@@ -56,4 +40,21 @@ export default async function RootLayout({
       </body>
     </html>
   );
+}
+
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params: { locale },
+}: {
+  params: { locale: Locale };
+}) {
+  const t = await getTranslations({ locale, namespace: "metadata" });
+
+  return {
+    title: t("title"),
+    description: t("description"),
+  };
 }

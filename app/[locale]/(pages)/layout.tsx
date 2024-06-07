@@ -1,11 +1,8 @@
-import { Suspense } from "react";
 import { unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
 
 import type { Locale } from "@/lib/config";
 
-import { auth } from "@/lib/auth";
-
-import { NavbarContent, NavbarSkeleton } from "@/components/navbar-content";
+import { SiteNavbar } from "@/components/site-navbar";
 
 export default function PagesLayout({
   children,
@@ -18,17 +15,9 @@ export default function PagesLayout({
 
   return (
     <>
-      <Suspense fallback={<NavbarSkeleton />}>
-        <Navbar />
-      </Suspense>
+      <SiteNavbar />
 
       {children}
     </>
   );
-}
-
-async function Navbar() {
-  const session = await auth();
-
-  return <NavbarContent session={session} />;
 }

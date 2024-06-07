@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 
+import { Translations } from "fumadocs-ui/i18n";
 import { AbstractIntlMessages } from "next-intl";
 
 import { Theme } from "@/lib/config";
@@ -44,6 +45,14 @@ export default {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",
     },
+    kompendium: {
+      title: "Kompendium",
+      search: "Search in Kompendium",
+    },
   },
-  test: "test",
+  systems: {
+    dnd5: {
+      title: "Dungeons & Dragons 5e",
+    },
+  },
 } satisfies Messages;

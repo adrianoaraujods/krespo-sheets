@@ -29,6 +29,14 @@ export default {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",
     },
+    kompendium: {
+      title: "Kompendium",
+      search: "Pesquisar em Kompendium",
+    },
   },
-  test: "teste",
+  systems: {
+    dnd5: {
+      title: "Dungeons & Dragons 5e",
+    },
+  },
 } satisfies IntlMessages;

@@ -14,10 +14,6 @@ const jestConfig = {
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/$1",
-    "^@/components/(.*)$": "<rootDir>/components/$1",
-    "^@/lib/(.*)$": "<rootDir>/lib/$1",
-    "^@/styles/(.*)$": "<rootDir>/styles/$1",
-    "^@/tests/(.*)$": "<rootDir>/tests/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/__tests__/utils/"],
   preset: "ts-jest",

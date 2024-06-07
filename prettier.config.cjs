@@ -11,7 +11,6 @@ module.exports = {
     "prettier-plugin-tailwindcss",
     "@ianvs/prettier-plugin-sort-imports",
   ],
-
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",

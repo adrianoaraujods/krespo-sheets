@@ -11,5 +11,11 @@ type NavItems = { [key: string]: NavLinkWithItems[] };
 
 export const navItems = {
   authOnly: [],
-  public: [],
+  public: [
+    {
+      title: "pages.kompendium.title",
+      href: "/kompendium",
+      items: [{ title: "systems.dnd5.title", href: "/kompendium/dnd5" }],
+    },
+  ],
 } satisfies NavItems;

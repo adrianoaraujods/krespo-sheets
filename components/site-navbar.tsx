@@ -1,8 +1,8 @@
-"use client";
+import { Suspense } from "react";
 
 import type { NavLinkWithItems } from "@/lib/navigation";
-import type { Session } from "next-auth";
 
+import { auth } from "@/lib/auth";
 import { navItems } from "@/lib/config";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,21 @@ import LoginDialog from "@/components/login-dialog";
 import ThemeSelector from "@/components/theme-selector";
 import UserSettings from "@/components/user-settings";
 
-export function NavbarContent({ session }: { session: Session | null }) {
+import { SearchBar } from "./search-bar";
+
+export function SiteNavbar() {
+  return (
+    <Navbar>
+      <Suspense fallback={<NavbarSkeleton />}>
+        <NavbarContent />
+      </Suspense>
+    </Navbar>
+  );
+}
+
+export async function NavbarContent() {
+  const session = await auth();
+
   const { authOnly: authOnlyItems, public: publicItems } = navItems;
 
   let mainItems: NavLinkWithItems[] = !session
@@ -29,7 +43,7 @@ export function NavbarContent({ session }: { session: Session | null }) {
   let menuItems: NavLinkWithItems[] = [...mainItems];
 
   return (
-    <Navbar>
+    <>
       <div className="flex">
         <NavbarMenu side="left">
           <NavbarMenuLinks items={menuItems} />
@@ -41,6 +55,8 @@ export function NavbarContent({ session }: { session: Session | null }) {
       <NavbarLinks className="-md:hidden" items={mainItems} />
 
       <div className="flex gap-4">
+        <SearchBar />
+
         {!session && (
           <>
             <LocaleSelector />
@@ -51,13 +67,13 @@ export function NavbarContent({ session }: { session: Session | null }) {
 
         {session ? <UserSettings session={session} /> : <LoginDialog />}
       </div>
-    </Navbar>
+    </>
   );
 }
 
 export function NavbarSkeleton() {
   return (
-    <Navbar>
+    <>
       <Button variant="none" className="gap-2 px-2" asChild>
         <Logo />
       </Button>
@@ -69,6 +85,6 @@ export function NavbarSkeleton() {
 
         <Skeleton className="aspect-square size-10 rounded-full" />
       </div>
-    </Navbar>
+    </>
   );
 }

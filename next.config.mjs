@@ -1,8 +1,19 @@
+import createMDX from "fumadocs-mdx/config";
 import createNextIntlPlugin from "next-intl/plugin";
 
-const withNextIntl = createNextIntlPlugin("./lib/intl.ts");
+/** @type {import('fumadocs-mdx/config').CreateMDXOptions} */
+const fumadocsConfig = {
+  mdxOptions: {
+    baseUrl: "test",
+  },
+};
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  reactStrictMode: true,
+};
 
-export default withNextIntl(nextConfig);
+const withNextIntl = createNextIntlPlugin("./lib/intl.ts");
+const withMDX = createMDX(fumadocsConfig);
+
+export default withMDX(withNextIntl(nextConfig));
