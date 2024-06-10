@@ -1,18 +1,20 @@
+import { I18nProvider } from "fumadocs-ui/i18n";
+import { RootProvider } from "fumadocs-ui/provider";
 import { GeistSans } from "geist/font/sans";
+import { NextIntlClientProvider } from "next-intl";
 import {
   getMessages,
   getTranslations,
   unstable_setRequestLocale as setRequestLocale,
 } from "next-intl/server";
-
-import { Locale, locales } from "@/lib/config";
+import { ThemeProvider } from "next-themes";
 
 import "fumadocs-ui/style.css";
 import "@/styles/globals.css";
 import "@/styles/themes.css";
 
-import { NextIntlClientProvider } from "next-intl";
-import { ThemeProvider } from "next-themes";
+import { Locale, locales } from "@/lib/config";
+import { mdxTranslations } from "@/lib/intl";
 
 export default async function RootLayout({
   children,
@@ -34,7 +36,9 @@ export default async function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            {children}
+            <I18nProvider locale={locale} translations={mdxTranslations}>
+              <RootProvider theme={{ enabled: false }}>{children}</RootProvider>
+            </I18nProvider>
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

@@ -1,12 +1,10 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { DocsBody, DocsPage } from "fumadocs-ui/page";
 
 import type { Locale } from "@/lib/config";
-import type { Metadata } from "next";
 
-import { locales } from "@/lib/config";
-
-import { getPage, getPages } from "@/app/source";
+import { getPage } from "@/app/source";
 
 export default function KompendiumPage({
   params: { slug, locale },
@@ -27,15 +25,6 @@ export default function KompendiumPage({
         <MDX />
       </DocsBody>
     </DocsPage>
-  );
-}
-
-export function generateStaticParams() {
-  return locales.map((locale) =>
-    getPages(locale)!.map((page) => ({
-      slug: page.slugs,
-      locale,
-    }))
   );
 }
 
