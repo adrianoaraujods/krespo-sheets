@@ -1,3 +1,3 @@
-export const racesNames = ["dwarf"] as const;
+export const racesNames = ["dwarf", "elf"] as const;
 
 export type RacesNames = (typeof racesNames)[number];
