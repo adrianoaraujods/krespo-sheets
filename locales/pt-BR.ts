@@ -90,7 +90,7 @@ export default {
         cleric: "Clérigo",
         druid: "Druida",
         fighter: "Guerreiro",
-        monk: "Monje",
+        monk: "Monge",
         paladin: "Paladino",
         ranger: "Patrulheiro",
         sorcerer: "Feitiçeiro",
