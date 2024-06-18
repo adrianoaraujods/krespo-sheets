@@ -1,4 +1,4 @@
-export const RACES_NAMES = ["dwarf"] as const;
+export const RACES_NAMES = ["dwarf", "elf"] as const;
 
 export const CLASSES_NAMES = [
   "artificer",
