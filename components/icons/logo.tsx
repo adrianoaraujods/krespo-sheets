@@ -7,8 +7,8 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
-import { Span } from "../typography/text";
-import { Button } from "../ui/button";
+import { Span } from "@/components/typography/text";
+import { Button } from "@/components/ui/button";
 
 export interface LogoProps
   extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, "children"> {}

@@ -7,7 +7,7 @@ import type { VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const headingVariants = cva(
-  "mb-[.5em] scroll-my-24 leading-none text-foreground last:mb-0",
+  "mb-[.5em] block scroll-my-24 leading-none text-foreground last:mb-0",
   {
     variants: {
       variant: {

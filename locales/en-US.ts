@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 
-import { Translations } from "fumadocs-ui/i18n";
 import { AbstractIntlMessages } from "next-intl";
+
+import type { ClassName, Source, SpellSchool } from "@/systems/dnd5";
 
 import { Theme } from "@/lib/config";
 
@@ -12,6 +13,24 @@ export interface Messages extends AbstractIntlMessages {
       [Key in Theme]: string;
     };
   };
+  systems: {
+    [key: string]: string | AbstractIntlMessages;
+    dnd5: {
+      [key: string]: string | AbstractIntlMessages;
+      spells: {
+        [key: string]: string | AbstractIntlMessages;
+        schools: {
+          [key in SpellSchool]: string;
+        };
+      };
+      classes: {
+        [key in ClassName]: string;
+      };
+      sources: {
+        [key in Source]: string;
+      };
+    };
+  };
 }
 
 export default {
@@ -20,9 +39,12 @@ export default {
     description: "Create and manage characters sheets for tabletop RPGs.",
   },
   ui: {
+    yes: "Yes",
+    no: "No",
     next: "Next",
     confirm: "Confirm",
     cancel: "Cancel",
+    previous: "Previous",
     back: "Back",
     delete: "Delete",
     new: "New",
@@ -32,12 +54,26 @@ export default {
     login: "Login",
     logout: "Log Out",
     continueWith: "Continue with",
+    resetFilters: "Reset filters",
+    sortBy: "Sort by",
+    name: "Name",
+    level: "Level",
+    noResultsFound: "No results was found",
     language: "Language",
     theme: "Theme",
     themes: {
       light: "Light",
       dark: "Dark",
       system: "System",
+    },
+    pages: {
+      next: "Go to next page",
+      previous: "Go to previous page",
+      first: "Go to first page",
+      last: "Go to last page",
+      more: "More pages",
+      perPage: "Per page",
+      amount: "{initial} - {final} of {total}",
     },
   },
   pages: {
@@ -53,6 +89,52 @@ export default {
   systems: {
     dnd5: {
       title: "Dungeons & Dragons 5e",
+      spells: {
+        title: "Spells",
+        ritual: "Ritual",
+        castingTime: "Casting Time",
+        range: "Range",
+        components: "Components",
+        verbal: "Verbal",
+        somatic: "Somatic",
+        material: "Material",
+        duration: "Duration",
+        school: "Spell school",
+        casters: "Spell Lists",
+        description: {
+          cantrip: "Cantrip",
+          level: "{level}th-level",
+        },
+        upcast: "At Higher Levels",
+        source: "Source",
+        schools: {
+          abjuration: "Abjuration",
+          conjuration: "Conjuration",
+          divination: "Divination",
+          enchantment: "Enchantment",
+          evocation: "Evocation",
+          illusion: "Illusion",
+          necromancy: "Necromancy",
+          transmutation: "Transmutation",
+        },
+      },
+      classes: {
+        artificer: "Artificer",
+        barbarian: "Barbarian",
+        bard: "Bard",
+        cleric: "Cleric",
+        druid: "Druid",
+        fighter: "Fighter",
+        monk: "Monk",
+        paladin: "Paladin",
+        ranger: "Ranger",
+        sorcerer: "Sorcerer",
+        warlock: "Warlock",
+        wizard: "Wizard",
+      },
+      sources: {
+        "players-handbook": "Player's Handbook",
+      },
     },
   },
 } satisfies Messages;

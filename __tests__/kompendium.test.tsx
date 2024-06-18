@@ -1,5 +1,5 @@
 import fs from "fs";
-import { racesNames } from "@/systems/dnd5";
+import { RACES_NAMES } from "@/systems/dnd5";
 import { expect } from "@jest/globals";
 
 import { defaultLocale, locales } from "@/lib/config";
@@ -8,7 +8,7 @@ describe("Kompendium", () => {
   const kompendiumPages = [
     "dnd5/index",
     "dnd5/races/index",
-    ...racesNames.map((race) => `dnd5/races/${race}`),
+    ...RACES_NAMES.map((race) => `dnd5/races/${race}`),
   ];
 
   locales.map((locale) => {

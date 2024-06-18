@@ -1,1 +1,4 @@
-{ "root": true }
+{
+  "root": true,
+  "pages": ["---Dungeons & Dragons 5e---", "..."]
+}

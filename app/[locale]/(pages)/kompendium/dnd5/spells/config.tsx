@@ -1,0 +1,93 @@
+import { CLASSES_NAMES, SOURCES, SPELL_SCHOOLS } from "@/systems/dnd5";
+import { z } from "zod";
+
+import type { Spell } from "@/systems/dnd5";
+import type { ColumnDef } from "@tanstack/react-table";
+
+export const tableColumns: ColumnDef<Spell>[] = [
+  {
+    accessorKey: "name",
+    filterFn: "includesString",
+  },
+  {
+    accessorKey: "level",
+    filterFn: ({ original: { level } }, _, filterValue) => {
+      if (Array.isArray(filterValue)) {
+        const min = isNaN(Number(filterValue[0])) ? 0 : Number(filterValue[0]);
+        const max = isNaN(Number(filterValue[1])) ? 9 : Number(filterValue[1]);
+
+        console.log(level);
+
+        return level >= min && level <= max;
+      }
+
+      return false;
+    },
+  },
+  {
+    accessorKey: "school",
+    filterFn: "arrIncludesSome",
+  },
+  {
+    accessorFn: ({ casters }) => casters.join(", "),
+    id: "casters",
+    filterFn: "arrIncludesSome",
+  },
+  {
+    accessorKey: "castingTime",
+    enableColumnFilter: false,
+  },
+  {
+    accessorKey: "range",
+    enableColumnFilter: false,
+  },
+  {
+    accessorFn: ({ components: { v, s, m } }) =>
+      `${v && "V"} ${s && "S"} ${m && "M"}`,
+    id: "components",
+    filterFn: "includesString",
+  },
+  {
+    accessorKey: "duration",
+    enableColumnFilter: false,
+  },
+  {
+    accessorKey: "description",
+    enableColumnFilter: false,
+  },
+  {
+    accessorKey: "upcastDescription",
+    enableColumnFilter: false,
+  },
+  {
+    accessorKey: "ritual",
+    filterFn: "equals",
+  },
+];
+
+export const filtersSchema = z.object({
+  amount: z.number(),
+  order: z.enum(["asc", "desc"]),
+  pg: z.number(),
+  sort: z.enum(["name", "level"]),
+
+  name: z.string().optional(),
+  source: z.array(z.enum([...SOURCES])).optional(),
+  levelMin: z.number().optional(),
+  levelMax: z.number().optional(),
+  school: z.array(z.enum([...SPELL_SCHOOLS])).optional(),
+  casters: z.array(z.enum([...CLASSES_NAMES])).optional(),
+  compV: z.enum(["true"]).optional(),
+  compS: z.enum(["true"]).optional(),
+  compM: z.enum(["true"]).optional(),
+  ritual: z.enum(["true"]).optional(),
+});
+
+export type FiltersParams = z.infer<typeof filtersSchema>;
+
+export const initialFiltersParams: FiltersParams = {
+  amount: 10,
+  order: "asc",
+  pg: 0,
+  sort: "name",
+};

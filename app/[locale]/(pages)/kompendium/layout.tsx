@@ -7,7 +7,7 @@ import { locales } from "@/lib/config";
 
 import { getPages, pageTree } from "@/app/source";
 
-export default async function RootDocsLayout({
+export default function RootDocsLayout({
   children,
   params: { locale },
 }: {
@@ -15,7 +15,14 @@ export default async function RootDocsLayout({
   params: { slug?: string[]; locale: Locale };
 }) {
   return (
-    <DocsLayout tree={pageTree[locale]} nav={{ enabled: false }}>
+    <DocsLayout
+      tree={pageTree[locale]}
+      nav={{ enabled: false }}
+      sidebar={{
+        defaultOpenLevel: 0,
+        footer: <div className="min-w-36" />,
+      }}
+    >
       {children}
     </DocsLayout>
   );

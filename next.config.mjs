@@ -5,6 +5,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 const fumadocsConfig = {
   mdxOptions: {
     baseUrl: "test",
+    lastModifiedTime: "git",
   },
 };
 
