@@ -1,4 +1,12 @@
-import { CLASSES_NAMES, SOURCES, SPELL_SCHOOLS } from "@/systems/dnd5";
+import {
+  ATTRIBUTES,
+  CLASSES_NAMES,
+  DAMAGE_TYPES,
+  SOURCES,
+  SPELL_ATTACK_TYPES,
+  SPELL_SCHOOLS,
+  SPELL_TYPES,
+} from "@/systems/dnd5";
 import { z } from "zod";
 
 import type { Spell } from "@/systems/dnd5";
@@ -63,6 +71,22 @@ export const tableColumns: ColumnDef<Spell>[] = [
     accessorKey: "ritual",
     filterFn: "equals",
   },
+  {
+    accessorKey: "type",
+    filterFn: "arrIncludesSome",
+  },
+  {
+    accessorKey: "damageType",
+    filterFn: "arrIncludesSome",
+  },
+  {
+    accessorKey: "spellAttack",
+    filterFn: "arrIncludesSome",
+  },
+  {
+    accessorKey: "savingThrow",
+    filterFn: "arrIncludesSome",
+  },
 ];
 
 export const filtersSchema = z.object({
@@ -76,6 +100,10 @@ export const filtersSchema = z.object({
   levelMin: z.number().optional(),
   levelMax: z.number().optional(),
   school: z.array(z.enum([...SPELL_SCHOOLS])).optional(),
+  type: z.array(z.enum([...SPELL_TYPES])).optional(),
+  dmgType: z.array(z.enum([...DAMAGE_TYPES])).optional(),
+  attack: z.array(z.enum([...SPELL_ATTACK_TYPES])).optional(),
+  savingThrow: z.array(z.enum([...ATTRIBUTES])).optional(),
   casters: z.array(z.enum([...CLASSES_NAMES])).optional(),
   compV: z.enum(["true"]).optional(),
   compS: z.enum(["true"]).optional(),

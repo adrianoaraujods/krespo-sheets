@@ -31,6 +31,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { filtersSchema, initialFiltersParams, tableColumns } from "./config";
 import Filters, { PaginationComponent } from "./filters";
@@ -214,25 +215,29 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
               </CardHeader>
 
               <CardContent className="py-2">
-                {Array.isArray(spell.description) ? (
-                  spell.description.map((paragraph, i) => (
-                    <Paragraph key={`${id}_description:${i + 1}`}>
-                      {paragraph}
-                    </Paragraph>
-                  ))
-                ) : (
-                  <Paragraph>{spell.description}</Paragraph>
-                )}
+                <ScrollArea>
+                  <div className="max-h-[400px]">
+                    {Array.isArray(spell.description) ? (
+                      spell.description.map((paragraph, i) => (
+                        <Paragraph key={`${id}_description:${i + 1}`}>
+                          {paragraph}
+                        </Paragraph>
+                      ))
+                    ) : (
+                      <Paragraph>{spell.description}</Paragraph>
+                    )}
 
-                {!spell.upcastDescription ? null : (
-                  <Paragraph>
-                    <Span variant="bold">
-                      {t("systems.dnd5.spells.upcast")}:{" "}
-                    </Span>
+                    {!spell.upcastDescription ? null : (
+                      <Paragraph>
+                        <Span variant="bold">
+                          {t("systems.dnd5.spells.upcast")}:{" "}
+                        </Span>
 
-                    {spell.upcastDescription}
-                  </Paragraph>
-                )}
+                        {spell.upcastDescription}
+                      </Paragraph>
+                    )}
+                  </div>
+                </ScrollArea>
               </CardContent>
 
               <CardFooter className="grid border-t border-muted pt-2">

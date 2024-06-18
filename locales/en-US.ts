@@ -2,7 +2,15 @@
 
 import { AbstractIntlMessages } from "next-intl";
 
-import type { ClassName, Source, SpellSchool } from "@/systems/dnd5";
+import type {
+  Attribute,
+  ClassName,
+  DamageType,
+  Source,
+  SpellAttackType,
+  SpellSchool,
+  SpellType,
+} from "@/systems/dnd5";
 
 import { Theme } from "@/lib/config";
 
@@ -22,9 +30,21 @@ export interface Messages extends AbstractIntlMessages {
         schools: {
           [key in SpellSchool]: string;
         };
+        types: {
+          [key in SpellType]: string;
+        };
+        attackTypes: {
+          [key in SpellAttackType]: string;
+        };
+      };
+      attributes: {
+        [key in Attribute]: string;
       };
       classes: {
         [key in ClassName]: string;
+      };
+      damageTypes: {
+        [key in DamageType]: string;
       };
       sources: {
         [key in Source]: string;
@@ -101,6 +121,20 @@ export default {
         duration: "Duration",
         school: "Spell school",
         casters: "Spell Lists",
+        spellType: "Type",
+        types: {
+          damage: "Damage",
+          healing: "Healing",
+          utility: "Utility",
+        },
+        attackTypes: {
+          "spell-melee": "Spell melee attack",
+          "spell-ranged": "Spell ranged attack",
+          weapon: "Weapon attack",
+        },
+        damageType: "Damage type",
+        spellAttack: "Attack",
+        savingThrows: "Saving throws",
         description: {
           cantrip: "Cantrip",
           level: "{level}th-level",
@@ -118,6 +152,14 @@ export default {
           transmutation: "Transmutation",
         },
       },
+      attributes: {
+        str: "Strength",
+        dex: "Dexterity",
+        con: "Constitution",
+        int: "Intelligence",
+        wis: "Wisdom",
+        cha: "Charisma",
+      },
       classes: {
         artificer: "Artificer",
         barbarian: "Barbarian",
@@ -131,6 +173,21 @@ export default {
         sorcerer: "Sorcerer",
         warlock: "Warlock",
         wizard: "Wizard",
+      },
+      damageTypes: {
+        acid: "Acid",
+        bludgeoning: "Bludgeoning",
+        cold: "Cold",
+        fire: "Fire",
+        force: "Force",
+        lightning: "Lightning",
+        necrotic: "Necrotic",
+        piercing: "Piercing",
+        poison: "Poison",
+        psychic: "Psychic",
+        radiant: "Radiant",
+        slashing: "Slashing",
+        thunder: "Thunder",
       },
       sources: {
         "players-handbook": "Player's Handbook",

@@ -1,7 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { CLASSES_NAMES, SPELL_SCHOOLS } from "@/systems/dnd5";
+import {
+  ATTRIBUTES,
+  CLASSES_NAMES,
+  DAMAGE_TYPES,
+  SPELL_ATTACK_TYPES,
+  SPELL_SCHOOLS,
+  SPELL_TYPES,
+} from "@/systems/dnd5";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -46,16 +53,20 @@ export default function Filters({
     order,
     pg,
     sort,
+    attack,
     casters,
     compM,
     compS,
     compV,
+    dmgType,
     levelMax,
     levelMin,
     name,
     ritual,
+    savingThrow,
     school,
     source,
+    type,
   },
   setParams,
 }: {
@@ -95,6 +106,18 @@ export default function Filters({
     if (source !== undefined && source.length > 0) {
       filters.push({ id: "source", value: source });
     }
+    if (attack !== undefined && attack.length > 0) {
+      filters.push({ id: "spellAttack", value: attack });
+    }
+    if (dmgType !== undefined && dmgType.length > 0) {
+      filters.push({ id: "damageType", value: dmgType });
+    }
+    if (savingThrow !== undefined && savingThrow.length > 0) {
+      filters.push({ id: "savingThrow", value: savingThrow });
+    }
+    if (type !== undefined && type.length > 0) {
+      filters.push({ id: "type", value: type });
+    }
     if (compV === "true") {
       filters.push({ id: "components", value: "v" });
     }
@@ -109,16 +132,20 @@ export default function Filters({
     }
     table.setColumnFilters(filters);
   }, [
+    attack,
     casters,
     compM,
     compS,
     compV,
+    dmgType,
     levelMax,
     levelMin,
     name,
     ritual,
+    savingThrow,
     school,
     source,
+    type,
     table,
   ]);
 
@@ -134,6 +161,14 @@ export default function Filters({
         <CasterSelector />
 
         <ComponentsSelector />
+
+        <TypeSelector />
+
+        <DamageTypeSelector />
+
+        <AttackTypeSelector />
+
+        <SavingThrowSelector />
 
         <IsRitual />
       </div>
@@ -156,7 +191,7 @@ export default function Filters({
     const [inputValue, setInputValue] = React.useState(name || "");
 
     return (
-      <div className="flex w-full max-w-[300px] items-center gap-2">
+      <div className="flex w-full max-w-[360px] items-center gap-2">
         <Label htmlFor="spell-name-filter">{t("name")}:</Label>
 
         <Input
@@ -359,13 +394,169 @@ export default function Filters({
     );
   }
 
+  function TypeSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.spellType")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {SPELL_TYPES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-type-filter:${name}`}
+              checked={type && type.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const type = prev.type || [];
+
+                  return {
+                    ...prev,
+                    type: type.includes(name)
+                      ? type.filter((value) => value !== name)
+                      : [...type, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`spells.types.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  function DamageTypeSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.damageType")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {DAMAGE_TYPES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-damage-type-filter:${name}`}
+              checked={dmgType && dmgType.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const dmgType = prev.dmgType || [];
+
+                  return {
+                    ...prev,
+                    dmgType: dmgType.includes(name)
+                      ? dmgType.filter((value) => value !== name)
+                      : [...dmgType, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`damageTypes.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  function AttackTypeSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.spellAttack")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {SPELL_ATTACK_TYPES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-attack-type-filter:${name}`}
+              checked={attack && attack.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const attack = prev.attack || [];
+
+                  return {
+                    ...prev,
+                    attack: attack.includes(name)
+                      ? attack.filter((value) => value !== name)
+                      : [...attack, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`spells.attackTypes.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
+  function SavingThrowSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.savingThrows")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {ATTRIBUTES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-saving-throws-filter:${name}`}
+              checked={savingThrow && savingThrow.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const savingThrow = prev.savingThrow || [];
+
+                  return {
+                    ...prev,
+                    savingThrow: savingThrow.includes(name)
+                      ? savingThrow.filter((value) => value !== name)
+                      : [...savingThrow, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`attributes.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
   function IsRitual() {
     const t = useTranslations();
 
     return (
       <Button
         variant="outline"
-        className="gap-2"
+        className="mr-auto gap-2"
         onMouseDown={() =>
           setParams((prev) => ({
             ...prev,
