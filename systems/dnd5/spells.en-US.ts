@@ -23,7 +23,7 @@ export const SPELLS: Spell[] = [
     ],
   },
   {
-    name: "Adivinhação",
+    name: "Divination",
     source: "players-handbook",
     level: 4,
     school: "divination",

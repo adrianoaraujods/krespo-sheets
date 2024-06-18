@@ -65,6 +65,7 @@ export type SpellAttackType = (typeof SPELL_ATTACK_TYPES)[number];
 
 export type Spell = {
   name: string;
+  originalName?: string;
   source: Source;
   level: number;
   school: SpellSchool;

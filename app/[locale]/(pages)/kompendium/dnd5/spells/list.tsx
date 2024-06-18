@@ -96,7 +96,16 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                 <CardTitle
                   id={spell.name.toLocaleLowerCase().replaceAll(" ", "-")}
                 >
-                  {row.renderValue("name")}
+                  <span>{spell.name}</span>
+
+                  {spell.originalName && (
+                    <>
+                      {" "}
+                      <span className="text-nowrap font-normal text-muted-foreground">
+                        ({spell.originalName})
+                      </span>
+                    </>
+                  )}
                 </CardTitle>
 
                 <CardDescription>

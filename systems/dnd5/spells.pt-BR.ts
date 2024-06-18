@@ -3,6 +3,7 @@ import type { Spell } from "@/systems/dnd5";
 export const SPELLS: Spell[] = [
   {
     name: "Acalmar Emoções",
+    originalName: "Calm Emotions",
     source: "players-handbook",
     level: 2,
     school: "enchantment",
@@ -24,6 +25,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Adivinhação",
+    originalName: "Divination",
     source: "players-handbook",
     level: 4,
     school: "divination",
@@ -46,6 +48,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Ajuda",
+    originalName: "Aid",
     source: "players-handbook",
     level: 2,
     school: "abjuration",
@@ -66,6 +69,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Alarme",
+    originalName: "Alarm",
     source: "players-handbook",
     level: 1,
     school: "abjuration",
@@ -89,6 +93,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aliado Planar",
+    originalName: "Planar Ally",
     source: "players-handbook",
     level: 6,
     school: "conjuration",
@@ -112,6 +117,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aljava Veloz",
+    originalName: "Swift Quiver",
     source: "players-handbook",
     level: 5,
     school: "transmutation",
@@ -133,6 +139,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Alterar Forma",
+    originalName: "Shapechange",
     source: "players-handbook",
     level: 9,
     school: "transmutation",
@@ -157,6 +164,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Alterar-se",
+    originalName: "Alter Self",
     source: "players-handbook",
     level: 2,
     school: "transmutation",
@@ -181,11 +189,12 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Amizade",
+    originalName: "Friends",
     source: "players-handbook",
     level: 0,
     school: "enchantment",
     type: ["utility"],
-    casters: ["bard", "druid", "ranger"],
+    casters: ["bard", "druid", "ranger", "warlock", "wizard"],
     castingTime: "Ação",
     range: "Pessoal",
     components: {
@@ -198,6 +207,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Amizade Animal",
+    originalName: "Animal Friendship",
     source: "players-handbook",
     level: 1,
     school: "enchantment",
@@ -219,6 +229,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Ampliar Plantas",
+    originalName: "Plant Growth",
     source: "players-handbook",
     level: 3,
     school: "transmutation",
@@ -240,6 +251,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Âncora Planar",
+    originalName: "Planar Binding",
     source: "players-handbook",
     level: 5,
     school: "abjuration",
@@ -263,6 +275,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Andar na Água",
+    originalName: "Water Walk",
     source: "players-handbook",
     level: 3,
     school: "transmutation",
@@ -284,6 +297,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Animar Mortos",
+    originalName: "Animate Dead",
     source: "players-handbook",
     level: 3,
     school: "necromancy",
@@ -307,6 +321,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Animar Objetos",
+    originalName: "Animate Objects",
     source: "players-handbook",
     level: 5,
     school: "transmutation",
@@ -335,6 +350,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Antipatia/Simpatia",
+    originalName: "Antipathy/Sympathy",
     source: "players-handbook",
     level: 8,
     school: "enchantment",
@@ -362,6 +378,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aprimorar Habilidade",
+    originalName: "Enhance Ability",
     source: "players-handbook",
     level: 2,
     school: "transmutation",
@@ -395,6 +412,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aprisionamento",
+    originalName: "Imprisonment",
     source: "players-handbook",
     level: 9,
     school: "abjuration",
@@ -434,6 +452,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Arca Secreta de Leomund",
+    originalName: "Leomund's Secret Chest",
     source: "players-handbook",
     level: 4,
     school: "conjuration",
@@ -476,6 +495,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Arma Elemental",
+    originalName: "Elemental Weapon",
     source: "players-handbook",
     level: 3,
     school: "transmutation",
@@ -497,6 +517,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Arma Espiritual",
+    originalName: "Spiritual Weapon",
     source: "players-handbook",
     level: 2,
     school: "evocation",
@@ -521,6 +542,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Arma Mágica",
+    originalName: "Magic Weapon",
     source: "players-handbook",
     level: 2,
     school: "transmutation",
@@ -542,6 +564,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Armadura Arcana",
+    originalName: "Mage Armor",
     source: "players-handbook",
     level: 1,
     school: "abjuration",
@@ -560,6 +583,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Armadura de Agathys",
+    originalName: "Armor of Agathys",
     source: "players-handbook",
     level: 1,
     school: "abjuration",
@@ -581,6 +605,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Arrombar",
+    originalName: "Knock",
     source: "players-handbook",
     level: 2,
     school: "transmutation",
@@ -601,6 +626,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Assassino Fantasmagórico",
+    originalName: "Phantasmal Killer",
     source: "players-handbook",
     level: 4,
     school: "illusion",
@@ -622,6 +648,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Ataque Certeiro",
+    originalName: "True Strike",
     source: "players-handbook",
     level: 0,
     school: "divination",
@@ -638,6 +665,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Ataque Visual",
+    originalName: "Eyebite",
     source: "players-handbook",
     level: 6,
     school: "necromancy",
@@ -663,6 +691,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Augúrio",
+    originalName: "Augury",
     source: "players-handbook",
     level: 2,
     school: "divination",
@@ -689,6 +718,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aumentar/Reduzir",
+    originalName: "Enlarge/Reduce",
     source: "players-handbook",
     level: 2,
     school: "transmutation",
@@ -715,6 +745,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aura de Pureza",
+    originalName: "Aura of Purity",
     source: "players-handbook",
     level: 4,
     school: "abjuration",
@@ -731,6 +762,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aura de Vida",
+    originalName: "Aura of Life",
     source: "players-handbook",
     level: 4,
     school: "abjuration",
@@ -747,6 +779,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aura de Vitalidade",
+    originalName: "Aura of Vitality",
     source: "players-handbook",
     level: 3,
     school: "evocation",
@@ -763,6 +796,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aura Mágica de Nystul",
+    originalName: "Nystul's Magic Aura",
     source: "players-handbook",
     level: 2,
     school: "illusion",
@@ -787,6 +821,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Aura Sagrada",
+    originalName: "Holy Aura",
     source: "players-handbook",
     level: 8,
     school: "abjuration",
@@ -806,6 +841,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Auxílio Divino",
+    originalName: "Divine Favor",
     source: "players-handbook",
     level: 1,
     school: "evocation",

@@ -83,6 +83,8 @@ export default function Filters({
 
   React.useEffect(() => {
     table.setPageIndex(pg);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
   }, [pg, table]);
 
   React.useEffect(() => {
