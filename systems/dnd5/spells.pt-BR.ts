@@ -859,4 +859,25 @@ export const SPELLS: Spell[] = [
     description:
       "Sua oração fortalece você com radiação divina. Até o fim da magia, seus ataques com arma causam 1d4 de dano radiante extra ao atingirem.",
   },
+  {
+    name: "Clone",
+    originalName: "Clone",
+    source: "players-handbook",
+    level: 8,
+    school: "necromancy",
+    type: ["utility"],
+    casters: ["wizard"],
+    castingTime: "1 hora",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+      m: "um diamante e pelo menos 1 polegada cúbica de carne da criatura a ser clonada e um recipiente que tem uma tampa selável e é grande o suficiente para conter uma criatura Média, como uma enorme urna, caixão, cisto cheio de lama em o solo, ou recipiente de cristal cheio de água salgada valendo, no mínimo, 3000 gp que a magia consome",
+    },
+    duration: "Instantâneo",
+    description: [
+      " Essa magia produz uma duplicata inerte de uma criatura viva como uma garantia contra a morte. Esse clone é formado dentro de um receptáculo selado e cresce ao seu tamanho total, atingindo a maturidade após 120 dias; Você também pode escolher que o clone seja uma versão mais jovem da mesma criatura. Ele permanece inerte e dura indefinidamente, enquanto seu receptáculo permanecer intocado.",
+      " A qualquer momento, após o clone amadurecer, se a criatura original morrer, sua alma é transferida para o clone, considerando que a alma está livre e deseje retornar. O clone é fisicamente idêntico ao original e tem a mesma personalidade, memórias e habilidades, mas não possui qualquer equipamento do original. O físico da criatura original permanece, se ainda existir, se tornando inerte e não podendo, consequentemente, ser trazido de volta à vida, já que a alma da criatura está em outro lugar.",
+    ],
+  },
 ];
