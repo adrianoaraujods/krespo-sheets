@@ -44,7 +44,13 @@ export const SPELL_SCHOOLS = [
   "transmutation",
 ] as const;
 
-export const SOURCES = ["players-handbook"] as const;
+export const SOURCES = [
+  "players-handbook",
+  "Tasha's-Cauldron-of-Everything",
+  "Guildmaster's-Guide-to-Ravnica",
+  "Xanathar's-Guide-to-Everything",
+  "Explorer's-Guide-to-Wildermount",
+] as const;
 
 export const SPELL_TYPES = ["damage", "healing", "utility"] as const;
 
