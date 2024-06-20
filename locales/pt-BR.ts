@@ -135,7 +135,15 @@ export default {
         thunder: "Trovejante",
       },
       sources: {
+        "explorers-guide-to-wildermount": "Guia do Explorador para Wildemount",
+        "fizbans-treasury-of-dragons": "Tesouro dos Dragões de Fizban",
+        "guildmasters-guide-to-ravnica":
+          "Guia Do Mestre de Guildas para Ravnica",
+        "mordenkainens-tome-of-foes": "Tomo do Mordenkainen Sobre Inimigos",
         "players-handbook": "Livro do Jogador",
+        "tashas-cauldron-of-everything":
+          "O Caldeirão de Todas as Coisas de Tasha",
+        "xanathars-guide-to-everything": "Guia de Xanathar para Todas as Coisa",
       },
     },
   },

@@ -45,11 +45,13 @@ export const SPELL_SCHOOLS = [
 ] as const;
 
 export const SOURCES = [
+  "explorers-guide-to-wildermount",
+  "fizbans-treasury-of-dragons",
+  "guildmasters-guide-to-ravnica",
+  "mordenkainens-tome-of-foes",
   "players-handbook",
-  "Tasha's-Cauldron-of-Everything",
-  "Guildmaster's-Guide-to-Ravnica",
-  "Xanathar's-Guide-to-Everything",
-  "Explorer's-Guide-to-Wildermount",
+  "tashas-cauldron-of-everything",
+  "xanathars-guide-to-everything",
 ] as const;
 
 export const SPELL_TYPES = ["damage", "healing", "utility"] as const;
