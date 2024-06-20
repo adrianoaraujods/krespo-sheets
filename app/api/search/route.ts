@@ -15,37 +15,37 @@ export const { GET } = createI18nSearchAPI("advanced", {
       url: page.url,
     }));
 
-    pages.some((page) => {
-      try {
-        switch (true) {
-          case String(page.id).includes("dnd5/spells"):
-            const { SPELLS }: { SPELLS: SpellsDnd5[] } = require(
-              `@/systems/dnd5/spells.${locale}`
-            );
+    try {
+      const { SPELLS }: { SPELLS: SpellsDnd5[] } = require(
+        `@/systems/dnd5/spells.${locale}`
+      );
 
-            SPELLS.forEach((spell) => {
-              const id = String(spell.name).toLowerCase().replaceAll(" ", "-");
+      SPELLS.forEach((spell) => {
+        const title =
+          locale === "en-US" || !spell.originalName
+            ? spell.name
+            : `${spell.name} (${spell.originalName})`;
 
-              page.structuredData.headings.push({ id, content: spell.name });
-
-              page.structuredData.contents.push({
-                heading: id,
+        pages.push({
+          title,
+          structuredData: {
+            headings: [],
+            contents: [
+              {
+                heading: title,
                 content: Array.isArray(spell.description)
                   ? spell.description.join(" ")
                   : spell.description,
-              });
-            });
-
-            return true;
-          default:
-            return false;
-        }
-      } catch (error) {
-        console.error(error);
-
-        return false;
-      }
-    });
+              },
+            ],
+          },
+          id: String(spell.name).toLowerCase().replaceAll(" ", "-"),
+          url: `/kompendium/dnd5/spells?name=${String(spell.name).toLowerCase().replaceAll(" ", "+")}`,
+        });
+      });
+    } catch (error) {
+      console.error(error);
+    }
 
     return {
       indexes: pages,

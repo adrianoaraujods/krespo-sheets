@@ -5,6 +5,7 @@ import {
   ATTRIBUTES,
   CLASSES_NAMES,
   DAMAGE_TYPES,
+  SOURCES,
   SPELL_ATTACK_TYPES,
   SPELL_SCHOOLS,
   SPELL_TYPES,
@@ -30,7 +31,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+import { DebounceInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Pagination,
@@ -172,6 +173,8 @@ export default function Filters({
 
         <SavingThrowSelector />
 
+        <SourceSelector />
+
         <IsRitual />
       </div>
 
@@ -190,73 +193,51 @@ export default function Filters({
   );
 
   function NameInput() {
-    const [inputValue, setInputValue] = React.useState(name || "");
-
     return (
       <div className="flex w-full max-w-[360px] items-center gap-2">
         <Label htmlFor="spell-name-filter">{t("name")}:</Label>
 
-        <Input
+        <DebounceInput
           id="spell-name-filter"
-          value={inputValue}
           type="text"
-          onChange={({ target }) => setInputValue(target.value)}
-          onBlur={({ target }) => {
-            if (target.value === (name || "")) return;
-
-            setParams((prev) => ({ ...prev, name: target.value }));
-          }}
+          value={name}
+          onDebounce={(value) =>
+            setParams((prev) => ({ ...prev, name: String(value) }))
+          }
         />
       </div>
     );
   }
 
   function LevelInput() {
-    const [inputMin, setInputMin] = React.useState(String(levelMin) || "");
-    const [inputMax, setInputMax] = React.useState(String(levelMax) || "");
-
     return (
       <div className="flex items-center gap-2">
         <Label htmlFor="spell-level-min-filter">{t("level")}:</Label>
 
-        <Input
+        <DebounceInput
           className="w-16 text-center"
           id="spell-level-min-filter"
-          value={inputMin}
           type="number"
-          onChange={({ target }) => setInputMin(target.value)}
-          onBlur={({ target }) => {
-            const value = isNaN(Number(target.value))
-              ? 0
-              : Number(target.value);
-
-            if (value === (levelMin || 0)) return;
-
+          value={levelMin}
+          onDebounce={(value) => {
             setParams((prev) => ({
               ...prev,
-              levelMin: value === 0 ? undefined : value,
+              levelMin: isNaN(Number(value)) ? undefined : Number(value),
             }));
           }}
         />
 
         <Span>-</Span>
 
-        <Input
+        <DebounceInput
           className="w-16 text-center"
           id="spell-level-max-filter"
-          value={inputMax}
           type="number"
-          onChange={({ target }) => setInputMax(target.value)}
-          onBlur={({ target }) => {
-            const value = isNaN(Number(target.value))
-              ? 0
-              : Number(target.value);
-
-            if (value === (levelMax || 0)) return;
-
+          value={levelMax}
+          onDebounce={(value) => {
             setParams((prev) => ({
               ...prev,
-              levelMax: value === 0 ? undefined : value,
+              levelMax: isNaN(Number(value)) ? undefined : Number(value),
             }));
           }}
         />
@@ -552,6 +533,45 @@ export default function Filters({
     );
   }
 
+  function SourceSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.source")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {SOURCES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-source-filter:${name}`}
+              checked={source && source.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const source = prev.source || [];
+
+                  return {
+                    ...prev,
+                    source: source.includes(name)
+                      ? source.filter((value) => value !== name)
+                      : [...source, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`sources.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
   function IsRitual() {
     const t = useTranslations();
 
@@ -566,7 +586,8 @@ export default function Filters({
           }))
         }
       >
-        {t("systems.dnd5.spells.ritual")}?
+        <Span size="sm">{t("systems.dnd5.spells.ritual")}?</Span>
+
         {ritual && <CheckIcon className="size-4" />}
       </Button>
     );

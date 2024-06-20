@@ -190,7 +190,13 @@ export default {
         thunder: "Thunder",
       },
       sources: {
+        "explorers-guide-to-wildermount": "Explorer's Guide to Wildermount",
+        "fizbans-treasury-of-dragons": "Fizban's Treasury of Dragons",
+        "guildmasters-guide-to-ravnica": "Guildmaster's Guide to Ravnica",
+        "mordenkainens-tome-of-foes": "Mordenkainen's Tome of Foes",
         "players-handbook": "Player's Handbook",
+        "tashas-cauldron-of-everything": "Tasha's Cauldron of Everything",
+        "xanathars-guide-to-everything": "Xanathar's Guide to Everything",
       },
     },
   },

@@ -87,6 +87,10 @@ export const tableColumns: ColumnDef<Spell>[] = [
     accessorKey: "savingThrow",
     filterFn: "arrIncludesSome",
   },
+  {
+    accessorKey: "source",
+    filterFn: "arrIncludesSome",
+  },
 ];
 
 export const filtersSchema = z.object({
