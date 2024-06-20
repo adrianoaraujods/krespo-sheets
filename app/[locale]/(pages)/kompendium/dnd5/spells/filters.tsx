@@ -5,6 +5,7 @@ import {
   ATTRIBUTES,
   CLASSES_NAMES,
   DAMAGE_TYPES,
+  SOURCES,
   SPELL_ATTACK_TYPES,
   SPELL_SCHOOLS,
   SPELL_TYPES,
@@ -171,6 +172,8 @@ export default function Filters({
         <AttackTypeSelector />
 
         <SavingThrowSelector />
+
+        <SourceSelector />
 
         <IsRitual />
       </div>
@@ -552,6 +555,45 @@ export default function Filters({
     );
   }
 
+  function SourceSelector() {
+    const t = useTranslations("systems.dnd5");
+
+    return (
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="outline" className="gap-2">
+            <Span size="sm">{t("spells.source")}</Span>
+
+            <ChevronDownIcon className="size-4" />
+          </Button>
+        </DropdownMenuTrigger>
+
+        <DropdownMenuContent align="end">
+          {SOURCES.map((name) => (
+            <DropdownMenuCheckboxItem
+              key={`spell-source-filter:${name}`}
+              checked={source && source.includes(name)}
+              onCheckedChange={() =>
+                setParams((prev) => {
+                  const source = prev.source || [];
+
+                  return {
+                    ...prev,
+                    source: source.includes(name)
+                      ? source.filter((value) => value !== name)
+                      : [...source, name],
+                  };
+                })
+              }
+            >
+              <Span size="sm">{t(`sources.${name}`)}</Span>
+            </DropdownMenuCheckboxItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
+    );
+  }
+
   function IsRitual() {
     const t = useTranslations();
 
@@ -566,7 +608,8 @@ export default function Filters({
           }))
         }
       >
-        {t("systems.dnd5.spells.ritual")}?
+        <Span size="sm">{t("systems.dnd5.spells.ritual")}?</Span>
+
         {ritual && <CheckIcon className="size-4" />}
       </Button>
     );
