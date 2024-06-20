@@ -31,7 +31,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Input } from "@/components/ui/input";
+import { DebounceInput } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import {
   Pagination,
@@ -193,73 +193,51 @@ export default function Filters({
   );
 
   function NameInput() {
-    const [inputValue, setInputValue] = React.useState(name || "");
-
     return (
       <div className="flex w-full max-w-[360px] items-center gap-2">
         <Label htmlFor="spell-name-filter">{t("name")}:</Label>
 
-        <Input
+        <DebounceInput
           id="spell-name-filter"
-          value={inputValue}
           type="text"
-          onChange={({ target }) => setInputValue(target.value)}
-          onBlur={({ target }) => {
-            if (target.value === (name || "")) return;
-
-            setParams((prev) => ({ ...prev, name: target.value }));
-          }}
+          value={name}
+          onDebounce={(value) =>
+            setParams((prev) => ({ ...prev, name: String(value) }))
+          }
         />
       </div>
     );
   }
 
   function LevelInput() {
-    const [inputMin, setInputMin] = React.useState(String(levelMin) || "");
-    const [inputMax, setInputMax] = React.useState(String(levelMax) || "");
-
     return (
       <div className="flex items-center gap-2">
         <Label htmlFor="spell-level-min-filter">{t("level")}:</Label>
 
-        <Input
+        <DebounceInput
           className="w-16 text-center"
           id="spell-level-min-filter"
-          value={inputMin}
           type="number"
-          onChange={({ target }) => setInputMin(target.value)}
-          onBlur={({ target }) => {
-            const value = isNaN(Number(target.value))
-              ? 0
-              : Number(target.value);
-
-            if (value === (levelMin || 0)) return;
-
+          value={levelMin}
+          onDebounce={(value) => {
             setParams((prev) => ({
               ...prev,
-              levelMin: value === 0 ? undefined : value,
+              levelMin: isNaN(Number(value)) ? undefined : Number(value),
             }));
           }}
         />
 
         <Span>-</Span>
 
-        <Input
+        <DebounceInput
           className="w-16 text-center"
           id="spell-level-max-filter"
-          value={inputMax}
           type="number"
-          onChange={({ target }) => setInputMax(target.value)}
-          onBlur={({ target }) => {
-            const value = isNaN(Number(target.value))
-              ? 0
-              : Number(target.value);
-
-            if (value === (levelMax || 0)) return;
-
+          value={levelMax}
+          onDebounce={(value) => {
             setParams((prev) => ({
               ...prev,
-              levelMax: value === 0 ? undefined : value,
+              levelMax: isNaN(Number(value)) ? undefined : Number(value),
             }));
           }}
         />

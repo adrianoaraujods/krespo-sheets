@@ -22,4 +22,81 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 );
 Input.displayName = "Input";
 
-export { Input };
+export interface DebounceInputProps
+  extends Omit<
+    InputProps,
+    "id" | "onChange" | "onBlur" | "onKeyDown" | "onFocus"
+  > {
+  // eslint-disable-next-line no-unused-vars
+  onDebounce: (value: string | number | readonly string[] | undefined) => void;
+  id: string;
+  delay?: number;
+}
+
+function DebounceInput({
+  onDebounce,
+  id,
+  value,
+  delay = 500,
+  ...props
+}: DebounceInputProps) {
+  const [inputValue, setInputValue] = React.useState(value);
+  const debounceTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
+    null
+  );
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (localStorage.getItem(id) === "true" && inputRef.current) {
+      inputRef.current.focus();
+    }
+
+    return () => {
+      if (debounceTimeout.current) {
+        clearTimeout(debounceTimeout.current);
+      }
+    };
+  }, [id]);
+
+  return (
+    <Input
+      ref={inputRef}
+      value={inputValue}
+      onChange={({ target }) => {
+        setInputValue(target.value);
+
+        if (debounceTimeout.current) {
+          clearTimeout(debounceTimeout.current);
+        }
+
+        debounceTimeout.current = setTimeout(() => {
+          onDebounce(target.value);
+        }, delay);
+      }}
+      onBlur={() => {
+        localStorage.removeItem(id);
+
+        if (debounceTimeout.current) {
+          clearTimeout(debounceTimeout.current);
+        }
+
+        onDebounce(inputValue);
+      }}
+      onKeyDown={({ key }) => {
+        if (key === "Enter") {
+          if (debounceTimeout.current) {
+            clearTimeout(debounceTimeout.current);
+          }
+
+          onDebounce(inputValue);
+        }
+      }}
+      onFocus={() => {
+        localStorage.setItem(id, "true");
+      }}
+      {...props}
+    />
+  );
+}
+
+export { Input, DebounceInput };
