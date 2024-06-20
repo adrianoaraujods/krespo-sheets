@@ -81,7 +81,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "(um pequeno sino e um pequeno fio de prata",
+      m: "um pequeno sino e um pequeno fio de prata",
     },
     duration: "8 horas",
     description: [
@@ -486,7 +486,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "(um pouco de pele de porco ou manteiga",
+      m: "um pouco de pele de porco ou manteiga",
     },
     duration: "1 minuto",
     description: [
@@ -883,7 +883,7 @@ export const SPELLS: Spell[] = [
       "Se o alvo for nativo de um plano de existência diferente do que você está, o alvo é banido em um lampejo sutil, retornando para o seu plano natal. Se a magia acabar antes de 1 minuto se passar, o alvo reaparece no lugar em que estava ou no espaço desocupado mais próximo, se o espaço dela estiver ocupado. Do contrário, o alvo não retorna.",
     ],
     upcastDescription:
-      " Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, você pode afetar uma criatura adicional para cada nível do espaço acima do 4°.",
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, você pode afetar uma criatura adicional para cada nível do espaço acima do 4°.",
   },
   {
     name: "Banquete de Heróis",
@@ -1436,7 +1436,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "(água benta ou pó de prata e ferro valendo, no mínimo, 100 po, consumidos pela magia",
+      m: "água benta ou pó de prata e ferro valendo, no mínimo, 100 po, consumidos pela magia",
     },
     duration: "1 hora",
     description: [
@@ -1485,12 +1485,12 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "um diamante e pelo menos 1 polegada cúbica de carne da criatura a ser clonada e um recipiente que tem uma tampa selável e é grande o suficiente para conter uma criatura Média, como uma enorme urna, caixão, cisto cheio de lama em o solo, ou recipiente de cristal cheio de água salgada valendo, no mínimo, 3000 gp que a magia consome",
+      m: "um diamante valendo, no mínimo, 1.000 po e, no mínimo 3 centímetros cúbicos de carne da criatura que será clonada, consumida pela magia, e um receptáculo valendo, no mínimo, 2.000 po que tenha uma tampa selada e seja grande o suficiente para comportar uma criatura Média, como uma urna enorme, um caixão, um cisto cheio de lama no solo ou um recipiente de cristal cheio de água salgada",
     },
     duration: "Instantâneo",
     description: [
-      " Essa magia produz uma duplicata inerte de uma criatura viva como uma garantia contra a morte. Esse clone é formado dentro de um receptáculo selado e cresce ao seu tamanho total, atingindo a maturidade após 120 dias; Você também pode escolher que o clone seja uma versão mais jovem da mesma criatura. Ele permanece inerte e dura indefinidamente, enquanto seu receptáculo permanecer intocado.",
-      " A qualquer momento, após o clone amadurecer, se a criatura original morrer, sua alma é transferida para o clone, considerando que a alma está livre e deseje retornar. O clone é fisicamente idêntico ao original e tem a mesma personalidade, memórias e habilidades, mas não possui qualquer equipamento do original. O físico da criatura original permanece, se ainda existir, se tornando inerte e não podendo, consequentemente, ser trazido de volta à vida, já que a alma da criatura está em outro lugar.",
+      "Essa magia produz uma duplicata inerte de uma criatura viva como uma garantia contra a morte. Esse clone é formado dentro de um receptáculo selado e cresce ao seu tamanho total, atingindo a maturidade após 120 dias; Você também pode escolher que o clone seja uma versão mais jovem da mesma criatura. Ele permanece inerte e dura indefinidamente, enquanto seu receptáculo permanecer intocado.",
+      "A qualquer momento, após o clone amadurecer, se a criatura original morrer, sua alma é transferida para o clone, considerando que a alma está livre e deseje retornar. O clone é fisicamente idêntico ao original e tem a mesma personalidade, memórias e habilidades, mas não possui qualquer equipamento do original. O físico da criatura original permanece, se ainda existir, se tornando inerte e não podendo, consequentemente, ser trazido de volta à vida, já que a alma da criatura está em outro lugar.",
     ],
   },
 ];
