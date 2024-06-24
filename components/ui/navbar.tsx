@@ -200,7 +200,7 @@ const NavbarMenu = React.forwardRef<HTMLDivElement, NavbarMenuProps>(
         </SheetTrigger>
 
         <SheetContent side={side}>
-          <nav ref={ref} {...props} />
+          <nav className="grid h-full gap-4" ref={ref} {...props} />
         </SheetContent>
       </Sheet>
     );
@@ -252,8 +252,7 @@ const NavbarMenuLinks = React.forwardRef<
           <Link
             className={cn(
               "relative mr-auto text-foreground/60 hover:text-foreground/80",
-              pathname === href &&
-                "after:absolute after:-left-3 after:aspect-square after:h-2 after:rounded-full after:bg-foreground",
+              pathname === href && "text-foreground",
               className
             )}
             href={href}
@@ -269,7 +268,7 @@ const NavbarMenuLinks = React.forwardRef<
 
               return (
                 <NavbarMenuLinksItem
-                  className="ml-4 text-sm"
+                  className="text-sm"
                   item={item}
                   key={key}
                   reactKey={key}

@@ -47,6 +47,12 @@ export async function NavbarContent() {
       <div className="flex">
         <NavbarMenu side="left">
           <NavbarMenuLinks items={menuItems} />
+
+          <div className="mt-auto flex">
+            <LocaleSelector />
+
+            <ThemeSelector />
+          </div>
         </NavbarMenu>
 
         <Logo />
@@ -58,11 +64,11 @@ export async function NavbarContent() {
         <SearchBar />
 
         {!session && (
-          <>
+          <div className="flex gap-4 -md:hidden">
             <LocaleSelector />
 
             <ThemeSelector />
-          </>
+          </div>
         )}
 
         {session ? <UserSettings session={session} /> : <LoginDialog />}

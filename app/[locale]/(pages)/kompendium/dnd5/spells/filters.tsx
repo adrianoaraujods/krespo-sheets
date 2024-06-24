@@ -154,7 +154,7 @@ export default function Filters({
 
   return (
     <div className="grid gap-4">
-      <div className="flex flex-wrap justify-between gap-4 -xs:flex-col">
+      <div className="flex flex-wrap justify-between gap-4 -xs:flex-col -xs:items-start">
         <NameInput />
 
         <LevelInput />
@@ -178,10 +178,10 @@ export default function Filters({
         <IsRitual />
       </div>
 
-      <div className="flex flex-row-reverse flex-wrap justify-end gap-4">
+      <div className="flex flex-row-reverse flex-wrap justify-end gap-4 -xs:flex-col -xs:items-start">
         <ResetFilters />
 
-        <div className="ml-auto">
+        <div className="xs:ml-auto">
           <SortBy />
         </div>
 

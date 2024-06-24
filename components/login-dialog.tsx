@@ -32,10 +32,16 @@ export default function LoginDialog({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button className={cn("flex items-center gap-2", className)} {...props}>
-          <LogInIcon className="h-5" />
+        <Button
+          className={cn(
+            "flex items-center gap-2 -md:size-10 -md:p-0",
+            className
+          )}
+          {...props}
+        >
+          <LogInIcon className="size-5" />
 
-          <Span>{t("ui.login")}</Span>
+          <Span className="-md:hidden">{t("ui.login")}</Span>
         </Button>
       </DialogTrigger>
 
