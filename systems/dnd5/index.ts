@@ -74,23 +74,24 @@ export type SpellAttackType = (typeof SPELL_ATTACK_TYPES)[number];
 export type Spell = {
   name: string;
   originalName?: string;
-  source: Source;
+
   level: number;
   school: SpellSchool;
   ritual?: true;
-  type: SpellType[];
-  damageType?: DamageType[];
-  spellAttack?: SpellAttackType;
-  savingThrow?: Attribute;
-  casters: ClassName[];
+
   castingTime: string;
   range: string;
-  components: {
-    v?: true;
-    s?: true;
-    m?: string;
-  };
+  components: { v?: true; s?: true; m?: string };
   duration: string;
+
   description: string | string[];
   upcastDescription?: string;
+
+  source: Source;
+  casters: ClassName[];
+
+  type: SpellType[];
+  damageType?: DamageType[];
+  savingThrow?: Attribute;
+  spellAttack?: SpellAttackType;
 };

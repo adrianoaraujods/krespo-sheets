@@ -1,5 +1,6 @@
 import React from "react";
 import { DocsLayout } from "fumadocs-ui/layout";
+import { unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
 
 import type { Locale } from "@/lib/config";
 
@@ -14,6 +15,8 @@ export default function RootDocsLayout({
   children: React.ReactNode;
   params: { slug?: string[]; locale: Locale };
 }) {
+  setRequestLocale(locale);
+
   return (
     <DocsLayout
       tree={pageTree[locale]}

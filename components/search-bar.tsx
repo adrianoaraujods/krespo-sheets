@@ -7,9 +7,8 @@ import { useTranslations } from "next-intl";
 
 import { cn } from "@/lib/utils";
 
+import { Span } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
-
-import { Span } from "./typography/text";
 
 const SearchBar = React.forwardRef<
   HTMLButtonElement,
@@ -24,7 +23,7 @@ const SearchBar = React.forwardRef<
         ref={ref}
         variant="outline"
         className={cn(
-          "flex justify-between gap-4 px-2 text-muted-foreground",
+          "flex justify-between gap-4 px-2 text-muted-foreground -lg:hidden",
           className
         )}
         onMouseDown={() => setIsOpen(true)}
@@ -33,13 +32,7 @@ const SearchBar = React.forwardRef<
         <div className="flex items-center">
           <SearchIcon className="h-4" />
 
-          <Span className="lg:hidden" size="sm">
-            {t("ui.search")}...
-          </Span>
-
-          <Span className="-lg:hidden" size="sm">
-            {t("pages.kompendium.search")}
-          </Span>
+          <Span size="sm">{t("pages.kompendium.search")}</Span>
         </div>
 
         <kbd className="pointer-events-none hidden h-5 select-none items-center rounded border bg-accent px-1 sm:flex">
@@ -47,6 +40,15 @@ const SearchBar = React.forwardRef<
             ⌘ <Span>K</Span>
           </Span>
         </kbd>
+      </Button>
+
+      <Button
+        variant="ghost"
+        size="icon"
+        className="lg:hidden"
+        onMouseDown={() => setIsOpen(true)}
+      >
+        <SearchIcon />
       </Button>
 
       <DefaultSearchDialog open={isOpen} onOpenChange={setIsOpen} />

@@ -1,4 +1,4 @@
-import { NavLinkWithItems } from "./navigation";
+import type { NavLinkWithItems } from "@/lib/navigation";
 
 export const locales = ["en-US", "pt-BR"] as const;
 export const defaultLocale = locales[0];
@@ -15,7 +15,12 @@ export const navItems = {
     {
       title: "pages.kompendium.title",
       href: "/kompendium",
-      items: [{ title: "systems.dnd5.title", href: "/kompendium/dnd5" }],
+      items: [
+        {
+          title: "systems.dnd5.title",
+          href: "/kompendium/dnd5",
+        },
+      ],
     },
   ],
 } satisfies NavItems;
