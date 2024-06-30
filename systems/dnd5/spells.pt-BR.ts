@@ -8663,6 +8663,423 @@ export const SPELLS: Spell[] = [
     damageType: ["radiant"],
     savingThrow: "con",
   },
+  {
+    name: "Absorver Elementos",
+    originalName: "Absorb Elements",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "abjuration",
+    type: ["utility", "damage"],
+    casters: ["artificer", "druid", "ranger", "sorcerer", "wizard"],
+    castingTime:
+      "Reação, quando você sofre dano de ácido, frio, fogo, elétrico ou trovejante",
+    range: "Pessoal",
+    components: {
+      s: true,
+    },
+    duration: "1 Rodada",
+    description: [
+      "O feitiço captura parte da energia recebida, diminuindo seu efeito sobre você e armazenando-a para seu próximo ataque corpo-a-corpo. Você tem resistência ao tipo de dano desencadeante até o início do seu próximo turno. Além disso, na primeira vez que você acertar com um ataque corpo-a-corpo em seu próximo turno, o alvo sofre 1d6 de dano extra do tipo desencadeador e o feitiço termina.",
+    ],
+    upcastDescription:
+      "Quando você conjura esta magia usando um espaço de magia de 2º nível ou superior, o dano extra aumenta em 1d6 para cada nível de espaço acima do 1º",
+  },
+  {
+    name: "Vinculo Bestial",
+    originalName: "Beast Bond",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "divination",
+    type: ["utility"],
+    casters: ["druid", "ranger"],
+    castingTime: "1 ação",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+      m: "Um pouco de pelo enrolado em pano",
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Você estabelece um vínculo telepático com uma besta que você toca que é amigável ou enfeitiçada por você. A magia falha se o valor de Inteligência da besta for 4 ou superior. Até que o feitiço termine, o vínculo estará ativo enquanto você e a besta estiverem na linha de visão um do outro. Através do vínculo, a besta pode entender suas mensagens telepáticas para ela, e pode comunicar telepaticamente emoções e conceitos simples de volta para você. Enquanto o vínculo estiver ativo, a besta ganha vantagem nas jogadas de ataque contra qualquer criatura a até 1,5 metro de você que você possa ver.",
+    ],
+  },
+  {
+    name: "Catapulta",
+    originalName: "Catapult",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "transmutation",
+    type: ["damage"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+    casters: ["sorcerer", "wizard", "artificer"],
+    castingTime: "1 ação",
+    range: "18 metros",
+    components: {
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Escolha um objeto pesando entre 0 ,5 e 2,5 quilos dentro do alcance que não esteja sendo vestido ou carregado. O objeto voa em linha reta até 27 metros na direção que você escolher, antes de cair no chão, parando prematuramente se atingir uma superfície sólida. Se o objeto puder atingir uma criatura, a criatura deve realizar um teste de resistência de Destreza. Se falhar na resistência, o objeto atinge o alvo e para de se mover. Em qualquer caso, tanto o objeto quanto a criatura ou superfície sólida sofrem 3d8 de dano de concussão.",
+    ],
+    upcastDescription:
+      "Em Níveis Superiores. Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, o peso máximo do objeto que você pode arremessar com essa magia aumenta em 2,5 quilos, e o dano aumenta em 1d8, para cada nível do espaço acima do 1°.",
+  },
+  {
+    name: "Causar Medo",
+    originalName: "Cause Fear",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "necromancy",
+    type: ["utility"],
+    savingThrow: "wis",
+    casters: ["warlock", "wizard"],
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você desperta o senso de mortalidade em uma criatura que você possa ver dentro do alcance. O alvo precisa ser bem sucedido em teste de resistência de Sabedoria ou se tomará amedrontado por você até que a magia termine. O alvo amedrontado pode repetir o teste de resistência ao fim de cada um de seus turnos, terminando o efeito em si mesmo com um sucesso.",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, você pode adicionar uma criatura extra como alvo para cada nível do espaço acima do 1º. As criaturas precisam estar a no máximo 9 metros uma da outra quando você as incluir como alvos.",
+  },
+  {
+    name: "Cerimonia",
+    originalName: "Ceremony",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "evocation",
+    type: ["utility"],
+
+    ritual: true,
+    casters: ["cleric", "paladin"],
+    castingTime: "1 hora",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+      m: "25 po em pó de prata, que a magia consome",
+    },
+    duration: "Instantâneo(Veja abaixo)",
+    description: [
+      "Você realiza uma cerimônia religiosa especial infundida com magia. Quando você conjura a magia, escolha um dos ritos seguintes, cujo alvo deve estar dentro de 3 metros de você durante toda a conjuração.",
+      "Expiação. Você toca uma criatura disposta cujo alinhamento mudou e você faz um teste de Sabedoria (Intuição), CD 20. Em um teste bem-sucedido, você restaura o alvo para o alinhamento original.",
+      "Abençoar Água. Você toca um frasco de água e faz com que se torne água benta.",
+      "Rito de maturidade. Você toca um humanoide que seja um jovem adulto. Pelas próximas 24 horas, sempre que o alvo fizer um teste de habilidade, ele pode rolar um d4 e adicionar o número rolado ao teste de habilidade. A criatura pode se beneficiar deste rito apenas uma vez.",
+      "Dedicação. Você toca um humanoide que deseja se dedicar aos serviços do seu deus. Pelas próximas 24 horas, sempre que o alvo faz um teste de resistência, ele pode rolar um d4 e adicionar o numero rolado ao teste. A criatura pode se beneficiar desse rito apenas uma vez.",
+      "Casamento. Você toca humanoides adultos dispostos a serem unidos em matrimônio. Pelos próximos 7 dias, cada alvo ganha um bônus de +2 na CA enquanto estiverem a 9 metros um do outro. Uma criatura pode se beneficiar desse rito novamente apenas se tornar viúvo.",
+    ],
+  },
+  {
+    name: "Raio do Caos",
+    originalName: "Chaos Bolt",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "evocation",
+    type: ["damage"],
+    damageType: [
+      "acid",
+      "cold",
+      "fire",
+      "force",
+      "lightning",
+      "poison",
+      "psychic",
+      "thunder",
+    ],
+
+    spellAttack: "spell-ranged",
+
+    casters: ["sorcerer"],
+    castingTime: "1 ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você arremessa uma massa ondulante de energia caótica em uma criatura ao alcance. Faça um ataque à distância com magia contra o alvo. Se acertar, o alvo sofre 2d8 + 1d6 de dano. Escolha um dos d8s. O número rolado nesse dado determina o tipo de dano do ataque, conforme mostrado abaixo.",
+      "Rolagem 1: Ácido",
+      "Rolagem 2: Frio",
+      "Rolagem 3: Fogo",
+      "Rolagem 4: Forca",
+      "Rolagem 5: Elétrico",
+      "Rolagem 6: Veneno",
+      "Rolagem 7: Psíquico",
+      "Rolagem 8: Trovejante",
+      "Se você rolar o mesmo número em ambos os d8s, a energia caótica salta do alvo para uma criatura diferente de sua escolha a até 9 metros dele. Faça uma nova jogada de ataque contra o novo alvo e faça uma nova jogada de dano, o que pode fazer com que a energia caótica salte novamente.",
+      "Uma criatura pode ser alvo apenas uma vez por cada conjuração desta magia.",
+    ],
+    upcastDescription:
+      "Quando você conjura esta magia usando um espaço de magia de 2º nível ou superior, cada alvo sofre 1d6 de dano extra do tipo rolado para cada nível de espaço acima do 1º.",
+  },
+
+  {
+    name: "Distorcer Valor",
+    originalName: "Distort Value",
+    source: "acquisitions-inc",
+    level: 1,
+    school: "illusion",
+    type: ["utility"],
+
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    castingTime: "1 minuto",
+    range: "Toque",
+    components: {
+      v: true,
+    },
+    duration: "8 horas",
+    description: [
+      "Você conjura essa magia em um objeto que não seja maior que 30 centimetros em um lado, dobrando a percepção de seu valor ao adicionar detalhes ilusórios ou reduz a percepção do seu valor pela metade adicionando marcas e arranhões. Qualquer criatura examinando o objeto deve rolar um teste de investigação contra a sua Cd de feitiço",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia com um espaço de nível maior, você aumenta o tamanho do objeto em 30cm por espaço de magia acima do 1°",
+  },
+  {
+    name: "Tremor de terra",
+    originalName: "Earth Tremor",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "evocation",
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+
+    casters: ["bard", "druid", "sorcerer", "wizard"],
+    castingTime: "1 ação",
+    range: "Pessoal(3m de raio)",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você provoca um tremor no solo num raio de 3 metros. Cada criatura diferente de você na área deve realizar um teste de resistência de Destreza. Se falhar na resistência, uma criatura sofre 1d6 de dano de concussão e fica caída no chão. Se o solo na área for de terra solta ou pedra, ele se toma terreno difícil até ser limpo.",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, o dano aumenta em 1d6 para cada nível do espaço acima do 1º.",
+  },
+  {
+    name: "Dedos gélidos",
+    originalName: "Frost Fingers",
+    source: "icewind-dale-rime-of-the-frostmaiden",
+    level: 1,
+    school: "evocation",
+    type: ["damage"],
+    damageType: ["cold"],
+    savingThrow: "con",
+
+    casters: ["wizard"],
+    castingTime: "1 Ação",
+    range: "Pessoal(Cone de 4,5m)",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Frio congelante estoura da ponta do seus dedos em um cone de 4,5m. Cada criatura na área deve fazer um teste de resistência de constituição, sofrendo 2d8 de dano de frio em uma falha, ou metade em um sucesso.",
+      "O frio congela liquidos não mágicos na área que não estão sendo vestidos ou carregados",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de nível 2 ou superior, o dano aumenta em 1d8 para cada nível acima do 1°",
+  },
+  {
+    name: "Presente de prontidão",
+    originalName: "Gift of alacrity",
+    source: "explorers-guide-to-wildermount",
+    level: 1,
+    school: "divination",
+    type: ["utility"],
+
+    casters: ["wizard"],
+    castingTime: "1 minuto",
+    range: "toque",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "8 horas",
+    description: [
+      "Você toca em uma criatura voluntária. Pela duração, ela pode adicionar 1d8 para suas roladas de iniciativa",
+    ],
+  },
+  {
+    name: "Faca de gelo",
+    originalName: "ICe knife",
+    source: "players-handbook",
+    level: 1,
+    school: "conjuration",
+    type: ["damage"],
+    damageType: ["cold", "piercing"],
+    savingThrow: "dex",
+    spellAttack: "spell-ranged",
+
+    casters: ["druid", "sorcerer", "wizard"],
+    castingTime: "1 ação",
+    range: "18 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma gota de agua ou um pedaço de gelo",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você cria um fragmento de gelo e arremessa-o em uma criatura dentro do alcance. Faça um ataque à distância com magia contra o alvo. Se atingir, o alvo sofre 1d10 de dano perfurante. Atingindo ou errando, o fragmento explode. O alvo e cada criatura a até 1,5 metros do ponto onde o gelo explodiu deve ser bem sucedido num teste de resistência de Destreza ou sofrerá 2d6 de dano de frio.",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, o dano de frio aumenta em 1d6 para cada nível do espaço acima do 1º.",
+  },
+  {
+    name: "Misseis Mágicos de jim",
+    originalName: "Jim's Magic Missle",
+    source: "acquisitions-inc",
+    level: 1,
+    school: "evocation",
+    type: ["damage"],
+    damageType: ["force"],
+
+    spellAttack: "spell-ranged",
+
+    casters: ["wizard"],
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "1 moeda de ouro, que é consumida como imposto ao lançar o feitiço ",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você cria três dardos de força mágica que torcem, assobiam, são hipoalergênicos e sem glúten. Cada dardo pode mirar em uma criatura à sua escolha que você possa ver dentro do alcance. Faça um ataque com magia à distância para cada míssil. Em um acerto, o míssil causa 2d4 de dano de força.",
+      "Se o resultado do ataque for um crítico, o míssil causa 5d4 de dano de força, em vez dos 4d4 que você normalmente obteria em um crítico. Se qualquer dado do ataque for um natural um, todos os mísseis se viram e atingem o conjurador causando 1 de dano de força por míssil.",
+    ],
+    upcastDescription:
+      "Quando você conjurar este feitiço usando um espaço de magia de 2º nível ou superior, o feitiço cria um dardo adicional para cada nível de espaço acima do 1º. Isso também aumenta o imposto em 1 moeda de ouro por nível de espaço acima do 1º",
+  },
+  {
+    name: "Ampliar Gravidade",
+    originalName: "Magnify Gravity",
+    source: "explorers-guide-to-wildermount",
+    level: 1,
+    school: "transmutation",
+    type: ["damage", "utility"],
+    damageType: ["force"],
+    savingThrow: "con",
+
+    casters: ["wizard"],
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "1 Rodada",
+    description: [
+      "A gravidade aumenta em uma esfera de 3m de raio centralizada em ponto no alcance onde você possa ver. Cada criatura dentro da esfera no turno que você conjura a magia deve fazer um teste de Resistência de Constituição. Em uma falha, a criatura toma 2d8 de dano de força, e seu deslocamento é diminuído pela metade até o final do próximo turno dela. Em um sucesso, a criatura toma metade do dano e não sofre nenhuma redução em seu deslocamento.",
+      "Até o começo do seu próximo turno, qualquer objeto que não esteja sendo usado ou carregado na área da esfera requer um sucesso em um teste de Força contestado pelo seu CD de Magia para ser levantado ou movido.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, o dano aumenta em 1d8 para cada nível de espaço acima do 1º.",
+  },
+  {
+    name: "Espinhos Pratedos",
+    originalName: "Silvery Barbs",
+    source: "strixhaven-a-curriculum-of-chaos",
+    level: 1,
+    school: "enchantment",
+    type: ["utility"],
+
+    casters: ["wizard", "bard", "sorcerer"],
+    castingTime:
+      "1 reação, que você faz quando uma criatura que você possa ver a até 18 metros de você tenha sucesso em uma jogada de ataque, teste de habilidade ou teste de resistência",
+    range: "18 metros",
+    components: {
+      v: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você distrai magicamente a criatura que desencadeou o efeito e transforma sua incerteza momentânea em incentivo para outra criatura. A criatura que desencadeou o efeito deve rolar novamente o d20 e usar o resultado mais baixo",
+      "Você pode então escolher uma criatura diferente que você pode ver dentro do alcance (inclusive você mesmo). A criatura escolhida tem vantagem no próximo teste de ataque, habilidade ou resistência que realizar dentro de 1 minuto. Uma criatura só pode ser beneficiada por um uso deste feitiço de cada vez.",
+    ],
+  },
+  {
+    name: "Laço",
+    originalName: "Snare",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "abjuration",
+    type: ["utility"],
+
+    casters: ["artificer", "druid", "ranger", "wizard"],
+    castingTime: "1 minuto",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+      m: "9 metros de fio ou corda, que são consumidos pela magia",
+    },
+    duration: "Até dissipado ou ativado",
+    description: [
+      "Ao conjurar esta magia, você usa a corda para criar um círculo com um raio de 1,5 metros no solo ou no chão liso. Quando você termina o lançamento, a corda desaparece e o círculo se torna uma armadilha mágica.",
+      "Essa armadilha é quase invisível, exigindo um teste bem-sucedido de Inteligência (Investigação) contra seu CD de magia para ser notada.",
+      "A armadilha é ativada quando uma criatura Pequena, Média ou Grande se move no raio do feitiço. Essa criatura deve ter sucesso em um teste de resistência de Destreza ou ficará caida e será içada ao ar, até ficar pendurada de cabeça para baixo 90 centimetros acima da área da magia, onde estará restringida.",
+      "A criatura restringida deve fazer umt este de resistencia de destreza com desvantagem no final de cada um dos seus turnos, terminando o efeito em um sucesso. Alternativamente, outra criatura que pode alcançar a criatura restringida pode usar sua ação para fazer um teste de inteligência(Arcanismo) contra o seu CD de magia. Em um sucesso, a criatura é libertada",
+    ],
+  },
+  {
+    name: "Fermentação Cáustica de Tasha",
+    originalName: "Tasha's Caustic Brew",
+    source: "tashas-cauldron-of-everything",
+    level: 1,
+    school: "evocation",
+    type: ["damage"],
+    damageType: ["acid"],
+    savingThrow: "dex",
+
+    casters: ["wizard", "sorcerer", "artificer"],
+    castingTime: "1 Ação",
+    range: "Pessoal(Linha de 9 metros)",
+    components: {
+      v: true,
+      s: true,
+      m: "Um pouco de comida estragada",
+    },
+    duration: "Concentração, Até 1 minuto",
+    description: [
+      "Um jato de ácido emana de você em uma linha de 9m de comprimento por 1,5m de largura, na direção da sua escolha. Cada criatura na linha deve ter sucesso em um teste de resistência de destreza ou ficará coberta de ácido pela duração da magia ou até uma criatura usar uma ação para limpar o ácido de si próprio ou de outra criatura. Uma criatura coberta de ácido sofre 2d4 de dano de ácido no começo de seus turnos",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 2º nível ou superior, o dano de ácido aumenta em 2d4 para cada nível do espaço acima do 1º.",
+  },
+  {
+    name: "Golpe de Zephyr",
+    originalName: "Zephyr Strike",
+    source: "xanathars-guide-to-everything",
+    level: 1,
+    school: "transmutation",
+    type: ["damage", "utility"],
+    damageType: ["force"],
+
+    spellAttack: "weapon",
+
+    casters: ["ranger"],
+    castingTime: "1 Ação bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você se move como o vento. Pela duração, seu movimento não provoca ataques de oportunidade.",
+      "Uma vez antes que a magia acabe, você pode se dar vantagem em um ataque com arma feito no seu turno. Esse ataque causa 1d8 de dano de força extra em um acerto. Acertando ou errando, seu deslocamento aumenta em 9 metros até o final desse turno",
+    ],
+  },
   // {
   //   name: "",
   //   originalName: "",

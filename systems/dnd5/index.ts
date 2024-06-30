@@ -52,6 +52,9 @@ export const SOURCES = [
   "players-handbook",
   "tashas-cauldron-of-everything",
   "xanathars-guide-to-everything",
+  "acquisitions-inc",
+  "icewind-dale-rime-of-the-frostmaiden",
+  "strixhaven-a-curriculum-of-chaos",
 ] as const;
 
 export const SPELL_TYPES = ["damage", "healing", "utility"] as const;
