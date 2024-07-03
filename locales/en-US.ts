@@ -197,6 +197,15 @@ export default {
         "players-handbook": "Player's Handbook",
         "tashas-cauldron-of-everything": "Tasha's Cauldron of Everything",
         "xanathars-guide-to-everything": "Xanathar's Guide to Everything",
+        "acquisitions-inc": "Acquisitions Incorporated",
+        "icewind-dale-rime-of-the-frostmaiden":
+          "Icewind dale: Rime of the Frostmaiden",
+        "strixhaven-a-curriculum-of-chaos": "Strixhaven: A Curriculum of Chaos",
+        "astral-adventurer's-guide": "Astral adventurer's guide",
+        "lost-laboratory-of-kwalish": "Lost Laboratory of Kwalish",
+        "deck-of-many-things": "Deck of Many Things",
+        "planescape-adventures-in-the-multiverse":
+          "Planescape -Adventures in the Multiverse",
       },
     },
   },
