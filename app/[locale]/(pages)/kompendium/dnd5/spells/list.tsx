@@ -111,7 +111,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                 <CardDescription>
                   <span
                     className="cursor-pointer hover:underline"
-                    onMouseDown={() =>
+                    onClick={() =>
                       setParams((prev) => ({
                         ...prev,
                         levelMin: spell.level,
@@ -130,7 +130,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
 
                   <span
                     className="cursor-pointer hover:underline"
-                    onMouseDown={() =>
+                    onClick={() =>
                       setParams((prev) => ({ ...prev, school: [spell.school] }))
                     }
                   >
@@ -142,7 +142,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                       {" | "}
                       <span
                         className="cursor-pointer text-card-foreground hover:underline"
-                        onMouseDown={() =>
+                        onClick={() =>
                           setParams((prev) => ({ ...prev, ritual: "true" }))
                         }
                       >
@@ -178,7 +178,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                       <>
                         <span
                           className="cursor-pointer hover:underline"
-                          onMouseDown={() =>
+                          onClick={() =>
                             setParams((prev) => ({ ...prev, compV: "true" }))
                           }
                         >
@@ -190,7 +190,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                       <>
                         <span
                           className="cursor-pointer hover:underline"
-                          onMouseDown={() =>
+                          onClick={() =>
                             setParams((prev) => ({ ...prev, compS: "true" }))
                           }
                         >
@@ -202,7 +202,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                       <>
                         <span
                           className="cursor-pointer hover:underline"
-                          onMouseDown={() =>
+                          onClick={() =>
                             setParams((prev) => ({ ...prev, compM: "true" }))
                           }
                         >
@@ -257,7 +257,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
 
                   <span
                     className="cursor-pointer hover:underline"
-                    onMouseDown={() =>
+                    onClick={() =>
                       setParams((prev) => ({ ...prev, source: [spell.source] }))
                     }
                   >
@@ -276,7 +276,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
 
                       <span
                         className="cursor-pointer hover:underline"
-                        onMouseDown={() =>
+                        onClick={() =>
                           setParams((prev) => ({ ...prev, casters: [caster] }))
                         }
                       >

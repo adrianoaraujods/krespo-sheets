@@ -579,7 +579,7 @@ export default function Filters({
       <Button
         variant="outline"
         className="mr-auto gap-2"
-        onMouseDown={() =>
+        onClick={() =>
           setParams((prev) => ({
             ...prev,
             ritual: prev.ritual === "true" ? undefined : "true",
@@ -651,7 +651,7 @@ export default function Filters({
         <DropdownMenuContent align="end">
           <DropdownMenuItem
             className="cursor-pointer"
-            onMouseDown={() =>
+            onClick={() =>
               setParams((prev) => ({ ...prev, sort: "name", order: "asc" }))
             }
           >
@@ -662,7 +662,7 @@ export default function Filters({
 
           <DropdownMenuItem
             className="cursor-pointer"
-            onMouseDown={() =>
+            onClick={() =>
               setParams((prev) => ({
                 ...prev,
                 sort: "name",
@@ -679,7 +679,7 @@ export default function Filters({
 
           <DropdownMenuItem
             className="cursor-pointer"
-            onMouseDown={() =>
+            onClick={() =>
               setParams((prev) => ({
                 ...prev,
                 sort: "level",
@@ -694,7 +694,7 @@ export default function Filters({
 
           <DropdownMenuItem
             className="cursor-pointer"
-            onMouseDown={() =>
+            onClick={() =>
               setParams((prev) => ({
                 ...prev,
                 sort: "level",
@@ -715,7 +715,7 @@ export default function Filters({
     return (
       <Button
         variant="secondary"
-        onMouseDown={() => setParams(initialFiltersParams)}
+        onClick={() => setParams(initialFiltersParams)}
       >
         {t("resetFilters")}
       </Button>
@@ -742,14 +742,14 @@ export function PaginationComponent({
           <PaginationItem>
             <PaginationFirst
               disabled={pageIndex === 0}
-              onMouseDown={() => setParams((prev) => ({ ...prev, pg: 0 }))}
+              onClick={() => setParams((prev) => ({ ...prev, pg: 0 }))}
             />
           </PaginationItem>
 
           <PaginationItem>
             <PaginationPrevious
               disabled={pageIndex === 0}
-              onMouseDown={() =>
+              onClick={() =>
                 setParams((prev) => ({ ...prev, pg: pageIndex - 1 }))
               }
             />
@@ -764,7 +764,7 @@ export function PaginationComponent({
           {currentPage - 2 > 0 && (
             <PaginationItem>
               <PaginationLink
-                onMouseDown={() =>
+                onClick={() =>
                   setParams((prev) => ({ ...prev, pg: pageIndex - 2 }))
                 }
               >
@@ -776,7 +776,7 @@ export function PaginationComponent({
           {currentPage - 1 > 0 && (
             <PaginationItem>
               <PaginationLink
-                onMouseDown={() =>
+                onClick={() =>
                   setParams((prev) => ({ ...prev, pg: pageIndex - 1 }))
                 }
               >
@@ -792,7 +792,7 @@ export function PaginationComponent({
           {lastPage >= currentPage + 1 && (
             <PaginationItem>
               <PaginationLink
-                onMouseDown={() =>
+                onClick={() =>
                   setParams((prev) => ({ ...prev, pg: pageIndex + 1 }))
                 }
               >
@@ -804,7 +804,7 @@ export function PaginationComponent({
           {lastPage >= currentPage + 2 && (
             <PaginationItem>
               <PaginationLink
-                onMouseDown={() =>
+                onClick={() =>
                   setParams((prev) => ({ ...prev, pg: pageIndex + 2 }))
                 }
               >
@@ -822,7 +822,7 @@ export function PaginationComponent({
           <PaginationItem>
             <PaginationNext
               disabled={lastPage <= currentPage}
-              onMouseDown={() =>
+              onClick={() =>
                 setParams((prev) => ({ ...prev, pg: pageIndex + 1 }))
               }
             />
@@ -831,7 +831,7 @@ export function PaginationComponent({
           <PaginationItem>
             <PaginationLast
               disabled={lastPage === currentPage}
-              onMouseDown={() =>
+              onClick={() =>
                 setParams((prev) => ({ ...prev, pg: lastPage - 1 }))
               }
             />
