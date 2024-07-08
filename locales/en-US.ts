@@ -10,6 +10,7 @@ import type {
   SpellAttackType,
   SpellSchool,
   SpellType,
+  SubraceName,
 } from "@/systems/dnd5";
 
 import { Theme } from "@/lib/config";
@@ -49,6 +50,15 @@ export interface Messages extends AbstractIntlMessages {
       sources: {
         [key in Source]: string;
       };
+      subraces: {
+        [key in SubraceName]: string;
+      };
+    };
+  };
+  errors: {
+    [key: number]: {
+      title: string;
+      description: string;
     };
   };
 }
@@ -63,6 +73,7 @@ export default {
     no: "No",
     next: "Next",
     confirm: "Confirm",
+    create: "Create",
     cancel: "Cancel",
     previous: "Previous",
     back: "Back",
@@ -104,6 +115,35 @@ export default {
     kompendium: {
       title: "Kompendium",
       search: "Search in Kompendium",
+    },
+    characters: {
+      title: "Characters",
+      unnamed: "Unnamed Character",
+      create: {
+        title: "Create a new Character Sheet!",
+        name: "Character's Name",
+        system: "Sheet System",
+        button: "Create",
+      },
+      delete: {
+        title: "Are you absolutely sure?",
+        description:
+          "This action cannot be undone. This will permanently delete this character by the name of:",
+      },
+      image: {
+        title: "Change Character Image",
+        description: "Select an image by URL",
+      },
+      responses: {
+        "200": "Successful Request",
+        "201": "Character Created Successfully",
+        "400": "Bad request, missing fields",
+        "401": "You should be logged into an account",
+        "403": "Character from another user",
+        "404": "Character Not Found",
+        "406": "Sheet System is not implemented",
+        "500": "Internal Server error, try again",
+      },
     },
   },
   systems: {
@@ -202,6 +242,19 @@ export default {
           "Icewind dale: Rime of the Frostmaiden",
         "strixhaven-a-curriculum-of-chaos": "Strixhaven: A Curriculum of Chaos",
       },
+      subraces: {
+        "dwarf-hill": "Hill Dwarf",
+        "dwarf-mountain": "Mountain Dwarf",
+        "elf-drow": "Drow",
+        "elf-forest": "Forest Elf",
+        "elf-high": "High Elf",
+      },
+    },
+  },
+  errors: {
+    "401": {
+      title: "This page require auth!",
+      description: "You should be logged into an account",
     },
   },
 } satisfies Messages;

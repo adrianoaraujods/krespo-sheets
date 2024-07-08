@@ -12,7 +12,7 @@ import { Link, usePathname } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 import { Heading } from "@/components/typography/heading";
-import { Paragraph } from "@/components/typography/text";
+import { Paragraph, Span } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -112,7 +112,7 @@ const NavbarLinks = React.forwardRef<HTMLDivElement, NavbarLinksProps>(
                         pathname.startsWith(href) && "text-foreground"
                       )}
                     >
-                      {t(title)}
+                      <Span size="sm">{t(title)}</Span>
                     </NavigationMenuTrigger>
                   </Button>
 
@@ -147,7 +147,7 @@ const NavbarLinks = React.forwardRef<HTMLDivElement, NavbarLinksProps>(
                         pathname.startsWith(href) && "text-foreground"
                       )}
                     >
-                      {t(title)}
+                      <Span size="sm">{t(title)}</Span>
                     </Link>
                   </Button>
                 </NavigationMenuLink>

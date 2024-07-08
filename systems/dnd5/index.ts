@@ -1,6 +1,16 @@
+import { z } from "zod";
+
 export const ATTRIBUTES = ["str", "dex", "con", "int", "wis", "cha"] as const;
 
 export const RACES_NAMES = ["dwarf", "elf"] as const;
+
+export const SUBRACES_NAMES = [
+  "dwarf-hill",
+  "dwarf-mountain",
+  "elf-high",
+  "elf-forest",
+  "elf-drow",
+] as const;
 
 export const CLASSES_NAMES = [
   "artificer",
@@ -68,6 +78,7 @@ export const SPELL_ATTACK_TYPES = [
 export type Attribute = (typeof ATTRIBUTES)[number];
 export type ClassName = (typeof CLASSES_NAMES)[number];
 export type RaceName = (typeof RACES_NAMES)[number];
+export type SubraceName = (typeof SUBRACES_NAMES)[number];
 export type DamageType = (typeof DAMAGE_TYPES)[number];
 export type SpellSchool = (typeof SPELL_SCHOOLS)[number];
 export type Source = (typeof SOURCES)[number];
@@ -98,3 +109,26 @@ export type Spell = {
   savingThrow?: Attribute;
   spellAttack?: SpellAttackType;
 };
+
+export type CharacterClass = {
+  name: ClassName;
+  level: number;
+};
+
+export type CharacterAttribute = Record<
+  Attribute,
+  {
+    value: number;
+    mod: number;
+    bonus: Record<string, number>;
+  }
+>;
+
+export const characterSheetSchema = z.object({
+  race: z.enum(SUBRACES_NAMES).optional(),
+  classes: z
+    .array(z.object({ name: z.enum(CLASSES_NAMES), level: z.number() }))
+    .optional(),
+});
+
+export type CharacterSheet = z.infer<typeof characterSheetSchema>;

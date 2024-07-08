@@ -12,6 +12,14 @@ const fumadocsConfig = {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
+  },
 };
 
 const withNextIntl = createNextIntlPlugin("./lib/intl.ts");

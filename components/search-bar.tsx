@@ -26,7 +26,7 @@ const SearchBar = React.forwardRef<
           "flex justify-between gap-4 px-2 text-muted-foreground -lg:hidden",
           className
         )}
-        onMouseDown={() => setIsOpen(true)}
+        onClick={() => setIsOpen(true)}
         {...props}
       >
         <div className="flex items-center">
@@ -46,7 +46,7 @@ const SearchBar = React.forwardRef<
         variant="ghost"
         size="icon"
         className="lg:hidden"
-        onMouseDown={() => setIsOpen(true)}
+        onClick={() => setIsOpen(true)}
       >
         <SearchIcon />
       </Button>

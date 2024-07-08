@@ -8,6 +8,7 @@ export default {
     no: "Não",
     next: "Próxima",
     confirm: "Confirmar",
+    create: "Criar",
     cancel: "Cancelar",
     previous: "Anterior",
     back: "Voltar",
@@ -49,6 +50,35 @@ export default {
     kompendium: {
       title: "Kompêndio",
       search: "Pesquisar em Kompêndio",
+    },
+    characters: {
+      title: "Personagens",
+      unnamed: "Personagem sem Nome",
+      create: {
+        title: "Crie uma nova Ficha de Personagem!",
+        name: "Nome do Personagem",
+        system: "Sistema da Ficha",
+        button: "Criar",
+      },
+      delete: {
+        title: "Você tem certeza?",
+        description:
+          "Essa ação não pode ser desfeita. Isso irá excluir permanentemente esse personagem com o nome de:",
+      },
+      image: {
+        title: "Altere a Imagem do Personagem",
+        description: "Selecione uma imagem pela URL",
+      },
+      responses: {
+        "200": "Ação bem sucedida",
+        "201": "Personagem criado com sucesso",
+        "400": "Ação não aceita, há campos faltando",
+        "401": "Você deve estar conectado com uma conta",
+        "403": "Personagem de outro usuário",
+        "404": "Personagem não encontrado",
+        "406": "Sistema de Ficha não implementado",
+        "500": "Erro Interno do Servido, tente novamente",
+      },
     },
   },
   systems: {
@@ -149,6 +179,19 @@ export default {
           "Icewind dale: Rime of the Frostmaiden",
         "strixhaven-a-curriculum-of-chaos": "Strixhaven: A Curriculum of Chaos",
       },
+      subraces: {
+        "dwarf-hill": "Anão da Colina",
+        "dwarf-mountain": "Anão da Montanha",
+        "elf-drow": "Elfo Negro (Drow)",
+        "elf-forest": "Elfo da Floresta",
+        "elf-high": "Alto Elfo",
+      },
+    },
+  },
+  errors: {
+    "401": {
+      title: "Essa página requer autorização!",
+      description: "Você deve estar conectado com uma conta",
     },
   },
 } satisfies IntlMessages;
