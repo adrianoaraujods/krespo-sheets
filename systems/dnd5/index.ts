@@ -65,6 +65,10 @@ export const SOURCES = [
   "acquisitions-inc",
   "icewind-dale-rime-of-the-frostmaiden",
   "strixhaven-a-curriculum-of-chaos",
+  "astral-adventurer's-guide",
+  "lost-laboratory-of-kwalish",
+  "deck-of-many-things",
+  "planescape-adventures-in-the-multiverse",
 ] as const;
 
 export const SPELL_TYPES = ["damage", "healing", "utility"] as const;
