@@ -573,7 +573,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "um pedaço de couro curado)",
+      m: "um pedaço de couro curado",
     },
     duration: "8 horas",
     description:
@@ -3300,7 +3300,7 @@ export const SPELLS: Spell[] = [
       s: true,
       m: "um pequeno pergaminho com alguns textos sagrados escritos nele",
     },
-    duration: "",
+    duration: "Concentração, até 10 minutos",
     description:
       "Um campo cintilante aparece ao redor de uma criatura, à sua escolha, dentro do alcance, concedendo +2 de bônus na CA pela duração.",
     source: "players-handbook",
@@ -8613,7 +8613,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você aponta para uma criatura que pode ver dentro alcance, e o agonizante som de um sino preenche o ar envolta dela por um momento. A criatura deve fazer um teste de resistencia de Sabedoria, sofrendo 1d8 de dano necrotico em uma falha. Se a criatura não possuir todos os seus pontos de vida, ela sofre 1d12 em vez de 1d8.",
     upcastDescription:
-      "O dano dessa magia aumenta em um dado quando atinge o 5° nível (2d8 ou 2dl2), 11° nível (3d8 ou 3dl2) e 17° nível (4d8 ou 4dl2).",
+      "O dano dessa magia aumenta em um dado quando atinge o 5° nível (2d8 ou 2d12), 11° nível (3d8 ou 3d12) e 17° nível (4d8 ou 4d12).",
     source: "xanathars-guide-to-everything",
     casters: ["wizard", "cleric", "warlock"],
     type: ["damage"],
@@ -9037,7 +9037,7 @@ export const SPELLS: Spell[] = [
     },
     duration: "Concentração, até 1 minuto",
     description: [
-      "Um jato de ácido emana de você em uma linha de 9m de comprimento por 1,5 metro de largura, na direção da sua escolha. Cada criatura na linha deve ter sucesso em um teste de resistência de Destreza ou ficará coberta de ácido pela duração da magia ou até uma criatura usar uma ação para limpar o ácido de si próprio ou de outra criatura. Uma criatura coberta de ácido sofre 2d4 de dano de ácido no começo de seus turnos",
+      "Um jato de ácido emana de você em uma linha de 9 metros de comprimento por 1,5 metro de largura, na direção da sua escolha. Cada criatura na linha deve ter sucesso em um teste de resistência de Destreza ou ficará coberta de ácido pela duração da magia ou até uma criatura usar uma ação para limpar o ácido de si próprio ou de outra criatura. Uma criatura coberta de ácido sofre 2d4 de dano de ácido no começo de seus turnos",
     ],
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, o dano de ácido aumenta em 2d4 para cada nível do espaço acima do 1°.",
