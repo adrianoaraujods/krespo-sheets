@@ -5,8 +5,9 @@ import { db } from "@/lib/db";
 
 import { Section } from "@/components/ui/section";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CharactersList } from "@/components/pages/characters";
-import { NotAutorized } from "@/components/pages/errors";
+
+import { CharactersList } from "@/app/[locale]/(pages)/characters/characters-list";
+import { NotAutorized } from "@/app/[locale]/(pages)/errors";
 
 export default async function CharactersListPage() {
   const session = await auth();

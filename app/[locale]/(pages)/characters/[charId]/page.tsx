@@ -1,14 +1,13 @@
 import { Suspense } from "react";
-import { System } from "@/systems";
 
 import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 
 import { Section } from "@/components/ui/section";
 import { Skeleton } from "@/components/ui/skeleton";
-import { ErrorPage, NotAutorized } from "@/components/pages/errors";
 import CharacterSheet from "@/components/sheets";
-import CharacterSheetDnd5 from "@/components/sheets/character-sheet-dnd5";
+
+import { ErrorPage, NotAutorized } from "@/app/[locale]/(pages)/errors";
 
 export default function CharacterSheetPage({
   params: { charId },
