@@ -16,7 +16,8 @@ import { formatStringForSearch } from "@/lib/utils";
 
 export const tableColumns: ColumnDef<Spell>[] = [
   {
-    accessorKey: "name",
+    id: "name",
+    accessorFn: ({ name }) => formatStringForSearch(name),
     filterFn: ({ original: { name, originalName } }, _, filterValue) => {
       const spellName = `${name}${originalName ? ` (${originalName})` : ""}`;
 
