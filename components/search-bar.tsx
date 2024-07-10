@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { Dialog } from "@radix-ui/react-dialog";
 import DefaultSearchDialog from "fumadocs-ui/components/dialog/search-default";
 import { SearchIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -51,7 +52,9 @@ const SearchBar = React.forwardRef<
         <SearchIcon />
       </Button>
 
-      <DefaultSearchDialog open={isOpen} onOpenChange={setIsOpen} />
+      <Dialog>
+        <DefaultSearchDialog open={isOpen} onOpenChange={setIsOpen} />
+      </Dialog>
     </>
   );
 });
