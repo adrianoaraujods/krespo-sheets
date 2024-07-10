@@ -11,3 +11,11 @@ export function cn(...inputs: ClassValue[]) {
 export function createId(size?: number) {
   return customAlphabet("2346789ABCDEFGHJKLMNPQRTUVWXYZ")(size || 16);
 }
+
+export function formatStringForSearch(string: string): string {
+  return string
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "")
+    .toLowerCase();
+}

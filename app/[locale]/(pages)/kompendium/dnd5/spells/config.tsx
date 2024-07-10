@@ -12,10 +12,18 @@ import { z } from "zod";
 import type { Spell } from "@/systems/dnd5";
 import type { ColumnDef } from "@tanstack/react-table";
 
+import { formatStringForSearch } from "@/lib/utils";
+
 export const tableColumns: ColumnDef<Spell>[] = [
   {
     accessorKey: "name",
-    filterFn: "includesString",
+    filterFn: ({ original: { name, originalName } }, _, filterValue) => {
+      const spellName = `${name}${originalName ? ` (${originalName})` : ""}`;
+
+      return formatStringForSearch(spellName).includes(
+        formatStringForSearch(filterValue)
+      );
+    },
   },
   {
     accessorKey: "level",
