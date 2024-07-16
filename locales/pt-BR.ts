@@ -41,8 +41,65 @@ export default {
       perPage: "Por página",
       amount: "{initial} - {final} de {total}",
     },
+    credits: {
+      text: "Criado por",
+      author: "Adriano Araújo",
+    },
+    copyright: "All rights reserved. Krespo Sheets { year }",
   },
   pages: {
+    home: {
+      hero: {
+        title: "Seu melhor amigo de RPG de mesa!",
+        description:
+          "Crie, gerencie e melhore sua experiência de jogo de RPG com facilidade.",
+        button: "Criar uma conta",
+        cards: {
+          characters: {
+            title: "Fichas de Personagens",
+            description:
+              "Interface simples e eficaz para criar e usar seu personagem.",
+          },
+          kompendium: {
+            title: "Kompêndio",
+            description:
+              "Partes relevantes dos livros de referência para criar personagens.",
+          },
+          spells: {
+            title: "Filtros de Magias",
+            description:
+              "Diversos filtros para encontrar as magias mais específicas que você precise.",
+          },
+          systems: {
+            title: "Nossos Sistemas",
+            description:
+              "Sistemas completos e regras de casa projetados apenas para se divertir!",
+          },
+        },
+      },
+      characters: {
+        title: "Fichas de Personagens",
+        description:
+          "Crie e gerencie fichas de personagens abrangentes para suas campanhas de RPG. Nossa interface intuitiva permite que você acompanhe as estatísticas, habilidades e equipamentos do seu personagem com facilidade. Seja você um jogador experiente ou novo no jogo, nossas ferramentas ajudam a manter você organizado e focado na aventura.",
+        button: "Criar Personagem",
+      },
+      kompendium: {
+        title: "Kompêndio",
+        subtitle: "Referências dos Livros Fontes",
+        description:
+          "Acesse as regras e diretrizes essenciais dos mais populares sistemas de RPG. Nosso Kompêndio garante que você tenha as informações de que precisa na ponta dos dedos, tornando mais fácil criar personagens memoráveis e divertidos. O melhor amigo dos jogadores min-max!",
+      },
+      spells: {
+        title: "Filtros de Magias",
+        description:
+          "Pesquise e filtre facilmente magias dos seus sistemas de RPG favoritos. Nossa ferramenta de filtro de magias permite que você encontre rapidamente magias com base na classe, nível e escola, ajudando você a se preparar para qualquer cenário com confiança.",
+      },
+      systems: {
+        title: "Nossos Sistemas",
+        description:
+          "Descubra nossas regras de casa e sistemas personalizados projetados para melhorar suas sessões de RPG. Desde mecânicas de combate únicas até progressão inovadora de personagens, nossos sistemas oferecem novas e emocionantes maneiras de aproveitar seus jogos de RPG.",
+      },
+    },
     login: {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",

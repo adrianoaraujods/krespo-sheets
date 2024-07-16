@@ -106,8 +106,65 @@ export default {
       perPage: "Per page",
       amount: "{initial} - {final} of {total}",
     },
+    credits: {
+      text: "Made by",
+      author: "Adriano Araújo",
+    },
+    copyright: "All rights reserved. Krespo Sheets { year }",
   },
   pages: {
+    home: {
+      hero: {
+        title: "Your Table Top RPG best friend!",
+        description:
+          "Create, manage, and enhance your role-playing game experience with ease.",
+        button: "Create an account",
+        cards: {
+          characters: {
+            title: "Character Sheets",
+            description:
+              "Simple and effective layout for creating and using your character.",
+          },
+          kompendium: {
+            title: "Kompendium",
+            description:
+              "Access the core rules for creating a character from your favorite sourcebooks.",
+          },
+          spells: {
+            title: "Spells Filters",
+            description:
+              "Mutiple filters to quickly find the most spefific spells you need.",
+          },
+          systems: {
+            title: "Our Systems",
+            description:
+              "Complete systems and house rules designed to just have fun!",
+          },
+        },
+      },
+      characters: {
+        title: "Character Sheets",
+        description:
+          "Create and manage comprehensive character sheets for your RPG campaigns. Our intuitive interface allows you to track your character's stats, abilities, and equipment with ease. Whether you're a seasoned player or new to the game, our tools help you stay organized and focused on the adventure.",
+        button: "Create Character",
+      },
+      kompendium: {
+        title: "Kompendium",
+        subtitle: "Source References",
+        description:
+          "Access the essential rules and guidelines from popular RPG sourcebooks. Our Kompendium ensures you have the information you need at your fingertips, making it easier to create memorable and fun characters. The best-friend of min-maxing players!",
+      },
+      spells: {
+        title: "Spells Filters",
+        description:
+          "Easily search and filter spells from your favorite RPG systems. Our spells filter tool allows you to quickly find spells based on class, level, and school, helping you prepare for any encounter with confidence.",
+      },
+      systems: {
+        title: "Our Systems",
+        description:
+          "Discover our custom house rules and systems designed to enhance your RPG sessions. From unique combat mechanics to innovative character progression, our systems offer new and exciting ways to enjoy your role-playing games.",
+      },
+    },
     login: {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",
