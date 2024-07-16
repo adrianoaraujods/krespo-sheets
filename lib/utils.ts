@@ -25,19 +25,14 @@ export function formatStringForSearch(string: string): string {
 export function reactNodeToString(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") {
     return node.toString();
-  } else if (node === null || node === undefined || node === false) {
+  } else if (!node) {
     return "";
   } else if (Array.isArray(node)) {
-    return renderChildren(node);
+    return node.map((child) => reactNodeToString(child)).join("");
   } else if (isValidElement(node)) {
     const element = node as ReactElement;
-
-    return element.props.children;
+    return reactNodeToString(element.props.children);
   } else {
     return "";
-  }
-
-  function renderChildren(children: ReactNode[]): string {
-    return children.map((child) => reactNodeToString(child)).join("");
   }
 }
