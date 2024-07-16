@@ -33,8 +33,6 @@ export const tableColumns: ColumnDef<Spell>[] = [
         const min = isNaN(Number(filterValue[0])) ? 0 : Number(filterValue[0]);
         const max = isNaN(Number(filterValue[1])) ? 9 : Number(filterValue[1]);
 
-        console.log(level);
-
         return level >= min && level <= max;
       }
 
