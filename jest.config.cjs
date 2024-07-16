@@ -13,10 +13,11 @@ const jestConfig = {
   testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/$1",
+    "^@/(.*)$": "<rootDir>/src/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/__tests__/utils/"],
   preset: "ts-jest",
+  verbose: true,
 };
 
 module.exports = createJestConfig(jestConfig);
