@@ -4,7 +4,10 @@ import {
   LibraryBigIcon,
   ScrollTextIcon,
 } from "lucide-react";
-import { getTranslations } from "next-intl/server";
+import {
+  getTranslations,
+  unstable_setRequestLocale as setRequestLocale,
+} from "next-intl/server";
 
 import { Link } from "@/lib/navigation";
 
@@ -15,7 +18,12 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Section } from "@/components/ui/section";
 import GithubIcon from "@/components/icons/github-icon";
 
-export default async function HomePage() {
+export default async function HomePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  setRequestLocale(locale);
   const t = await getTranslations();
 
   return (
