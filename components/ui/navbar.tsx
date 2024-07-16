@@ -12,7 +12,7 @@ import { Link, usePathname } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 import { Heading } from "@/components/typography/heading";
-import { Paragraph } from "@/components/typography/text";
+import { Span, Text } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import {
   NavigationMenu,
@@ -31,7 +31,7 @@ import {
 } from "@/components/ui/sheet";
 
 const navbarVariants = cva(
-  "sticky top-0 z-10 flex min-h-14 items-center justify-between gap-4 border-b py-2",
+  "sticky top-0 z-50 flex min-h-14 items-center justify-between gap-4 border-b py-2",
   {
     variants: {
       variant: {
@@ -112,7 +112,7 @@ const NavbarLinks = React.forwardRef<HTMLDivElement, NavbarLinksProps>(
                         pathname.startsWith(href) && "text-foreground"
                       )}
                     >
-                      {t(title)}
+                      <Span size="sm">{t(title)}</Span>
                     </NavigationMenuTrigger>
                   </Button>
 
@@ -128,9 +128,7 @@ const NavbarLinks = React.forwardRef<HTMLDivElement, NavbarLinksProps>(
                               {t(title)}
                             </Heading>
 
-                            {description && (
-                              <Paragraph>{t(description)}</Paragraph>
-                            )}
+                            {description && <Text>{t(description)}</Text>}
                           </Link>
                         </li>
                       ))}
@@ -147,7 +145,7 @@ const NavbarLinks = React.forwardRef<HTMLDivElement, NavbarLinksProps>(
                         pathname.startsWith(href) && "text-foreground"
                       )}
                     >
-                      {t(title)}
+                      <Span size="sm">{t(title)}</Span>
                     </Link>
                   </Button>
                 </NavigationMenuLink>

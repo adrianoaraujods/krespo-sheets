@@ -8,6 +8,7 @@ export default {
     no: "Não",
     next: "Próxima",
     confirm: "Confirmar",
+    create: "Criar",
     cancel: "Cancelar",
     previous: "Anterior",
     back: "Voltar",
@@ -40,8 +41,65 @@ export default {
       perPage: "Por página",
       amount: "{initial} - {final} de {total}",
     },
+    credits: {
+      text: "Criado por",
+      author: "Adriano Araújo",
+    },
+    copyright: "All rights reserved. Krespo Sheets { year }",
   },
   pages: {
+    home: {
+      hero: {
+        title: "Seu melhor amigo de RPG de mesa!",
+        description:
+          "Crie, gerencie e melhore sua experiência de jogo de RPG com facilidade.",
+        button: "Criar uma conta",
+        cards: {
+          characters: {
+            title: "Fichas de Personagens",
+            description:
+              "Interface simples e eficaz para criar e usar seu personagem.",
+          },
+          kompendium: {
+            title: "Kompêndio",
+            description:
+              "Partes relevantes dos livros de referência para criar personagens.",
+          },
+          spells: {
+            title: "Filtros de Magias",
+            description:
+              "Diversos filtros para encontrar as magias mais específicas que você precise.",
+          },
+          systems: {
+            title: "Nossos Sistemas",
+            description:
+              "Sistemas completos e regras de casa projetados apenas para se divertir!",
+          },
+        },
+      },
+      characters: {
+        title: "Fichas de Personagens",
+        description:
+          "Crie e gerencie fichas de personagens abrangentes para suas campanhas de RPG. Nossa interface intuitiva permite que você acompanhe as estatísticas, habilidades e equipamentos do seu personagem com facilidade. Seja você um jogador experiente ou novo no jogo, nossas ferramentas ajudam a manter você organizado e focado na aventura.",
+        button: "Criar Personagem",
+      },
+      kompendium: {
+        title: "Kompêndio",
+        subtitle: "Referências dos Livros Fontes",
+        description:
+          "Acesse as regras e diretrizes essenciais dos mais populares sistemas de RPG. Nosso Kompêndio garante que você tenha as informações de que precisa na ponta dos dedos, tornando mais fácil criar personagens memoráveis e divertidos. O melhor amigo dos jogadores min-max!",
+      },
+      spells: {
+        title: "Filtros de Magias",
+        description:
+          "Pesquise e filtre facilmente magias dos seus sistemas de RPG favoritos. Nossa ferramenta de filtro de magias permite que você encontre rapidamente magias com base na classe, nível e escola, ajudando você a se preparar para qualquer cenário com confiança.",
+      },
+      systems: {
+        title: "Nossos Sistemas",
+        description:
+          "Descubra nossas regras de casa e sistemas personalizados projetados para melhorar suas sessões de RPG. Desde mecânicas de combate únicas até progressão inovadora de personagens, nossos sistemas oferecem novas e emocionantes maneiras de aproveitar seus jogos de RPG.",
+      },
+    },
     login: {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",
@@ -49,6 +107,35 @@ export default {
     kompendium: {
       title: "Kompêndio",
       search: "Pesquisar em Kompêndio",
+    },
+    characters: {
+      title: "Personagens",
+      unnamed: "Personagem sem Nome",
+      create: {
+        title: "Crie uma nova Ficha de Personagem!",
+        name: "Nome do Personagem",
+        system: "Sistema da Ficha",
+        button: "Criar",
+      },
+      delete: {
+        title: "Você tem certeza?",
+        description:
+          "Essa ação não pode ser desfeita. Isso irá excluir permanentemente esse personagem com o nome de:",
+      },
+      image: {
+        title: "Altere a Imagem do Personagem",
+        description: "Selecione uma imagem pela URL",
+      },
+      responses: {
+        "200": "Ação bem sucedida",
+        "201": "Personagem criado com sucesso",
+        "400": "Ação não aceita, há campos faltando",
+        "401": "Você deve estar conectado com uma conta",
+        "403": "Personagem de outro usuário",
+        "404": "Personagem não encontrado",
+        "406": "Sistema de Ficha não implementado",
+        "500": "Erro Interno do Servido, tente novamente",
+      },
     },
   },
   systems: {
@@ -148,12 +235,25 @@ export default {
         "icewind-dale-rime-of-the-frostmaiden":
           "Icewind dale: Rime of the Frostmaiden",
         "strixhaven-a-curriculum-of-chaos": "Strixhaven: A Curriculum of Chaos",
-        "astral-adventurer's-guide": "Astral adventurer's guide",
+        "astral-adventurers-guide": "Astral Adventurer's Guide",
         "lost-laboratory-of-kwalish": "Lost Laboratory of Kwalish",
         "deck-of-many-things": "Deck of Many Things",
         "planescape-adventures-in-the-multiverse":
-          "Planescape -Adventures in the Multiverse",
+          "Planescape Adventures in the Multiverse",
       },
+      subraces: {
+        "dwarf-hill": "Anão da Colina",
+        "dwarf-mountain": "Anão da Montanha",
+        "elf-drow": "Elfo Negro (Drow)",
+        "elf-forest": "Elfo da Floresta",
+        "elf-high": "Alto Elfo",
+      },
+    },
+  },
+  errors: {
+    "401": {
+      title: "Essa página requer autorização!",
+      description: "Você deve estar conectado com uma conta",
     },
   },
 } satisfies IntlMessages;

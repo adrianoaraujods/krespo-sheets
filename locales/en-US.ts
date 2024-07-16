@@ -10,6 +10,7 @@ import type {
   SpellAttackType,
   SpellSchool,
   SpellType,
+  SubraceName,
 } from "@/systems/dnd5";
 
 import { Theme } from "@/lib/config";
@@ -49,6 +50,15 @@ export interface Messages extends AbstractIntlMessages {
       sources: {
         [key in Source]: string;
       };
+      subraces: {
+        [key in SubraceName]: string;
+      };
+    };
+  };
+  errors: {
+    [key: number]: {
+      title: string;
+      description: string;
     };
   };
 }
@@ -63,6 +73,7 @@ export default {
     no: "No",
     next: "Next",
     confirm: "Confirm",
+    create: "Create",
     cancel: "Cancel",
     previous: "Previous",
     back: "Back",
@@ -95,8 +106,65 @@ export default {
       perPage: "Per page",
       amount: "{initial} - {final} of {total}",
     },
+    credits: {
+      text: "Made by",
+      author: "Adriano Araújo",
+    },
+    copyright: "All rights reserved. Krespo Sheets { year }",
   },
   pages: {
+    home: {
+      hero: {
+        title: "Your Table Top RPG best friend!",
+        description:
+          "Create, manage, and enhance your role-playing game experience with ease.",
+        button: "Create an account",
+        cards: {
+          characters: {
+            title: "Character Sheets",
+            description:
+              "Simple and effective layout for creating and using your character.",
+          },
+          kompendium: {
+            title: "Kompendium",
+            description:
+              "Access the core rules for creating a character from your favorite sourcebooks.",
+          },
+          spells: {
+            title: "Spells Filters",
+            description:
+              "Mutiple filters to quickly find the most spefific spells you need.",
+          },
+          systems: {
+            title: "Our Systems",
+            description:
+              "Complete systems and house rules designed to just have fun!",
+          },
+        },
+      },
+      characters: {
+        title: "Character Sheets",
+        description:
+          "Create and manage comprehensive character sheets for your RPG campaigns. Our intuitive interface allows you to track your character's stats, abilities, and equipment with ease. Whether you're a seasoned player or new to the game, our tools help you stay organized and focused on the adventure.",
+        button: "Create Character",
+      },
+      kompendium: {
+        title: "Kompendium",
+        subtitle: "Source References",
+        description:
+          "Access the essential rules and guidelines from popular RPG sourcebooks. Our Kompendium ensures you have the information you need at your fingertips, making it easier to create memorable and fun characters. The best-friend of min-maxing players!",
+      },
+      spells: {
+        title: "Spells Filters",
+        description:
+          "Easily search and filter spells from your favorite RPG systems. Our spells filter tool allows you to quickly find spells based on class, level, and school, helping you prepare for any encounter with confidence.",
+      },
+      systems: {
+        title: "Our Systems",
+        description:
+          "Discover our custom house rules and systems designed to enhance your RPG sessions. From unique combat mechanics to innovative character progression, our systems offer new and exciting ways to enjoy your role-playing games.",
+      },
+    },
     login: {
       title: "Entre no Krespo Sheets",
       description: "Boas-vindas de volta! Entre abaixo com seu provedor",
@@ -104,6 +172,35 @@ export default {
     kompendium: {
       title: "Kompendium",
       search: "Search in Kompendium",
+    },
+    characters: {
+      title: "Characters",
+      unnamed: "Unnamed Character",
+      create: {
+        title: "Create a new Character Sheet!",
+        name: "Character's Name",
+        system: "Sheet System",
+        button: "Create",
+      },
+      delete: {
+        title: "Are you absolutely sure?",
+        description:
+          "This action cannot be undone. This will permanently delete this character by the name of:",
+      },
+      image: {
+        title: "Change Character Image",
+        description: "Select an image by URL",
+      },
+      responses: {
+        "200": "Successful Request",
+        "201": "Character Created Successfully",
+        "400": "Bad request, missing fields",
+        "401": "You should be logged into an account",
+        "403": "Character from another user",
+        "404": "Character Not Found",
+        "406": "Sheet System is not implemented",
+        "500": "Internal Server error, try again",
+      },
     },
   },
   systems: {
@@ -201,12 +298,25 @@ export default {
         "icewind-dale-rime-of-the-frostmaiden":
           "Icewind dale: Rime of the Frostmaiden",
         "strixhaven-a-curriculum-of-chaos": "Strixhaven: A Curriculum of Chaos",
-        "astral-adventurer's-guide": "Astral adventurer's guide",
+        "astral-adventurers-guide": "Astral Adventurer's Guide",
         "lost-laboratory-of-kwalish": "Lost Laboratory of Kwalish",
         "deck-of-many-things": "Deck of Many Things",
         "planescape-adventures-in-the-multiverse":
-          "Planescape -Adventures in the Multiverse",
+          "Planescape Adventures in the Multiverse",
       },
+      subraces: {
+        "dwarf-hill": "Hill Dwarf",
+        "dwarf-mountain": "Mountain Dwarf",
+        "elf-drow": "Drow",
+        "elf-forest": "Forest Elf",
+        "elf-high": "High Elf",
+      },
+    },
+  },
+  errors: {
+    "401": {
+      title: "This page require auth!",
+      description: "You should be logged into an account",
     },
   },
 } satisfies Messages;

@@ -1,19 +1,37 @@
 import * as React from "react";
+import { cva } from "class-variance-authority";
+
+import type { VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
+const inputVariants = cva(
+  "flex h-10 w-full rounded-md ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+  {
+    variants: {
+      variant: {
+        default:
+          "border border-input bg-background p-2 text-sm placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50",
+        ghost:
+          "bg-transparent p-0 placeholder:text-current focus:bg-background focus:px-2 focus:placeholder:text-transparent",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+    },
+  }
+);
+
 export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+  extends React.InputHTMLAttributes<HTMLInputElement>,
+    VariantProps<typeof inputVariants> {}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+  ({ className, variant, type, ...props }, ref) => {
     return (
       <input
         type={type}
-        className={cn(
-          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
-          className
-        )}
+        className={cn(inputVariants({ variant, className }))}
         ref={ref}
         {...props}
       />
@@ -23,14 +41,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 Input.displayName = "Input";
 
 export interface DebounceInputProps
-  extends Omit<
-    InputProps,
-    "id" | "onChange" | "onBlur" | "onKeyDown" | "onFocus"
-  > {
+  extends Omit<InputProps, "onChange" | "onBlur" | "onKeyDown" | "onFocus"> {
   // eslint-disable-next-line no-unused-vars
   onDebounce: (value: string | number | readonly string[] | undefined) => void;
-  id: string;
   delay?: number;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 function DebounceInput({
@@ -38,17 +53,23 @@ function DebounceInput({
   id,
   value,
   delay = 500,
+  inputRef: propRef,
   ...props
 }: DebounceInputProps) {
   const [inputValue, setInputValue] = React.useState(value);
   const debounceTimeout = React.useRef<ReturnType<typeof setTimeout> | null>(
     null
   );
+
   const inputRef = React.useRef<HTMLInputElement>(null);
 
+  const ref = propRef || inputRef;
+
   React.useEffect(() => {
-    if (localStorage.getItem(id) === "true" && inputRef.current) {
-      inputRef.current.focus();
+    if (id !== undefined) {
+      if (localStorage.getItem(id) === "true" && ref.current) {
+        ref.current.focus();
+      }
     }
 
     return () => {
@@ -56,14 +77,16 @@ function DebounceInput({
         clearTimeout(debounceTimeout.current);
       }
     };
-  }, [id]);
+  }, [ref, id]);
 
   return (
     <Input
-      ref={inputRef}
+      ref={ref}
       value={inputValue}
       onChange={({ target }) => {
         setInputValue(target.value);
+
+        console.log(inputValue);
 
         if (debounceTimeout.current) {
           clearTimeout(debounceTimeout.current);
@@ -74,7 +97,9 @@ function DebounceInput({
         }, delay);
       }}
       onBlur={() => {
-        localStorage.removeItem(id);
+        if (id !== undefined) {
+          localStorage.removeItem(id);
+        }
 
         if (debounceTimeout.current) {
           clearTimeout(debounceTimeout.current);
@@ -92,11 +117,13 @@ function DebounceInput({
         }
       }}
       onFocus={() => {
-        localStorage.setItem(id, "true");
+        if (id !== undefined) {
+          localStorage.setItem(id, "true");
+        }
       }}
       {...props}
     />
   );
 }
 
-export { Input, DebounceInput };
+export { Input, DebounceInput, inputVariants };

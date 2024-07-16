@@ -12,10 +12,19 @@ import { z } from "zod";
 import type { Spell } from "@/systems/dnd5";
 import type { ColumnDef } from "@tanstack/react-table";
 
+import { formatStringForSearch } from "@/lib/utils";
+
 export const tableColumns: ColumnDef<Spell>[] = [
   {
-    accessorKey: "name",
-    filterFn: "includesString",
+    id: "name",
+    accessorFn: ({ name }) => formatStringForSearch(name),
+    filterFn: ({ original: { name, originalName } }, _, filterValue) => {
+      const spellName = `${name}${originalName ? ` (${originalName})` : ""}`;
+
+      return formatStringForSearch(spellName).includes(
+        formatStringForSearch(filterValue)
+      );
+    },
   },
   {
     accessorKey: "level",
@@ -23,8 +32,6 @@ export const tableColumns: ColumnDef<Spell>[] = [
       if (Array.isArray(filterValue)) {
         const min = isNaN(Number(filterValue[0])) ? 0 : Number(filterValue[0]);
         const max = isNaN(Number(filterValue[1])) ? 9 : Number(filterValue[1]);
-
-        console.log(level);
 
         return level >= min && level <= max;
       }

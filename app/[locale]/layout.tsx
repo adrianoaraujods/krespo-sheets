@@ -16,6 +16,8 @@ import "@/styles/themes.css";
 import { Locale, locales } from "@/lib/config";
 import { mdxTranslations } from "@/lib/intl";
 
+import { Toaster } from "@/components/ui/toaster";
+
 export default async function RootLayout({
   children,
   params: { locale },
@@ -37,7 +39,11 @@ export default async function RootLayout({
             disableTransitionOnChange
           >
             <I18nProvider locale={locale} translations={mdxTranslations}>
-              <RootProvider theme={{ enabled: false }}>{children}</RootProvider>
+              <RootProvider theme={{ enabled: false }}>
+                {children}
+
+                <Toaster />
+              </RootProvider>
             </I18nProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

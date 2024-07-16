@@ -10,7 +10,12 @@ export type Theme = (typeof themes)[number];
 type NavItems = { [key: string]: NavLinkWithItems[] };
 
 export const navItems = {
-  authOnly: [],
+  authOnly: [
+    {
+      title: "pages.characters.title",
+      href: "/characters",
+    },
+  ],
   public: [
     {
       title: "pages.kompendium.title",
@@ -19,6 +24,16 @@ export const navItems = {
         {
           title: "systems.dnd5.title",
           href: "/kompendium/dnd5",
+        },
+      ],
+    },
+    {
+      title: "systems.dnd5.spells.title",
+      href: "/spells",
+      items: [
+        {
+          title: "systems.dnd5.title",
+          href: "/kompendium/dnd5/spells",
         },
       ],
     },

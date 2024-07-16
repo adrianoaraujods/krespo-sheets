@@ -4,6 +4,7 @@ import { cva } from "class-variance-authority";
 
 import type { VariantProps } from "class-variance-authority";
 
+import { Link } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 
 const textVariants = cva("", {
@@ -66,7 +67,7 @@ const Paragraph = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
     return (
       <Comp
         className={cn(
-          "mb-[.5em] last:mb-0",
+          "[&:not(:first-child)]:first-letter:ml-[1.5em] [&:not(:last-child)]:mb-[.5em]",
           textVariants({ variant, size, className })
         )}
         ref={ref}
@@ -77,4 +78,38 @@ const Paragraph = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
 );
 Paragraph.displayName = "Paragraph";
 
-export { Span, Paragraph, textVariants };
+const Text = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "p";
+
+    return (
+      <Comp
+        className={cn("", textVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Text.displayName = "Text";
+
+const Anchor = React.forwardRef<
+  HTMLAnchorElement,
+  React.ComponentProps<typeof Link>
+>(({ className, target, ...props }, ref) => {
+  return (
+    <Link
+      className={cn(
+        textVariants({ size: "md" }),
+        "text-primary hover:underline",
+        className
+      )}
+      target={target || "_blank"}
+      ref={ref}
+      {...props}
+    />
+  );
+});
+Anchor.displayName = "Anchor";
+
+export { Span, Paragraph, Text, Anchor, textVariants };

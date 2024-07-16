@@ -1,15 +1,20 @@
+import { InferSelectModel, relations } from "drizzle-orm";
 import {
   integer,
+  json,
   pgTable,
   primaryKey,
   text,
   timestamp,
 } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
+import type { SheetData, System } from "@/systems";
 import type { AdapterAccount } from "next-auth/adapters";
 
 import { createId } from "@/lib/utils";
 
+// Schemas
 export const users = pgTable("user", {
   id: text("id")
     .primaryKey()
@@ -63,3 +68,45 @@ export const verificationTokens = pgTable(
     compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 );
+
+export const characters = pgTable("characters", {
+  id: text("id")
+    .$defaultFn(() => createId())
+    .primaryKey()
+    .notNull(),
+  userId: text("userId")
+    .references(() => users.id)
+    .notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  lastModifiedAt: timestamp("lastModifiedAt")
+    .$onUpdate(() => new Date())
+    .defaultNow()
+    .notNull(),
+  name: text("name").notNull(),
+  system: text("system").$type<System>().notNull(),
+  data: json("data").$type<SheetData>().notNull(),
+  description: text("description"),
+  image: text("image"),
+});
+
+// Relations
+export const usersRelations = relations(users, ({ one, many }) => {
+  return {
+    characters: many(characters),
+  };
+});
+
+export const charactersRelations = relations(characters, ({ one }) => {
+  return {
+    user: one(users, { fields: [characters.userId], references: [users.id] }),
+  };
+});
+
+// Zod Schemas
+export const insertUserSchema = createInsertSchema(users);
+export const selectUserSchema = createSelectSchema(users);
+export type User = InferSelectModel<typeof users>;
+
+export const insertCharacterSchema = createInsertSchema(characters);
+export const selectCharacterSchema = createSelectSchema(characters);
+export type Character = InferSelectModel<typeof characters>;
