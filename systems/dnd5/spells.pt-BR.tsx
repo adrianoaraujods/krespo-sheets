@@ -586,7 +586,7 @@ export const SPELLS: Spell[] = [
     },
     duration: "Concentração, até 1 hora",
     description: (
-      <Paragraph>
+      <>
         <Paragraph>
           Você toca uma criatura e a agracia com aprimoramento mágico. Escolha
           um dos efeitos a seguir; o alvo ganha esse efeito até o fim da magia.
@@ -625,7 +625,7 @@ export const SPELLS: Spell[] = [
             temporários, que são perdidos quando a magia termina.
           </ListItem>
         </UList>
-      </Paragraph>
+      </>
     ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, você pode afetar uma criatura adicional para cada nível do espaço acima do 2°.",
