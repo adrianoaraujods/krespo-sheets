@@ -15,7 +15,7 @@ import { insertCharacterSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
 
 import { Heading } from "@/components/typography/heading";
-import { Paragraph, Span } from "@/components/typography/text";
+import { Span, Text } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import {
@@ -231,21 +231,19 @@ export function CharactersList({
 
         <div className="col-span-2 grid p-4">
           <div>
-            <Paragraph variant="muted">
-              {t(`systems.${system}.title`)}
-            </Paragraph>
+            <Text variant="muted">{t(`systems.${system}.title`)}</Text>
 
             <CharacterCardInput />
           </div>
 
           <div>
-            <Paragraph>{description || ""}</Paragraph>
+            <Text>{description || ""}</Text>
           </div>
 
           <div className="mt-auto flex justify-between">
-            <Paragraph>
+            <Text>
               <TimeAgo date={lastModifiedAt} />
-            </Paragraph>
+            </Text>
 
             <div className="flex items-center gap-2">
               <CharacterDeleteButton />

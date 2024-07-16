@@ -27,5 +27,15 @@ export const navItems = {
         },
       ],
     },
+    {
+      title: "systems.dnd5.spells.title",
+      href: "/spells",
+      items: [
+        {
+          title: "systems.dnd5.title",
+          href: "/kompendium/dnd5/spells",
+        },
+      ],
+    },
   ],
 } satisfies NavItems;

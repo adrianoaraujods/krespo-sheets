@@ -78,6 +78,21 @@ const Paragraph = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
 );
 Paragraph.displayName = "Paragraph";
 
+const Text = React.forwardRef<HTMLParagraphElement, ParagraphProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "p";
+
+    return (
+      <Comp
+        className={cn("", textVariants({ variant, size, className }))}
+        ref={ref}
+        {...props}
+      />
+    );
+  }
+);
+Text.displayName = "Text";
+
 const Anchor = React.forwardRef<
   HTMLAnchorElement,
   React.ComponentProps<typeof Link>
@@ -97,4 +112,4 @@ const Anchor = React.forwardRef<
 });
 Anchor.displayName = "Anchor";
 
-export { Span, Paragraph, Anchor, textVariants };
+export { Span, Paragraph, Text, Anchor, textVariants };
