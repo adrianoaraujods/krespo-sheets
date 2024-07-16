@@ -3,6 +3,7 @@ import { createI18nSearchAPI } from "fumadocs-core/search/server";
 import type { Spell as SpellsDnd5 } from "@/systems/dnd5";
 
 import { locales } from "@/lib/config";
+import { reactNodeToString } from "@/lib/utils";
 
 import { getPages } from "@/app/source";
 
@@ -35,7 +36,7 @@ export const { GET } = createI18nSearchAPI("advanced", {
                 heading: title,
                 content: Array.isArray(spell.description)
                   ? spell.description.join(" ")
-                  : spell.description,
+                  : reactNodeToString(spell.description),
               },
             ],
           },

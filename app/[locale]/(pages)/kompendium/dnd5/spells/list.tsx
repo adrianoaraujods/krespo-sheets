@@ -227,13 +227,19 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                 <ScrollArea>
                   <div className="max-h-[400px]">
                     {Array.isArray(spell.description) ? (
-                      spell.description.map((paragraph, i) => (
-                        <Paragraph key={`${id}_description:${i + 1}`}>
-                          {paragraph}
-                        </Paragraph>
-                      ))
+                      spell.description.map((paragraph, i) => {
+                        return typeof paragraph === "object" ? (
+                          paragraph
+                        ) : (
+                          <Paragraph key={`${id}_description:${i + 1}`}>
+                            {paragraph}
+                          </Paragraph>
+                        );
+                      })
+                    ) : typeof spell.description === "object" ? (
+                      spell.description
                     ) : (
-                      <Paragraph>{spell.description}</Paragraph>
+                      <Paragraph key={`${id}`}>{spell.description}</Paragraph>
                     )}
 
                     {!spell.upcastDescription ? null : (

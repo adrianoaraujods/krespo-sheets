@@ -1,5 +1,17 @@
 import type { Spell } from "@/systems/dnd5";
 
+import { ListItem, UList } from "@/components/typography/list";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/typography/table";
+import { Anchor, Paragraph, Span } from "@/components/typography/text";
+
 export const SPELLS: Spell[] = [
   {
     name: "Acalmar Emoções",
@@ -64,7 +76,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, os pontos de vida dos alvos aumentam em 5 pontos adicionais para cada nível do espaço acima do o 2°.",
     source: "players-handbook",
-    casters: ["artificer", "bard", "cleric", "paladin", "ranger"],
+    casters: ["artificer", "cleric", "paladin"],
     type: ["healing", "utility"],
   },
   {
@@ -88,7 +100,7 @@ export const SPELLS: Spell[] = [
       "Um alarme audível produz o som de um sino de mão por 10 minutos num raio de 18 metros. ",
     ],
     source: "players-handbook",
-    casters: ["ranger", "wizard"],
+    casters: ["artificer", "ranger", "wizard"],
     type: ["utility"],
   },
   {
@@ -174,17 +186,48 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você assume uma forma diferente. Quando conjurar essa magia, escolha uma das seguintes opções, o efeito durará pela duração da magia. Enquanto a magia durar, você pode terminar uma opção com uma ação para ganhar os benefícios de uma diferente.",
-      "Adaptação Aquática.",
-      "Você adapta seu corpo para um ambiente aquático, brotando guelras e crescendo membranas entre seus dedos. Você pode respirar embaixo d'água e ganha deslocamento de natação igual a seu deslocamento terrestre.",
-      "Mudar Aparência.",
-      "Você transforam sua aparência. Você decide com o que você parece, incluindo altura, peso, traços faciais, timbre da sua voz, comprimento do cabelo, coloração e características distintas, se tiverem. Você pode ficar parecido com um membro de outra raça, apesar de nenhuma de suas estatísticas mudar. Você também não pode parecer com uma criatura de um tamanho diferente do seu, e seu formado básico permanece o mesmo; se você for bípede, você não pode usar essa magia para se tornar quadrupede, por exemplo. A qualquer momento, pela duração da magia, você pode usar sua ação para mudar sua aparência dessa forma, novamente.",
-      "Armas Naturais.",
-      "Você faz crescerem garras, presas, espinhos, chifres ou armas naturais diferentes, à sua escolha. Seus ataques desarmados causam 1d6 de dano de concussão, perfurante ou cortante, como apropriado para a arma natural que você escolheu, e você é proficiente com seus ataques desarmados. Finalmente, a arma natural é mágica e você tem +1 de bônus nas jogadas de ataque e dano que você fizer com ela.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você assume uma forma diferente. Quando conjurar essa magia, escolha
+          uma das seguintes opções, o efeito durará pela duração da magia.
+          Enquanto a magia durar, você pode terminar uma opção com uma ação para
+          ganhar os benefícios de uma diferente.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Adaptação Aquática. </Span> Você adapta seu corpo
+          para um ambiente aquático, brotando guelras e crescendo membranas
+          entre seus dedos. Você pode respirar embaixo d’água e ganha
+          deslocamento de natação igual a seu deslocamento terrestre.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Mudar Aparência. </Span> Você transforam sua
+          aparência. Você decide com o que você parece, incluindo altura, peso,
+          traços faciais, timbre da sua voz, comprimento do cabelo, coloração e
+          características distintas, se tiverem. Você pode ficar parecido com um
+          membro de outra raça, apesar de nenhuma de suas estatísticas mudar.
+          Você também não pode parecer com uma criatura de um tamanho diferente
+          do seu, e seu formado básico permanece o mesmo; se você for bípede,
+          você não pode usar essa magia para se tornar quadrupede, por exemplo.
+          A qualquer momento, pela duração da magia, você pode usar sua ação
+          para mudar sua aparência dessa forma, novamente.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Armas Naturais. </Span> Você faz crescerem
+          garras, presas, espinhos, chifres ou armas naturais diferentes, à sua
+          escolha. Seus ataques desarmados causam 1d6 de dano de concussão,
+          perfurante ou cortante, como apropriado para a arma natural que você
+          escolheu, e você é proficiente com seus ataques desarmados.
+          Finalmente, a arma natural é mágica e você tem +1 de bônus nas jogadas
+          de ataque e dano que você fizer com ela.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -202,7 +245,7 @@ export const SPELLS: Spell[] = [
     description:
       "Pela duração, você terá vantagem em todos os testes de Carisma direcionados a uma criatura, à sua escolha, que não seja hostil a você. Quando a magia acabar, a criatura perceberá que você usou maia para influenciar o humor dela, e ficará hostil a você. Uma criatura propensa a violência irá atacar você. Outra criatura pode buscar outras formas de retaliação (a critério do Mestre), dependendo da natureza da sua interação com ela.",
     source: "players-handbook",
-    casters: ["bard", "druid", "ranger", "warlock", "wizard"],
+    casters: ["bard", "druid", "ranger", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -331,17 +374,122 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Objetos ganham vida ao seu comando. Escolha até dez objetos não-mágicos dentro do alcance, que não estejam sendo vestidos ou carregados. Alvos Médios contam como dois objetos, alvos Grandes contam como quatro objetos e alvos Enormes contam como oito objetos. Você não pode animar um objeto maior que Enorme. Cada alvo se anima e torna-se uma criatura sob seu controle até o final da magia ou até ser reduzido a 0 pontos de vida.",
-      "Com uma ação bônus, você pode comandar mentalmente qualquer criatura que você criar com essa magia se a criatura estiver a até 150 metros de você (se você controla várias criaturas, você pode comandar qualquer ou todas elas ao mesmo tempo, emitindo o mesmo comando para cada uma). Você decide qual ação a criatura irá fazer e para onde ela irá se mover durante o próximo turno dela, ou você pode emitir um comando geral, como para guardar uma câmara ou corredor especifico. Se você não der nenhum comando, as criaturas apenas se defenderão contra criaturas hostis. Uma vez que receba uma ordem, a criatura continuará a segui-la até a tarefa estar concluída.",
-      "Tamanho: Miúdo; PV: 20; CA: 18; Ataque: +8 para atingir, 1d4 + 4 dano; Força: 4; Destreza: 18",
-      "Tamanho: Pequeno; PV: 25; CA: 16; Ataque: +6 para atingir, 1d8 + 2 dano; Força: 6; Destreza: 14",
-      "Tamanho: Médio; PV: 40; CA: 13; Ataque: +5 para atingir, 2d6 + 1 dano; Força: 10; Destreza: 12",
-      "Tamanho: Grande; PV: 50; CA: 10; Ataque: +6 para atingir, 2d10 + 2 dano; Força: 14; Destreza: 10",
-      "Tamanho: Enorme; PV: 80; CA: 10; Ataque: +8 para atingir, 2d12 + 4 dano; Força: 18; Destreza: 6",
-      "Um objeto animado é um constructo com CA, pontos de vida, ataques, Força e Destreza determinados pelo seu tamanho. Sua Constituição é 10 e sua Inteligência e Sabedoria são 3 e seu Carisma é 1. Seu deslocamento é 9 metros; se o objeto não tiver pernas ou outros apêndices que ele possa usar para locomoção, ao invés, ele terá deslocamento de voo 9 metros e poderá planar. Se o objeto estiver firmemente preso a uma superfície ou objeto maior, como uma corrente presa a uma parede, seu deslocamento será 0. Ele tem percepção às cegas num raio de 9 metros e é cego além dessa distância. Quando o objeto animado cair a 0 pontos de vida, ele reverte a sua forma normal de objeto e qualquer dano restante é transferido para sua forma de objeto original.",
-      "Se você ordenar a um objeto que ataque, ele pode realizar um único ataque corpo-a-corpo contra uma criatura a até 1,5 metro dele. Ele realiza um ataque de pancada com um bônus de ataque e dano de concussão determinado pelo seu tamanho. O Mestre pode definir que um objeto especifico inflige dano cortante ou perfurante, baseado na forma dele.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Objetos ganham vida ao seu comando. Escolha até dez objetos
+          não-mágicos dentro do alcance, que não estejam sendo vestidos ou
+          carregados. Alvos Médios contam como dois objetos, alvos Grandes
+          contam como quatro objetos e alvos Enormes contam como oito objetos.
+          Você não pode animar um objeto maior que Enorme. Cada alvo se anima e
+          torna-se uma criatura sob seu controle até o final da magia ou até ser
+          reduzido a 0 pontos de vida.
+        </Paragraph>
+
+        <Paragraph>
+          Com uma ação bônus, você pode comandar mentalmente qualquer criatura
+          que você criar com essa magia se a criatura estiver a até 150 metros
+          de você (se você controla várias criaturas, você pode comandar
+          qualquer ou todas elas ao mesmo tempo, emitindo o mesmo comando para
+          cada uma). Você decide qual ação a criatura irá fazer e para onde ela
+          irá se mover durante o próximo turno dela, ou você pode emitir um
+          comando geral, como para guardar uma câmara ou corredor especifico. Se
+          você não der nenhum comando, as criaturas apenas se defenderão contra
+          criaturas hostis. Uma vez que receba uma ordem, a criatura continuará
+          a segui-la até a tarefa estar concluída.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader colSpan={6}>
+                Estatísticas de Objeto Animado
+              </TableHeader>
+            </TableRow>
+
+            <TableRow>
+              <TableHeader>Tamanho</TableHeader>
+              <TableHeader>PV</TableHeader>
+              <TableHeader>CA</TableHeader>
+              <TableHeader>Ataque</TableHeader>
+              <TableHeader>For</TableHeader>
+              <TableHeader>Des</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Miúdo</TableCell>
+              <TableCell>20</TableCell>
+              <TableCell>18</TableCell>
+              <TableCell>+8 para atingir, 1d4 + 4 dano</TableCell>
+              <TableCell>4</TableCell>
+              <TableCell>18</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Pequeno</TableCell>
+              <TableCell>25</TableCell>
+              <TableCell>16</TableCell>
+              <TableCell>+6 para atingir, 1d8 + 2 dano </TableCell>
+              <TableCell>6</TableCell>
+              <TableCell>14</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Médio</TableCell>
+              <TableCell>40</TableCell>
+              <TableCell>13</TableCell>
+              <TableCell>+5 para atingir, 2d6 + 1 dano</TableCell>
+              <TableCell>10</TableCell>
+              <TableCell>12</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Grande</TableCell>
+              <TableCell>50</TableCell>
+              <TableCell>10</TableCell>
+              <TableCell>+6 para atingir, 2d10 + 2 dano</TableCell>
+              <TableCell>14</TableCell>
+              <TableCell>10</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Enorme</TableCell>
+              <TableCell>80</TableCell>
+              <TableCell>10</TableCell>
+              <TableCell>+8 para atingir, 2d12 + 4 dano</TableCell>
+              <TableCell>18</TableCell>
+              <TableCell>6</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          Um objeto animado é um constructo com CA, pontos de vida, ataques,
+          Força e Destreza determinados pelo seu tamanho. Sua Constituição é 10
+          e sua Inteligência e Sabedoria são 3 e seu Carisma é 1. Seu
+          deslocamento é 9 metros; se o objeto não tiver pernas ou outros
+          apêndices que ele possa usar para locomoção, ao invés, ele terá
+          deslocamento de voo 9 metros e poderá planar. Se o objeto estiver
+          firmemente preso a uma superfície ou objeto maior, como uma corrente
+          presa a uma parede, seu deslocamento será 0. Ele tem percepção às
+          cegas num raio de 9 metros e é cego além dessa distância. Quando o
+          objeto animado cair a 0 pontos de vida, ele reverte a sua forma normal
+          de objeto e qualquer dano restante é transferido para sua forma de
+          objeto original.
+        </Paragraph>
+
+        <Paragraph>
+          Se você ordenar a um objeto que ataque, ele pode realizar um único
+          ataque corpo-a-corpo contra uma criatura a até 1,5 metro dele. Ele
+          realiza um ataque de pancada com um bônus de ataque e dano de
+          concussão determinado pelo seu tamanho. O Mestre pode definir que um
+          objeto especifico inflige dano cortante ou perfurante, baseado na
+          forma dele.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 6° nível ou superior, você pode animar dois objetos adicionais para cada nível do espaço acima do 5°. ",
     source: "players-handbook",
@@ -361,16 +509,64 @@ export const SPELLS: Spell[] = [
       m: "ou um pedaço de alume embebido em vinagre para o efeito de antipatia, ou uma gota de mel para o efeito de simpatia",
     },
     duration: "10 dias ",
-    description: [
-      "Essa magia atrai ou repele as criaturas de sua escolha. Você escolhe um alvo dentro do alcance, tanto um objeto ou criatura Enorme ou menor ou uma área que não seja maior que 60 metros cúbicos. Então, especifica um tipo de criatura inteligente, como dragões vermelhos, goblins ou vampiros. Você envolve o alvo com uma aura que pode atrair ou repelir as criaturas especificas pela duração. Escolha antipatia ou simpatia como efeito da aura.",
-      "Antipatia.",
-      "O encantamento faz com que criaturas do tipo designado por você sintam-se fortemente impelidos em deixar a área e evitar o alvo. Quando uma dessas criaturas puder ver o alvo ou ficar a 18 metros dele, a criatura deve ser bem sucedida num teste de resistência de Sabedoria ou ficará amedrontada. A criatura continuará amedrontada enquanto puder ver o alvo ou permanecer a 18 metros dele. Enquanto estiver amedrontada pelo alvo, a criatura deve usar seu deslocamento para se mover para o local seguro mais próximo o qual ela não possa ver o alvo. Se a criatura se mover para mais de 18 metros do alvo e não puder vê-lo, a criatura não estará mais amedrontada, mas ela ficará amedrontada novamente se voltar a ver o alvo ou ficar a 18 metros dele.",
-      "Simpatia.",
-      "O encantamento faz com que as criaturas especificadas sintam-se fortemente impelidos a se aproximar do alvo enquanto estiverem a 18 metros dele ou puderem vê-lo. Quando uma dessas criaturas puder ver o alvo ou ficar a 18 metros dele, a criatura deve ser bem sucedida num teste de resistência de Sabedoria ou usará seu deslocamento em cada um dos seus turnos para entrar na área ou se mover até o alcance do alvo. Quando a criatura tiver feito isso, ela não poderá se afastar do alvo voluntariamente. Se o alvo causar dano ou ferir a criatura afetada de alguma forma, a criatura afetada pode realizar um novo teste de resistência de Sabedoria para terminar o efeito, como descrito abaixo.",
-      "Terminando o Efeito.",
-      "Se uma criatura afetada terminar se turno enquanto não estiver a até 18 metros do alvo ou não for capaz de vê-lo, a criatura faz um teste de resistência de Sabedoria. Em um sucesso, a criatura não estará mais afetada pelo alvo e reconhecerá o sentimento de repugnância ou atração como mágico. Além disso, uma criatura afetada pela magia tem direito a outro teste de resistência de Sabedoria a cada 24 horas enquanto a magia durar.",
-      "Uma criatura que obtenha sucesso na resistência contra esse efeito ficará imune a ele por 1 minuto, depois desse tempo, ela pode ser afetada novamente.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Essa magia atrai ou repele as criaturas de sua escolha. Você escolhe
+          um alvo dentro do alcance, tanto um objeto ou criatura Enorme ou menor
+          ou uma área que não seja maior que 60 metros cúbicos. Então,
+          especifica um tipo de criatura inteligente, como dragões vermelhos,
+          goblins ou vampiros. Você envolve o alvo com uma aura que pode atrair
+          ou repelir as criaturas especificas pela duração. Escolha antipatia ou
+          simpatia como efeito da aura.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Antipatia. </Span> O encantamento faz com que
+          criaturas do tipo designado por você sintam-se fortemente impelidos em
+          deixar a área e evitar o alvo. Quando uma dessas criaturas puder ver o
+          alvo ou ficar a 18 metros dele, a criatura deve ser bem sucedida num
+          teste de resistência de Sabedoria ou ficará amedrontada. A criatura
+          continuará amedrontada enquanto puder ver o alvo ou permanecer a 18
+          metros dele. Enquanto estiver amedrontada pelo alvo, a criatura deve
+          usar seu deslocamento para se mover para o local seguro mais próximo o
+          qual ela não possa ver o alvo. Se a criatura se mover para mais de 18
+          metros do alvo e não puder vê-lo, a criatura não estará mais
+          amedrontada, mas ela ficará amedrontada novamente se voltar a ver o
+          alvo ou ficar a 18 metros dele.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Simpatia. </Span> O encantamento faz com que as
+          criaturas especificadas sintam-se fortemente impelidos a se aproximar
+          do alvo enquanto estiverem a 18 metros dele ou puderem vê-lo. Quando
+          uma dessas criaturas puder ver o alvo ou ficar a 18 metros dele, a
+          criatura deve ser bem sucedida num teste de resistência de Sabedoria
+          ou usará seu deslocamento em cada um dos seus turnos para entrar na
+          área ou se mover até o alcance do alvo. Quando a criatura tiver feito
+          isso, ela não poderá se afastar do alvo voluntariamente. Se o alvo
+          causar dano ou ferir a criatura afetada de alguma forma, a criatura
+          afetada pode realizar um novo teste de resistência de Sabedoria para
+          terminar o efeito, como descrito abaixo.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Terminando o Efeito. </Span> Se uma criatura
+          afetada terminar se turno enquanto não estiver a até 18 metros do alvo
+          ou não for capaz de vê-lo, a criatura faz um teste de resistência de
+          Sabedoria. Em um sucesso, a criatura não estará mais afetada pelo alvo
+          e reconhecerá o sentimento de repugnância ou atração como mágico. Além
+          disso, uma criatura afetada pela magia tem direito a outro teste de
+          resistência de Sabedoria a cada 24 horas enquanto a magia durar.
+        </Paragraph>
+
+        <Paragraph>
+          Uma criatura que obtenha sucesso na resistência contra esse efeito
+          ficará imune a ele por 1 minuto, depois desse tempo, ela pode ser
+          afetada novamente.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["druid", "wizard"],
     type: ["utility"],
@@ -389,25 +585,52 @@ export const SPELLS: Spell[] = [
       m: "pelo ou penas de uma besta",
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você toca uma criatura e a agracia com aprimoramento mágico. Escolha um dos efeitos a seguir; o alvo ganha esse efeito até o fim da magia.",
-      "Agilidade do Gato.",
-      "O alvo tem vantagem em testes de Destreza. Ele também não sofre dano ao cair de 6 metros ou menos, se não estiver incapacitado.",
-      "Esperteza da Raposa.",
-      "O alvo tem vantagem em testes de Inteligência.",
-      "Esplendor da Águia.",
-      "O alvo tem vantagem em testes de Carisma.",
-      "Força do Touro.",
-      "O alvo tem vantagem em testes de Força e sua capacidade de carga é dobrada.",
-      "Sabedoria da Coruja.",
-      " O alvo tem vantagem em testes de Sabedoria.",
-      "Vigor do Urso.",
-      "O alvo tem vantagem em testes de Constituição. Ele também recebe 2d6 pontos de vida temporários, que são perdidos quando a magia termina.",
-    ],
+    description: (
+      <Paragraph>
+        <Paragraph>
+          Você toca uma criatura e a agracia com aprimoramento mágico. Escolha
+          um dos efeitos a seguir; o alvo ganha esse efeito até o fim da magia.
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            <Span variant="bold">Agilidade do Gato. </Span> O alvo tem vantagem
+            em testes de Destreza. Ele também não sofre dano ao cair de 6 metros
+            ou menos, se não estiver incapacitado.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Esperteza da Raposa. </Span> O alvo tem
+            vantagem em testes de Inteligência.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Esplendor da Águia. </Span> O alvo tem vantagem
+            em testes de Carisma.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Força do Touro. </Span> O alvo tem vantagem em
+            testes de Força e sua capacidade de carga é dobrada.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Sabedoria da Coruja. </Span> O alvo tem
+            vantagem em testes de Sabedoria.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Vigor do Urso. </Span> O alvo tem vantagem em
+            testes de Constituição. Ele também recebe 2d6 pontos de vida
+            temporários, que são perdidos quando a magia termina.
+          </ListItem>
+        </UList>
+      </Paragraph>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, você pode afetar uma criatura adicional para cada nível do espaço acima do 2°.",
     source: "players-handbook",
-    casters: ["bard", "cleric", "druid", "sorcerer"],
+    casters: ["artificer", "bard", "cleric", "druid", "sorcerer"],
     type: ["utility"],
   },
   {
@@ -423,28 +646,115 @@ export const SPELLS: Spell[] = [
       m: "um pergaminho de representação ou uma estatueta esculpida para se parecer com o alvo e um componente especial, que varia de acordo com a versão da magia que você escolher, valendo, no mínimo, 500 po por Dado de Vida",
     },
     duration: "Até ser dissipada",
-    description: [
-      "Você cria um impedimento mágico para imobilizar uma criatura que você possa ver, dentro do alcance. O alvo deve ser bem sucedido num teste de resistência de Sabedoria ou será vinculado à magia; se ele for bem sucedido, ele será imune a essa magia se você conjura-la novamente. Enquanto estiver sob efeito dessa magia, a criatura não precisará respirar, comer ou beber e não envelhece. Magias de adivinhação não podem localizar ou perceber o alvo.",
-      "Quando você conjura essa magia, você escolhe uma das seguintes formas de aprisionamento.",
-      "Enterrar.",
-      "O alvo é sepultado bem fundo na terra em uma esfera de energia mágica que é grande o suficiente para conter o alvo. Nada pode atravessar a esfera e nenhuma criatura pode se teletransportar ou usar viagem plantar para entrar ou sair dela.",
-      "O componente especial para essa versão da magia é um pequeno globo de mitral.",
-      "Acorrentar.",
-      "Pesadas correntes, firmemente presas ao solo, matem o alvo no lugar. O alvo está impedido até a magia acabar e ele não pode se mover ou ser movido por nenhum meio, até lá.",
-      "O componente especial para essa versão da magia é uma fina corrente de metal precioso.",
-      "Prisão Cercada.",
-      "A magia transporta o alvo para dentro de um pequeno semiplano que é protegido contra teletransporte e viagem planar. O semiplano pode ser um labirinto, uma jaula, uma torre ou qualquer estrutura ou área confinada similar, à sua escolha.",
-      "O componente material especial para essa versão da magia é uma representação em miniatura da prisão, feita de jade.",
-      "Contenção Reduzida.",
-      "O alvo é reduzido até o tamanho de 30 centímetros e é aprisionado dentro de uma gema ou objeto similar. A luz pode passar através da gema normalmente (permitindo que o alvo veja o exterior e outras criaturas vejam o interior), mas nada mais pode atravessa-la, mesmo por meios de teletransporte ou viagem planar. A gema não pode ser partida ou quebrada enquanto a magia estiver efetiva.",
-      "O componente especial para essa versão da magia é uma gema transparente grande, como um coríndon, diamante ou rubi.",
-      "Torpor.",
-      "O alvo cai no sono e não pode ser acordado. O componente especial para essa versão da magia consiste em ervas soporíferas raras.",
-      "Terminando a Magia.",
-      "Durante a conjuração da magia, em quaisquer das versões, você pode especificar uma condição que irá fazer a magia terminar e libertará o alvo. A condição pode ser o quão especifica ou elaborada quanto você quiser, mas o Mestre deve concordar que a condição é razoável e tem uma probabilidade de acontecer. As condições podem ser baseadas no nome, identidade ou divindade da criatura mas, no mais, devem ser baseadas em ações ou qualidades observáveis e não em valores intangíveis tais como nível, classe e pontos de vida.",
-      "A magia dissipar magia pode terminar a magia apenas se for conjurada como uma magia de 9° nível, tendo como alvo ou a prisão ou o componente especial usado para cria-la.",
-      "Você pode usar um componente especial em particular para criar apenas uma prisão por vez. Se você conjurar essa magia novamente usando o mesmo componente, o alvo da primeira conjuração é, imediatamente, liberado do vínculo.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você cria um impedimento mágico para imobilizar uma criatura que você
+          possa ver, dentro do alcance. O alvo deve ser bem sucedido num teste
+          de resistência de Sabedoria ou será vinculado à magia; se ele for bem
+          sucedido, ele será imune a essa magia se você conjura-la novamente.
+          Enquanto estiver sob efeito dessa magia, a criatura não precisará
+          respirar, comer ou beber e não envelhece. Magias de adivinhação não
+          podem localizar ou perceber o alvo.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjura essa magia, você escolhe uma das seguintes formas
+          de aprisionamento.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Enterrar. </Span> O alvo é sepultado bem fundo na
+          terra em uma esfera de energia mágica que é grande o suficiente para
+          conter o alvo. Nada pode atravessar a esfera e nenhuma criatura pode
+          se teletransportar ou usar viagem plantar para entrar ou sair dela.
+        </Paragraph>
+
+        <Paragraph>
+          O componente especial para essa versão da magia é um pequeno globo de
+          mitral.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Acorrentar. </Span> Pesadas correntes, firmemente
+          presas ao solo, matem o alvo no lugar. O alvo está impedido até a
+          magia acabar e ele não pode se mover ou ser movido por nenhum meio,
+          até lá.
+        </Paragraph>
+
+        <Paragraph>
+          O componente especial para essa versão da magia é uma fina corrente de
+          metal precioso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Prisão Cercada. </Span> A magia transporta o alvo
+          para dentro de um pequeno semiplano que é protegido contra
+          teletransporte e viagem planar. O semiplano pode ser um labirinto, uma
+          jaula, uma torre ou qualquer estrutura ou área confinada similar, à
+          sua escolha.
+        </Paragraph>
+
+        <Paragraph>
+          O componente material especial para essa versão da magia é uma
+          representação em miniatura da prisão, feita de jade.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Contenção Reduzida. </Span> O alvo é reduzido até
+          o tamanho de 30 centímetros e é aprisionado dentro de uma gema ou
+          objeto similar. A luz pode passar através da gema normalmente
+          (permitindo que o alvo veja o exterior e outras criaturas vejam o
+          interior), mas nada mais pode atravessa-la, mesmo por meios de
+          teletransporte ou viagem planar. A gema não pode ser partida ou
+          quebrada enquanto a magia estiver efetiva.
+        </Paragraph>
+
+        <Paragraph>
+          O componente especial para essa versão da magia é uma gema
+          transparente grande, como um coríndon, diamante ou rubi.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Torpor. </Span> O alvo cai no sono e não pode ser
+          acordado.
+        </Paragraph>
+
+        <Paragraph>
+          O componente especial para essa versão da magia consiste em ervas
+          soporíferas raras.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Terminando a Magia. </Span> Durante a conjuração
+          da magia, em quaisquer das versões, você pode especificar uma condição
+          que irá fazer a magia terminar e libertará o alvo. A condição pode ser
+          o quão especifica ou elaborada quanto você quiser, mas o Mestre deve
+          concordar que a condição é razoável e tem uma probabilidade de
+          acontecer. As condições podem ser baseadas no nome, identidade ou
+          divindade da criatura mas, no mais, devem ser baseadas em ações ou
+          qualidades observáveis e não em valores intangíveis tais como nível,
+          classe e pontos de vida.
+        </Paragraph>
+
+        <Paragraph>
+          A magia{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=aprisionamento">
+            dissipar magia
+          </Anchor>{" "}
+          pode terminar a magia apenas se for conjurada como uma magia de 9°
+          nível, tendo como alvo ou a prisão ou o componente especial usado para
+          cria-la.
+        </Paragraph>
+
+        <Paragraph>
+          Você pode usar um componente especial em particular para criar apenas
+          uma prisão por vez. Se você conjurar essa magia novamente usando o
+          mesmo componente, o alvo da primeira conjuração é, imediatamente,
+          liberado do vínculo.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["warlock", "wizard"],
     type: ["utility"],
@@ -490,7 +800,7 @@ export const SPELLS: Spell[] = [
       "Quando a graxa aparece, cada criatura de pé na área deve ser bem sucedida num teste de resistência de Destreza ou cairá no chão. Uma criatura que entre na área ou termine seu turno nela, deve ser bem sucedido num teste de resistência de Destreza ou cairá no chão.",
     ],
     source: "players-handbook",
-    casters: ["wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
     savingThrow: "dex",
   },
@@ -558,7 +868,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o bônus aumenta para +2. Quando você usar um espaço de magia de 6° nível ou superior, o bônus aumenta para +3. ",
     source: "players-handbook",
-    casters: ["wizard", "paladin"],
+    casters: ["artificer", "paladin", "wizard"],
     type: ["utility"],
 
     spellAttack: "weapon",
@@ -661,7 +971,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você estende sua mão e aponta o dedo para um alvo no alcance. Sua magia garante a você uma breve intuição sobre as defesas do alvo. No seu próximo turno, você terá vantagem na primeira jogada de ataque contra o alvo, considerando que essa magia não tenha acabado.",
     source: "players-handbook",
-    casters: ["bard", "warlock", "sorcerer", "wizard"],
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -676,15 +986,43 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Pela duração da magia, seus olhos tornam-se manchas vazias imbuídas com poder terrível. Uma criatura, à sua escolha, a até de 18 metros de você que você puder ver, deve ser bem sucedida num teste de resistência de Sabedoria ou será afetada por um dos efeitos a seguir, à sua escolha, pela duração. A cada um dos seus turnos, até a magia acabar, você pode usar sua ação para afetar outra criatura, mas não pode afetar uma criatura novamente se ela tiver sido bem sucedida no teste de resistência contra essa conjuração de ataque visual.",
-      "Adormecer.",
-      "O alvo cai inconsciente. Ele acorda se sofrer qualquer dano ou se outra criatura usar sua ação para sacudir o adormecido até acordá-lo.",
-      "Apavorar.",
-      "O alvo está amedrontado. Em cada um dos turnos dele, a criatura amedrontada deve realizar a ação de Disparada e se mover para longe de você pela rota segura mais curta disponível, a não ser que não haja lugar para se mover. Se o alvo se mover para um local a, pelo menos, 18 metros de distância de você onde ela não possa mais te ver, esse efeito termina.",
-      "Adoecer.",
-      "O alvo tem desvantagem nas jogadas de ataque e testes de habilidade. No final de cada um dos turnos dele, ele pode realizar outro teste de resistência de Sabedoria. Se for bem sucedido, o efeito termina.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Pela duração da magia, seus olhos tornam-se manchas vazias imbuídas
+          com poder terrível. Uma criatura, à sua escolha, a até de 18 metros de
+          você que você puder ver, deve ser bem sucedida num teste de
+          resistência de Sabedoria ou será afetada por um dos efeitos a seguir,
+          à sua escolha, pela duração. A cada um dos seus turnos, até a magia
+          acabar, você pode usar sua ação para afetar outra criatura, mas não
+          pode afetar uma criatura novamente se ela tiver sido bem sucedida no
+          teste de resistência contra essa conjuração de{" "}
+          <Span variant="italic">ataque visual</Span>.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Adormecer. </Span> O alvo cai inconsciente. Ele
+          acorda se sofrer qualquer dano ou se outra criatura usar sua ação para
+          sacudir o adormecido até acordá-lo.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Apavorar. </Span> O alvo está amedrontado. Em
+          cada um dos turnos dele, a criatura amedrontada deve realizar a ação
+          de Disparada e se mover para longe de você pela rota segura mais curta
+          disponível, a não ser que não haja lugar para se mover. Se o alvo se
+          mover para um local a, pelo menos, 18 metros de distância de você onde
+          ela não possa mais te ver, esse efeito termina.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Adoecer. </Span> O alvo tem desvantagem nas
+          jogadas de ataque e testes de habilidade. No final de cada um dos
+          turnos dele, ele pode realizar outro teste de resistência de
+          Sabedoria. Se for bem sucedido, o efeito termina.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "warlock", "sorcerer", "wizard"],
     type: ["utility"],
@@ -704,15 +1042,40 @@ export const SPELLS: Spell[] = [
       m: "varetas, ossos ou objetos similarmente marcados valendo, no mínimo, 25 po",
     },
     duration: "Instantânea",
-    description: [
-      "Ao lançar varetas cravejados com gemas, rolar ossos de dragão, puxar cartas ornamentadas ou usar outro tipo de ferramenta de adivinhação, você recebe um pressagio de uma entidade de outro mundo, sobre os resultados de cursos de ação específicos que você planeja tomar nos próximos 30 minutos. O Mestre escolhe dentre os possíveis presságios a seguir:",
-      "- Êxito, para resultados bons",
-      "- Fracasso, para resultados maus",
-      "- Êxito e fracasso, para resultados bons e maus",
-      "- Nada, para resultados que não são especialmente bons ou ruins",
-      "A magia não leva em conta qualquer possível circunstancia que possa mudar o resultado, como a conjuração de magias adicionais ou a perda ou ganho de um companheiro.",
-      "Se você conjurar a magia duas ou mais vezes antes de completar seu próximo descanso longo, existe uma chance cumulativa de 25 por cento de cada conjuração, depois da primeira que você fez, ter um resultado aleatório. O Mestre faz essa jogada secretamente.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Ao lançar varetas cravejados com gemas, rolar ossos de dragão, puxar
+          cartas ornamentadas ou usar outro tipo de ferramenta de adivinhação,
+          você recebe um pressagio de uma entidade de outro mundo, sobre os
+          resultados de cursos de ação específicos que você planeja tomar nos
+          próximos 30 minutos. O Mestre escolhe dentre os possíveis presságios a
+          seguir:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Êxito, para resultados bons.</ListItem>
+
+          <ListItem>Fracasso, para resultados maus.</ListItem>
+
+          <ListItem>Êxito e fracasso, para resultados bons e maus.</ListItem>
+
+          <ListItem>
+            Nada, para resultados que não são especialmente bons ou ruins
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          A magia não leva em conta qualquer possível circunstancia que possa
+          mudar o resultado, como a conjuração de magias adicionais ou a perda
+          ou ganho de um companheiro. Se você conjurar a magia duas ou mais
+          vezes antes de completar seu próximo descanso longo, existe uma chance
+          cumulativa de 25 por cento de cada conjuração, depois da primeira que
+          você fez, ter um resultado aleatório. O Mestre faz essa jogada
+          secretamente.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric"],
     type: ["utility"],
@@ -730,16 +1093,50 @@ export const SPELLS: Spell[] = [
       m: "um pouco de pó de ferro",
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Você faz com que uma criatura ou um objeto que você possa ver dentro do alcance, fique maior ou menor, pela duração. Escolha entre uma criatura ou um objeto que não esteja sendo carregado nem vestido. Se o alvo for involuntário, ele deve realizar um teste de resistência de Constituição. Se for bem sucedido, a magia não surte efeito.",
-      "Se o alvo for uma criatura, tudo que ele esteja vestindo ou carregando muda e tamanho com ela. Qualquer item largado por uma criatura afetada, retorna ao seu tamanho natural.",
-      "Aumentar.",
-      "O tamanho do alvo dobra em todas as dimensões e seu peso é multiplicado por oito. Esse aumento eleva seu tamanho em uma categoria - de Médio para Grande, por exemplo. Se não houver espaço suficiente para que o alvo dobre de tamanho, a criatura ou objeto alcança o tamanho máximo possível no espaço disponível. Até o fim da magia, o alvo também tem vantagem em testes de Força e testes de resistência de Força. O tamanho das armas do alvo crescem para se adequar ao seu novo tamanho. Quando essas armas são ampliadas, os ataques do alvo com elas causam 1d4 de dano extra.",
-      "Reduzir.",
-      "O tamanho do alvo é reduzido à metade em todas as dimensões e seu peso é reduzido a um oitavo do normal. Essa redução diminui o tamanho do alvo em uma categoria - de Médio para Pequeno, por exemplo. Até o fim da magia, o alvo tem desvantagem em testes de Força e testes de resistência de Força. O tamanho das armas do alvo diminuem para se adequar ao seu novo tamanho. Quando essas armas são reduzidas, os ataques do alvo com elas causam 1d4 de dano a menos (isso não pode reduzir o dano a menos de 1).",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você faz com que uma criatura ou um objeto que você possa ver dentro
+          do alcance, fique maior ou menor, pela duração. Escolha entre uma
+          criatura ou um objeto que não esteja sendo carregado nem vestido. Se o
+          alvo for involuntário, ele deve realizar um teste de resistência de
+          Constituição. Se for bem sucedido, a magia não surte efeito.
+        </Paragraph>
+
+        <Paragraph>
+          Se o alvo for uma criatura, tudo que ele esteja vestindo ou carregando
+          muda e tamanho com ela. Qualquer item largado por uma criatura
+          afetada, retorna ao seu tamanho natural.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Aumentar. </Span> O tamanho do alvo dobra em
+          todas as dimensões e seu peso é multiplicado por oito. Esse aumento
+          eleva seu tamanho em uma categoria - de Médio para Grande, por
+          exemplo. Se não houver espaço suficiente para que o alvo dobre de
+          tamanho, a criatura ou objeto alcança o tamanho máximo possível no
+          espaço disponível. Até o fim da magia, o alvo também tem vantagem em
+          testes de Força e testes de resistência de Força. O tamanho das armas
+          do alvo crescem para se adequar ao seu novo tamanho. Quando essas
+          armas são ampliadas, os ataques do alvo com elas causam 1d4 de dano
+          extra.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Reduzir. </Span> O tamanho do alvo é reduzido à
+          metade em todas as dimensões e seu peso é reduzido a um oitavo do
+          normal. Essa redução diminui o tamanho do alvo em uma categoria - de
+          Médio para Pequeno, por exemplo. Até o fim da magia, o alvo tem
+          desvantagem em testes de Força e testes de resistência de Força. O
+          tamanho das armas do alvo diminuem para se adequar ao seu novo
+          tamanho. Quando essas armas são reduzidas, os ataques do alvo com elas
+          causam 1d4 de dano a menos (isso não pode reduzir o dano a menos de
+          1).
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
     savingThrow: "con",
     spellAttack: "weapon",
@@ -808,14 +1205,42 @@ export const SPELLS: Spell[] = [
       m: "um pequeno quadrado de seda",
     },
     duration: "24 horas",
-    description: [
-      "Você coloca uma ilusão em uma criatura ou objeto que você tocar, então magias de adivinhação revelarão informações falsas sobre ele. O alvo pode ser uma criatura voluntária ou um objeto que não esteja sendo carregado ou vestido por outra criatura.",
-      "Quando você conjura essa magia, escolha um ou ambos os efeitos seguintes. O efeito permanece pela duração. Se você conjurar essa magia na mesma criatura ou objeto a cada dia por 30 dias, colocando o mesmo efeito nele todas as vezes, a ilusão durará até ser dissipada.",
-      "Aura Falsa.",
-      "Você modifica a forma como o alvo aparece para magias e efeitos mágicos, como detectar magia, que detectam auras mágicas. Você pode fazer um objeto não-mágico parecer mágico ou mudar a aura mágica de um objeto para que ela pareça pertencer a outra escola de magia a sua escolha. Quando você usar esse efeito num objeto, você pode fazer a aura falsa aparente a qualquer criatura que manusear o item.",
-      "Máscara.",
-      "Você modifica a forma como o alvo aparece para magias e efeitos que detectam tipos de criaturas, como o Sentido Divino do paladino ou o gatilho de um magia símbolo. Você escolhe o tipo de criatura e outras magias e efeitos mágicos consideram o alvo como se ele fosse uma criatura desse tipo ou tendência.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você coloca uma ilusão em uma criatura ou objeto que você tocar, então
+          magias de adivinhação revelarão informações falsas sobre ele. O alvo
+          pode ser uma criatura voluntária ou um objeto que não esteja sendo
+          carregado ou vestido por outra criatura.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjura essa magia, escolha um ou ambos os efeitos
+          seguintes. O efeito permanece pela duração. Se você conjurar essa
+          magia na mesma criatura ou objeto a cada dia por 30 dias, colocando o
+          mesmo efeito nele todas as vezes, a ilusão durará até ser dissipada.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Aura Falsa. </Span> Você modifica a forma como o
+          alvo aparece para magias e efeitos mágicos, como detectar magia, que
+          detectam auras mágicas. Você pode fazer um objeto não-mágico parecer
+          mágico ou mudar a aura mágica de um objeto para que ela pareça
+          pertencer a outra escola de magia a sua escolha. Quando você usar esse
+          efeito num objeto, você pode fazer a aura falsa aparente a qualquer
+          criatura que manusear o item.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Máscara. </Span> Você modifica a forma como o
+          alvo aparece para magias e efeitos que detectam tipos de criaturas,
+          como o Sentido Divino do paladino ou o gatilho de um magia símbolo.
+          Você escolhe o tipo de criatura e outras magias e efeitos mágicos
+          consideram o alvo como se ele fosse uma criatura desse tipo ou
+          tendência.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["wizard"],
     type: ["utility"],
@@ -969,7 +1394,7 @@ export const SPELLS: Spell[] = [
       "A circunstância de ativação pode ser tão genérica ou tão detalhada quando você quiser, apesar de ela precisar ser baseada em condições visuais ou audíveis que ocorram a até 9 metros do objeto. Por exemplo, você pode instruir a boca a falar quando uma criatura se aproximar a menos de 9 metros do objeto ou quando um sino de prata tocar a menos de 9 metros dela.",
     ],
     source: "players-handbook",
-    casters: ["bard", "wizard"],
+    casters: ["artificer", "bard", "wizard"],
     type: ["utility"],
   },
   {
@@ -1089,7 +1514,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Bruxaria",
-    originalName: "",
+    originalName: "Hex",
     level: 1,
     school: "enchantment",
     castingTime: "Ação bônus",
@@ -1100,11 +1525,31 @@ export const SPELLS: Spell[] = [
       m: "o olho petrificado de um tritão",
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você coloca uma maldição em uma criatura que você possa ver, dentro do alcance. Até a magia acabar, você causa 1d6 de dano necrótico extra no alvo sempre que atingi-lo com um ataque. Além disso, escolha uma habilidade quando você conjurar a magia. O alvo tem desvantagem em testes de habilidade feitos com a habilidade escolhida.",
-      "Se o alvo cair a 0 pontos de vida antes da magia acabar, você pode usar uma ação bônus, em um turno subsequente, para amaldiçoar outra criatura.",
-      "Uma magia remover maldição conjurada no alvo acaba com a magia prematuramente.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você coloca uma maldição em uma criatura que você possa ver, dentro do
+          alcance. Até a magia acabar, você causa 1d6 de dano necrótico extra no
+          alvo sempre que atingi-lo com um ataque. Além disso, escolha uma
+          habilidade quando você conjurar a magia. O alvo tem desvantagem em
+          testes de habilidade feitos com a habilidade escolhida.
+        </Paragraph>
+
+        <Paragraph>
+          Se o alvo cair a 0 pontos de vida antes da magia acabar, você pode
+          usar uma ação bônus, em um turno subsequente, para amaldiçoar outra
+          criatura.
+        </Paragraph>
+
+        <Paragraph>
+          Uma magia{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=remover+maldição">
+            remover maldição
+          </Anchor>{" "}
+          conjurada no alvo acaba com a magia prematuramente.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° ou 4° nível, você poderá manter sua concentração na magia por até 8 horas. Quando você usar um espaço de magia de 5° nível ou superior, você poderá manter sua concentração na magia por até 24 horas.",
     source: "players-handbook",
@@ -1166,25 +1611,113 @@ export const SPELLS: Spell[] = [
       m: "um punhado de pó de ferro ou limalhas de ferro",
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Uma esfera invisível, de 3 metros de raio, de antimagia envolve você. Essa área é separada da energia mágica que se espalha pelo multiverso. Dentro da esfera, magias não podem ser conjuradas, criaturas invocadas desaparecem e, até mesmo itens mágicos, se tornam mundanos. Até o fim da magia, a esfera se move com você, centrada em você.",
-      "Magias e outros efeitos mágicos, exceto os criados por artefatos ou divindades, são suprimidos na esfera e não podem adentra-la. Um espaço gasto para conjurar uma magia suprimida é consumido. Enquanto o efeito estiver suprimido, ela não funciona, mas o tempo que ela permanecer suprimida é descontado da sua duração.",
-      "Efeitos de Alvo.",
-      "Magias e outros efeitos mágicos, como mísseis mágicos e enfeitiçar pessoa, que forem usados em uma criatura ou objeto dentro da esfera, não surtem efeito no alvo.",
-      "Áreas de Magia.",
-      "A área de outra magia ou efeito mágico, como uma bola de fogo, não se estende para dentro da esfera. Se a esfera sobrepor um área mágica, a parte da área que for coberta pela espera é suprimida. Por exemplo, as chás criadas por uma muralha de fogo serão suprimidas dentro da esfera, criando um abertura na muralha se a sobreposição por grande o suficiente.",
-      "Magias.",
-      "Qualquer magia ativa ou outro efeito mágico em uma criatura ou objeto dentro da esfera é suprimido enquanto a criatura ou objeto permanecer dentro dela.",
-      "Itens Mágicos.",
-      "As propriedades e poderes de itens mágicos são suprimidas dentro da esfera. Por exemplo, uma espada longa +1 dentro da esfera funciona como uma espada não-mágica.",
-      "As propriedades e poderes de uma arma mágica são suprimidos se ela for usada contra um alvo dentro da esfera ou empunhada por um atacante dentro da esfera. Se uma arma mágica ou munição mágica deixar a esfera completamente (por exemplo, se você disparar uma flecha mágica ou arremessar uma lança mágica e um alvo fora da esfera), a magia do item deixa de ser suprimida tão logo ele deixe a esfera.",
-      "Viagem Mágica.",
-      "Teletransporte e viagem planar não funciona dentro da esfera, tanto se a esfera for o destino quando o ponto de partida para tais viagens mágicas. Um portal para outro lugar, mundo ou plano de existência, assim como um espaço extradimensional aberto, como o criado pela magia truque de corda, é temporariamente fechado enquanto estiver dentro da esfera.",
-      "Criaturas e Objetos.",
-      "Uma criatura ou objeto invocado ou criado através de magia, temporariamente desaparece da existência dentro da esfera. Tais criaturas reaparecem instantaneamente quando o espaço ocupado pela criatura não estiver mais dentro da esfera.",
-      "Dissipar Magia.",
-      "Magias e efeitos mágicos como dissipar magia, não surtem efeito sob esfera. Da mesma forma, esferas criadas por magias de campo antimagia diferentes não se anulam.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Uma esfera invisível, de 3 metros de raio, de antimagia envolve você.
+          Essa área é separada da energia mágica que se espalha pelo multiverso.
+          Dentro da esfera, magias não podem ser conjuradas, criaturas invocadas
+          desaparecem e, até mesmo itens mágicos, se tornam mundanos. Até o fim
+          da magia, a esfera se move com você, centrada em você.
+        </Paragraph>
+
+        <Paragraph>
+          Magias e outros efeitos mágicos, exceto os criados por artefatos ou
+          divindades, são suprimidos na esfera e não podem adentra-la. Um espaço
+          gasto para conjurar uma magia suprimida é consumido. Enquanto o efeito
+          estiver suprimido, ela não funciona, mas o tempo que ela permanecer
+          suprimida é descontado da sua duração.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Efeitos de Alvo. </Span> Magias e outros efeitos
+          mágicos, como{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=mísseis+mágicos">
+            mísseis mágicos
+          </Anchor>{" "}
+          e{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=enfeitiçar+pessoa">
+            enfeitiçar pessoa
+          </Anchor>{" "}
+          , que forem usados em uma criatura ou objeto dentro da esfera, não
+          surtem efeito no alvo.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Áreas de Magia. </Span> A área de outra magia ou
+          efeito mágico, como uma{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=bola+de+fogo">
+            bola de fogo
+          </Anchor>{" "}
+          , não se estende para dentro da esfera. Se a esfera sobrepor um área
+          mágica, a parte da área que for coberta pela espera é suprimida. Por
+          exemplo, as chás criadas por uma{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=muralha+de+fogo">
+            muralha de fogo
+          </Anchor>{" "}
+          serão suprimidas dentro da esfera, criando um abertura na muralha se a
+          sobreposição por grande o suficiente.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Magias. </Span> Qualquer magia ativa ou outro
+          efeito mágico em uma criatura ou objeto dentro da esfera é suprimido
+          enquanto a criatura ou objeto permanecer dentro dela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Itens Mágicos. </Span> As propriedades e poderes
+          de itens mágicos são suprimidas dentro da esfera. Por exemplo, uma
+          espada longa +1 dentro da esfera funciona como uma espada não-mágica.
+        </Paragraph>
+
+        <Paragraph>
+          As propriedades e poderes de uma arma mágica são suprimidos se ela for
+          usada contra um alvo dentro da esfera ou empunhada por um atacante
+          dentro da esfera. Se uma arma mágica ou munição mágica deixar a esfera
+          completamente (por exemplo, se você disparar uma flecha mágica ou
+          arremessar uma lança mágica e um alvo fora da esfera), a magia do item
+          deixa de ser suprimida tão logo ele deixe a esfera.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Viagem Mágica. </Span>
+          <Anchor href="/kompendium/dnd5/spells?name=teletransporte">
+            Teletransporte
+          </Anchor>{" "}
+          e{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=viagem+planar">
+            viagem planar
+          </Anchor>{" "}
+          não funciona dentro da esfera, tanto se a esfera for o destino quando
+          o ponto de partida para tais viagens mágicas. Um portal para outro
+          lugar, mundo ou plano de existência, assim como um espaço
+          extradimensional aberto, como o criado pela magia{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=truque+de+corda">
+            truque de corda
+          </Anchor>{" "}
+          , é temporariamente fechado enquanto estiver dentro da esfera.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Criaturas e Objetos. </Span> Uma criatura ou
+          objeto invocado ou criado através de magia, temporariamente desaparece
+          da existência dentro da esfera. Tais criaturas reaparecem
+          instantaneamente quando o espaço ocupado pela criatura não estiver
+          mais dentro da esfera.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Dissipar Magia. </Span> Magias e efeitos mágicos
+          como{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=dissipar+magia">
+            dissipar magia
+          </Anchor>{" "}
+          , não surtem efeito sob esfera. Da mesma forma, esferas criadas por
+          magias de campo antimagia diferentes não se anulam.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "wizard"],
     type: ["utility"],
@@ -1291,7 +1824,7 @@ export const SPELLS: Spell[] = [
     description:
       "Uma chama, que produz iluminação equivalente a uma tocha, surge de um objeto que você tocar. O efeito é parecido com o de uma chama normal, mas ele não produz calor e não consome oxigênio. Uma chama continua pode ser coberta ou escondida, mas não sufocada ou extinta.",
     source: "players-handbook",
-    casters: ["cleric", "wizard"],
+    casters: ["artificer", "cleric", "wizard"],
     type: ["utility"],
   },
   {
@@ -1435,14 +1968,47 @@ export const SPELLS: Spell[] = [
       m: "água benta ou pó de prata e ferro valendo, no mínimo, 100 po, consumidos pela magia",
     },
     duration: "1 hora",
-    description: [
-      "Você cria um cilindro de energia mágica de 3 metros de raio por 6 metros de altura, centrado num ponto no solo que você possa ver, dentro do alcance. Runas brilhantes aparecem toda vez que o cilindro toca o chão ou outra superfície.",
-      "Escolha um ou mais dos tipos de criaturas seguintes: celestiais, corruptores, elementais, fadas ou mortos-vivos. O círculo afeta uma criatura do tipo escolhido das seguintes maneiras:",
-      "- A criatura não consegue entrar no cilindro voluntariamente por meios não-mágicos. Se a criatura tentar usar teletransporte ou viagem interplanar para fazê-lo, ela deve, primeiro, ser bem sucedida num teste de resistência de Carisma.",
-      "- A criatura tem desvantagem nas jogadas de ataque contra alvos dentro do cilindro.",
-      "- Alvos dentro do cilindro não podem ser enfeitiçados, amedrontados ou possuídos pela criatura.",
-      "Quando você conjurar essa magia, você pode decidir que a mágica dela opere na direção reversa, prevenindo que uma criatura de um tipo especifico saia do cilindro e protegendo os alvos fora dele.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você cria um cilindro de energia mágica de 3 metros de raio por 6
+          metros de altura, centrado num ponto no solo que você possa ver,
+          dentro do alcance. Runas brilhantes aparecem toda vez que o cilindro
+          toca o chão ou outra superfície.
+        </Paragraph>
+
+        <Paragraph>
+          Escolha um ou mais dos tipos de criaturas seguintes: celestiais,
+          corruptores, elementais, fadas ou mortos-vivos. O círculo afeta uma
+          criatura do tipo escolhido das seguintes maneiras:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            A criatura não consegue entrar no cilindro voluntariamente por meios
+            não-mágicos. Se a criatura tentar usar teletransporte ou viagem
+            interplanar para fazê-lo, ela deve, primeiro, ser bem sucedida num
+            teste de resistência de Carisma.
+          </ListItem>
+
+          <ListItem>
+            A criatura tem desvantagem nas jogadas de ataque contra alvos dentro
+            do cilindro.
+          </ListItem>
+
+          <ListItem>
+            Alvos dentro do cilindro não podem ser enfeitiçados, amedrontados ou
+            possuídos pela criatura.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Quando você conjurar essa magia, você pode decidir que a mágica dela
+          opere na direção reversa, prevenindo que uma criatura de um tipo
+          especifico saia do cilindro e protegendo os alvos fora dele.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, a duração aumenta em 1 hora para cada nível do espaço acima do 3°.",
     source: "players-handbook",
@@ -1522,29 +2088,61 @@ export const SPELLS: Spell[] = [
     level: 1,
     school: "enchantment",
     castingTime: "Ação",
-    range: " 18 metros",
+    range: "18 metros",
     components: {
       v: true,
     },
     duration: "1 rodada",
-    description: [
-      "Você pronuncia uma palavra de comando para uma criatura que você possa ver dentro do alcance. O alvo deve ser bem sucedido num teste de resistência de Sabedoria ou seguirá seu comando no próximo turno dele. A magia não tem efeito se o alvo for um morto-vivo, se ele não entender seu idioma ou se o comando for diretamente nocivo a ele.",
-      "Alguns comandos típicos e seus efeitos a seguir. Você pode proferir um comando diferente dos descritos aqui. Se o fizer, o Mestre descreve como o alvo reage. Se o alvo não puder cumprir o comando, a magia termina.",
-      "Aproxime-se.",
-      "O alvo se move para próximo de você o máximo que puder na rota mais direta, terminando seu turno, se ele se mover a até 1,5 metro de você.",
-      "Largue.",
-      "O alvo larga o que quer que ele esteja segurando, e termina seu turno.",
-      "Fuja.",
-      "O alvo gasta seu turno se movendo para longe de você da forma mais rápida que puder.",
-      "Deite-se.",
-      "O alvo deita-se no chão e então, termina seu turno.",
-      "Parado.",
-      "O alvo não se move e não realiza nenhuma ação. Uma criatura voadora continua no alto, considerando que ela seja capaz de fazê-lo. Se ela tiver que se mover para continuar no alto, ela voa a mínima distância necessária para permanecer no ar.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você pronuncia uma palavra de comando para uma criatura que você possa
+          ver dentro do alcance. O alvo deve ser bem sucedido num teste de
+          resistência de Sabedoria ou seguirá seu comando no próximo turno dele.
+          A magia não tem efeito se o alvo for um morto-vivo, se ele não
+          entender seu idioma ou se o comando for diretamente nocivo a ele.
+        </Paragraph>
+
+        <Paragraph>
+          Alguns comandos típicos e seus efeitos a seguir. Você pode proferir um
+          comando diferente dos descritos aqui. Se o fizer, o Mestre descreve
+          como o alvo reage. Se o alvo não puder cumprir o comando, a magia
+          termina.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Aproxime-se. </Span> O alvo se move para próximo
+          de você o máximo que puder na rota mais direta, terminando seu turno,
+          se ele se mover a até 1,5 metro de você.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Largue. </Span> O alvo larga o que quer que ele
+          esteja segurando, e termina seu turno.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Fuja. </Span> O alvo gasta seu turno se movendo
+          para longe de você da forma mais rápida que puder.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Deite-se. </Span> O alvo deita-se no chão e
+          então, termina seu turno.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Parado. </Span> O alvo não se move e não realiza
+          nenhuma ação. Uma criatura voadora continua no alto, considerando que
+          ela seja capaz de fazê-lo. Se ela tiver que se mover para continuar no
+          alto, ela voa a mínima distância necessária para permanecer no ar.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 2° nível ou superior, você pode afetar uma criatura adicional para cada nível do espaço acima do 1°. As criaturas devem estar a 9 metros entre si para serem afetadas.",
     source: "players-handbook",
-    casters: ["cleric", "paladin", "warlock"],
+    casters: ["bard", "cleric", "paladin", "warlock"],
     type: ["utility"],
     savingThrow: "wis",
   },
@@ -1627,16 +2225,44 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Você, momentaneamente, se torna uno com a natureza e ganha conhecimento do território ao seu redor. Ao ar livre, a magia lhe oferece conhecimento do terreno a até 4,5 quilômetros de você. Em cavernas e outros formações subterrâneas naturais, o raio é limitado a 150 metros. A magia não funciona onde a natureza foi substituída por construções, como em masmorras ou cidades.",
-      "Você, instantaneamente, adquire conhecimento de até três fatos, à sua escolha, sobre qualquer dos assuntos a seguir, relacionados a área: ",
-      "- Terrenos e corpos de água.",
-      "- Plantas, minérios, animais e povo predominante.",
-      "- Celestiais, fadas, corruptores, elementais ou mortosvivos mais poderosos.",
-      "- Influência de outros planos de existência.",
-      "- Construções.",
-      "Por exemplo, você poderia determinar a localização de um morto-vivo poderoso na área, a localização da maior fonte de água potável e a localização de quaisquer cidades próximas.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você, momentaneamente, se torna uno com a natureza e ganha
+          conhecimento do território ao seu redor. Ao ar livre, a magia lhe
+          oferece conhecimento do terreno a até 4,5 quilômetros de você. Em
+          cavernas e outros formações subterrâneas naturais, o raio é limitado a
+          150 metros. A magia não funciona onde a natureza foi substituída por
+          construções, como em masmorras ou cidades.
+        </Paragraph>
+
+        <Paragraph>
+          Você, instantaneamente, adquire conhecimento de até três fatos, à sua
+          escolha, sobre qualquer dos assuntos a seguir, relacionados a área:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Terrenos e corpos de água.</ListItem>
+
+          <ListItem>Plantas, minérios, animais e povo predominante.</ListItem>
+
+          <ListItem>
+            Celestiais, fadas, corruptores, elementais ou mortosvivos mais
+            poderosos.
+          </ListItem>
+
+          <ListItem>Influência de outros planos de existência.</ListItem>
+
+          <ListItem>Construções.</ListItem>
+        </UList>
+
+        <Paragraph>
+          Por exemplo, você poderia determinar a localização de um morto-vivo
+          poderoso na área, a localização da maior fonte de água potável e a
+          localização de quaisquer cidades próximas.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["druid", "ranger"],
     type: ["utility"],
@@ -1679,15 +2305,79 @@ export const SPELLS: Spell[] = [
       m: "três cascas de noz",
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Essa magia ataca e embaralha as mentes das criaturas, gerando delírios e provocando ações descontroladas. Cada criatura em uma esfera com 3 metros de raio, centrada num ponto, à sua escolha, dentro do alcance, deve ser bem sucedida num teste de resistência de Sabedoria, quando você conjurar essa magia ou for afetada por ela.",
-      "Um alvo afetado não pode realizar reações e deve rolar um d10 no início de cada um dos seus turnos para determinar seu comportamento nesse turno.",
-      "Resultado 1-1: A criatura usa todo seu deslocamento para se mover em uma direção aleatória. Para determinar a direção, role um d8 e atribua uma direção a cada face do dado. A criatura não realiza uma ação nesse turno.",
-      "Resultado 2-6: A criatura não se move ou realiza ações nesse turno.",
-      "Resultado 7-8: A criatura usa sua ação para realizar um ataque corpo-acorpo contra uma criatura, determinada aleatoriamente, ao seu alcance. Se não houver criaturas dentro do alcance, a criatura não faz nada nesse turno.",
-      "Resultado: 9-10: A criatura pode agir e se mover normalmente.",
-      "Ao final de cada um dos seus turnos, um alvo afetado pode realizar um teste de resistência de Sabedoria. Se for bem sucedido, esse efeito acaba nesse alvo.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Essa magia ataca e embaralha as mentes das criaturas, gerando delírios
+          e provocando ações descontroladas. Cada criatura em uma esfera com 3
+          metros de raio, centrada num ponto, à sua escolha, dentro do alcance,
+          deve ser bem sucedida num teste de resistência de Sabedoria, quando
+          você conjurar essa magia ou for afetada por ela.
+        </Paragraph>
+
+        <Paragraph>
+          Um alvo afetado não pode realizar reações e deve rolar um d10 no
+          início de cada um dos seus turnos para determinar seu comportamento
+          nesse turno.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>d10</TableHeader>
+
+              <TableHeader>Comportamento</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+
+              <TableCell>
+                A criatura usa todo seu deslocamento para se mover em uma
+                direção aleatória. Para determinar a direção, role um d8 e
+                atribua uma direção a cada face do dado. A criatura não realiza
+                uma ação nesse turno.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>2-6</TableCell>
+
+              <TableCell>
+                A criatura não se move ou realiza ações nesse turno.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>7-8</TableCell>
+
+              <TableCell>
+                A criatura usa sua ação para realizar um ataque corpo-acorpo
+                contra uma criatura, determinada aleatoriamente, ao seu alcance.
+                Se não houver criaturas dentro do alcance, a criatura não faz
+                nada nesse turno.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>9-10</TableCell>
+
+              <TableCell>
+                A criatura pode agir e se mover normalmente.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          Ao final de cada um dos seus turnos, um alvo afetado pode realizar um
+          teste de resistência de Sabedoria. Se for bem sucedido, esse efeito
+          acaba nesse alvo.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 5° nível ou superior, o raio da esfera aumenta em 1,5 metro para cada nível do espaço acima do 4°.",
     source: "players-handbook",
@@ -1728,16 +2418,43 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você invoca espíritos feéricos, que assumem formas de bestas, que aparecem em espaços desocupados, que você possa ver dentro do alcance. Escolha uma das opções a seguir para aparecer:",
-      "- Uma besta de nível de desafio 2 ou inferior.",
-      "- Duas bestas de nível de desafio 1 ou inferior.",
-      "- Quatro bestas de nível de desafio 1/2 ou inferior.",
-      "- Oito bestas de nível de desafio 1/4 ou inferior.",
-      "Cada besta é também considerada uma fada e desaparece quando cair a 0 pontos de vida ou quando a magia acabar.",
-      "As criaturas invocadas são amigáveis a você e a seus companheiros. Role a iniciativa para as criaturas invocadas como um grupo, que age no seu próprio turno. Eles obedecem a quaisquer comandos verbais que você emitir (não requer uma ação sua). Se você não emitir nenhum comando a elas, elas se defenderão de criaturas hostis, mas no mais, não realizarão nenhuma ação.",
-      "O Mestre possui as estatísticas das criaturas.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você invoca espíritos feéricos, que assumem formas de bestas, que
+          aparecem em espaços desocupados, que você possa ver dentro do alcance.
+          Escolha uma das opções a seguir para aparecer:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Uma besta de nível de desafio 2 ou inferior.</ListItem>
+
+          <ListItem>Duas bestas de nível de desafio 1 ou inferior.</ListItem>
+
+          <ListItem>
+            Quatro bestas de nível de desafio 1/2 ou inferior.
+          </ListItem>
+
+          <ListItem>Oito bestas de nível de desafio 1/4 ou inferior.</ListItem>
+        </UList>
+
+        <Paragraph>
+          Cada besta é também considerada uma fada e desaparece quando cair a 0
+          pontos de vida ou quando a magia acabar.
+        </Paragraph>
+
+        <Paragraph>
+          As criaturas invocadas são amigáveis a você e a seus companheiros.
+          Role a iniciativa para as criaturas invocadas como um grupo, que age
+          no seu próprio turno. Eles obedecem a quaisquer comandos verbais que
+          você emitir (não requer uma ação sua). Se você não emitir nenhum
+          comando a elas, elas se defenderão de criaturas hostis, mas no mais,
+          não realizarão nenhuma ação.
+        </Paragraph>
+
+        <Paragraph>O Mestre possui as estatísticas das criaturas.</Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando certos espaços de magia superiores, você escolhe uma das opções de invocação acima e mais criaturas aparecem: o dobro delas com um espaço de 5° nível, o triplo delas com um espaço de 7° nível e o quadruplo delas com um espaço de 9° nível.",
     source: "players-handbook",
@@ -1779,16 +2496,44 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você invoca elementais que aparecem em espaços desocupados, que você possa ver dentro do alcance. Você escolhe uma das opções a seguir para aparecer:",
-      "- Um elemental de nível de desafio 2 ou inferior.",
-      "- Dois elementais de nível de desafio 1 ou inferior.",
-      "- Quatro elementais de nível de desafio 1/2 ou inferior.",
-      "- Oito elementais de nível de desafio 1/4 ou inferior.",
-      "Um elemental invocado através dessa magia desaparece quando cair a 0 pontos de vida ou quando a magia acabar.",
-      "As criaturas invocadas são amigáveis a você e a seus companheiros. Role a iniciativa para as criaturas invocadas como um grupo, que age no seu próprio turno. Eles obedecem a quaisquer comandos verbais que você emitir (não requer uma ação sua). Se você não emitir nenhum comando a elas, elas se defenderão de criaturas hostis, mas no mais, não realizarão nenhuma ação.",
-      "O Mestre possui as estatísticas das criaturas.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você invoca elementais que aparecem em espaços desocupados, que você
+          possa ver dentro do alcance. Você escolhe uma das opções a seguir para
+          aparecer:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Um elemental de nível de desafio 2 ou inferior.</ListItem>
+          <ListItem>
+            Dois elementais de nível de desafio 1 ou inferior.
+          </ListItem>
+          <ListItem>
+            Quatro elementais de nível de desafio 1/2 ou inferior.
+          </ListItem>
+          <ListItem>
+            Oito elementais de nível de desafio 1/4 ou inferior.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Um elemental invocado através dessa magia desaparece quando cair a 0
+          pontos de vida ou quando a magia acabar.
+        </Paragraph>
+
+        <Paragraph>
+          As criaturas invocadas são amigáveis a você e a seus companheiros.
+          Role a iniciativa para as criaturas invocadas como um grupo, que age
+          no seu próprio turno. Eles obedecem a quaisquer comandos verbais que
+          você emitir (não requer uma ação sua). Se você não emitir nenhum
+          comando a elas, elas se defenderão de criaturas hostis, mas no mais,
+          não realizarão nenhuma ação.
+        </Paragraph>
+
+        <Paragraph>O Mestre possui as estatísticas das criaturas.</Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando certos espaços de magia superiores, você escolhe uma das opções de invocação acima e mais criaturas aparecem: o dobro delas com um espaço de 6° nível e o triplo delas com um espaço de 8° nível.",
     source: "players-handbook",
@@ -1894,16 +2639,49 @@ export const SPELLS: Spell[] = [
       m: "um fruto sagrado por criatura invocada",
     },
     duration: "Concentração, até 1 hora ",
-    description: [
-      "Você invoca criaturas feéricas que aparecem em espaços desocupados, que você possa ver dentro do alcance. Escolha uma das opções a seguir para aparecer:",
-      "- Uma criatura feérica de nível de desafio 2 ou inferior.",
-      "- Duas criaturas feéricas de nível de desafio 1 ou inferior.",
-      "- Quatro criaturas feéricas de nível de desafio 1/2 ou inferior.",
-      "- Oito criaturas feéricas de nível de desafio 1/4 ou inferior.",
-      "Uma criatura invocado desaparece quando cair a 0 pontos de vida ou quando a magia acabar.",
-      "As criaturas invocadas são amigáveis a você e a seus companheiros. Role a iniciativa para as criaturas invocadas como um grupo, que age no seu próprio turno. Eles obedecem a quaisquer comandos verbais que você emitir (não requer uma ação sua). Se você não emitir nenhum comando a elas, elas se defenderão de criaturas hostis, mas no mais, não realizarão nenhuma ação.",
-      "O Mestre possui as estatísticas das criaturas.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você invoca criaturas feéricas que aparecem em espaços desocupados,
+          que você possa ver dentro do alcance. Escolha uma das opções a seguir
+          para aparecer:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Uma criatura feérica de nível de desafio 2 ou inferior.
+          </ListItem>
+
+          <ListItem>
+            Duas criaturas feéricas de nível de desafio 1 ou inferior.
+          </ListItem>
+
+          <ListItem>
+            Quatro criaturas feéricas de nível de desafio 1/2 ou inferior.
+          </ListItem>
+
+          <ListItem>
+            Oito criaturas feéricas de nível de desafio 1/4 ou inferior.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Uma criatura invocado desaparece quando cair a 0 pontos de vida ou
+          quando a magia acabar.
+        </Paragraph>
+
+        <Paragraph>
+          As criaturas invocadas são amigáveis a você e a seus companheiros.
+          Role a iniciativa para as criaturas invocadas como um grupo, que age
+          no seu próprio turno. Eles obedecem a quaisquer comandos verbais que
+          você emitir (não requer uma ação sua). Se você não emitir nenhum
+          comando a elas, elas se defenderão de criaturas hostis, mas no mais,
+          não realizarão nenhuma ação.
+        </Paragraph>
+
+        <Paragraph>O Mestre possui as estatísticas das criaturas.</Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando certos espaços de magia superiores, você escolhe uma das opções de invocação acima e mais criaturas aparecem: o dobro delas com um espaço de 6° nível e o triplo delas com um espaço de 8° nível.",
     source: "players-handbook",
@@ -1923,31 +2701,94 @@ export const SPELLS: Spell[] = [
       m: "ervas, óleos e incenso valendo, mo mínimo, 1.000 po, consumidos pela magia",
     },
     duration: "Até ser dissipada",
-    description: [
-      "Você toca um ponto e infunde uma área ao redor com poder sagrado (ou profano). A área pode ter até 18 metros de raio e a magia falha se o raio incluir uma área já sob efeito da magia consagrar. A área afetada está sujeita aos seguintes efeitos.",
-      "Primeiro, celestiais, corruptores, elementais, fadas e mortos-vivos não conseguem entrar na área, nem, tais criaturas, podem enfeitiçar, amedrontar ou possuir criaturas dentro da área. Qualquer criatura enfeitiçada, amedrontada ou possuída por uma criatura dessas, não estará mais enfeitiçada, amedrontada ou possuída ao adentrar a área. Você pode excluir um ou mais desses tipos de criaturas desse efeito.",
-      "Segundo, você pode vincular um efeito extra a área. Escolha o efeito da lista a seguir, ou escolha um efeito oferecido pelo Mestre. Alguns desses efeitos se aplicam a criaturas na área; você pode definir seu o efeito se aplica a todas as criaturas, criaturas que seguem uma divindade ou líder especifico ou criaturas de uma espécie especifica, como orcs ou trolls. Quando uma criatura que seria afetada entrar na área da magia pela primeira vez em um turno, ou começar seu turno nela, ela pode fazer um teste de resistência de Carisma. Se obtiver sucesso, a criatura ignora o efeito extra até sair da área.",
-      "Coragem.",
-      "As criaturas afetadas não podem ser amedrontadas enquanto estiverem na área.",
-      "Descanso Eterno.",
-      "Cadáveres enterrados na área não podem ser transformados em mortos-vivos.",
-      "Escuridão.",
-      "Escuridão preenche a área. Luz normal, assim como luz mágica criada por magias de nível inferior ao nível do espaço usado para conjurar essa magia, não podem iluminar a área.",
-      "Idiomas.",
-      "As criaturas afetadas podem se comunicar com qualquer outra criatura na área, mesmo que elas não partilhem um idioma em comum.",
-      "Interferência Extradimensional.",
-      "As criaturas afetadas não podem se mover ou viajar usando teletransporte ou por meios extradimensionais ou interplanares.",
-      "Luz do Dia.",
-      "Luz plena preenche a área. Escuridão mágica criada por magias de nível inferior ao nível do espaço usado para conjurar essa magia, não podem extinguir a luz.",
-      "Medo.",
-      "As criaturas afetadas ficam amedrontadas enquanto estiverem na área.",
-      "Proteção contra Energia.",
-      "As criaturas afetadas na área tem resistência a um tipo de dano, à sua escolha, exceto de concussão, cortante ou perfurante.",
-      "Silêncio.",
-      "Nenhum som pode ser emitido de dentro da área e nenhum som pode adentra-la.",
-      "Vulnerabilidade à Energia.",
-      "As criaturas afetadas na área tem vulnerabilidade a um tipo de dano, à sua escolha, exceto de concussão, cortante ou perfurante.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você toca um ponto e infunde uma área ao redor com poder sagrado (ou
+          profano). A área pode ter até 18 metros de raio e a magia falha se o
+          raio incluir uma área já sob efeito da magia consagrar. A área afetada
+          está sujeita aos seguintes efeitos.
+        </Paragraph>
+
+        <Paragraph>
+          Primeiro, celestiais, corruptores, elementais, fadas e mortos-vivos
+          não conseguem entrar na área, nem, tais criaturas, podem enfeitiçar,
+          amedrontar ou possuir criaturas dentro da área. Qualquer criatura
+          enfeitiçada, amedrontada ou possuída por uma criatura dessas, não
+          estará mais enfeitiçada, amedrontada ou possuída ao adentrar a área.
+          Você pode excluir um ou mais desses tipos de criaturas desse efeito.
+        </Paragraph>
+
+        <Paragraph>
+          Segundo, você pode vincular um efeito extra a área. Escolha o efeito
+          da lista a seguir, ou escolha um efeito oferecido pelo Mestre. Alguns
+          desses efeitos se aplicam a criaturas na área; você pode definir seu o
+          efeito se aplica a todas as criaturas, criaturas que seguem uma
+          divindade ou líder especifico ou criaturas de uma espécie especifica,
+          como orcs ou trolls. Quando uma criatura que seria afetada entrar na
+          área da magia pela primeira vez em um turno, ou começar seu turno
+          nela, ela pode fazer um teste de resistência de Carisma. Se obtiver
+          sucesso, a criatura ignora o efeito extra até sair da área.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Coragem. </Span> As criaturas afetadas não podem
+          ser amedrontadas enquanto estiverem na área.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Descanso Eterno. </Span> Cadáveres enterrados na
+          área não podem ser transformados em mortos-vivos.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Escuridão. </Span> Escuridão preenche a área. Luz
+          normal, assim como luz mágica criada por magias de nível inferior ao
+          nível do espaço usado para conjurar essa magia, não podem iluminar a
+          área.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Idiomas. </Span> As criaturas afetadas podem se
+          comunicar com qualquer outra criatura na área, mesmo que elas não
+          partilhem um idioma em comum.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Interferência Extradimensional. </Span> As
+          criaturas afetadas não podem se mover ou viajar usando teletransporte
+          ou por meios extradimensionais ou interplanares.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Luz do Dia. </Span> Luz plena preenche a área.
+          Escuridão mágica criada por magias de nível inferior ao nível do
+          espaço usado para conjurar essa magia, não podem extinguir a luz.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Medo. </Span> As criaturas afetadas ficam
+          amedrontadas enquanto estiverem na área.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Proteção contra Energia. </Span> As criaturas
+          afetadas na área tem resistência a um tipo de dano, à sua escolha,
+          exceto de concussão, cortante ou perfurante.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Silêncio. </Span> Nenhum som pode ser emitido de
+          dentro da área e nenhum som pode adentra-la.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Vulnerabilidade à Energia. </Span> As criaturas
+          afetadas na área tem vulnerabilidade a um tipo de dano, à sua escolha,
+          exceto de concussão, cortante ou perfurante.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "warlock"],
     type: ["utility"],
@@ -1971,7 +2812,7 @@ export const SPELLS: Spell[] = [
       "Essa magia pode reparar fisicamente um item mágico ou constructo, mas a magia não irá restaurar a magia em tais objetos.",
     ],
     source: "players-handbook",
-    casters: ["bard", "cleric", "druid", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "cleric", "druid", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -2073,21 +2914,88 @@ export const SPELLS: Spell[] = [
       m: "uma gota de água e uma pitada de poeira",
     },
     duration: "Concentração, até 10 minutos",
-    description: [
-      "Até o fim da magia, você controla qualquer corpo de água dentro da área que você escolher, que é um cubo de 30 metros quadrados. Você pode escolher dentre quaisquer dos efeitos seguintes, quando você conjurar essa magia. Com uma ação no seu turno, você pode repetir o mesmo efeito ou escolher um diferente.",
-      "Inundação.",
-      " Você faz com que o nível da água de toda área afetada suba até 6 metros. Se a área incluir uma margem, a inundação ira transbordar para a terra seca.",
-      "Se você escolher uma área em um extenso corpo de água, ao invés disso, você cria uma onda com 6 metros de altura que irá de um lado ao outro da área e então desaba. Qualquer veículo Enorme ou menor no caminho da onda será carregado por ela até o outro lado. Qualquer veículo Enorme ou menor atingido pela onda tem uma chance de 25 por cento de emborcar.",
-      "O nível da água se mantem elevado até a magia acabar ou você escolher um efeito diferente. Se esse efeito produzir uma onda, a onda se repete no início do seu próximo turno enquanto o efeito de inundação durar.",
-      "Dividir Água.",
-      "Você faz com que a água na área se divida e crie uma trincheira. A trincheira se estende por toda área da magia e a água separada forma uma parede de cada lado. A trincheira permanece até a magia acabar ou você escolher um efeito diferente. A água, então, lentamente preenche a trincheira ao longo do curso da próxima rodada até o nível normal da água ser restaurado.",
-      "Redirecionar Fluxo.",
-      "Você faz com que o fluxo da água na área se mova na direção que você escolher, mesmo que a água tenha que fluir através de obstáculos, subir muros ou em outra direção improvável. A água na área se move na direção ordenada, mas uma vez que tenha se movido além da área da magia, ela conclui seu fluxo baseado nas condições do terreno. A água continua a se mover na direção que você escolheu até a magia acabar ou você escolher um efeito diferente.",
-      "Redemoinho.",
-      "Esse efeito requer um corpo de água de, pelo menos, 15 metros quadrados e 7,5 metros de profundidade. Você faz com que um redemoinho se forme no centro da área. O redemoinho forma um vórtice com 1,5 metro de largura na base, chegando a 15 metros de largura no topo e 7,5 metros de altura. Qualquer criatura ou objeto na água a até 7,5 metros do vórtice é puxado 3 metros na direção dele. Uma criatura pode tentar nadar para longe do vórtice com um teste de Força (Atletismo) contra a CD da magia.",
-      "Quando uma criatura entrar no vórtice pela primeira vez no turno dela ou começar seu turno dentro dele, ela deve realizar um teste de resistência de Força. Se falhar, a criatura sofre 2d8 de dano de concussão e estará presa no vórtice até a magia acabar. Se passar na resistência, a criatura sofre metade do dano e não estará presa no vórtice. Uma criatura presa no vórtice pode usar sua ação para tentar nadar para fora do vórtice como descrito acima, mas terá desvantagem no teste de Força (Atletismo) para fazer isso.",
-      "A primeira vez a cada turno que um objeto entrar no vórtice, o objeto sofre 2d8 de dano de concussão; esse dano se repete a cada rodada que ele permanecer no vórtice.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Até o fim da magia, você controla qualquer corpo de água dentro da
+          área que você escolher, que é um cubo de 30 metros quadrados. Você
+          pode escolher dentre quaisquer dos efeitos seguintes, quando você
+          conjurar essa magia. Com uma ação no seu turno, você pode repetir o
+          mesmo efeito ou escolher um diferente.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Inundação. </Span> Você faz com que o nível da
+          água de toda área afetada suba até 6 metros. Se a área incluir uma
+          margem, a inundação ira transbordar para a terra seca.
+        </Paragraph>
+
+        <Paragraph>
+          Se você escolher uma área em um extenso corpo de água, ao invés disso,
+          você cria uma onda com 6 metros de altura que irá de um lado ao outro
+          da área e então desaba. Qualquer veículo Enorme ou menor no caminho da
+          onda será carregado por ela até o outro lado. Qualquer veículo Enorme
+          ou menor atingido pela onda tem uma chance de 25 por cento de
+          emborcar.
+        </Paragraph>
+
+        <Paragraph>
+          O nível da água se mantem elevado até a magia acabar ou você escolher
+          um efeito diferente. Se esse efeito produzir uma onda, a onda se
+          repete no início do seu próximo turno enquanto o efeito de inundação
+          durar.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Dividir Água. </Span> Você faz com que a água na
+          área se divida e crie uma trincheira. A trincheira se estende por toda
+          área da magia e a água separada forma uma parede de cada lado. A
+          trincheira permanece até a magia acabar ou você escolher um efeito
+          diferente. A água, então, lentamente preenche a trincheira ao longo do
+          curso da próxima rodada até o nível normal da água ser restaurado.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Redirecionar Fluxo. </Span> Você faz com que o
+          fluxo da água na área se mova na direção que você escolher, mesmo que
+          a água tenha que fluir através de obstáculos, subir muros ou em outra
+          direção improvável. A água na área se move na direção ordenada, mas
+          uma vez que tenha se movido além da área da magia, ela conclui seu
+          fluxo baseado nas condições do terreno. A água continua a se mover na
+          direção que você escolheu até a magia acabar ou você escolher um
+          efeito diferente.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Redemoinho. </Span> Esse efeito requer um corpo
+          de água de, pelo menos, 15 metros quadrados e 7,5 metros de
+          profundidade. Você faz com que um redemoinho se forme no centro da
+          área. O redemoinho forma um vórtice com 1,5 metro de largura na base,
+          chegando a 15 metros de largura no topo e 7,5 metros de altura.
+          Qualquer criatura ou objeto na água a até 7,5 metros do vórtice é
+          puxado 3 metros na direção dele. Uma criatura pode tentar nadar para
+          longe do vórtice com um teste de Força (Atletismo) contra a CD da
+          magia.
+        </Paragraph>
+
+        <Paragraph>
+          Quando uma criatura entrar no vórtice pela primeira vez no turno dela
+          ou começar seu turno dentro dele, ela deve realizar um teste de
+          resistência de Força. Se falhar, a criatura sofre 2d8 de dano de
+          concussão e estará presa no vórtice até a magia acabar. Se passar na
+          resistência, a criatura sofre metade do dano e não estará presa no
+          vórtice. Uma criatura presa no vórtice pode usar sua ação para tentar
+          nadar para fora do vórtice como descrito acima, mas terá desvantagem
+          no teste de Força (Atletismo) para fazer isso.
+        </Paragraph>
+
+        <Paragraph>
+          A primeira vez a cada turno que um objeto entrar no vórtice, o objeto
+          sofre 2d8 de dano de concussão; esse dano se repete a cada rodada que
+          ele permanecer no vórtice.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "druid", "wizard"],
     type: ["damage", "utility"],
@@ -2107,30 +3015,157 @@ export const SPELLS: Spell[] = [
       m: "incenso aceso e pedaços de terra e madeira misturados em água",
     },
     duration: "Concentração, até 8 horas",
-    description: [
-      "Você toma controle do clima numa área de 7,5 quilômetros de você pela duração. Você deve estar ao ar livre para conjurar essa magia. Se mover para um lugar onde você não tenha uma visão clara do céu termina a magia prematuramente.",
-      "Quando você conjurar essa magia, você muda as condições climáticas atuais, que são determinadas pelo Mestre baseado no ambiente e estação. Você pode mudar a precipitação, temperatura e vento. Leva 1d4 x 10 minutos para as novas condições fazerem efeito. Quando a magia terminar, o clima, gradualmente, volta ao normal.",
-      "Quando você altera as condições climáticas, encontre a condição atual nas tabelas a seguir e mude em um estágio, para cima ou para baixo. Quando mudar o vento, você pode mudar a direção do mesmo.",
-      "PRECIPITAÇÃO",
-      "Estágio 1: Céu claro.",
-      "Estágio 2: Parcialmente encoberto.",
-      "Estágio 3: Céu escuro ou nublado.",
-      "Estágio 4: Chuva, granizo ou neve.",
-      "Estágio 5: Chuva torrencial, tempestade de granizo ou nevasca.",
-      "TEMPERATURA",
-      "Estágio 1: Calor insuportável.",
-      "Estágio 2: Quente.",
-      "Estágio 3: Morno.",
-      "Estágio 4: Frio.",
-      "Estágio 5: Gelado.",
-      "Estágio 5: Frio ártico.",
-      "VENTO",
-      "Estágio 1: Calmo.",
-      "Estágio 2: Vento moderado.",
-      "Estágio 3: Vento forte.",
-      "Estágio 4: Ventania.",
-      "Estágio 5: Temporal.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você toma controle do clima numa área de 7,5 quilômetros de você pela
+          duração. Você deve estar ao ar livre para conjurar essa magia. Se
+          mover para um lugar onde você não tenha uma visão clara do céu termina
+          a magia prematuramente.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjurar essa magia, você muda as condições climáticas
+          atuais, que são determinadas pelo Mestre baseado no ambiente e
+          estação. Você pode mudar a precipitação, temperatura e vento. Leva 1d4
+          x 10 minutos para as novas condições fazerem efeito. Quando a magia
+          terminar, o clima, gradualmente, volta ao normal.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você altera as condições climáticas, encontre a condição atual
+          nas tabelas a seguir e mude em um estágio, para cima ou para baixo.
+          Quando mudar o vento, você pode mudar a direção do mesmo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader colSpan={2}>Precipitação</TableHeader>
+            </TableRow>
+
+            <TableRow>
+              <TableHeader>Estágio</TableHeader>
+              <TableHeader>Condição</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell>Céu claro</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>2</TableCell>
+              <TableCell>Parcialmente encoberto</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>3</TableCell>
+              <TableCell>Céu escuro ou nublado</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>4</TableCell>
+              <TableCell>Chuva, granizo ou neve</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>5</TableCell>
+              <TableCell>
+                Chuva torrencial, tempestade de granizo ou nevasca
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader colSpan={2}>Temperatura</TableHeader>
+            </TableRow>
+
+            <TableRow>
+              <TableHeader>Estágio</TableHeader>
+              <TableHeader>Condição</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell>Calor insuportável</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>2</TableCell>
+              <TableCell>Quente</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>3</TableCell>
+              <TableCell>Morno</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>4</TableCell>
+              <TableCell>Frio</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>5</TableCell>
+              <TableCell>Gelado</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>6</TableCell>
+              <TableCell>Frio ártico</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader colSpan={2}>Vento</TableHeader>
+            </TableRow>
+
+            <TableRow>
+              <TableHeader>Estágio</TableHeader>
+              <TableHeader>Condição</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell>Calmo</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>2</TableCell>
+              <TableCell>Vento moderado</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>3</TableCell>
+              <TableCell>Vento forte</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>4</TableCell>
+              <TableCell>Ventania</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>5</TableCell>
+              <TableCell>Temporal</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "druid", "wizard"],
     type: ["utility"],
@@ -2317,15 +3352,64 @@ export const SPELLS: Spell[] = [
       m: "um pequeno pedaço de material do mesmo tipo do item que você planeja criar",
     },
     duration: "Especial",
-    description: [
-      "Você puxa mechas de matéria sombria da Umbra para criar objetos inanimados de matéria vegetal dentro do alcance: bens finos, cordas, madeira ou algo similar. Você também pode usar a magia para criar objetos minerais como pedra, cristal ou metal. O objeto criado não pode ser maior que um cubo de 1,5 metro e o objeto deve ser de um formado e material que você já tenha visto antes. A duração depende do material do objeto. Se o objeto for composto por diversos materiais, use o de menor duração.",
-      "Material: Matéria vegetal, duração: 1 dia.",
-      "Material: Pedra ou cristal , duração: 12 horas.",
-      "Material: Metais preciosos, duração: 1 hora.",
-      "Material: Gemas, duração: 10 minutos.",
-      "Material: Adamante ou mitral, duração: 1 minuto.",
-      "Usar qualquer material criado por essa magia como componente material de outra magia faz com que a magia falhe.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você puxa mechas de matéria sombria da Umbra para criar objetos
+          inanimados de matéria vegetal dentro do alcance: bens finos, cordas,
+          madeira ou algo similar. Você também pode usar a magia para criar
+          objetos minerais como pedra, cristal ou metal. O objeto criado não
+          pode ser maior que um cubo de 1,5 metro e o objeto deve ser de um
+          formado e material que você já tenha visto antes.
+        </Paragraph>
+
+        <Paragraph>
+          A duração depende do material do objeto. Se o objeto for composto por
+          diversos materiais, use o de menor duração.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Material</TableHeader>
+              <TableHeader>Duração</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Matéria vegetal</TableCell>
+              <TableCell>1 dia</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Pedra ou cristal</TableCell>
+              <TableCell>12 horas</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Metais preciosos</TableCell>
+              <TableCell>1 hora</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Gemas</TableCell>
+              <TableCell>10 minutos</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Adamante ou mitral</TableCell>
+              <TableCell>1 minuto </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          Usar qualquer material criado por essa magia como componente material
+          de outra magia faz com que a magia falhe.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, o tamanho do cubo aumenta em 1,5 metro para cada nível do espaço de magia acima do 5°. ",
     source: "players-handbook",
@@ -2411,13 +3495,25 @@ export const SPELLS: Spell[] = [
       m: "uma gota de água se estiver criando ou alguns grãos de areia se estiver destruindo",
     },
     duration: "Instantânea",
-    description: [
-      "Você pode tanto criar quanto destruir água.",
-      "Criar Água.",
-      "Você cria 30 litros de água limpa dentro do alcance, em um recipiente aberto. Alternativamente, a água pode cair como chuva em um cubo de 9 metros dentro do alcance, extinguindo chamas expostas na área.",
-      "Destruir Água.",
-      "Você destrói até 30 litros de água de um recipiente aberto dentro do alcance. Alternativamente, você pode destruir um nevoeiro em um cubo de 9 metros dentro do alcance.",
-    ],
+    description: (
+      <>
+        <Paragraph>Você pode tanto criar quanto destruir água.</Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Criar Água. </Span> Você cria 30 litros de água
+          limpa dentro do alcance, em um recipiente aberto. Alternativamente, a
+          água pode cair como chuva em um cubo de 9 metros dentro do alcance,
+          extinguindo chamas expostas na área.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Destruir Água. </Span> Você destrói até 30 litros
+          de água de um recipiente aberto dentro do alcance. Alternativamente,
+          você pode destruir um nevoeiro em um cubo de 9 metros dentro do
+          alcance.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, você pode criar ou destruir 30 litros de água adicionais, ou o tamanho do cubo aumenta em 1,5 metro, para cada nível do espaço acima do 1°.",
     source: "players-handbook",
@@ -2521,7 +3617,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 2° nível ou superior, a cura aumenta em 1d8 para cada nível do espaço acima do 1°.",
     source: "players-handbook",
-    casters: ["bard", "cleric", "druid", "paladin", "ranger"],
+    casters: ["artificer", "bard", "cleric", "druid", "paladin", "ranger"],
     type: ["healing"],
   },
   {
@@ -2596,18 +3692,97 @@ export const SPELLS: Spell[] = [
       v: true,
     },
     duration: "Instantânea",
-    description: [
-      "Desejo é a magia mais poderosa que uma criatura mortal pode conjurar. Apenas ao falar em voz alta, você pode alterar os próprios fundamentos da realidade, de acordo com seus desejos.",
-      "O uso básico dessa magia é de copiar qualquer magia de 8° nível ou inferior. Você não precisa atender a qualquer pré-requisito da magia copiada, incluindo os componentes dispendiosos. A magia simplesmente acontece.",
-      "Alternativamente, você pode criar um dos seguintes efeitos, à sua escolha:",
-      "- Você cria um objeto no valor de até 25.000 po, que não seja mágico. O objeto não pode ter dimensões maiores que 90 metros e ele aparece em um espaço desocupado que você possa ver, no chão.",
-      "- Você permite que até doze criaturas que você possa ver, recuperem todos os seus pontos de vida e você acaba com todos os efeitos descritos na magia restauração maior.",
-      "- Você concede a até dez criaturas que você possa ver, resistência a um tipo de dano, à sua escolha.",
-      "- Você concede a até dez criaturas que você possa ver, imunidade a uma única magia ou outro efeito mágico por 8 horas. Por exemplo, você poderia deixar você e todos os seus companheiros imunes ao ataque de dreno de vida de um lich.",
-      "- Você desfaz um único evento recente forçando uma nova jogada de qualquer jogada feita na última rodada (incluindo seu último turno). A realidade remodela-se para acomodar o novo resultado. Por exemplo, uma magia desejo poderia desfazer o teste de resistência bem sucedido de um oponente, um acerto crítico de um inimigo ou o teste de resistência fracassado de um amigo. Você pode forçar que a nova jogada seja feita com vantagem ou desvantagem e você pode escolher se irá usar o resultado da nova jogada ou da jogada original.",
-      "Você é capaz de fazer coisas além do alcance dos exemplos acima. Apresente seu desejo ao Mestre o mais precisamente possível. O Mestre tem grande amplitude em definir o que ocorre em tais circunstâncias; quanto maior o desejo, maior será a possibilidade de que algo dê errado. Essa magia pode simplesmente falhar, o efeito do seu desejo pode ser apenas parcialmente atendido ou você pode sofrer consequências imprevistas como resultado da forma que você formulou o desejo. Por exemplo, desejar que um vilão esteja morto pode impulsionar você para um período no tempo em que o vilão não esteja mais vivo, efetivamente removendo você do jogo. Similarmente, desejar um item mágico lendário ou um artefato poderia, instantaneamente, transportar você para a presença do dono atual do item.",
-      "O estresse da conjuração dessa magia para produzir qualquer efeito diferente de copiar outra magia enfraquece você. Após enfrentar esse estresse, a cada vez que você conjurar uma magia, antes de terminar um descanso longo, você sofrerá 1d10 de dano necrótico por nível da magia. Esse dano não pode ser reduzido ou prevenido de forma alguma. Além disso, sua Força cai para 3, se ela já não for 3 ou inferior, por 2d4 dias. Para cada dia desses que você permanecer descansando e não fizer nada além de atividades leves, seu tempo de recuperação é reduzido em 2 dias. Finalmente, existe 33 por cento de chance de você se tornar incapaz de conjurar desejo novamente se você sofrer esse estresse.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Desejo é a magia mais poderosa que uma criatura mortal pode conjurar.
+          Apenas ao falar em voz alta, você pode alterar os próprios fundamentos
+          da realidade, de acordo com seus desejos.
+        </Paragraph>
+
+        <Paragraph>
+          O uso básico dessa magia é de copiar qualquer magia de 8° nível ou
+          inferior. Você não precisa atender a qualquer pré-requisito da magia
+          copiada, incluindo os componentes dispendiosos. A magia simplesmente
+          acontece.
+        </Paragraph>
+
+        <Paragraph>
+          Alternativamente, você pode criar um dos seguintes efeitos, à sua
+          escolha:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Você cria um objeto no valor de até 25.000 po, que não seja mágico.
+            O objeto não pode ter dimensões maiores que 90 metros e ele aparece
+            em um espaço desocupado que você possa ver, no chão.
+          </ListItem>
+
+          <ListItem>
+            Você permite que até doze criaturas que você possa ver, recuperem
+            todos os seus pontos de vida e você acaba com todos os efeitos
+            descritos na magia{" "}
+            <Anchor href="/kompendium/dnd5/spells?name=restauração+maior">
+              restauração maior
+            </Anchor>
+            .
+          </ListItem>
+
+          <ListItem>
+            Você concede a até dez criaturas que você possa ver, resistência a
+            um tipo de dano, à sua escolha.
+          </ListItem>
+
+          <ListItem>
+            Você concede a até dez criaturas que você possa ver, imunidade a uma
+            única magia ou outro efeito mágico por 8 horas. Por exemplo, você
+            poderia deixar você e todos os seus companheiros imunes ao ataque de
+            dreno de vida de um lich.
+          </ListItem>
+
+          <ListItem>
+            Você desfaz um único evento recente forçando uma nova jogada de
+            qualquer jogada feita na última rodada (incluindo seu último turno).
+            A realidade remodela-se para acomodar o novo resultado. Por exemplo,
+            uma magia desejo poderia desfazer o teste de resistência bem
+            sucedido de um oponente, um acerto crítico de um inimigo ou o teste
+            de resistência fracassado de um amigo. Você pode forçar que a nova
+            jogada seja feita com vantagem ou desvantagem e você pode escolher
+            se irá usar o resultado da nova jogada ou da jogada original.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Você é capaz de fazer coisas além do alcance dos exemplos acima.
+          Apresente seu desejo ao Mestre o mais precisamente possível. O Mestre
+          tem grande amplitude em definir o que ocorre em tais circunstâncias;
+          quanto maior o desejo, maior será a possibilidade de que algo dê
+          errado. Essa magia pode simplesmente falhar, o efeito do seu desejo
+          pode ser apenas parcialmente atendido ou você pode sofrer
+          consequências imprevistas como resultado da forma que você formulou o
+          desejo. Por exemplo, desejar que um vilão esteja morto pode
+          impulsionar você para um período no tempo em que o vilão não esteja
+          mais vivo, efetivamente removendo você do jogo. Similarmente, desejar
+          um item mágico lendário ou um artefato poderia, instantaneamente,
+          transportar você para a presença do dono atual do item.
+        </Paragraph>
+
+        <Paragraph>
+          O estresse da conjuração dessa magia para produzir qualquer efeito
+          diferente de copiar outra magia enfraquece você. Após enfrentar esse
+          estresse, a cada vez que você conjurar uma magia, antes de terminar um
+          descanso longo, você sofrerá 1d10 de dano necrótico por nível da
+          magia. Esse dano não pode ser reduzido ou prevenido de forma alguma.
+          Além disso, sua Força cai para 3, se ela já não for 3 ou inferior, por
+          2d4 dias. Para cada dia desses que você permanecer descansando e não
+          fizer nada além de atividades leves, seu tempo de recuperação é
+          reduzido em 2 dias. Finalmente, existe 33 por cento de chance de você
+          se tornar incapaz de conjurar desejo novamente se você sofrer esse
+          estresse.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["sorcerer", "wizard"],
     type: ["damage", "healing", "utility"],
@@ -2867,13 +4042,14 @@ export const SPELLS: Spell[] = [
     ],
     source: "players-handbook",
     casters: [
+      "artificer",
       "bard",
       "cleric",
       "druid",
-      "sorcerer",
-      "wizard",
       "paladin",
       "ranger",
+      "sorcerer",
+      "wizard",
     ],
     type: ["utility"],
   },
@@ -2983,7 +4159,7 @@ export const SPELLS: Spell[] = [
       "Para perceber que você está disfarçado, uma criatura pode usar a ação dela para inspecionar sua aparência e deve ser bem sucedida em um teste de Inteligência (Investigação) contra a CD da sua magia.",
     ],
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -3028,14 +4204,40 @@ export const SPELLS: Spell[] = [
       m: "água benta ou pó de prata e ferro",
     },
     duration: " Concentração, até 1 minuto",
-    description: [
-      "Energia cintilante envolve e protege você de fadas, mortos-vivos e criaturas originarias além do Plano Material. Pela duração, celestiais, corruptores, elementais, fadas e mortos-vivos tem desvantagem nas jogadas de ataque contra você.",
-      "Você pode terminar a magia prematuramente usando uma das funções especiais a seguir.",
-      "Cancelar Encantamento.",
-      "Com sua ação, você toca uma criatura que você possa alcançar que esteja enfeitiçada, amedrontada ou possuída por um celestial, corruptor, elemental, fada ou morto-vivo. A criatura tocada não estará mais enfeitiçada, amedrontada ou possuída por tais criaturas.",
-      "Demissão.",
-      "Com sua ação, faça um ataque corpo-acorpo com magia contra um celestial, corruptor, elemental, fada ou morto-vivo que você possa alcançar. Se atingir, você pode tentar guiar a criatura de volta ao seu plano natal. A criatura deve ser bem sucedida num teste de resistência de Carisma ou será enviada de volta ao seu plano natal (se já não for aqui). Se elas não estiverem em seus planos de origem, mortos-vivos serão enviados para Umbra e fadas serão enviadas para Faéria",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Energia cintilante envolve e protege você de fadas, mortos-vivos e
+          criaturas originarias além do Plano Material. Pela duração,
+          celestiais, corruptores, elementais, fadas e mortos-vivos tem
+          desvantagem nas jogadas de ataque contra você.
+        </Paragraph>
+
+        <Paragraph>
+          Você pode terminar a magia prematuramente usando uma das funções
+          especiais a seguir.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Cancelar Encantamento. </Span> Com sua ação, você
+          toca uma criatura que você possa alcançar que esteja enfeitiçada,
+          amedrontada ou possuída por um celestial, corruptor, elemental, fada
+          ou morto-vivo. A criatura tocada não estará mais enfeitiçada,
+          amedrontada ou possuída por tais criaturas.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Demissão. </Span> Com sua ação, faça um ataque
+          corpo-acorpo com magia contra um celestial, corruptor, elemental, fada
+          ou morto-vivo que você possa alcançar. Se atingir, você pode tentar
+          guiar a criatura de volta ao seu plano natal. A criatura deve ser bem
+          sucedida num teste de resistência de Carisma ou será enviada de volta
+          ao seu plano natal (se já não for aqui). Se elas não estiverem em seus
+          planos de origem, mortos-vivos serão enviados para Umbra e fadas serão
+          enviadas para Faéria.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "paladin"],
     type: ["utility"],
@@ -3148,13 +4350,40 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Sussurrando para os espíritos da natureza, você cria um dos seguintes efeitos, dentro do alcance:",
-      "- Você cria um efeito sensorial minúsculo e inofensivo que prevê como será o clima na sua localização pelas próximas 24 horas. O efeito deve se manifestar como um globo dourado para céu claro, uma nuvem para chuva, flocos de neve para nevasca e assim por diante. Esse efeito persiste por 1 rodada.",
-      "- Você faz uma flor florescer, uma semente brotar ou um folha amadurecer, instantaneamente.",
-      "- Você cria um efeito sensorial inofensivo instantâneo, como folhas caindo, um sopro de vento, o som de um pequeno animal ou o suave odor de um repolho. O efeito deve caber num cubo de 1,5 metro.",
-      "- Você, instantaneamente, acende ou apaga uma vela, tocha ou fogueira pequena.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Sussurrando para os espíritos da natureza, você cria um dos seguintes
+          efeitos, dentro do alcance:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Você cria um efeito sensorial minúsculo e inofensivo que prevê como
+            será o clima na sua localização pelas próximas 24 horas. O efeito
+            deve se manifestar como um globo dourado para céu claro, uma nuvem
+            para chuva, flocos de neve para nevasca e assim por diante. Esse
+            efeito persiste por 1 rodada.
+          </ListItem>
+
+          <ListItem>
+            Você faz uma flor florescer, uma semente brotar ou um folha
+            amadurecer, instantaneamente.
+          </ListItem>
+
+          <ListItem>
+            Você cria um efeito sensorial inofensivo instantâneo, como folhas
+            caindo, um sopro de vento, o som de um pequeno animal ou o suave
+            odor de um repolho. O efeito deve caber num cubo de 1,5 metro.
+          </ListItem>
+
+          <ListItem>
+            Você, instantaneamente, acende ou apaga uma vela, tocha ou fogueira
+            pequena.
+          </ListItem>
+        </UList>
+      </>
+    ),
     source: "players-handbook",
     casters: ["druid"],
     type: ["utility"],
@@ -3282,8 +4511,17 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "1 rodada",
-    description:
-      "Uma barreira de energia invisível aparece e protege você. Até o início do seu próximo turno, você recebe +5 de bônus na CA, incluindo contra o ataque que desencadeou a magia, e você não sofre dano de mísseis mágicos.",
+    description: (
+      <Paragraph>
+        Uma barreira de energia invisível aparece e protege você. Até o início
+        do seu próximo turno, você recebe +5 de bônus na CA, incluindo contra o
+        ataque que desencadeou a magia, e você não sofre dano de {""}
+        <Anchor href="/kompendium/dnd5/spells?name=mísseis+mágicos">
+          mísseis mágicos
+        </Anchor>
+        .
+      </Paragraph>
+    ),
     source: "players-handbook",
     casters: ["sorcerer", "wizard"],
     type: ["utility"],
@@ -3492,7 +4730,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d6 quando você alcança o 5° nível (2d6), 11° nível (3d6) e 17° nível (4d6).",
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["damage"],
     damageType: ["acid"],
     savingThrow: "dex",
@@ -3517,7 +4755,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       " Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, o dano aumenta em 1d8 para cada nível do espaço acima do 2°.",
     source: "players-handbook",
-    casters: ["bard", "druid"],
+    casters: ["artificer", "bard", "druid"],
     type: ["damage", "utility"],
     damageType: ["fire"],
     savingThrow: "con",
@@ -3538,7 +4776,7 @@ export const SPELLS: Spell[] = [
       "Você toca uma criatura viva que esteja com 0 pontos de vida. A criatura é estabilizada. Essa magia não afeta mortos-vivos ou constructos.",
     ],
     source: "players-handbook",
-    casters: ["cleric"],
+    casters: ["artificer", "cleric"],
     type: ["utility"],
   },
   {
@@ -3715,7 +4953,7 @@ export const SPELLS: Spell[] = [
       "Qualquer jogada de ataque contra uma criatura afetada ou objeto tem vantagem, se o atacante puder ver o alvo e, a criatura afetada ou objeto não recebe benefício por estar invisível.",
     ],
     source: "players-handbook",
-    casters: ["bard", "druid"],
+    casters: ["artificer", "bard", "druid"],
     type: ["utility"],
     savingThrow: "dex",
   },
@@ -3871,17 +5109,75 @@ export const SPELLS: Spell[] = [
       m: "incenso e pó de diamante valendo, no mínimo, 200 po, consumidos pela magia",
     },
     duration: "Até ser dissipada ou ativada",
-    description: [
-      "Quando você conjura essa magia, você inscreve um glifo que fere outras criaturas, tanto sobre uma superfície (como uma mesa ou uma secção de piso ou parede) quanto dentro de um objeto que possa ser fechado (como um livro, um pergaminho ou um baú de tesouro) para ocultar o glifo. Se você escolher uma superfície, o glifo pode cobrir uma área da superfície não superior a 3 metros de diâmetro. Se você escolher um objeto, o objeto deve permanecer no seu local; se ele for movido mais de 3 metros de onde você conjurou essa magia, o glifo será quebrado e a magia termina sem ser ativada.",
-      "O glifo é quase invisível e requer um teste de Inteligência (Investigação) contra a CD da magia para ser encontrado.",
-      "Você define o que ativa o glifo quando você conjura a magia. Para glifos inscritos em uma superfície, os gatilhos mais típicos incluem tocar ou ficar sobre o glifo, remover outro objeto cobrindo o glifo, aproximar-se a uma certa distância do glifo ou manipular um objeto onde o glifo esteja inscrito. Para glifos inscritos dentro de objetos, os gatilhos mais comuns incluem abrir o objeto, aproximarse a uma certa distância do objeto ou ver ou ler o glifo. Uma vez que o glifo seja ativado, a magia termina.",
-      "Você pode, posteriormente, aperfeiçoar o gatilho para que a magia se ative apenas sob certas circunstâncias ou de acordo com as características físicas (como altura ou peso), tipo de criatura (por exemplo, a proteção poderia ser definida para afetar aberrações ou drow) ou tendência. Você pode, também, definir condições para criaturas não ativarem o glifo, como aqueles que falarem determinada senha.",
-      "Quando você inscreve o glifo, escolha runas explosivas ou glifo de magia.",
-      "Runas Explosivas.",
-      "Quando ativado, o glifo irrompe com energia mágica numa esfera com 6 metros de raio, centrada no glifo. A esfera se espalha, dobrando esquinas. Cada criatura na área deve realizar um teste de resistência de Destreza. Uma criatura sofre 5d8 de dano de ácido, elétrico, fogo, frio ou trovejante se falhar no teste de resistência (você escolhe o tipo quando cria o glifo) ou metade desse dano se obtiver sucesso.",
-      "Glifo de Magia.",
-      "Você pode armazenar uma magia preparada de 3° nível ou inferior no glifo ao conjura-la como parte da criação do glifo. A magia a ser armazenada não tem efeito imediato quando conjurada dessa forma. Quando o glifo for ativado, a magia armazenada é conjurada. Se a magia tiver um alvo, esse alvo será a criatura que ativou o glifo. Se a magia afetar uma área, a área será centrada na criatura. Se a magia invocar criaturas hostis ou criar objetos ou armadilhas nocivos, eles aparecerão o mais próximo possível do intruso e o atacarão. Se a magia precisar de concentração, ela dura o máximo possível da sua duração.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Quando você conjura essa magia, você inscreve um glifo que fere outras
+          criaturas, tanto sobre uma superfície (como uma mesa ou uma secção de
+          piso ou parede) quanto dentro de um objeto que possa ser fechado (como
+          um livro, um pergaminho ou um baú de tesouro) para ocultar o glifo. Se
+          você escolher uma superfície, o glifo pode cobrir uma área da
+          superfície não superior a 3 metros de diâmetro. Se você escolher um
+          objeto, o objeto deve permanecer no seu local; se ele for movido mais
+          de 3 metros de onde você conjurou essa magia, o glifo será quebrado e
+          a magia termina sem ser ativada.
+        </Paragraph>
+
+        <Paragraph>
+          O glifo é quase invisível e requer um teste de Inteligência
+          (Investigação) contra a CD da magia para ser encontrado.
+        </Paragraph>
+
+        <Paragraph>
+          Você define o que ativa o glifo quando você conjura a magia. Para
+          glifos inscritos em uma superfície, os gatilhos mais típicos incluem
+          tocar ou ficar sobre o glifo, remover outro objeto cobrindo o glifo,
+          aproximar-se a uma certa distância do glifo ou manipular um objeto
+          onde o glifo esteja inscrito. Para glifos inscritos dentro de objetos,
+          os gatilhos mais comuns incluem abrir o objeto, aproximarse a uma
+          certa distância do objeto ou ver ou ler o glifo. Uma vez que o glifo
+          seja ativado, a magia termina.
+        </Paragraph>
+
+        <Paragraph>
+          Você pode, posteriormente, aperfeiçoar o gatilho para que a magia se
+          ative apenas sob certas circunstâncias ou de acordo com as
+          características físicas (como altura ou peso), tipo de criatura (por
+          exemplo, a proteção poderia ser definida para afetar aberrações ou
+          drow) ou tendência. Você pode, também, definir condições para
+          criaturas não ativarem o glifo, como aqueles que falarem determinada
+          senha.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você inscreve o glifo, escolha runas explosivas ou glifo de
+          magia.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Runas Explosivas. </Span> Quando ativado, o glifo
+          irrompe com energia mágica numa esfera com 6 metros de raio, centrada
+          no glifo. A esfera se espalha, dobrando esquinas. Cada criatura na
+          área deve realizar um teste de resistência de Destreza. Uma criatura
+          sofre 5d8 de dano de ácido, elétrico, fogo, frio ou trovejante se
+          falhar no teste de resistência (você escolhe o tipo quando cria o
+          glifo) ou metade desse dano se obtiver sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Glifo de Magia. </Span> Você pode armazenar uma
+          magia preparada de 3° nível ou inferior no glifo ao conjura-la como
+          parte da criação do glifo. A magia a ser armazenada não tem efeito
+          imediato quando conjurada dessa forma. Quando o glifo for ativado, a
+          magia armazenada é conjurada. Se a magia tiver um alvo, esse alvo será
+          a criatura que ativou o glifo. Se a magia afetar uma área, a área será
+          centrada na criatura. Se a magia invocar criaturas hostis ou criar
+          objetos ou armadilhas nocivos, eles aparecerão o mais próximo possível
+          do intruso e o atacarão. Se a magia precisar de concentração, ela dura
+          o máximo possível da sua duração.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano do glifo de runas explosivas aumenta em 1d8 para cada nível do espaço acima do 3°. Se você criar um glifo de magia, você pode armazenar qualquer magia do mesmo nível, ou inferior, do espaço que você usar para o glifo de vigilância.",
     source: "players-handbook",
@@ -3931,7 +5227,7 @@ export const SPELLS: Spell[] = [
       "Com uma ação bônus, no seu turno, você pode mover as luzes, até 18 metros, para um novo local dentro do alcance. Uma luz deve estar a, pelo menos, 6 metros de outra luz criada por essa magia e uma luz some se exceder o alcance da magia.",
     ],
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -4018,7 +5314,7 @@ export const SPELLS: Spell[] = [
       "Se você, ao invés, tocar uma criatura durante toda a conjuração, você descobre quais magias, se houver alguma, estão afetando-a atualmente.",
     ],
     source: "players-handbook",
-    casters: ["bard", "wizard"],
+    casters: ["artificer", "bard", "wizard"],
     type: ["utility"],
   },
   {
@@ -4261,7 +5557,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, você pode afetar um alvo adicional para cada nível do espaço acima do 2°.",
     source: "players-handbook",
-    casters: ["bard", "druid", "sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "bard", "druid", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -4441,7 +5737,7 @@ export const SPELLS: Spell[] = [
       "Quando a magia acaba, o alvo flutua suavemente até o chão, se ele ainda estiver no ar.",
     ],
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -4607,7 +5903,7 @@ export const SPELLS: Spell[] = [
       "Se você tentar afetar um objeto segurado ou vestido por uma criatura hostil, a criatura deve ser bem sucedida num teste de Destreza para evitar a magia.",
     ],
     source: "players-handbook",
-    casters: ["bard", "cleric", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "cleric", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -4710,19 +6006,71 @@ export const SPELLS: Spell[] = [
       m: "uma casca de ovo e uma luva de couro de cobra",
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Você cria uma mão Grande de energia cintilante e translucida em um espaço desocupado que você possa ver dentro do alcance. A mão permanece pela duração da magia e ela se move ao seu comando, imitando os movimentos da sua própria mão.",
-      "A mão é um objeto com CA 20 e pontos de vida igual ao seu máximo de pontos de vida. Se ela cair a 0 pontos de vida, a magia termina. Ela tem Força 26 (+8) e Destreza 10 (+0). A mão não preenche o espaço dela.",
-      "Quando você conjura essa magia você pode, com uma ação bônus, nos seus turnos subsequentes, mover a mão até 18 metros e então causar um dos seguintes efeitos com ela.",
-      "Mão Esmagadora.",
-      "A mão tenta agarrar uma criatura Enorme ou menor a 1,5 metro dela. Você usa o valor de Força da mão para determinar o agarrão. Se o alvo for Médio ou menor, você terá vantagem no teste. Enquanto a mão estiver agarrando o alvo, você pode usar uma ação bônus para fazer a mão esmaga-lo. Quando o fizer, o alvo sofre dano de concussão igual a 2d6 + seu modificador de habilidade de conjuração.",
-      "Mão Interposta.",
-      "A mão se interpõem entre você e uma criatura a sua escolha até você lhe dar um comando diferente. A mão se move para ficar entre você e o alvo, concedendo a você meia-cobertura contra o alvo. O alvo não pode se mover através do espaço da mão se o valor de Força dele for menor ou igual ao valor de Força da mão. Se o valor de Força dele for maior que o valor de Força da mão, o alvo pode se mover até você através do espaço da mão, mas aquele espaço será considerado terreno difícil para o alvo.",
-      "Mão Poderosa.",
-      "A mão tenta empurrar uma criatura a 1,5 metro dela em uma direção a sua escolha. Realize um teste com a Força da mão, resistido por um teste de Força (Atletismo) do alvo. Se o alvo for Médio ou menor, você tem vantagem no teste. Se você for bem sucedido, a mão empurra o alvo até 1,5 metro mais uma quantidade de metros igual ao modificador da sua habilidade de conjuração multiplicado por 1,5. A mão se move com o alvo, permanecendo a 1,5 metro dele.",
-      "Punho Cerrado.",
-      "A mão golpeia uma criatura ou objeto a 1,5 metro dela. Realize uma jogada de ataque corpo-a-corpo com magia para a mão usando suas estatísticas de jogo. Se atingir, o alvo sofre 4d8 de dano de energia.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você cria uma mão Grande de energia cintilante e translucida em um
+          espaço desocupado que você possa ver dentro do alcance. A mão
+          permanece pela duração da magia e ela se move ao seu comando, imitando
+          os movimentos da sua própria mão.
+        </Paragraph>
+
+        <Paragraph>
+          A mão é um objeto com CA 20 e pontos de vida igual ao seu máximo de
+          pontos de vida. Se ela cair a 0 pontos de vida, a magia termina. Ela
+          tem Força 26 (+8) e Destreza 10 (+0). A mão não preenche o espaço
+          dela.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjura essa magia você pode, com uma ação bônus, nos seus
+          turnos subsequentes, mover a mão até 18 metros e então causar um dos
+          seguintes efeitos com ela.
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            <Span variant="bold">Mão Esmagadora. </Span> A mão tenta agarrar uma
+            criatura Enorme ou menor a 1,5 metro dela. Você usa o valor de Força
+            da mão para determinar o agarrão. Se o alvo for Médio ou menor, você
+            terá vantagem no teste. Enquanto a mão estiver agarrando o alvo,
+            você pode usar uma ação bônus para fazer a mão esmaga-lo. Quando o
+            fizer, o alvo sofre dano de concussão igual a 2d6 + seu modificador
+            de habilidade de conjuração.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Mão Interposta. </Span> A mão se interpõem
+            entre você e uma criatura a sua escolha até você lhe dar um comando
+            diferente. A mão se move para ficar entre você e o alvo, concedendo
+            a você meia-cobertura contra o alvo. O alvo não pode se mover
+            através do espaço da mão se o valor de Força dele for menor ou igual
+            ao valor de Força da mão. Se o valor de Força dele for maior que o
+            valor de Força da mão, o alvo pode se mover até você através do
+            espaço da mão, mas aquele espaço será considerado terreno difícil
+            para o alvo.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Mão Poderosa. </Span> A mão tenta empurrar uma
+            criatura a 1,5 metro dela em uma direção a sua escolha. Realize um
+            teste com a Força da mão, resistido por um teste de Força
+            (Atletismo) do alvo. Se o alvo for Médio ou menor, você tem vantagem
+            no teste. Se você for bem sucedido, a mão empurra o alvo até 1,5
+            metro mais uma quantidade de metros igual ao modificador da sua
+            habilidade de conjuração multiplicado por 1,5. A mão se move com o
+            alvo, permanecendo a 1,5 metro dele.
+          </ListItem>
+
+          <ListItem>
+            <Span variant="bold">Punho Cerrado. </Span> A mão golpeia uma
+            criatura ou objeto a 1,5 metro dela. Realize uma jogada de ataque
+            corpo-a-corpo com magia para a mão usando suas estatísticas de jogo.
+            Se atingir, o alvo sofre 4d8 de dano de energia.
+          </ListItem>
+        </UList>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 6° nível ou superior, o dano da opção punho cerrado aumenta em 2d8 e o dano da mão esmagadora aumenta em 2d6 para cada nível do espaço acima do 5°.",
     source: "players-handbook",
@@ -4774,7 +6122,7 @@ export const SPELLS: Spell[] = [
       "A mão não pode atacar, ativar itens mágicos ou carregar mais de 5 quilos.",
     ],
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -4897,7 +6245,7 @@ export const SPELLS: Spell[] = [
       "Você pode conjurar essa magia através de objetos sólidos se você tiver familiaridade com o alvo. Silêncio mágico, 30 centímetros de rocha, 2,5 centímetros de metal comum, uma fina camada de chumbo, ou 90 centímetros de madeira ou terra bloqueiam a magia. A magia não precisa seguir uma linha reta e pode viajar livremente, dobrando esquinas ou através de aberturas.",
     ],
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -4960,20 +6308,84 @@ export const SPELLS: Spell[] = [
       m: "uma gota de mercúrio, uma porção de goma arábica e um pouco de fumaça",
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Escolha uma criatura ou objeto não-mágico que você possa ver, dentro do alcance. Você transforma a criatura em uma criatura diferente, a criatura em um objeto ou o objeto em uma criatura (o objeto não pode nem estar sendo vestido nem carregado por outra criatura). A transformação permanece pela duração ou até o alvo cair a 0 pontos de vida ou morrer. Se você se concentrar nessa magia por toda a duração, a transformação será permanente.",
-      "Metamorfos não são afetados por essa magia. Uma criatura involuntária pode realizar um teste de resistência de Constituição e, se for bem sucedida, não será afetada por essa magia.",
-      "Criatura em Criatura.",
-      "Se você transformar uma criatura em outro tipo de criatura, a nova forma pode ser de qualquer tipo que você desejar, contanto que o nível de desafio seja igual ou menor que o do alvo (ou o nível dele, caso o alvo não possua nível de desafio). As estatísticas de jogo do alvo, incluindo seus valores de habilidades mentais, são substituídas pelas estatísticas da nova forma. Ele mantem sua tendência e personalidade.",
-      "O alvo assume os pontos de vida da sua nova forma e, quando ela reverter a sua forma normal, a criatura retorna à quantidade de pontos de vida que ela tinha antes da transformação. Se ela reverter como resultado de ter caído a 0 pontos de vida, qualquer dano excedente é recebido pela sua forma normal. Contanto que o dano excedente não reduza os pontos de vida da forma normal da criatura a 0, ela não cairá inconsciente. Essa magia não pode afetar um alvo com 0 pontos de vida.",
-      "A criatura é limitada em suas ações pela natureza da sua nova forma e ela não pode falar, conjurar magias ou realizar qualquer outra ação que precise de mãos ou de vocalização, a não ser que a nova forma seja capaz de tais ações.",
-      "O equipamento do alvo mescla-se a sua nova forma. O alvo não pode ativar, empunhar ou, de outra forma, se beneficiar de qualquer de seus equipamentos.",
-      "Objeto em Criatura.",
-      "Você pode transformar um objeto em um tipo de criatura, contanto que o tamanho da criatura não seja maior que o tamanho do objeto e, o nível de desafio da criatura será 9 ou menor. A criatura é amigável a você e aos seus companheiros. Ela age em cada um dos seus turnos. Você decide qual ação ela realizará e como ela se move. O Mestre tem as estatísticas da criatura e resolve todas as ações e movimentos dela.",
-      "Se a magia se tornar permanente, você não terá mais controle sobre a criatura. Ele pode continuar amigável a você, dependendo da forma como você a tratou.",
-      "Criatura em Objeto.",
-      "Se você transformar uma criatura em um objeto, ela se transformará, junto com tudo que estiver vestindo ou carregando, nessa forma. As estatísticas da criatura tornam-se as do objeto e a criatura não se lembrará do tempo que passou nessa forma, depois da magia acabar e ela retornar a sua forma normal.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Escolha uma criatura ou objeto não-mágico que você possa ver, dentro
+          do alcance. Você transforma a criatura em uma criatura diferente, a
+          criatura em um objeto ou o objeto em uma criatura (o objeto não pode
+          nem estar sendo vestido nem carregado por outra criatura). A
+          transformação permanece pela duração ou até o alvo cair a 0 pontos de
+          vida ou morrer. Se você se concentrar nessa magia por toda a duração,
+          a transformação será permanente.
+        </Paragraph>
+
+        <Paragraph>
+          Metamorfos não são afetados por essa magia. Uma criatura involuntária
+          pode realizar um teste de resistência de Constituição e, se for bem
+          sucedida, não será afetada por essa magia.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Criatura em Criatura. </Span> Se você transformar
+          uma criatura em outro tipo de criatura, a nova forma pode ser de
+          qualquer tipo que você desejar, contanto que o nível de desafio seja
+          igual ou menor que o do alvo (ou o nível dele, caso o alvo não possua
+          nível de desafio). As estatísticas de jogo do alvo, incluindo seus
+          valores de habilidades mentais, são substituídas pelas estatísticas da
+          nova forma. Ele mantem sua tendência e personalidade.
+        </Paragraph>
+
+        <Paragraph>
+          O alvo assume os pontos de vida da sua nova forma e, quando ela
+          reverter a sua forma normal, a criatura retorna à quantidade de pontos
+          de vida que ela tinha antes da transformação. Se ela reverter como
+          resultado de ter caído a 0 pontos de vida, qualquer dano excedente é
+          recebido pela sua forma normal. Contanto que o dano excedente não
+          reduza os pontos de vida da forma normal da criatura a 0, ela não
+          cairá inconsciente. Essa magia não pode afetar um alvo com 0 pontos de
+          vida.
+        </Paragraph>
+
+        <Paragraph>
+          A criatura é limitada em suas ações pela natureza da sua nova forma e
+          ela não pode falar, conjurar magias ou realizar qualquer outra ação
+          que precise de mãos ou de vocalização, a não ser que a nova forma seja
+          capaz de tais ações.
+        </Paragraph>
+
+        <Paragraph>
+          O equipamento do alvo mescla-se a sua nova forma. O alvo não pode
+          ativar, empunhar ou, de outra forma, se beneficiar de qualquer de seus
+          equipamentos.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Objeto em Criatura. </Span> Você pode transformar
+          um objeto em um tipo de criatura, contanto que o tamanho da criatura
+          não seja maior que o tamanho do objeto e, o nível de desafio da
+          criatura será 9 ou menor. A criatura é amigável a você e aos seus
+          companheiros. Ela age em cada um dos seus turnos. Você decide qual
+          ação ela realizará e como ela se move. O Mestre tem as estatísticas da
+          criatura e resolve todas as ações e movimentos dela.
+        </Paragraph>
+
+        <Paragraph>
+          Se a magia se tornar permanente, você não terá mais controle sobre a
+          criatura. Ele pode continuar amigável a você, dependendo da forma como
+          você a tratou.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Criatura em Objeto. </Span>
+          Se você transformar uma criatura em um objeto, ela se transformará,
+          junto com tudo que estiver vestindo ou carregando, nessa forma. As
+          estatísticas da criatura tornam-se as do objeto e a criatura não se
+          lembrará do tempo que passou nessa forma, depois da magia acabar e ela
+          retornar a sua forma normal.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "warlock", "wizard"],
     type: ["utility"],
@@ -5318,27 +6730,117 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "10 minutos",
-    description: [
-      "Uma plano cintilante multicolorido de luzes forma uma parece vertical opaca - de até 27 metros de comprimento, 9 metros de altura e 2,5 centímetros de espessura - centrada num ponto que você possa ver, dentro do alcance. Alternativamente, você pode moldar a muralha numa esfera de 9 metros de diâmetro centrada num ponto, à sua escolha, dentro do alcance. A muralha permanece no lugar pela duração. Se você posicionar a muralha de forma que ela passaria através do espaço ocupado por uma criatura, a magia falha e sua ação e o espaço de magia são desperdiçados.",
-      "A muralha emite luz plena num raio de 30 metros e penumbra por 30 metros adicionais. Você e as criaturas designadas, no momento que você conjurou a magia, podem passar através e permanecer perto da muralha sem se ferirem. Se outra criatura que puder ver a muralha se aproximar mais de 6 metros dela ou começar seu turno lá, a criatura deve realizar um teste de resistência de Constituição ou ficará cega por 1 minuto.",
-      "A muralha consiste em sete camadas, cada uma de uma cor diferente. Quando uma criatura tenta tocar ou passar através da muralha, ela atravessa uma camada de cada vez, até atravessar todas as camadas da muralha. À medida que ela passa ou toca cada camada, a criatura realiza um teste de resistência de Destreza ou será afetada pelas propriedades daquela camada, como descrito abaixo.",
-      "A muralha pode ser destruída, também, uma camada por vez, em ordem de vermelho à violeta, pelos meios especificados em cada camada. Quando uma camada é destruída, ela permanece assim pela duração da magia. Um bastão do cancelamento destrói uma muralha prismática, mas um campo antimagia não produz efeito nela.",
-      "1. Vermelho.",
-      "O alvo sofre 10d6 de dano de fogo se falhar na resistência ou metade desse dano se obtiver sucesso. Enquanto essa camada estiver no lugar, ataques à distância não-mágicos não podem atravessar a muralha. A camada pode ser destruída causando, pelo menos, 25 de dano de frio a ela.",
-      "2. Laranja.",
-      "O alvo sofre 10d6 de dano de ácido se falhar na resistência ou metade desse dano se obtiver sucesso. Enquanto essa camada estiver no lugar, ataques à distância mágicos não podem atravessar a muralha. A camada pode ser destruída por um vento forte.",
-      "3. Amarelo.",
-      "O alvo sofre 10d6 de dano elétrico se falhar na resistência ou metade desse dano se obtiver sucesso. A camada pode ser destruída causando, pelo menos, 60 de dano de energia a ela.",
-      "4. Verde.",
-      "O alvo sofre 10d6 de dano de veneno se falhar na resistência ou metade desse dano se obtiver sucesso. A magia criar passagem ou outra magia de nível igual ou superior que possam abrir um portal em uma superfície sólida, destroem essa camada.",
-      "5. Azul.",
-      "O alvo sofre 10d6 de dano de frio se falhar na resistência ou metade desse dano se obtiver sucesso. A camada pode ser destruída causando, pelo menos, 25 de dano de fogo a ela.",
-      "6. Anil.",
-      "Se falhar na resistência, o alvo ficará impedido. Ele deve então, fazer um teste de resistência de Constituição ao final de cada um dos turnos dele. Se obtiver sucesso três vezes, a magia termina. Se falhar na resistência três vezes, ela se torna pedra é afetada pela condição petrificado. Os sucessos e falhas não precisam ser consecutivos; anote ambos os resultados até o alvo acumular três de mesmo tipo.",
-      "Enquanto essa camada estiver no lugar, magias não podem ser conjuradas através da muralha. A camada pode ser destruída por luz plena emitida pela magia luz do dia ou uma magia similar de nível equivalente ou superior.",
-      "7. Violeta.",
-      "Se falhar na resistência, o alvo ficará cego. Ele deve realizar um teste de resistência de Sabedoria no início do seu próximo turno. Um sucesso na resistência acaba com a cegueira. Se falhar na resistência, a criatura é transportada para outro plano de existência, escolhido pelo Mestre, e não estará mais cego. (Tipicamente, uma criatura que esteja em um plano que não seja o seu plano natal é banida para lá, enquanto que outras criaturas geralmente são enviadas para os Planos Astral ou Etéreo.) Essa camada é destruída pela magia dissipar magia ou por uma magia similar de nível equivalente ou superior que possa acabar com magias e efeitos mágicos.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Uma plano cintilante multicolorido de luzes forma uma parece vertical
+          opaca - de até 27 metros de comprimento, 9 metros de altura e 2,5
+          centímetros de espessura - centrada num ponto que você possa ver,
+          dentro do alcance. Alternativamente, você pode moldar a muralha numa
+          esfera de 9 metros de diâmetro centrada num ponto, à sua escolha,
+          dentro do alcance. A muralha permanece no lugar pela duração. Se você
+          posicionar a muralha de forma que ela passaria através do espaço
+          ocupado por uma criatura, a magia falha e sua ação e o espaço de magia
+          são desperdiçados.
+        </Paragraph>
+
+        <Paragraph>
+          A muralha emite luz plena num raio de 30 metros e penumbra por 30
+          metros adicionais. Você e as criaturas designadas, no momento que você
+          conjurou a magia, podem passar através e permanecer perto da muralha
+          sem se ferirem. Se outra criatura que puder ver a muralha se aproximar
+          mais de 6 metros dela ou começar seu turno lá, a criatura deve
+          realizar um teste de resistência de Constituição ou ficará cega por 1
+          minuto.
+        </Paragraph>
+
+        <Paragraph>
+          A muralha consiste em sete camadas, cada uma de uma cor diferente.
+          Quando uma criatura tenta tocar ou passar através da muralha, ela
+          atravessa uma camada de cada vez, até atravessar todas as camadas da
+          muralha. À medida que ela passa ou toca cada camada, a criatura
+          realiza um teste de resistência de Destreza ou será afetada pelas
+          propriedades daquela camada, como descrito abaixo.
+        </Paragraph>
+
+        <Paragraph>
+          A muralha pode ser destruída, também, uma camada por vez, em ordem de
+          vermelho à violeta, pelos meios especificados em cada camada. Quando
+          uma camada é destruída, ela permanece assim pela duração da magia. Um
+          bastão do cancelamento destrói uma muralha prismática, mas um campo
+          antimagia não produz efeito nela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">1. Vermelho. </Span> O alvo sofre 10d6 de dano de
+          fogo se falhar na resistência ou metade desse dano se obtiver sucesso.
+          Enquanto essa camada estiver no lugar, ataques à distância não-mágicos
+          não podem atravessar a muralha. A camada pode ser destruída causando,
+          pelo menos, 25 de dano de frio a ela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">2. Laranja. </Span> O alvo sofre 10d6 de dano de
+          ácido se falhar na resistência ou metade desse dano se obtiver
+          sucesso. Enquanto essa camada estiver no lugar, ataques à distância
+          mágicos não podem atravessar a muralha. A camada pode ser destruída
+          por um vento forte.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">3. Amarelo. </Span> O alvo sofre 10d6 de dano
+          elétrico se falhar na resistência ou metade desse dano se obtiver
+          sucesso. A camada pode ser destruída causando, pelo menos, 60 de dano
+          de energia a ela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">4. Verde. </Span> O alvo sofre 10d6 de dano de
+          veneno se falhar na resistência ou metade desse dano se obtiver
+          sucesso. A magia criar passagem ou outra magia de nível igual ou
+          superior que possam abrir um portal em uma superfície sólida, destroem
+          essa camada.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">5. Azul. </Span> O alvo sofre 10d6 de dano de
+          frio se falhar na resistência ou metade desse dano se obtiver sucesso.
+          A camada pode ser destruída causando, pelo menos, 25 de dano de fogo a
+          ela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">6. Anil. </Span> Se falhar na resistência, o alvo
+          ficará impedido. Ele deve então, fazer um teste de resistência de
+          Constituição ao final de cada um dos turnos dele. Se obtiver sucesso
+          três vezes, a magia termina. Se falhar na resistência três vezes, ela
+          se torna pedra é afetada pela condição petrificado. Os sucessos e
+          falhas não precisam ser consecutivos; anote ambos os resultados até o
+          alvo acumular três de mesmo tipo.
+        </Paragraph>
+
+        <Paragraph>
+          Enquanto essa camada estiver no lugar, magias não podem ser conjuradas
+          através da muralha. A camada pode ser destruída por luz plena emitida
+          pela magia luz do dia ou uma magia similar de nível equivalente ou
+          superior.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">7. Violeta. </Span> Se falhar na resistência, o
+          alvo ficará cego. Ele deve realizar um teste de resistência de
+          Sabedoria no início do seu próximo turno. Um sucesso na resistência
+          acaba com a cegueira. Se falhar na resistência, a criatura é
+          transportada para outro plano de existência, escolhido pelo Mestre, e
+          não estará mais cego. (Tipicamente, uma criatura que esteja em um
+          plano que não seja o seu plano natal é banida para lá, enquanto que
+          outras criaturas geralmente são enviadas para os Planos Astral ou
+          Etéreo.) Essa camada é destruída pela magia dissipar magia ou por uma
+          magia similar de nível equivalente ou superior que possa acabar com
+          magias e efeitos mágicos.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["wizard"],
     type: ["damage", "utility"],
@@ -5450,7 +6952,7 @@ export const SPELLS: Spell[] = [
     description:
       "Seu corpo se torna turvo, mudando e oscilando para todos que puderem ver você. Pela duração, qualquer criatura terá desvantagem nas jogadas de ataque contra você. Um atacante é imune a esse efeito se não depender de visão, como os que tenham percepção às cegas ou os que puderem ver através de ilusões, como os com visão verdadeira.",
     source: "players-handbook",
-    casters: ["druid", "sorcerer", "wizard"],
+    casters: ["artificer", "druid", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -5598,7 +7100,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você toca uma criatura voluntária. Uma vez, antes da magia acabar, o alvo pode rolar um d4 e adicionar o número rolado a um teste de habilidade a escolha dele. Ele pode rolar o dado antes ou depois de realizar o teste de habilidade. Após isso, a magia termina.",
     source: "players-handbook",
-    casters: ["cleric", "druid"],
+    casters: ["artificer", "cleric", "druid"],
     type: ["utility"],
   },
   {
@@ -5744,14 +7246,42 @@ export const SPELLS: Spell[] = [
       v: true,
     },
     duration: "Instantânea",
-    description: [
-      "Você profere uma palavra divina, imbuída com o poder que moldou o mundo na aurora da criação. Escolha qualquer quantidade de criaturas que você possa ver dentro do alcance. Cada criatura que puder ouvir você deve realizar um teste de resistência de Carisma. Ao falhar na resistência, uma criatura sofre um efeito baseado nos seus pontos de vida atuais:",
-      "- 50 pontos de vida ou menos: surda por 1 minuto.",
-      "- 40 pontos de vida ou menos: surda e cega por 10 minutos.",
-      "- 30 pontos de vida ou menos: surda, cega e atordoada por 1 hora.",
-      "- 20 pontos de vida ou menos: morta instantaneamente.",
-      "Independentemente dos seus pontos de vida atuais, um celestial, corruptor, elemental ou fada que falhar na sua resistência é obrigado a voltar para o plano de origem dele (se já não for aqui) e não pode retornar para o plano atual por 24 horas através de nenhum meio inferior à magia desejo.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você profere uma palavra divina, imbuída com o poder que moldou o
+          mundo na aurora da criação. Escolha qualquer quantidade de criaturas
+          que você possa ver dentro do alcance. Cada criatura que puder ouvir
+          você deve realizar um teste de resistência de Carisma. Ao falhar na
+          resistência, uma criatura sofre um efeito baseado nos seus pontos de
+          vida atuais:
+        </Paragraph>
+
+        <UList>
+          <ListItem>50 pontos de vida ou menos: surda por 1 minuto.</ListItem>
+
+          <ListItem>
+            40 pontos de vida ou menos: surda e cega por 10 minutos.
+          </ListItem>
+
+          <ListItem>
+            30 pontos de vida ou menos: surda, cega e atordoada por 1 hora.
+          </ListItem>
+
+          <ListItem>
+            20 pontos de vida ou menos: morta instantaneamente.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Independentemente dos seus pontos de vida atuais, um celestial,
+          corruptor, elemental ou fada que falhar na sua resistência é obrigado
+          a voltar para o plano de origem dele (se já não for aqui) e não pode
+          retornar para o plano atual por 24 horas através de nenhum meio
+          inferior à magia desejo.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric"],
     type: ["damage", "utility"],
@@ -5850,7 +7380,7 @@ export const SPELLS: Spell[] = [
     description:
       "Até a magia acabar, uma criatura voluntária que você tocar, recebe a habilidade de se mover para cima, para baixo e através de superfícies verticais e de cabeça para baixo pelos tetos, enquanto deixa suas mãos livres. O alvo também ganha deslocamento de escalada igual a seu deslocamento de caminhada.",
     source: "players-handbook",
-    casters: ["druid", "sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "druid", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -6033,23 +7563,72 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "7 dias",
-    description: [
-      "Seu toque inflige uma doença. Faça um ataque de magia corpo-a-corpo contra uma criatura ao seu alcance. Se atingir, você aflige a criatura com uma doença, de sua escolha, entre qualquer um das descritas abaixo.",
-      "No final de cada turno do alvo, ele deve realizar um teste de resistência de Constituição. Após obter três falhas nesses testes de resistência, o efeito da doença permanece pela duração e a criatura para de fazer testes de resistência. Após obter três sucessos nesses testes de resistência, a criatura se recupera da doença e a magia termina.",
-      "Já que essa magia induz uma doença natural no alvo, qualquer efeito que remova uma doença, ou de outra forma, melhore os efeitos de uma doença, se aplica a ela.",
-      "Ardência Mental.",
-      "A mente da criatura fica febril. A criatura tem desvantagem em testes de Inteligência, testes de resistência de Inteligência e a criatura age como se estivesse sob efeito da magia confusão durante um combate.",
-      "Enjoo Cegante.",
-      "A dor se agarra a mente da criatura e seus olhos ficam branco-leitosos. A criatura tem desvantagem em testes de Sabedoria e testes de resistência de Sabedoria e está cega.",
-      "Febre do Esgoto.",
-      "Uma febre voraz se espalha pelo corpo da criatura. A criatura tem desvantagem em testes de Força, testes de resistência de Força e jogadas de ataque que usem Força.",
-      "Necrose da Carne.",
-      "A carne da criatura se decompõe. A criatura tem desvantagem em testes de Carisma e vulnerabilidade a todos os danos.",
-      "Perdição Pegajosa.",
-      "A criatura começa a sangrar incontrolavelmente. A criatura tem desvantagem em testes de Constituição e testes de resistência de Constituição. Além disso, sempre que a criatura sofrer dano, ela ficará atordoada até o fim do seu próximo turno.",
-      "Tremedeira.",
-      "A criatura é acometida por espasmos. A criatura tem desvantagem em testes de Destreza, testes de resistência de Destreza e jogadas de ataque que usem Destreza.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Seu toque inflige uma doença. Faça um ataque de magia corpo-a-corpo
+          contra uma criatura ao seu alcance. Se atingir, você aflige a criatura
+          com uma doença, de sua escolha, entre qualquer um das descritas
+          abaixo.
+        </Paragraph>
+
+        <Paragraph>
+          No final de cada turno do alvo, ele deve realizar um teste de
+          resistência de Constituição. Após obter três falhas nesses testes de
+          resistência, o efeito da doença permanece pela duração e a criatura
+          para de fazer testes de resistência. Após obter três sucessos nesses
+          testes de resistência, a criatura se recupera da doença e a magia
+          termina.
+        </Paragraph>
+
+        <Paragraph>
+          Já que essa magia induz uma doença natural no alvo, qualquer efeito
+          que remova uma doença, ou de outra forma, melhore os efeitos de uma
+          doença, se aplica a ela.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Ardência Mental. </Span> A mente da criatura fica
+          febril. A criatura tem desvantagem em testes de Inteligência, testes
+          de resistência de Inteligência e a criatura age como se estivesse sob
+          efeito da magia confusão durante um combate.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Enjoo Cegante. </Span> A dor se agarra a mente da
+          criatura e seus olhos ficam branco-leitosos. A criatura tem
+          desvantagem em testes de Sabedoria e testes de resistência de
+          Sabedoria e está cega.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Febre do Esgoto. </Span> Uma febre voraz se
+          espalha pelo corpo da criatura. A criatura tem desvantagem em testes
+          de Força, testes de resistência de Força e jogadas de ataque que usem
+          Força.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Necrose da Carne. </Span> A carne da criatura se
+          decompõe. A criatura tem desvantagem em testes de Carisma e
+          vulnerabilidade a todos os danos.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Perdição Pegajosa. </Span> A criatura começa a
+          sangrar incontrolavelmente. A criatura tem desvantagem em testes de
+          Constituição e testes de resistência de Constituição. Além disso,
+          sempre que a criatura sofrer dano, ela ficará atordoada até o fim do
+          seu próximo turno.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Tremedeira. </Span> A criatura é acometida por
+          espasmos. A criatura tem desvantagem em testes de Destreza, testes de
+          resistência de Destreza e jogadas de ataque que usem Destreza.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric", "druid"],
     type: ["utility"],
@@ -6092,18 +7671,56 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Até 1 hora",
-    description: [
-      "Essa magia é um truque mágico simples que conjuradores iniciantes usam para praticar. Você cria um dos seguintes efeitos mágicos dentro do alcance:",
-      "- Você cria, instantaneamente, um efeito sensorial inofensivo, como uma chuva de faíscas, um sopro de vento, notas musicais suaves ou um odor estranho.",
-      "- Você, instantaneamente, acende ou apaga uma vela, uma tocha ou uma pequena fogueira.",
-      "- Você, instantaneamente, limpa ou suja um objeto de até 1 metro cúbico.",
-      "- Você esfria, esquenta ou melhora o sabor de até 1 metro cubico de matéria inorgânica por 1 hora.",
-      "- Você faz uma cor, uma pequena marca ou um símbolo aparecer em um objeto ou superfície por 1 hora.",
-      "- Você cria uma bugiganga não-mágica ou uma imagem ilusória que caiba na sua mão e que dura até o final do seu próximo turno.",
-      "Se você conjurar essa magia diversas vezes, você pode ter até três dos seus efeitos não-instantâneos ativos, ao mesmo tempo, e você pode dissipar um desses efeitos com uma ação.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Essa magia é um truque mágico simples que conjuradores iniciantes usam
+          para praticar. Você cria um dos seguintes efeitos mágicos dentro do
+          alcance:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Você cria, instantaneamente, um efeito sensorial inofensivo, como
+            uma chuva de faíscas, um sopro de vento, notas musicais suaves ou um
+            odor estranho.
+          </ListItem>
+
+          <ListItem>
+            Você, instantaneamente, acende ou apaga uma vela, uma tocha ou uma
+            pequena fogueira.
+          </ListItem>
+
+          <ListItem>
+            Você, instantaneamente, limpa ou suja um objeto de até 1 metro
+            cúbico.
+          </ListItem>
+
+          <ListItem>
+            Você esfria, esquenta ou melhora o sabor de até 1 metro cubico de
+            matéria inorgânica por 1 hora.
+          </ListItem>
+
+          <ListItem>
+            Você faz uma cor, uma pequena marca ou um símbolo aparecer em um
+            objeto ou superfície por 1 hora.
+          </ListItem>
+
+          <ListItem>
+            Você cria uma bugiganga não-mágica ou uma imagem ilusória que caiba
+            na sua mão e que dura até o final do seu próximo turno.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Se você conjurar essa magia diversas vezes, você pode ter até três dos
+          seus efeitos não-instantâneos ativos, ao mesmo tempo, e você pode
+          dissipar um desses efeitos com uma ação.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -6300,7 +7917,7 @@ export const SPELLS: Spell[] = [
       "Pela duração, o alvo terá vantagem em testes de resistência para não envenenado e terá resistência a dano de veneno.",
     ],
     source: "players-handbook",
-    casters: ["cleric", "druid", "paladin", "ranger"],
+    casters: ["artificer", "cleric", "druid", "paladin", "ranger"],
     type: ["utility"],
   },
   {
@@ -6316,26 +7933,96 @@ export const SPELLS: Spell[] = [
       m: "incenso aceso, uma porção de enxofre e óleo, uma corda amarrada, uma porção de sangue de tribulo brutal e um pequeno bastão de prata valendo, no mínimo, 10 po",
     },
     duration: "24 horas",
-    description: [
-      "Você cria uma defesa que protege até 225 metros quadrados de espaço (uma área de um quadrado de 15 metros ou cem quadrados de 1,5 metro ou vinte e cinco quadrados de 3 metros). A área protegida pode ter até 6 metros de altura, no formado que você desejar. Você pode proteger diversos armazéns de uma fortaleza dividindo a área entre eles, contanto que você possa andar em cada área contígua enquanto estiver conjurando a magia.",
-      "Quando você conjura essa magia, você pode especificar indivíduos que não serão afetados por qualquer dos efeitos que você escolher. Você também pode especificar uma senha que, ao ser falada em voz alta, deixa o orador imune aos efeitos.",
-      "Proteger fortaleza cria os seguintes efeitos dentro da área protegida.",
-      "Corredores.",
-      "Névoa preenche todos os corredores protegidos, tornando-os área de escuridão densa. Além disso, cada interseção ou passagem ramificada oferecendo uma escolha de direção, há 50 por cento de chance de uma criatura diferente de você acredite que está indo na direção oposta à que escolheu.",
-      "Portas.",
-      "Todas as portas na área protegida estão trancadas magicamente, como se estivessem seladas pela magia tranca arcana. Além disso, você pode cobrir até dez portas com uma ilusão (equivalente a função de objeto ilusório da magia ilusão menor) para fazê-las parecer seções simples da parede.",
-      "Escadas.",
-      "Teias preenchem todas as escadas na área protegida do topo ao solo, como a magia teia. Esses fios voltam a crescer em 10 minutos se forem queimados ou partidos enquanto proteger fortaleza durar.",
-      "Outros Efeitos de Magia.",
-      "Você pode colocar, à sua escolha, um dos seguintes efeitos mágicos dentro da área protegida de uma fortaleza.",
-      "- Colocar globos de luz em quatro corredores. Você pode designar uma programação simples que as luzes repetem enquanto proteger fortaleza durar.",
-      "- Colocar boca encantada em duas localizações.",
-      "- Colocar névoa fétida em duas localizações. Os vapores aparecem nos locais que você designar; eles retornam dentro de 10 minutos, se forem dispersados por um vento, enquanto proteger fortaleza durar.",
-      "- Colocar uma lufada de vento constante em um corredor ou aposento.",
-      "- Colocar uma sugestão em uma localização. Você seleciona uma área de um quadrado de 1,5 metro e, qualquer criatura que entrar ou passar através dessa área recebe a sugestão mentalmente.",
-      "A área protegida inteira irradia magia. Uma dissipar magia conjurada em uma área especifica, se for bem sucedida, remove apenas aquele efeito.",
-      "Você pode criar uma estrutura, permanentemente, afetada por proteger fortaleza ao conjurar essa magia nela a cada dia por um ano.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você cria uma defesa que protege até 225 metros quadrados de espaço
+          (uma área de um quadrado de 15 metros ou cem quadrados de 1,5 metro ou
+          vinte e cinco quadrados de 3 metros). A área protegida pode ter até 6
+          metros de altura, no formado que você desejar. Você pode proteger
+          diversos armazéns de uma fortaleza dividindo a área entre eles,
+          contanto que você possa andar em cada área contígua enquanto estiver
+          conjurando a magia.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjura essa magia, você pode especificar indivíduos que
+          não serão afetados por qualquer dos efeitos que você escolher. Você
+          também pode especificar uma senha que, ao ser falada em voz alta,
+          deixa o orador imune aos efeitos.
+        </Paragraph>
+
+        <Paragraph>
+          Proteger fortaleza cria os seguintes efeitos dentro da área protegida.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Corredores. </Span> Névoa preenche todos os
+          corredores protegidos, tornando-os área de escuridão densa. Além
+          disso, cada interseção ou passagem ramificada oferecendo uma escolha
+          de direção, há 50 por cento de chance de uma criatura diferente de
+          você acredite que está indo na direção oposta à que escolheu.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Portas. </Span> Todas as portas na área protegida
+          estão trancadas magicamente, como se estivessem seladas pela magia
+          tranca arcana. Além disso, você pode cobrir até dez portas com uma
+          ilusão (equivalente a função de objeto ilusório da magia ilusão menor)
+          para fazê-las parecer seções simples da parede.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Escadas. </Span> Teias preenchem todas as escadas
+          na área protegida do topo ao solo, como a magia teia. Esses fios
+          voltam a crescer em 10 minutos se forem queimados ou partidos enquanto
+          proteger fortaleza durar.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Outros Efeitos de Magia. </Span> Você pode
+          colocar, à sua escolha, um dos seguintes efeitos mágicos dentro da
+          área protegida de uma fortaleza.
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Colocar globos de luz em quatro corredores. Você pode designar uma
+            programação simples que as luzes repetem enquanto proteger fortaleza
+            durar.
+          </ListItem>
+
+          <ListItem>Colocar boca encantada em duas localizações.</ListItem>
+
+          <ListItem>
+            Colocar névoa fétida em duas localizações. Os vapores aparecem nos
+            locais que você designar; eles retornam dentro de 10 minutos, se
+            forem dispersados por um vento, enquanto proteger fortaleza durar.
+          </ListItem>
+
+          <ListItem>
+            Colocar uma lufada de vento constante em um corredor ou aposento.
+          </ListItem>
+
+          <ListItem>
+            Colocar uma sugestão em uma localização. Você seleciona uma área de
+            um quadrado de 1,5 metro e, qualquer criatura que entrar ou passar
+            através dessa área recebe a sugestão mentalmente.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          A área protegida inteira irradia magia. Uma dissipar magia conjurada
+          em uma área especifica, se for bem sucedida, remove apenas aquele
+          efeito.
+        </Paragraph>
+
+        <Paragraph>
+          Você pode criar uma estrutura, permanentemente, afetada por proteger
+          fortaleza ao conjurar essa magia nela a cada dia por um ano.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "wizard"],
     type: ["utility"],
@@ -6356,7 +8043,7 @@ export const SPELLS: Spell[] = [
     description:
       "Toda comida e bebida não-mágica dentro de uma esfera de 1,5 metro de raio centrada num ponto, à sua escolha, dentro do alcance é purificada e se livrada de venenos ou doenças.",
     source: "players-handbook",
-    casters: ["cleric", "druid", "paladin"],
+    casters: ["artificer", "cleric", "druid", "paladin"],
     type: ["utility"],
   },
   {
@@ -6376,7 +8063,7 @@ export const SPELLS: Spell[] = [
     description:
       "Escolha até cinco criaturas caindo, dentro do alcance. A taxa de descendência de uma criatura caindo é reduzida para 18 metros por rodada, até o fim da magia. Se a criatura aterrissar antes da magia acabar, ela não sofre nenhum dano de queda, pode aterrissar em pé e a magia termina para essa criatura.",
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -6466,7 +8153,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d10 quando você alcança o 5° nível (2d10), 11° nível (3d10) e 17° nível (4d10).",
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["damage"],
     damageType: ["fire"],
     spellAttack: "spell-ranged",
@@ -6488,7 +8175,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano da magia aumenta em 1d8 quando você alcança o 5° nível (2d8), 11° nível (3d8) e 17° nível (4d8).",
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["damage", "utility"],
     damageType: ["cold"],
     spellAttack: "spell-ranged",
@@ -6606,7 +8293,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d12 quando você alcança o 5° nível (2d12), 11° nível (3d12) e 17° nível (4d12).",
     source: "players-handbook",
-    casters: ["druid", "sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "druid", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["poison"],
     savingThrow: "con",
@@ -6645,25 +8332,72 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Oito raios de luz multicoloridos lampejam da sua mão. Cada raio é uma cor diferente e tem poderes e propósitos diferentes. Cada criatura em um cone de 18 metros deve realizar um teste de resistência de Destreza. Para cada alvo, role um d8 para determinar qual cor de raio afetou ele.",
-      "1. Vermelho.",
-      "O alvo sofre 10d6 de dano de fogo se falhar na resistência ou metade desse dano se obtiver sucesso.",
-      "2. Laranja.",
-      "O alvo sofre 10d6 de dano de ácido se falhar na resistência ou metade desse dano se obtiver sucesso.",
-      "3. Amarelo.",
-      "O alvo sofre 10d6 de dano elétrico se falhar na resistência ou metade desse dano se obtiver sucesso.",
-      "4. Verde.",
-      "O alvo sofre 10d6 de dano de veneno se falhar na resistência ou metade desse dano se obtiver sucesso.",
-      "5. Azul.",
-      "O alvo sofre 10d6 de dano de frio se falhar na resistência ou metade desse dano se obtiver sucesso.",
-      "6. Anil.",
-      "Se falhar na resistência, o alvo ficará impedido. Ele deve então, fazer um teste de resistência de Constituição ao final de cada um dos turnos dele. Se obtiver sucesso três vezes, a magia termina. Se falhar na resistência três vezes, ela se torna pedra é afetada pela condição petrificado. Os sucessos e falhas não precisam ser consecutivos; anote ambos os resultados até o alvo acumular três de mesmo tipo.",
-      "7. Violeta.",
-      "Se falhar na resistência, o alvo ficará cego. Ele deve realizar um teste de resistência de Sabedoria no início do seu próximo turno. Um sucesso na resistência acaba com a cegueira. Se falhar na resistência, a criatura é transportada para outro plano de existência, escolhido pelo Mestre, e não estará mais cego. (Tipicamente, uma criatura que esteja em um plano que não seja o seu plano natal é banida para lá, enquanto que outras criaturas geralmente são enviadas para os Planos Astral ou Etéreo.)",
-      "8. Especial.",
-      "O alvo é atingido por dois raios. Role mais duas vezes e jogue novamente qualquer 8.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Oito raios de luz multicoloridos lampejam da sua mão. Cada raio é uma
+          cor diferente e tem poderes e propósitos diferentes. Cada criatura em
+          um cone de 18 metros deve realizar um teste de resistência de
+          Destreza. Para cada alvo, role um d8 para determinar qual cor de raio
+          afetou ele.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">1. Vermelho. </Span> O alvo sofre 10d6 de dano de
+          fogo se falhar na resistência ou metade desse dano se obtiver sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">2. Laranja. </Span> O alvo sofre 10d6 de dano de
+          ácido se falhar na resistência ou metade desse dano se obtiver
+          sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">3. Amarelo. </Span> O alvo sofre 10d6 de dano
+          elétrico se falhar na resistência ou metade desse dano se obtiver
+          sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">4. Verde. </Span> O alvo sofre 10d6 de dano de
+          veneno se falhar na resistência ou metade desse dano se obtiver
+          sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">5. Azul. </Span> O alvo sofre 10d6 de dano de
+          frio se falhar na resistência ou metade desse dano se obtiver sucesso.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">6. Anil. </Span> Se falhar na resistência, o alvo
+          ficará impedido. Ele deve então, fazer um teste de resistência de
+          Constituição ao final de cada um dos turnos dele. Se obtiver sucesso
+          três vezes, a magia termina. Se falhar na resistência três vezes, ela
+          se torna pedra é afetada pela condição petrificado. Os sucessos e
+          falhas não precisam ser consecutivos; anote ambos os resultados até o
+          alvo acumular três de mesmo tipo.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">7. Violeta. </Span> Se falhar na resistência, o
+          alvo ficará cego. Ele deve realizar um teste de resistência de
+          Sabedoria no início do seu próximo turno. Um sucesso na resistência
+          acaba com a cegueira. Se falhar na resistência, a criatura é
+          transportada para outro plano de existência, escolhido pelo Mestre, e
+          não estará mais cego. (Tipicamente, uma criatura que esteja em um
+          plano que não seja o seu plano natal é banida para lá, enquanto que
+          outras criaturas geralmente são enviadas para os Planos Astral ou
+          Etéreo.)
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">8. Especial. </Span> O alvo é atingido por dois
+          raios. Role mais duas vezes e jogue novamente qualquer 8.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["sorcerer", "wizard"],
     type: ["damage", "utility"],
@@ -6712,7 +8446,7 @@ export const SPELLS: Spell[] = [
     description:
       "Essa magia permite que você se mova a um ritmo incrível. Quando você conjura essa magia e, a partir de então, com uma ação bônus em cada um dos seus turnos, até a magia acabar, você pode realizar a ação de Disparada.",
     source: "players-handbook",
-    casters: ["sorcerer", "warlock", "wizard"],
+    casters: ["artificer", "sorcerer", "warlock", "wizard"],
     type: ["utility"],
   },
   {
@@ -6728,25 +8462,113 @@ export const SPELLS: Spell[] = [
       m: "óleos e unguentos raros valendo, no mínimo, 1.000 po, consumidos pela magia",
     },
     duration: "Instantânea",
-    description: [
-      "Você toca um humanoide morto ou um pedaço de um humanoide morto. Considerando que a criatura não esteja morta a mais de 10 dias, a magia forma um novo corpo adulto para ele e então, chama a alma para entrar no corpo. Se a alam do alvo não estiver livre ou deseje fazêlo, a magia falha.",
-      "A magia forma um novo corpo para que a criatura habite, o que, provavelmente, fará com que a raça da criatura mude. O Mestre rola um d100 e consulta a tabela seguinte para determinar qual forma a criatura terá quando voltar a vida, ou o Mestre pode escolher uma forma.",
-      "Resultado 01-04: Draconato",
-      "Resultado 05-13: Anão da Colina",
-      "Resultado 14-21: Anão da Montanha",
-      "Resultado 22-25: Elfo Negro (Drow)",
-      "Resultado 26-34: Elfo Alto",
-      "Resultado 35-42: Elfo da Floresta",
-      "Resultado 43-46: Gnomo da Floresta",
-      "Resultado 47-52: Gnomo das Rochas",
-      "Resultado 53-56: Meio-elfo",
-      "Resultado 57-60: Meio-orc",
-      "Resultado 61-68: Halfling Pés Leves",
-      "Resultado 69-76: Halfing Robusto",
-      "Resultado 77-96: Humano",
-      "Resultado 97-100: Tiefling",
-      "A criatura reencarnada lembra-se da sua vida e experiências anteriores. Ela mantem as capacidades que a sua forma original tinha, exceto por trocar sua raça original pela nova e mudar suas características raciais adequadamente.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você toca um humanoide morto ou um pedaço de um humanoide morto.
+          Considerando que a criatura não esteja morta a mais de 10 dias, a
+          magia forma um novo corpo adulto para ele e então, chama a alma para
+          entrar no corpo. Se a alam do alvo não estiver livre ou deseje fazêlo,
+          a magia falha.
+        </Paragraph>
+
+        <Paragraph>
+          A magia forma um novo corpo para que a criatura habite, o que,
+          provavelmente, fará com que a raça da criatura mude. O Mestre rola um
+          d100 e consulta a tabela seguinte para determinar qual forma a
+          criatura terá quando voltar a vida, ou o Mestre pode escolher uma
+          forma.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>d100</TableHeader>
+              <TableHeader>Raça</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>01-04</TableCell>
+              <TableCell>Draconato</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>05-13</TableCell>
+              <TableCell>Anão, colina</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>14-21</TableCell>
+              <TableCell>Anão, montanha</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>22-25</TableCell>
+              <TableCell>Elfo, negro</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>26-34</TableCell>
+              <TableCell>Elfo, alto</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>35-42</TableCell>
+              <TableCell>Elfo, floresta</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>43-46</TableCell>
+              <TableCell>Gnomo, floresta</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>47-52</TableCell>
+              <TableCell>Gnomo, rochas</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>53-56</TableCell>
+              <TableCell>Meio-elfo</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>57-60</TableCell>
+              <TableCell>Meio-orc</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>61-68</TableCell>
+              <TableCell>Halfling, pés leves</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>69-76</TableCell>
+              <TableCell>Halfling, robusto</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>77-96</TableCell>
+              <TableCell>Humano</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>97-00</TableCell>
+              <TableCell>Tiefling</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          A criatura reencarnada lembra-se da sua vida e experiências
+          anteriores. Ela mantem as capacidades que a sua forma original tinha,
+          exceto por trocar sua raça original pela nova e mudar suas
+          características raciais adequadamente.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["druid"],
     type: ["utility"],
@@ -6900,7 +8722,7 @@ export const SPELLS: Spell[] = [
       "Você toca uma criatura voluntária. Uma vez, antes da magia acabar, o alvo pode rolar um d4 e adicionar o valor jogado a um teste de resistência de sua escolha. Ele pode rolar o dado antes ou depois de realizar o teste de resistência. Então, a magia termina.",
     ],
     source: "players-handbook",
-    casters: ["cleric", "druid"],
+    casters: ["artificer", "cleric", "druid"],
     type: ["utility"],
   },
   {
@@ -6918,7 +8740,7 @@ export const SPELLS: Spell[] = [
     },
     duration: "24 horas",
     description:
-      "Essa magia concede a até dez criaturas voluntária que você possa ver, dentro do alcance, a habilidade de respirar embaixo d'água até a magia acabar. As criaturas afetadas também mantem sua forma normal de respiração.",
+      "Essa magia concede a até dez criaturas voluntária que você possa ver, dentro do alcance, a habilidade de respirar embaixo d’água até a magia acabar. As criaturas afetadas também mantem sua forma normal de respiração.",
     source: "players-handbook",
     casters: ["druid", "ranger", "sorcerer", "wizard"],
     type: ["utility"],
@@ -6982,13 +8804,30 @@ export const SPELLS: Spell[] = [
       m: "pó de diamante valendo, no mínimo, 100 po, consumido pela magia",
     },
     duration: "Instantânea",
-    description: [
-      "Você imbui uma criatura que você toca, com energia positiva para desfazer um efeito debilitante. Você pode reduzir a exaustão do alvo em um nível ou remover um dos seguintes do alvo:",
-      "- Um efeito que enfeitice ou petrifique o alvo.",
-      "- Uma maldição, incluindo a sintonização do alvo com um item mágico amaldiçoado.",
-      "- Qualquer redução a um dos valores de habilidade do alvo.",
-      "- Um efeito que esteja reduzindo o máximo de pontos de vida do alvo.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você imbui uma criatura que você toca, com energia positiva para
+          desfazer um efeito debilitante. Você pode reduzir a exaustão do alvo
+          em um nível ou remover um dos seguintes do alvo:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Um efeito que enfeitice ou petrifique o alvo.</ListItem>
+          <ListItem>
+            Uma maldição, incluindo a sintonização do alvo com um item mágico
+            amaldiçoado.
+          </ListItem>
+
+          <ListItem>
+            Qualquer redução a um dos valores de habilidade do alvo.
+          </ListItem>
+          <ListItem>
+            Um efeito que esteja reduzindo o máximo de pontos de vida do alvo.
+          </ListItem>
+        </UList>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "cleric", "druid"],
     type: ["utility"],
@@ -7008,7 +8847,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você toca uma criatura e pode, ou acabar com uma doença ou uma condição que a esteja afligindo. A condição pode ser cega, surda, paralisada ou envenenada.",
     source: "players-handbook",
-    casters: ["bard", "cleric", "druid", "paladin", "ranger"],
+    casters: ["artificer", "bard", "cleric", "druid", "paladin", "ranger"],
     type: ["utility"],
   },
   {
@@ -7087,14 +8926,51 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Você toca uma criatura e a criatura deve ser bem sucedida em um teste de resistência de Sabedoria ou será amaldiçoada pela duração da magia. Quando você conjura essa magia, escolha a natureza da maldição dentre as seguintes opções:",
-      "- Escolha um valor de habilidade. Enquanto amaldiçoado, o alvo tem desvantagem em testes de habilidade e testes de resistência feitos com esse valor de habilidade.",
-      "- Enquanto amaldiçoado, o alvo tem desvantagem nas jogadas de ataque contra você.",
-      "- Enquanto amaldiçoado, o alvo deve realizar um teste de resistência de Sabedoria no começo de cada um dos turnos dela. Se ela falhar, ela perderá sua ação aquele turno, não fazendo nada.",
-      "- Enquanto o alvo estiver amaldiçoado, seus ataques e magias causam 1d8 de dano necrótico extra a ele.",
-      "Uma magia remover maldição termina esse efeito. Com a permissão do Mestre, você pode escolher um efeito alternativo de maldição, mas ele não deve ser mais poderoso que os descritos acima. O Mestre tem a palavra final sobre o efeito de uma maldição.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você toca uma criatura e a criatura deve ser bem sucedida em um teste
+          de resistência de Sabedoria ou será amaldiçoada pela duração da magia.
+          Quando você conjura essa magia, escolha a natureza da maldição dentre
+          as seguintes opções:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Escolha um valor de habilidade. Enquanto amaldiçoado, o alvo tem
+            desvantagem em testes de habilidade e testes de resistência feitos
+            com esse valor de habilidade.
+          </ListItem>
+
+          <ListItem>
+            Enquanto amaldiçoado, o alvo tem desvantagem nas jogadas de ataque
+            contra você.
+          </ListItem>
+
+          <ListItem>
+            Enquanto amaldiçoado, o alvo deve realizar um teste de resistência
+            de Sabedoria no começo de cada um dos turnos dela. Se ela falhar,
+            ela perderá sua ação aquele turno, não fazendo nada.
+          </ListItem>
+
+          <ListItem>
+            Enquanto o alvo estiver amaldiçoado, seus ataques e magias causam
+            1d8 de dano necrótico extra a ele.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Uma magia{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=remover+maldição">
+            remover maldição
+          </Anchor>{" "}
+          termina esse efeito. Com a permissão do Mestre, você pode escolher um
+          efeito alternativo de maldição, mas ele não deve ser mais poderoso que
+          os descritos acima. O Mestre tem a palavra final sobre o efeito de uma
+          maldição.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Se você conjurar essa magia usando um espaço de magia de 4° nível, a duração da concentração sobe para 10 minutos. Se você usar um espaço de magia de 5° ou 6° nível, a duração será de 8 horas. Se você usar um espaço de magia de 7° ou 8° nível, a duração será de 24 horas. Se você usar um espaço de magia de 9° nível, a magia dura até ser dissipada. Usar um espaço de magia de 5° nível ou superior faz com que a duração não necessite de concentração. ",
     source: "players-handbook",
@@ -7119,7 +8995,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você toca uma criatura. A distância de salto da criatura é triplicada até a magia acabar.",
     source: "players-handbook",
-    casters: ["druid", "ranger", "sorcerer", "wizard"],
+    casters: ["artificer", "druid", "ranger", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -7140,7 +9016,7 @@ export const SPELLS: Spell[] = [
       "Se a criatura protegida realizar um ataque ou conjurar uma magia que afete uma criatura inimiga, essa magia acaba.",
     ],
     source: "players-handbook",
-    casters: ["cleric", "paladin"],
+    casters: ["artificer", "cleric", "paladin"],
     type: ["utility"],
   },
   {
@@ -7156,17 +9032,55 @@ export const SPELLS: Spell[] = [
       m: "uma folha de chumbo, um pedaço de vidro opaco, um chumaço de algodão ou pano e pó de crisólita",
     },
     duration: "24 horas",
-    description: [
-      "Você deixa uma área, dentro do alcance, magicamente segura. A área é um cubo que pode ser tão pequeno quanto 1,5 metro ou tão grande quanto 30 metros de cada lado. A magia permanece pela duração ou até você usar uma ação para dissipa-la.",
-      "Quando você conjura essa magia, você decide que tipo de segurança ela fornecerá, escolhendo qualquer ou todas as propriedades a seguir:",
-      "- Sons não podem atravessar a barreira na fronteira da área protegida.",
-      "- A barreira da área protegida escura e nebulosa, impedindo visão (inclusive visão no escuro) através dela.",
-      "- Sensores criados por magia de adivinhação não podem aparecer dentro da área protegida ou atravessar a barreira no perímetro.",
-      "- As criaturas na área não podem ser alvo de magias de adivinhação.",
-      "- Nada pode se teletransportar para dentro ou para fora da área protegida.",
-      "- Viagem planar está bloqueada para dentro da área protegida.",
-      "Conjurar essa magia no mesmo lugar, a cada dia, por um ano, torna o efeito permanente.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você deixa uma área, dentro do alcance, magicamente segura. A área é
+          um cubo que pode ser tão pequeno quanto 1,5 metro ou tão grande quanto
+          30 metros de cada lado. A magia permanece pela duração ou até você
+          usar uma ação para dissipa-la.
+        </Paragraph>
+
+        <Paragraph>
+          Quando você conjura essa magia, você decide que tipo de segurança ela
+          fornecerá, escolhendo qualquer ou todas as propriedades a seguir:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Sons não podem atravessar a barreira na fronteira da área protegida.
+          </ListItem>
+
+          <ListItem>
+            A barreira da área protegida escura e nebulosa, impedindo visão
+            (inclusive visão no escuro) através dela.
+          </ListItem>
+
+          <ListItem>
+            Sensores criados por magia de adivinhação não podem aparecer dentro
+            da área protegida ou atravessar a barreira no perímetro.
+          </ListItem>
+
+          <ListItem>
+            As criaturas na área não podem ser alvo de magias de adivinhação.
+          </ListItem>
+
+          <ListItem>
+            Nada pode se teletransportar para dentro ou para fora da área
+            protegida.
+          </ListItem>
+
+          <ListItem>
+            Viagem planar está bloqueada para dentro da área protegida.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Conjurar essa magia no mesmo lugar, a cada dia, por um ano, torna o
+          efeito permanente.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, você pode aumentar o tamanho do cubo em 30 metros de cada lado para cada nível do espaço acima do 4°. Então, você poderia proteger um cubo de até 60 metros de lado usando um espaço de magia de 5° nível.",
     source: "players-handbook",
@@ -7532,15 +9446,46 @@ export const SPELLS: Spell[] = [
       v: true,
     },
     duration: "Até 1 minuto",
-    description: [
-      "Você manifesta pequenas maravilhas, um sinal de poder sobrenatural, dentro do alcance. Você cria um dos seguintes efeitos mágicos dentro do alcance:",
-      "- Sua voz ressoa com o triplo do volume normal por 1 minuto.",
-      "- Você provoca tremores inofensivos no solo por 1 minuto.",
-      "- Você cria, instantaneamente, um som que se origina de um ponto, à sua escolha, dentro do alcance, como o barulho de um trovão, o gralhar de um corvo ou sussurros sinistros.",
-      "- Você, instantaneamente, faz uma porta ou janela destrancada se abrir ou se fechar.",
-      "- Você altera a aparência dos seus olhos por 1 minuto.",
-      "Se você conjurar essa magia diversas vezes, você pode ter até três dos efeitos de 1 minuto ativos por vez, e você pode dissipar um desses efeitos com uma ação.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você manifesta pequenas maravilhas, um sinal de poder sobrenatural,
+          dentro do alcance. Você cria um dos seguintes efeitos mágicos dentro
+          do alcance:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Sua voz ressoa com o triplo do volume normal por 1 minuto.
+          </ListItem>
+
+          <ListItem>
+            Você provoca tremores inofensivos no solo por 1 minuto.
+          </ListItem>
+
+          <ListItem>
+            Você cria, instantaneamente, um som que se origina de um ponto, à
+            sua escolha, dentro do alcance, como o barulho de um trovão, o
+            gralhar de um corvo ou sussurros sinistros.
+          </ListItem>
+
+          <ListItem>
+            Você, instantaneamente, faz uma porta ou janela destrancada se abrir
+            ou se fechar.
+          </ListItem>
+
+          <ListItem>
+            Você altera a aparência dos seus olhos por 1 minuto.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Se você conjurar essa magia diversas vezes, você pode ter até três dos
+          efeitos de 1 minuto ativos por vez, e você pode dissipar um desses
+          efeitos com uma ação.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["cleric"],
     type: ["utility"],
@@ -7566,7 +9511,7 @@ export const SPELLS: Spell[] = [
       "As teias são inflamáveis. Qualquer cubo de 1,5 metro de teia exposto ao fogo, é consumida por ele em 1 rodada, causando 2d4 de dano de fogo a qualquer criatura que começar seu turno nas chamas.",
     ],
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
     savingThrow: "dex",
   },
@@ -7582,16 +9527,57 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 10 minutos",
-    description: [
-      "Você adquire a habilidade de mover ou manipular criaturas ou objetos através do pensamento. Quando você conjura a magia e, com sua ação a cada turno, pela duração, você pode exercer sua vontade sobre uma criatura ou objeto que você possa ver, dentro do alcance, causando os efeitos apropriados abaixo. Você pode afetar o mesmo alvo rodada após rodada, ou escolher um novo a qualquer momento. Se você mudar de alvos, o alvo anterior não será mais afetado pela magia.",
-      "Criatura.",
-      "Você pode tentar mover uma criatura Enorme ou menor. Faça um teste de habilidade com sua habilidade de conjuração resistido por um teste Força da criatura. Se você vencer a disputa, você move a criatura até 9 metros em qualquer direção, incluindo para cima, mas não além do alcance da magia. Até o final do seu próximo turno, a criatura estará impedida pelo seu agarrão telecinético. Uma criatura erguida para cima estará suspensa no ar.",
-      "Em rodadas subsequente, você pode usar sua ação para tentar manter seu agarrão telecinético na criatura repetindo o teste resistido.",
-      "Objeto.",
-      "Você pode tentar mover um objeto pesando até 500 quilos. Se o objeto não estiver sendo vestido ou carregado, você o move, automaticamente, até 9 metros em qualquer direção, mas não além do alcance dessa magia.",
-      "Se o objeto estiver sendo vestido ou carregado por uma criatura, você deve realizar um teste de habilidade com sua habilidade de conjuração resistido por um teste de Força da criatura. Se você for bem sucedido, você arranca o objeto da criatura e o move até 9 metros, em qualquer direção, mas não além do alcance dessa magia.",
-      "Você pode exercer um controle refinado sobre os objetos com seu agarrão telecinético, como manipular ferramentas simples, abrir uma porta ou um recipiente, guardar ou recuperar um item de um recipiente aberto ou derramar o conteúdo de um frasco.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você adquire a habilidade de mover ou manipular criaturas ou objetos
+          através do pensamento. Quando você conjura a magia e, com sua ação a
+          cada turno, pela duração, você pode exercer sua vontade sobre uma
+          criatura ou objeto que você possa ver, dentro do alcance, causando os
+          efeitos apropriados abaixo. Você pode afetar o mesmo alvo rodada após
+          rodada, ou escolher um novo a qualquer momento. Se você mudar de
+          alvos, o alvo anterior não será mais afetado pela magia.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Criatura.</Span> Você pode tentar mover uma
+          criatura Enorme ou menor. Faça um teste de habilidade com sua
+          habilidade de conjuração resistido por um teste Força da criatura. Se
+          você vencer a disputa, você move a criatura até 9 metros em qualquer
+          direção, incluindo para cima, mas não além do alcance da magia. Até o
+          final do seu próximo turno, a criatura estará impedida pelo seu
+          agarrão telecinético. Uma criatura erguida para cima estará suspensa
+          no ar.
+        </Paragraph>
+
+        <Paragraph>
+          Em rodadas subsequente, você pode usar sua ação para tentar manter seu
+          agarrão telecinético na criatura repetindo o teste resistido.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Objeto. </Span> Você pode tentar mover um objeto
+          pesando até 500 quilos. Se o objeto não estiver sendo vestido ou
+          carregado, você o move, automaticamente, até 9 metros em qualquer
+          direção, mas não além do alcance dessa magia.
+        </Paragraph>
+
+        <Paragraph>
+          Se o objeto estiver sendo vestido ou carregado por uma criatura, você
+          deve realizar um teste de habilidade com sua habilidade de conjuração
+          resistido por um teste de Força da criatura. Se você for bem sucedido,
+          você arranca o objeto da criatura e o move até 9 metros, em qualquer
+          direção, mas não além do alcance dessa magia.
+        </Paragraph>
+
+        <Paragraph>
+          Você pode exercer um controle refinado sobre os objetos com seu
+          agarrão telecinético, como manipular ferramentas simples, abrir uma
+          porta ou um recipiente, guardar ou recuperar um item de um recipiente
+          aberto ou derramar o conteúdo de um frasco.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["sorcerer", "wizard"],
     type: ["utility"],
@@ -7630,49 +9616,160 @@ export const SPELLS: Spell[] = [
       v: true,
     },
     duration: "Instantânea",
-    description: [
-      "Essa magia, instantaneamente, transporta você e até oito criaturas voluntárias, à sua escolha, que você possa ver dentro do alcance ou um único objeto que você possa ver no alcance, para um destino que você selecionou. Se você for afetar um objeto, ele deve ser capaz de caber inteiro dentro de um cubo de 3 metros e não pode estar sendo empunhado ou carregado por uma criatura involuntária.",
-      "O destino que você escolher deve ser conhecido por você e deve ser no mesmo plano de existência que você está. Sua familiaridade com o destino determina se você chegará nele com sucesso. O Mestre rola um d100 e consulta a tabela.",
-      "Familiaridade - Círculo permanente:",
-      "- No Alvo: 01-100",
-      "Familiaridade - Objeto associado:",
-      "- No Alvo: 01-100",
-      "Muito familiar:",
-      "- Fiasco: 01-5",
-      "- Área Similar: 06-13",
-      "- Fora do Alvo: 14-24",
-      "- No Alvo: 25-100",
-      "Visto casualmente:",
-      "- Fiasco: 01-33",
-      "- Área Similar: 34-43",
-      "- Fora do Alvo: 44-73",
-      "- No Alvo: 74-100",
-      "Visto uma vez:",
-      "- Fiasco: 01-43",
-      "- Área Similar: 44-53",
-      "- Fora do Alvo: 54-73",
-      "- No Alvo: 74-100",
-      "Descrição:",
-      "- Fiasco: 01-43",
-      "- Área Similar: 44-53",
-      "- Fora do Alvo: 54-73",
-      "- No Alvo: 74-100",
-      "Descrição falsa:",
-      "- Fiasco: 01-50",
-      "- Área Similar: 51-100",
-      "Familiaridade.",
-      "“Círculo permanente” significa um círculo de teletransporte permanente o qual você conhece a sequência de selos. “Objeto associado” significa que você possui um objeto retirado do destino desejado nos últimos seis meses, como um livro da biblioteca do mago, roupa de cama de uma suíte real ou um pedaço de mármore da tumba secreta do lich.",
-      "“Muito familiar” é um lugar que você já tenha ido muitas vezes, um lugar que você estudou cuidadosamente ou um local que você possa ver enquanto conjura a magia. “Visto casualmente” é algum lugar que você tenha visto mais de uma vez, mas que não seja muito familiar. “Visto uma vez” é um lugar que você só viu uma vez, possivelmente através de magia. “Descrição” é um lugar cuja localização e aparência você conhece através da descrição de outrem, talvez através de um mapa.",
-      "“Destino falso” é um local que não existe. Talvez você tenha tentado espionar o santuário de um inimigo, mas, ao invés, viu uma ilusão ou você está tentando se teletransportar para um local familiar que não existe mais.",
-      "No Alvo.",
-      "Você e seu grupo (ou objeto alvo) aparecem onde você queria.",
-      "Fora do Alvo.",
-      "Você e seu grupo (ou objeto alvo) aparecem a uma distância aleatória fora do destino em uma direção aleatória. A distância do alvo é 1d10 x 1d10 por cento da distância que você viajou. Por exemplo, se você tentou viajar 180 quilômetros, mas apareceu fora do alvo e rolou um 5 e um 3 nos dois d10s, então você saiu do alvo 15 por cento ou 27 quilômetros. O Mestre determina a direção de fora do alvo aleatoriamente rolando um d8 e designando 1 como norte, 2 como nordeste, 3 como leste e assim por diante ao redor dos pontos cardeais. Se você seria teletransportado para uma cidade costeira, podendo cair a 27 quilômetros dela, no mar, você poderia ter problemas.",
-      "Área Similar.",
-      "Você e seu grupo (ou objeto alvo) aparecem em uma área diferente que, visualmente ou tematicamente, é similar a área alvo. Se você estava indo para o laboratório na sua casa, por exemplo, você pode parar em outro laboratório de mago ou em uma loja de suprimentos alquímicos que terá muitas ferramentas iguais às encontradas no seu laboratório. Geralmente, você aparecerá no local similar mais próximo, mas já que a magia não tem limite de alcance, você pode, concebivelmente, viajar para qualquer lugar no plano.",
-      "Fiasco.",
-      "A mágica imprevisível da magia resulta em uma jornada difícil. Cada criatura teletransportada (ou o objeto alvo) sofrem 3d10 de dano de energia e o Mestre rola novamente a tabela para ver onde você foi parar (fiascos múltiplos podem ocorrer, causando dano a cada vez).",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Essa magia, instantaneamente, transporta você e até oito criaturas
+          voluntárias, à sua escolha, que você possa ver dentro do alcance ou um
+          único objeto que você possa ver no alcance, para um destino que você
+          selecionou. Se você for afetar um objeto, ele deve ser capaz de caber
+          inteiro dentro de um cubo de 3 metros e não pode estar sendo empunhado
+          ou carregado por uma criatura involuntária.
+        </Paragraph>
+
+        <Paragraph>
+          O destino que você escolher deve ser conhecido por você e deve ser no
+          mesmo plano de existência que você está. Sua familiaridade com o
+          destino determina se você chegará nele com sucesso. O Mestre rola um
+          d100 e consulta a tabela.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Familiaridade</TableHeader>
+              <TableHeader>Fiasco</TableHeader>
+              <TableHeader>Área Similar</TableHeader>
+              <TableHeader>Fora do Alvo</TableHeader>
+              <TableHeader>No Alvo</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Círculo permanente</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>01-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Objeto associado</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>01-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Muito familiar</TableCell>
+              <TableCell>01-05</TableCell>
+              <TableCell>06-13</TableCell>
+              <TableCell>14-24</TableCell>
+              <TableCell>25-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Visto casualmente</TableCell>
+              <TableCell>01-33</TableCell>
+              <TableCell>34-43</TableCell>
+              <TableCell>44-53</TableCell>
+              <TableCell>54-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Visto uma vez</TableCell>
+              <TableCell>01-43</TableCell>
+              <TableCell>44-53</TableCell>
+              <TableCell>54-73</TableCell>
+              <TableCell>74-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Descrição</TableCell>
+              <TableCell>01-43</TableCell>
+              <TableCell>44-53</TableCell>
+              <TableCell>54-73</TableCell>
+              <TableCell>74-100</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Descrição falsa</TableCell>
+              <TableCell>01-50</TableCell>
+              <TableCell>51-100</TableCell>
+              <TableCell>-</TableCell>
+              <TableCell>-</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          <Span variant="bold">Familiaridade. </Span> “Círculo permanente”
+          significa um círculo de teletransporte permanente o qual você conhece
+          a sequência de selos. “Objeto associado” significa que você possui um
+          objeto retirado do destino desejado nos últimos seis meses, como um
+          livro da biblioteca do mago, roupa de cama de uma suíte real ou um
+          pedaço de mármore da tumba secreta do lich.
+        </Paragraph>
+
+        <Paragraph>
+          “Muito familiar” é um lugar que você já tenha ido muitas vezes, um
+          lugar que você estudou cuidadosamente ou um local que você possa ver
+          enquanto conjura a magia. “Visto casualmente” é algum lugar que você
+          tenha visto mais de uma vez, mas que não seja muito familiar. “Visto
+          uma vez” é um lugar que você só viu uma vez, possivelmente através de
+          magia. “Descrição” é um lugar cuja localização e aparência você
+          conhece através da descrição de outrem, talvez através de um mapa.
+        </Paragraph>
+
+        <Paragraph>
+          “Destino falso” é um local que não existe. Talvez você tenha tentado
+          espionar o santuário de um inimigo, mas, ao invés, viu uma ilusão ou
+          você está tentando se teletransportar para um local familiar que não
+          existe mais.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">No Alvo. </Span> Você e seu grupo (ou objeto
+          alvo) aparecem onde você queria.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Fora do Alvo. </Span> Você e seu grupo (ou objeto
+          alvo) aparecem a uma distância aleatória fora do destino em uma
+          direção aleatória. A distância do alvo é 1d10 x 1d10 por cento da
+          distância que você viajou. Por exemplo, se você tentou viajar 180
+          quilômetros, mas apareceu fora do alvo e rolou um 5 e um 3 nos dois
+          d10s, então você saiu do alvo 15 por cento ou 27 quilômetros. O Mestre
+          determina a direção de fora do alvo aleatoriamente rolando um d8 e
+          designando 1 como norte, 2 como nordeste, 3 como leste e assim por
+          diante ao redor dos pontos cardeais. Se você seria teletransportado
+          para uma cidade costeira, podendo cair a 27 quilômetros dela, no mar,
+          você poderia ter problemas.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Área Similar. </Span> Você e seu grupo (ou objeto
+          alvo) aparecem em uma área diferente que, visualmente ou
+          tematicamente, é similar a área alvo. Se você estava indo para o
+          laboratório na sua casa, por exemplo, você pode parar em outro
+          laboratório de mago ou em uma loja de suprimentos alquímicos que terá
+          muitas ferramentas iguais às encontradas no seu laboratório.
+          Geralmente, você aparecerá no local similar mais próximo, mas já que a
+          magia não tem limite de alcance, você pode, concebivelmente, viajar
+          para qualquer lugar no plano.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Fiasco. </Span> A mágica imprevisível da magia
+          resulta em uma jornada difícil. Cada criatura teletransportada (ou o
+          objeto alvo) sofrem 3d10 de dano de energia e o Mestre rola novamente
+          a tabela para ver onde você foi parar (fiascos múltiplos podem
+          ocorrer, causando dano a cada vez).
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "sorcerer", "wizard"],
     type: ["utility"],
@@ -7707,18 +9804,54 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Uma agitada nuvem tempestuosa se forma, centrada num ponto que você possa ver e se espalha num raio de 108 metros. Relâmpagos riscam a área, trovões ressoam e ventos fortes silvam. Cada criatura embaixo da nuvem (a não mais de 1.500 metros abaixo da nuvem) quando ela aparece deve realizar um teste de resistência de Constituição. Com uma falha na resistência, uma criatura sofre 2d6 de dano trovejante e ficará surda por 5 minutos.",
-      "A cada rodada que você mantiver a concentração nessa magia, a tempestade produzirá efeitos adicionais no seu turno.",
-      "Rodada 2.",
-      "Chuva ácida cai da nuvem. Cada criatura e objeto abaixo dela nuvem sofre 1d6 de dano ácido.",
-      "Rodada 3.",
-      "Você convoca seis relâmpagos da nuvem para atingir seis criaturas ou objetos, à sua escolha, abaixo da nuvem. Uma mesma criatura ou objeto não pode ser atingido por mais de um raio. Uma criatura atingida deve realizar um teste de resistência de Destreza. A criatura sofrerá 10d6 de dano elétrico se falhar na resistência ou metade desse dano se passar.",
-      "Rodada 4.",
-      "Granizo chove da nuvem. Cada criatura abaixo da nuvem sofre 2d6 de dano de concussão.",
-      "Rodada 5-10.",
-      "Ventos e chuva gelados atacam a área abaixo da nuvem. A área se torna terreno difícil e de escuridão densa. Cada criatura sofre 1d6 de dano de frio. Ataques com armas à distância na área são impossíveis. O vento e chuva contam como uma distração grave com os propósitos de manter a concentração em magias. Finalmente, ventos fortes (entre 30 e 75 quilômetros por hora) automaticamente dispersam nevoa, neblina e fenômenos similares na área, independentemente de serem mundanos ou mágicos.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Uma agitada nuvem tempestuosa se forma, centrada num ponto que você
+          possa ver e se espalha num raio de 108 metros. Relâmpagos riscam a
+          área, trovões ressoam e ventos fortes silvam. Cada criatura embaixo da
+          nuvem (a não mais de 1.500 metros abaixo da nuvem) quando ela aparece
+          deve realizar um teste de resistência de Constituição. Com uma falha
+          na resistência, uma criatura sofre 2d6 de dano trovejante e ficará
+          surda por 5 minutos.
+        </Paragraph>
+
+        <Paragraph>
+          A cada rodada que você mantiver a concentração nessa magia, a
+          tempestade produzirá efeitos adicionais no seu turno.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Rodada 2. </Span> Chuva ácida cai da nuvem. Cada
+          criatura e objeto abaixo dela nuvem sofre 1d6 de dano ácido.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Rodada 3.</Span> Você convoca seis relâmpagos da
+          nuvem para atingir seis criaturas ou objetos, à sua escolha, abaixo da
+          nuvem. Uma mesma criatura ou objeto não pode ser atingido por mais de
+          um raio. Uma criatura atingida deve realizar um teste de resistência
+          de Destreza. A criatura sofrerá 10d6 de dano elétrico se falhar na
+          resistência ou metade desse dano se passar.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Rodada 4. </Span> Granizo chove da nuvem. Cada
+          criatura abaixo da nuvem sofre 2d6 de dano de concussão.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Rodada 5-10. </Span> Ventos e chuva gelados
+          atacam a área abaixo da nuvem. A área se torna terreno difícil e de
+          escuridão densa. Cada criatura sofre 1d6 de dano de frio. Ataques com
+          armas à distância na área são impossíveis. O vento e chuva contam como
+          uma distração grave com os propósitos de manter a concentração em
+          magias. Finalmente, ventos fortes (entre 30 e 75 quilômetros por hora)
+          automaticamente dispersam nevoa, neblina e fenômenos similares na
+          área, independentemente de serem mundanos ou mágicos.
+        </Paragraph>
+      </>
+    ),
     source: "players-handbook",
     casters: ["druid"],
     type: ["damage", "utility"],
@@ -7888,7 +10021,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano da magia aumenta em 1d8 quando você alcança o 5° nível (2d8), 11° nível (3d8) e 17° nível (4d8).",
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["damage", "utility"],
     damageType: ["lightning"],
     spellAttack: "spell-melee",
@@ -7933,7 +10066,7 @@ export const SPELLS: Spell[] = [
       "Enquanto estiver sob efeito dessa magia, o objeto é mais difícil de quebrar ou de forçar para abrir; a CD para quebra-lo ou de arromba-lo aumenta em 10.",
     ],
     source: "players-handbook",
-    casters: ["wizard"],
+    casters: ["artificer", "wizard"],
     type: ["utility"],
   },
   {
@@ -7957,7 +10090,7 @@ export const SPELLS: Spell[] = [
     ],
     upcastDescription: "",
     source: "players-handbook",
-    casters: ["wizard"],
+    casters: ["artificer", "wizard"],
     type: ["utility"],
   },
   {
@@ -8021,7 +10154,7 @@ export const SPELLS: Spell[] = [
     description:
       "Pela duração, você vê criaturas e objetos invisíveis como se eles fossem visíveis e você pode ver no Plano Etéreo. Criaturas e objetos etéreos parecem espectrais e translúcidos.",
     source: "players-handbook",
-    casters: ["bard", "sorcerer", "wizard"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -8061,18 +10194,93 @@ export const SPELLS: Spell[] = [
       m: "um foco valendo, no mínimo, 1.000 po, como uma bola de cristal, espelho de prata ou fonte cheia de água benta",
     },
     duration: "Concentração, até 10 minutos",
-    description: [
-      "Você pode ver e ouvir uma criatura em particular, à sua escolha, que esteja no mesmo plano de existência que você. O alvo deve realizar um teste de resistência de Sabedoria, que é modificador de acordo com o quão bem você conhece o alvo e o tipo de conexão física que você tem com ele. Se um alvo souber que você está conjurando essa magia, ele pode falhar no teste de resistência voluntariamente, se ele quiser ser observado.",
-      "Com um sucesso na resistência, o alvo não é afetado e você não pode usar essa magia contra ele novamente por 24 horas.",
-      "Se falhar na resistência, a magia cria um sensor invisível a até 3 metros do alvo. Você pode ver e ouvir através do sensor, como se você estivesse onde ele está. O sensor se move com o alvo, permanecendo a 3 metros dele pela duração. Uma criatura que puder ver objetos invisíveis verá o sensor como um globo luminoso do tamanho de um punho.",
-      "Ao invés de focar em uma criatura, você pode escolher um local que você já tenha visto antes como alvo dessa magia. Quando fizer isso, o sensor aparece no local e não se move.",
-      "Conhecimento - Segunda mão (você ouviu falar do alvo): +5 Modificador de Resistência",
-      "Conhecimento - Primeira mão (você foi apresentado ao alvo): +0 Modificador de Resistência",
-      "Conhecimento - Familiar (você conhece bem o alvo): -5 Modificador de Resistência",
-      "Conexão - Descrição ou foto: -2 Modificador de Resistência",
-      "Conexão - Pertences ou roupas: -4 Modificador de Resistência",
-      "Conexão - Parte do corpo, mexa de cabelo, recorte de unha ou simular: -10 Modificador de Resistência",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você pode ver e ouvir uma criatura em particular, à sua escolha, que
+          esteja no mesmo plano de existência que você. O alvo deve realizar um
+          teste de resistência de Sabedoria, que é modificador de acordo com o
+          quão bem você conhece o alvo e o tipo de conexão física que você tem
+          com ele. Se um alvo souber que você está conjurando essa magia, ele
+          pode falhar no teste de resistência voluntariamente, se ele quiser ser
+          observado.
+        </Paragraph>
+
+        <Paragraph>
+          Com um sucesso na resistência, o alvo não é afetado e você não pode
+          usar essa magia contra ele novamente por 24 horas.
+        </Paragraph>
+
+        <Paragraph>
+          Se falhar na resistência, a magia cria um sensor invisível a até 3
+          metros do alvo. Você pode ver e ouvir através do sensor, como se você
+          estivesse onde ele está. O sensor se move com o alvo, permanecendo a 3
+          metros dele pela duração. Uma criatura que puder ver objetos
+          invisíveis verá o sensor como um globo luminoso do tamanho de um
+          punho.
+        </Paragraph>
+
+        <Paragraph>
+          Ao invés de focar em uma criatura, você pode escolher um local que
+          você já tenha visto antes como alvo dessa magia. Quando fizer isso, o
+          sensor aparece no local e não se move.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Conhecimento</TableHeader>
+              <TableHeader>Modificador de Resistência</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Segunda mão (você ouviu falar do alvo)</TableCell>
+              <TableCell>+5</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Primeira mão (você foi apresentado ao alvo)</TableCell>
+              <TableCell>+0</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Familiar (você conhece bem o alvo)</TableCell>
+              <TableCell>-5</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Conexão</TableHeader>
+              <TableHeader>Modificador de Resistência</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Descrição ou foto</TableCell>
+              <TableCell>-2</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Pertences ou roupas</TableCell>
+              <TableCell>-4</TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                Parte do corpo, mexa de cabelo, recorte de unha ou simular
+              </TableCell>
+              <TableCell>-10</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
     source: "players-handbook",
     casters: ["bard", "cleric", "druid", "warlock", "wizard"],
     type: ["utility"],
@@ -8157,7 +10365,7 @@ export const SPELLS: Spell[] = [
     description:
       "Você toca uma criatura voluntária para conceder a ela a habilidade de ver nas trevas. Pela duração, a criatura terá visão no escuro com alcance de 18 metros.",
     source: "players-handbook",
-    casters: ["druid", "ranger", "sorcerer", "wizard"],
+    casters: ["artificer", "druid", "ranger", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -8178,7 +10386,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, você ganha 5 pontos de vida temporários adicionais para cada nível do espaço de magia acima do 1°.",
     source: "players-handbook",
-    casters: ["sorcerer", "wizard"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
@@ -8255,7 +10463,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "uma arma corpo a corpo valendo pelo menos 1 mp",
+      m: "uma arma corpo a corpo valendo pelo menos 1 sp",
     },
     duration: "1 rodada",
     description:
@@ -8263,7 +10471,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "No 5° nível, o ataque corpo-a-corpo causa 1d8 de dano trovejante extra no alvo e o dano que o alvo sofre caso se mova aumenta para 2d8. Ambas as rolagens de dano aumentam em 1d8 no 11° nível (2d8 e 3d8) e no 17° nível (3d8 e 4d8).",
     source: "tashas-cauldron-of-everything",
-    casters: ["artificer", "sorcerer", "wizard", "warlock"],
+    casters: ["artificer", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["thunder"],
     spellAttack: "weapon",
@@ -8279,11 +10487,43 @@ export const SPELLS: Spell[] = [
       v: true,
     },
     duration: "8 horas",
-    description: [
-      "Você pega uma memória, uma ideia ou uma mensagem da sua mente e a transforma em um fio tangivel de energia brilhante chamado de fio de pensagemnto, que se mantem pela duração ou até você conjurar essa magia novamente. O fio de pensamento aparece em um espaço desocupado dentro de 1,5 metro de você como um objeto semisólido míudo que pode ser segurado e carregado como uma fita. Forá disso ele é estacionário.",
-      "Se você conjurar essa magia enquanto se concentra em uma magia ou habilidade que permite que você leia ou manipule os pensamentos de outros (Como detectar pensamentos ou modificar memória), você pode transformar os pensamentos ou memórias que leu em um fio, em vez de usar os seus.",
-      "Conjurar essa magia enquanto segura um fio de pensamento permite que você instantaneamente receba qualquer memória, ideia ou mensagem que o fio contém (conjurar detectar pensamentos no fio tem o mesmo efeito).",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você pega uma memória, uma ideia ou uma mensagem da sua mente e a
+          transforma em um fio tangivel de energia brilhante chamado de fio de
+          pensagemnto, que se mantem pela duração ou até você conjurar essa
+          magia novamente. O fio de pensamento aparece em um espaço desocupado
+          dentro de 1,5 metro de você como um objeto semisólido míudo que pode
+          ser segurado e carregado como uma fita. Forá disso ele é estacionário.
+        </Paragraph>
+
+        <Paragraph>
+          Se você conjurar essa magia enquanto se concentra em uma magia ou
+          habilidade que permite que você leia ou manipule os pensamentos de
+          outros (como{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=detectar+pensamentos">
+            detectar pensamentos
+          </Anchor>{" "}
+          ou{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=modificar+memória">
+            modificar memória
+          </Anchor>
+          ), você pode transformar os pensamentos ou memórias que leu em um fio,
+          em vez de usar os seus.
+        </Paragraph>
+
+        <Paragraph>
+          Conjurar essa magia enquanto segura um fio de pensamento permite que
+          você instantaneamente receba qualquer memória, ideia ou mensagem que o
+          fio contém (conjurar{" "}
+          <Anchor href="/kompendium/dnd5/spells?name=detectar+pensamentos">
+            detectar pensamentos
+          </Anchor>{" "}
+          no fio tem o mesmo efeito).
+        </Paragraph>
+      </>
+    ),
     source: "guildmasters-guide-to-ravnica",
     casters: ["wizard"],
     type: ["utility"],
@@ -8298,7 +10538,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "uma arma corpo a corpo valendo pelo menos 1 mp",
+      m: "uma arma corpo a corpo valendo pelo menos 1 sp",
     },
     duration: "1 rodada",
     description: [
@@ -8307,7 +10547,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "No 5° nível, o ataque corpo a corpo provoca 1d8 de dano de fogo adicional se acertar, e o dano de fogo que a segunda criatura recebe aumenta para 1d8 + o modificador de seu atributo de conjuração. Ambos os danos aumentam em 1d8 no 11° nível (2d8 e 2d8) e novamente no 17° nível (3d8 e 3d8).",
     source: "tashas-cauldron-of-everything",
-    casters: ["artificer", "sorcerer", "wizard", "warlock"],
+    casters: ["artificer", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["fire"],
     spellAttack: "weapon",
@@ -8324,12 +10564,35 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Você agarra o ar e o obriga a criar um dos seguintes efeitos em um ponto que você possa ver dentro do alcance:",
-      "- Uma criatura Média ou menor que você escolher deve ser bem sucedida em um teste de resistência de Força ou será empurrada até 1,5 metro de distância de você.",
-      "- Você cria uma pequena rajada de ar capaz de mover um objeto que não é segurado nem carregado e que não pesa mais que 2,5 quilos. O objeto é empurrado até 3 metros de distância de você. Não é empurrado com força suficiente para causar danos.",
-      "- Você cria um efeito sensorial inofensivo usando o ar, como fazer folhas balançarem, vento fechar persianas ou suas roupas ondularem com a brisa.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você agarra o ar e o obriga a criar um dos seguintes efeitos em um
+          ponto que você possa ver dentro do alcance:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Uma criatura Média ou menor que você escolher deve ser bem sucedida
+            em um teste de resistência de Força ou será empurrada até 1,5 metro
+            de distância de você.
+          </ListItem>
+
+          <ListItem>
+            Você cria uma pequena rajada de ar capaz de mover um objeto que não
+            é segurado nem carregado e que não pesa mais que 2,5 quilos. O
+            objeto é empurrado até 3 metros de distância de você. Não é
+            empurrado com força suficiente para causar danos.
+          </ListItem>
+
+          <ListItem>
+            Você cria um efeito sensorial inofensivo usando o ar, como fazer
+            folhas balançarem, vento fechar persianas ou suas roupas ondularem
+            com a brisa.
+          </ListItem>
+        </UList>
+      </>
+    ),
     source: "xanathars-guide-to-everything",
     casters: ["druid", "sorcerer", "wizard"],
     type: ["utility"],
@@ -8351,10 +10614,63 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d6 quando você alcança o 5° nível (2d6), 11° nível (3d6) e 17° nível (4d6).",
     source: "xanathars-guide-to-everything",
-    casters: ["artificer", "sorcerer", "wizard", "warlock", "druid"],
+    casters: ["artificer", "druid", "sorcerer", "warlock", "wizard"],
     type: ["damage", "utility"],
     damageType: ["cold"],
     savingThrow: "con",
+  },
+  {
+    name: "Controlar Chamas",
+    originalName: "Control Flames",
+    level: 0,
+    school: "transmutation",
+    castingTime: "Ação",
+    range: "18 metros",
+    components: {
+      s: true,
+    },
+    duration: "Especial",
+    description: (
+      <>
+        <Paragraph>
+          Você escolhe uma chama não mágica que você possa ver, dentro do
+          alcance, e que ocupe até um cubo de 1,5 metro. Você afeta ela de uma
+          das seguintes formas:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Você instantaneamente expande a chama em 1,5 metro em uma direção,
+            considerando que exista madeira ou outro combustível no local novo.
+          </ListItem>
+
+          <ListItem>
+            Você instantaneamente extingue as chamas dentro do cubo.
+          </ListItem>
+
+          <ListItem>
+            Você dobra ou reduz à metade a área de luz plena e de penumbra
+            emitida pela chama, muda a cor dela, ou ambos. As mudanças duram por
+            1 hora.
+          </ListItem>
+
+          <ListItem>
+            Você faz com que formas simples - como um forma imprecisa de uma
+            criatura, objeto inanimado ou local - apareçam dentro das chamas e
+            se animem como você quiser. As formas duram por 1 hora.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Se você conjurar essa magia diversas vezes, você pode ter até três dos
+          seus efeitos não instantâneos ativos ao mesmo tempo, e você pode
+          dissipar um efeito desses com uma ação.
+        </Paragraph>
+      </>
+    ),
+    source: "players-handbook",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["utility"],
   },
   {
     name: "Criar Fogueira",
@@ -8373,7 +10689,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d8 quando você alcança o 5° nível (2d8), 11° nível (3d8) e 17° nível (4d8).",
     source: "xanathars-guide-to-everything",
-    casters: ["artificer", "sorcerer", "wizard", "warlock", "druid"],
+    casters: ["artificer", "druid", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["fire"],
     savingThrow: "dex",
@@ -8398,7 +10714,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d6 quando você alcança o 5° nível (2d6), 11° nível (3d6) e 17° nível (4d6).",
     source: "xanathars-guide-to-everything",
-    casters: ["sorcerer", "wizard", "warlock", "druid"],
+    casters: ["druid", "sorcerer", "warlock", "wizard"],
     type: ["damage", "utility"],
     damageType: ["poison"],
     savingThrow: "con",
@@ -8419,7 +10735,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d8 quando você alcança o 5° nível (2d8), 11° nível (3d8) e 17° nível (4d8).",
     source: "tashas-cauldron-of-everything",
-    casters: ["sorcerer", "wizard", "warlock", "artificer"],
+    casters: ["artificer", "sorcerer", "warlock", "wizard"],
     type: ["damage", "utility"],
     damageType: ["lightning"],
     savingThrow: "str",
@@ -8441,7 +10757,7 @@ export const SPELLS: Spell[] = [
       "Se você conjurar essa magia novamente, ela acaba prematuramente em quaisquer pedras que ainda estivessem sendo afetadas por ela.",
     ],
     source: "xanathars-guide-to-everything",
-    casters: ["druid", "warlock", "artificer"],
+    casters: ["artificer", "druid", "warlock"],
     type: ["damage"],
     damageType: ["bludgeoning"],
     spellAttack: "spell-ranged",
@@ -8478,13 +10794,43 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea ou 1 hora",
-    description: [
-      "Você escolhe uma porção de detritos ou pedra que você possa ver, dentro do alcance, e que caiba num cubo de 1,5 metro. Você manipula-a de uma das seguintes maneiras:",
-      "- Se você afetar uma área de terra solta, poderá escavá-la instantaneamente, movê-la ao longo do solo e depositá-la a até 1,5 metro de distância. Este movimento não envolve força suficiente para causar danos.",
-      "- Você faz com que formas, cores ou ambas apareçam na terra ou na pedra, soletrando palavras, criando imagens ou moldando padrões. As mudanças duram 1 hora.",
-      "- Se a terra ou a pedra que você afetou estiver no chão, você fará com que ela se torne um terreno difícil. Como alternativa, você pode fazer com que o solo se torne um terreno normal se já for um terreno difícil. Esta mudança dura 1 hora.",
-      "Se você conjurar esta magia múltiplas vezes, você não pode ter mais do que dois de seus efeitos não instantâneos ativos por vez, e você pode descartar tal efeito como uma ação.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você escolhe uma porção de detritos ou pedra que você possa ver,
+          dentro do alcance, e que caiba num cubo de 1,5 metro. Você manipula-a
+          de uma das seguintes maneiras:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Se você afetar uma área de terra solta, poderá escavá-la
+            instantaneamente, movê-la ao longo do solo e depositá-la a até 1,5
+            metro de distância. Este movimento não envolve força suficiente para
+            causar danos.
+          </ListItem>
+
+          <ListItem>
+            Você faz com que formas, cores ou ambas apareçam na terra ou na
+            pedra, soletrando palavras, criando imagens ou moldando padrões. As
+            mudanças duram 1 hora.
+          </ListItem>
+
+          <ListItem>
+            Se a terra ou a pedra que você afetou estiver no chão, você fará com
+            que ela se torne um terreno difícil. Como alternativa, você pode
+            fazer com que o solo se torne um terreno normal se já for um terreno
+            difícil. Esta mudança dura 1 hora.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Se você conjurar esta magia múltiplas vezes, você não pode ter mais do
+          que dois de seus efeitos não instantâneos ativos por vez, e você pode
+          descartar tal efeito como uma ação.
+        </Paragraph>
+      </>
+    ),
     source: "xanathars-guide-to-everything",
     casters: ["druid", "sorcerer", "wizard"],
     type: ["utility"],
@@ -8543,14 +10889,45 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea ou 1 hora",
-    description: [
-      "Você escolhe uma área de água que você possa ver, dentro do alcance, e que caiba num cubo de 1,5 metro. Você manipula-a de uma das seguintes maneiras:",
-      "- Você move instantaneamente ou, de alguma outra forma, muda o curso da água como você ordenar, até 1,5 metro em qualquer direção. Esse movimento não tem força suficiente para causar dano.",
-      "- Você faz com que a água forme formas simples e se anime como você ordenar. Essa mudança dura por 1 hora.",
-      "- Você muda a cor ou opacidade da água. A água deve ser modificada da mesma forma por inteiro. Essa mudança dura por 1 hora.",
-      "- Você congela a água, considerando que não haja criaturas nela. A água descongela em 1 hora.",
-      "Se você conjurar essa magia diversas vezes, você pode ter até dois dos seus efeitos não instantâneos ativos ao mesmo tempo, e você pode dissipar um efeito desses com uma ação.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você escolhe uma área de água que você possa ver, dentro do alcance, e
+          que caiba num cubo de 1,5 metro. Você manipula-a de uma das seguintes
+          maneiras:
+        </Paragraph>
+
+        <UList>
+          <ListItem>
+            Você move instantaneamente ou, de alguma outra forma, muda o curso
+            da água como você ordenar, até 1,5 metro em qualquer direção. Esse
+            movimento não tem força suficiente para causar dano.
+          </ListItem>
+
+          <ListItem>
+            Você faz com que a água forme formas simples e se anime como você
+            ordenar. Essa mudança dura por 1 hora.
+          </ListItem>
+
+          <ListItem>
+            Você muda a cor ou opacidade da água. A água deve ser modificada da
+            mesma forma por inteiro. Essa mudança dura por 1 hora.
+          </ListItem>
+
+          <ListItem>
+            Você congela a água, considerando que não haja criaturas nela. A
+            água descongela em 1 hora.
+          </ListItem>
+        </UList>
+
+        <Paragraph>
+          Se você conjurar essa magia diversas vezes, você pode ter até dois dos
+          seus efeitos não instantâneos ativos ao mesmo tempo, e você pode
+          dissipar um efeito desses com uma ação.
+        </Paragraph>
+      </>
+    ),
+
     source: "xanathars-guide-to-everything",
     casters: ["druid", "sorcerer", "wizard"],
     type: ["utility"],
@@ -8593,7 +10970,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d6 quando você alcança o 5° nível (2d6), 11° nível (3d6) e 17° nível (4d6).",
     source: "tashas-cauldron-of-everything",
-    casters: ["wizard", "artificer", "sorcerer", "warlock"],
+    casters: ["artificer", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["force"],
     savingThrow: "dex",
@@ -8615,7 +10992,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em um dado quando atinge o 5° nível (2d8 ou 2d12), 11° nível (3d8 ou 3d12) e 17° nível (4d8 ou 4d12).",
     source: "xanathars-guide-to-everything",
-    casters: ["wizard", "cleric", "warlock"],
+    casters: ["cleric", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["necrotic"],
     savingThrow: "wis",
@@ -8636,7 +11013,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "O dano dessa magia aumenta em 1d6 quando você alcança o 5° nível (2d6), 11° nível (3d6) e 17° nível (4d6).",
     source: "xanathars-guide-to-everything",
-    casters: ["wizard", "artificer", "warlock", "bard", "druid", "sorcerer"],
+    casters: ["artificer", "bard", "druid", "sorcerer", "warlock", "wizard"],
     type: ["damage"],
     damageType: ["thunder"],
     savingThrow: "con",
@@ -8721,7 +11098,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, o peso máximo do objeto que você pode arremessar com essa magia aumenta em 2,5 quilos, e o dano aumenta em 1d8, para cada nível de espaço acima do 1°.",
     source: "xanathars-guide-to-everything",
-    casters: ["sorcerer", "wizard", "artificer"],
+    casters: ["artificer", "sorcerer", "wizard"],
     type: ["damage"],
     damageType: ["bludgeoning"],
     savingThrow: "dex",
@@ -8761,19 +11138,51 @@ export const SPELLS: Spell[] = [
       m: "25 po em pó de prata, que a magia consome",
     },
     duration: "Instantânea (Veja abaixo)",
-    description: [
-      "Você realiza uma cerimônia religiosa especial infundida com magia. Quando você conjura a magia, escolha um dos ritos seguintes, cujo alvo deve estar dentro de 3 metros de você durante toda a conjuração.",
-      "Expiação.",
-      "Você toca uma criatura disposta cujo alinhamento mudou e você faz um teste de Sabedoria (Intuição), CD 20. Em um teste bem-sucedido, você restaura o alvo para o alinhamento original.",
-      "Abençoar Água.",
-      "Você toca um frasco de água e faz com que se torne água benta.",
-      "Rito de maturidade.",
-      "Você toca um humanoide que seja um jovem adulto. Pelas próximas 24 horas, sempre que o alvo fizer um teste de habilidade, ele pode rolar um d4 e adicionar o número rolado ao teste de habilidade. A criatura pode se beneficiar deste rito apenas uma vez.",
-      "Dedicação.",
-      "Você toca um humanoide que deseja se dedicar aos serviços do seu deus. Pelas próximas 24 horas, sempre que o alvo faz um teste de resistência, ele pode rolar um d4 e adicionar o numero rolado ao teste. A criatura pode se beneficiar desse rito apenas uma vez.",
-      "Casamento.",
-      "Você toca humanoides adultos dispostos a serem unidos em matrimônio. Pelos próximos 7 dias, cada alvo ganha um bônus de +2 na CA enquanto estiverem a 9 metros um do outro. Uma criatura pode se beneficiar desse rito novamente apenas se tornar viúvo.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você realiza uma cerimônia religiosa especial infundida com magia.
+          Quando você conjura a magia, escolha um dos ritos seguintes, cujo alvo
+          deve estar dentro de 3 metros de você durante toda a conjuração.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Expiação. </Span> Você toca uma criatura disposta
+          cujo alinhamento mudou e você faz um teste de Sabedoria (Intuição), CD
+          20. Em um teste bem-sucedido, você restaura o alvo para o alinhamento
+          original.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Abençoar Água. </Span> Você toca um frasco de
+          água e faz com que se torne água benta.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Rito de maturidade. </Span> Você toca um
+          humanoide que seja um jovem adulto. Pelas próximas 24 horas, sempre
+          que o alvo fizer um teste de habilidade, ele pode rolar um d4 e
+          adicionar o número rolado ao teste de habilidade. A criatura pode se
+          beneficiar deste rito apenas uma vez.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Dedicação. </Span>
+          Você toca um humanoide que deseja se dedicar aos serviços do seu deus.
+          Pelas próximas 24 horas, sempre que o alvo faz um teste de
+          resistência, ele pode rolar um d4 e adicionar o numero rolado ao
+          teste. A criatura pode se beneficiar desse rito apenas uma vez.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Casamento. </Span>
+          Você toca humanoides adultos dispostos a serem unidos em matrimônio.
+          Pelos próximos 7 dias, cada alvo ganha um bônus de +2 na CA enquanto
+          estiverem a 9 metros um do outro. Uma criatura pode se beneficiar
+          desse rito novamente apenas se tornar viúvo.
+        </Paragraph>
+      </>
+    ),
     source: "xanathars-guide-to-everything",
     casters: ["cleric", "paladin"],
     type: ["utility"],
@@ -8790,19 +11199,82 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Você arremessa uma massa ondulante de energia caótica em uma criatura ao alcance. Faça um ataque à distância com magia contra o alvo. Se acertar, o alvo sofre 2d8 + 1d6 de dano. Escolha um dos d8s. O número rolado nesse dado determina o tipo de dano do ataque, conforme mostrado abaixo.",
-      "Rolagem 1: Ácido",
-      "Rolagem 2: Frio",
-      "Rolagem 3: Fogo",
-      "Rolagem 4: Forca",
-      "Rolagem 5: Elétrico",
-      "Rolagem 6: Veneno",
-      "Rolagem 7: Psíquico",
-      "Rolagem 8: Trovejante",
-      "Se você rolar o mesmo número em ambos os d8s, a energia caótica salta do alvo para uma criatura diferente de sua escolha a até 9 metros dele. Faça uma nova jogada de ataque contra o novo alvo e faça uma nova jogada de dano, o que pode fazer com que a energia caótica salte novamente.",
-      "Uma criatura pode ser alvo apenas uma vez por cada conjuração desta magia.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você arremessa uma massa ondulante de energia caótica em uma criatura
+          ao alcance. Faça um ataque à distância com magia contra o alvo. Se
+          acertar, o alvo sofre 2d8 + 1d6 de dano. Escolha um dos d8s. O número
+          rolado nesse dado determina o tipo de dano do ataque, conforme
+          mostrado abaixo:
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>d8</TableHeader>
+              <TableHeader>Tipo de Dano</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+
+              <TableCell>Ácido</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>2</TableCell>
+
+              <TableCell>Frio</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>3</TableCell>
+
+              <TableCell>Fogo</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>4</TableCell>
+
+              <TableCell>Energia</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>5</TableCell>
+
+              <TableCell>Elétrico</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>6</TableCell>
+
+              <TableCell>Veneno</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>7</TableCell>
+
+              <TableCell>Psíquico</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>8</TableCell>
+
+              <TableCell>Trovejante</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Paragraph>
+          Se você rolar o mesmo número em ambos os d8s, a energia caótica salta
+          do alvo para uma criatura diferente de sua escolha a até 9 metros
+          dele. Faça uma nova jogada de ataque contra o novo alvo e faça uma
+          nova jogada de dano, o que pode fazer com que a energia caótica salte
+          novamente.
+        </Paragraph>
+
+        <Paragraph>
+          Uma criatura pode ser alvo apenas uma vez por cada conjuração desta
+          magia.
+        </Paragraph>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, cada alvo sofre 1d6 de dano extra do tipo rolado para cada nível de espaço acima do 1°",
     source: "xanathars-guide-to-everything",
@@ -8931,7 +11403,7 @@ export const SPELLS: Spell[] = [
     spellAttack: "spell-ranged",
   },
   {
-    name: "Misseis Mágicos de Jim",
+    name: "Mísseis Mágicos de Jim",
     originalName: "Jim's Magic Missle",
     level: 1,
     school: "evocation",
@@ -9041,7 +11513,7 @@ export const SPELLS: Spell[] = [
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 2° nível ou superior, o dano de ácido aumenta em 2d4 para cada nível do espaço acima do 1°.",
     source: "tashas-cauldron-of-everything",
-    casters: ["wizard", "sorcerer", "artificer"],
+    casters: ["artificer", "wizard", "sorcerer", "artificer"],
     type: ["damage"],
     damageType: ["acid"],
     savingThrow: "dex",
@@ -9107,7 +11579,7 @@ export const SPELLS: Spell[] = [
     ],
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, você pode criar dois globos de ar frescos adicionais para cada espaço acima do 2°",
-    source: "astral-adventurer's-guide",
+    source: "astral-adventurers-guide",
     casters: ["artificer", "druid", "ranger", "sorcerer", "wizard"],
     type: ["utility"],
   },
@@ -9121,7 +11593,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "um livro valendo pelo menos 25 mo",
+      m: "um livro valendo pelo menos 25 po",
     },
     duration: "1 hora",
     description:
@@ -9229,7 +11701,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "uma pérola branca valendo pelo menos 100 mo, que a magia consome",
+      m: "uma pérola branca valendo pelo menos 100 po, que a magia consome",
     },
     duration: "1 hora",
     description: [
@@ -9294,7 +11766,7 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "pó de ouro valendo pelo menos 25 mo, que a magia consome",
+      m: "pó de ouro valendo pelo menos 25 po, que a magia consome",
     },
     duration: "1 hora",
     description: [
@@ -9316,7 +11788,7 @@ export const SPELLS: Spell[] = [
     range: "18 Metros",
     components: {
       s: true,
-      m: "uma moeda, 2 moedas de ouro, que são consumidas como imposto ao usar a magia",
+      m: "uma moeda, 2 po, que são consumidas como imposto ao usar a magia",
     },
     duration: "1 minuto",
     description: [
@@ -9329,7 +11801,7 @@ export const SPELLS: Spell[] = [
   },
   {
     name: "Deslocamento Cinético",
-    originalName: "Knetic Jaunt",
+    originalName: "Kinetic Jaunt",
     level: 2,
     school: "transmutation",
     castingTime: "Ação bônus",
@@ -9338,19 +11810,34 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Você magicamente capacita seu movimento com passos de dança, conferindo a si mesmo os seguintes benefícios durante a duração:",
-      "-Sua velocidade de caminhada aumenta em 3 metros",
-      "-Você não provoca ataques de oportunidade.",
-      "-Você pode se mover pelo espaço de outra criatura, e isso não conta como terreno difícil. Se você terminar seu turno no espaço de outra criatura, você é deslocado para o último espaço desocupado que ocupou, e sofre 1d8 de dano de força.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você magicamente capacita seu movimento com passos de dança,
+          conferindo a si mesmo os seguintes benefícios durante a duração:
+        </Paragraph>
+
+        <UList>
+          <ListItem>Sua velocidade de caminhada aumenta em 3 metros.</ListItem>
+
+          <ListItem>Você não provoca ataques de oportunidade.</ListItem>
+
+          <ListItem>
+            Você pode se mover pelo espaço de outra criatura, e isso não conta
+            como terreno difícil. Se você terminar seu turno no espaço de outra
+            criatura, você é deslocado para o último espaço desocupado que
+            ocupou, e sofre 1d8 de dano de força.
+          </ListItem>
+        </UList>
+      </>
+    ),
     source: "strixhaven-a-curriculum-of-chaos",
     casters: ["artificer", "bard", "sorcerer", "wizard"],
     type: ["utility"],
   },
   {
     name: "Abraço Terrestre de Maximillian",
-    originalName: "Maximillian's Eathen Grasp",
+    originalName: "Maximillian's Earthen Grasp",
     level: 2,
     school: "transmutation",
     castingTime: "1 ação",
@@ -9407,13 +11894,73 @@ export const SPELLS: Spell[] = [
       m: "um pedaço da crosta de uma torda de maça",
     },
     duration: "Concentração, até 1 minuto",
-    description: [
-      "Você preenche um cubo de 6 metros que você pode ver dentro do alcance com magia feérica e dracônica. Role na tabela de Surto Travesso para determinar o efeito mágico produzido e role novamente no início de cada um dos seus turnos até a magia acabar. Você pode mover o cubo até 3 metros antes de rolar.",
-      "Rolagem 1: O cheiro de torta de maçã enche o ar, e cada criatura no cubo deve ser bem-sucedida em um teste de resistência de Sabedoria ou ficará encantada por você até o início do seu próximo turno.",
-      "Rolagem 2: Buquês de flores aparecem ao redor, e cada criatura no cubo deve ser bem-sucedida em um teste de resistência de Destreza ou ficará cega até o início do seu próximo turno, enquanto as flores borrifam água em seus rostos.",
-      "Rolagem 3: Cada criatura no cubo deve ser bem-sucedida em um teste de resistência de Sabedoria ou começará a rir até o início do seu próximo turno. Uma criatura rindo fica incapacitada e usa todo o seu movimento para se mover em uma direção aleatória.",
-      "Rolagem 4: Gotas de melaço aparecem e pairam no cubo, transformando-o em terreno difícil até o início do seu próximo turno.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você preenche um cubo de 6 metros que você pode ver dentro do alcance
+          com magia feérica e dracônica. Role na tabela de Surto Travesso para
+          determinar o efeito mágico produzido e role novamente no início de
+          cada um dos seus turnos até a magia acabar. Você pode mover o cubo até
+          3 metros antes de rolar.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader colSpan={2}>Surto Travesso</TableHeader>
+            </TableRow>
+            <TableRow>
+              <TableHeader>d4</TableHeader>
+
+              <TableHeader>Efeito</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+
+              <TableCell>
+                O cheiro de torta de maçã enche o ar, e cada criatura no cubo
+                deve ser bem-sucedida em um teste de resistência de Sabedoria ou
+                ficará encantada por você até o início do seu próximo turno.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>2</TableCell>
+
+              <TableCell>
+                Buquês de flores aparecem ao redor, e cada criatura no cubo deve
+                ser bem-sucedida em um teste de resistência de Destreza ou
+                ficará cega até o início do seu próximo turno, enquanto as
+                flores borrifam água em seus rostos.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>3</TableCell>
+
+              <TableCell>
+                Cada criatura no cubo deve ser bem-sucedida em um teste de
+                resistência de Sabedoria ou começará a rir até o início do seu
+                próximo turno. Uma criatura rindo fica incapacitada e usa todo o
+                seu movimento para se mover em uma direção aleatória.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>4</TableCell>
+
+              <TableCell>
+                Gotas de melaço aparecem e pairam no cubo, transformando-o em
+                terreno difícil até o início do seu próximo turno.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
     source: "fizbans-treasury-of-dragons",
     casters: ["bard", "sorcerer", "wizard"],
     type: ["utility"],
@@ -9430,13 +11977,31 @@ export const SPELLS: Spell[] = [
       s: true,
     },
     duration: "Instantânea",
-    description: [
-      "Escolha uma área de chamas que você possa ver e que caiba em um cubo de 5 metro dentro do alcance. Você pode extinguir o fogo naquela área e criar fogos de artifício ou fumaça.",
-      "Fogos de artifício. O alvo explode com uma deslumbrante exibição de cores. Cada criatura a até 10 metros do alvo deve ser bem sucedida em um teste de resistência de Constituição ou ficará cega até o final do seu próximo turno.",
-      "Fumaça. Fumaça preta espessa se espalha do alvo em um raio de 20 metros, movendo-se pelas esquinas. A área da fumaça está fortemente obscurecida. A fumaça persiste por 1 minuto ou até que um vento forte a disperse.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Escolha uma área de chamas que você possa ver e que caiba em um cubo
+          de 5 metro dentro do alcance. Você pode extinguir o fogo naquela área
+          e criar fogos de artifício ou fumaça.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Fogos de artifício. </Span> O alvo explode com
+          uma deslumbrante exibição de cores. Cada criatura a até 10 metros do
+          alvo deve ser bem sucedida em um teste de resistência de Constituição
+          ou ficará cega até o final do seu próximo turno.
+        </Paragraph>
+
+        <Paragraph>
+          <Span variant="bold">Fumaça. </Span> Fumaça preta espessa se espalha
+          do alvo em um raio de 20 metros, movendo-se pelas esquinas. A área da
+          fumaça está fortemente obscurecida. A fumaça persiste por 1 minuto ou
+          até que um vento forte a disperse.
+        </Paragraph>
+      </>
+    ),
     source: "xanathars-guide-to-everything",
-    casters: ["bard", "sorcerer", "wizard", "artificer"],
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
     school: "transmutation",
     type: ["utility"],
     savingThrow: "con",
@@ -9504,7 +12069,7 @@ export const SPELLS: Spell[] = [
       "Você faz com que até dez palavras se formem em uma parte do céu que você possa ver. As palavras parecem ser feitas de nuvens e permanecem no local pela duração da magia. As palavras desaparecem quando a magia termina. Um vento forte pode dispersas as nuvens e terminar a magia prematuramente.",
     ],
     source: "xanathars-guide-to-everything",
-    casters: ["bard", "druid", "wizard", "artificer"],
+    casters: ["artificer", "bard", "druid", "wizard"],
     type: ["utility"],
   },
   {
@@ -9565,28 +12130,177 @@ export const SPELLS: Spell[] = [
     components: {
       v: true,
       s: true,
-      m: "uma pena, tufo de pelo e um rabo de peixe dentro de uma bolota dourada valendo pelo menos 200 PO ",
+      m: "uma pena, tufo de pelo e um rabo de peixe dentro de uma bolota dourada valendo pelo menos 200 po",
     },
     duration: "Concentração, até 1 hora",
-    description: [
-      "Você invoca um espírito bestial. Ele se manifesta em um espaço desocupado que você possa ver dentro do alcance. Esta forma corpórea usa o bloco de estatísticas Espírito Bestial. Quando você conjura a magia, escolha um ambiente: Ar, Terra ou Água. A criatura se assemelha a um animal de sua escolha que seja nativo do ambiente escolhido, o que determina certas características no seu bloco de estatísticas. A criatura desaparece quando seus pontos de vida caem a 0 ou quando a magia termina.",
-      "A criatura é uma aliada sua e de seus companheiros. Em combate, a criatura compartilha sua contagem de iniciativa, mas age imediatamente após seu turno. Ela obedece seus comandos verbais (sem exigir ação da sua parte). Se você não emitir nenhum comando, ela realiza a ação Esquivar e usa seu movimento para evitar perigo.",
-      "Espirito bestial:",
-      "Besta pequena",
-      "Classe de armadura: 11 + o nível da magia (armadura natural)",
-      "Pontos de vida: 20 (apenas ar) ou 30 (apenas terra e água), ambos aumentando em 5 para cada espaço acima do 2°.",
-      "Deslocamento: 9 metros, escalada 9 metros (apenas terra), voo 18 metros (apena ar), nado 9 metros (apenas água).",
-      "Força (18), Destreza (11), Constituição (16), Inteligência (4), Sabedoria (14), Carisma (5)",
-      "Sentidos: Visão no escuro (18 metros), Percepção passiva (12).",
-      "Linguas: Compreende as linguas que você fala.",
-      "Bonus de proficiência: Igual ao seu.",
-      "Passar voando (Apenas ar): A besta não provoca ataques de oportunidade quando ela voa para fora do alcance de um inimigo.",
-      "Taticas de matilha (apenas terra): A besta tem vantagem em jogadas de ataque contra uma criatura se pelo menos um dos aliados da besta estiverem dentro de 1,5m da criatura e o aliado não estiver incapacitado.",
-      "Respirar na água (apenas água): A besta pode respirar apenas debaixo d'água.",
-      "Ações:",
-      "Ataques multiplos: A besta faz um número de ataques igual ao nível dessa magia, arredondado para baixo",
-      "Estraçalhar. Ataque com arma corpo a corpo a corpo: Seu modificador de ataque com magia para acertar, alcance de 1,5 metro, um alvo. Em um acerto: 1d8 +4 + o nível da magia como dano perfurante.",
-    ],
+    description: (
+      <>
+        <Paragraph>
+          Você invoca um espírito bestial. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Bestial. Quando você conjura a
+          magia, escolha um ambiente: Ar, Terra ou Água. A criatura se assemelha
+          a um animal de sua escolha que seja nativo do ambiente escolhido, o
+          que determina certas características no seu bloco de estatísticas. A
+          criatura desaparece quando seus pontos de vida caem a 0 ou quando a
+          magia termina.
+        </Paragraph>
+
+        <Paragraph>
+          A criatura é uma aliada sua e de seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após seu turno. Ela obedece seus comandos verbais (sem exigir ação da
+          sua parte). Se você não emitir nenhum comando, ela realiza a ação
+          Esquivar e usa seu movimento para evitar perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Bestial</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                <Span variant="italic">Besta pequena</Span>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Classe de armadura: </Span> 11 + o nível da
+                magia (armadura natural)
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Pontos de vida: </Span> 20 (apenas ar) ou
+                30 (apenas terra e água), ambos aumentando em 5 para cada espaço
+                acima do 2°.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Deslocamento: </Span> 9 metros, escalada 9
+                metros (apenas terra), voo 18 metros (apena ar), nado 9 metros
+                (apenas água).
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>FOR</TableHeader>
+                      <TableHeader>DES</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>SAB</TableHeader>
+                      <TableHeader>CAR</TableHeader>
+                    </TableRow>
+                  </TableHead>
+
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>18 (+4)</TableCell>
+                      <TableCell>11 (+0)</TableCell>
+                      <TableCell>16 (+3)</TableCell>
+                      <TableCell>4 (-3)</TableCell>
+                      <TableCell>14 (+2)</TableCell>
+                      <TableCell>5 (-3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Sentidos: </Span> Visão no escuro (18
+                metros), Percepção passiva (12).
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Linguas: </Span> Compreende as linguas que
+                você fala.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Bônus de proficiência: </Span> Igual ao
+                seu.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Passar voando (Apenas ar). </Span> A besta
+                não provoca ataques de oportunidade quando ela voa para fora do
+                alcance de um inimigo.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Taticas de matilha (apenas terra). </Span>{" "}
+                A besta tem vantagem em jogadas de ataque contra uma criatura se
+                pelo menos um dos aliados da besta estiverem dentro de 1,5
+                metros da criatura e o aliado não estiver incapacitado.
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                <Span variant="bold">Respirar na água (apenas água). </Span> A
+                besta pode respirar apenas debaixo d’água.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+
+          <TableFooter>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>Ações</TableHeader>
+                    </TableRow>
+                  </TableHead>
+
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>
+                        <Span variant="bold">Ataques multiplos. </Span> A besta
+                        faz um número de ataques igual a metade do nível dessa
+                        magia, arredondado para baixo.
+                      </TableCell>
+                    </TableRow>
+
+                    <TableRow>
+                      <TableCell>
+                        <Span variant="bold">Estraçalhar. </Span> Ataque com
+                        arma corpo a corpo a corpo: Seu modificador de ataque
+                        com magia para acertar, alcance de 1,5 metro, um alvo.
+                        Em um acerto: 1d8 +4 + o nível da magia como dano
+                        perfurante.
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </>
+    ),
     upcastDescription:
       "Quando você conjurar essa magia usando um espaço de magia de 3° nível ou superior, use o nível mais alto onde o nível da magia aparece no bloco de estatísticas.",
     source: "tashas-cauldron-of-everything",
@@ -9636,6 +12350,57 @@ export const SPELLS: Spell[] = [
     casters: ["artificer", "sorcerer", "wizard"],
     type: ["utility"],
     savingThrow: "con",
+  },
+  {
+    name: "Vento de Proteção",
+    originalName: "Warding Wind",
+    level: 2,
+    school: "evocation",
+    castingTime: "Ação",
+    range: "Pessoal",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 10 minutos",
+    description: (
+      <>
+        <Paragraph>
+          Um vento forte (32 quilômetros por hora) sopra ao seu redor em um raio
+          de 3 metros e se move com você, permanecendo centrado em você. O vento
+          dura pela duração da magia.
+        </Paragraph>
+
+        <Paragraph>O vento tem os seguintes efeitos:</Paragraph>
+
+        <UList>
+          <ListItem>
+            Ele ensurdece você e outras criaturas em sua área.
+          </ListItem>
+
+          <ListItem>
+            Ele extingue chamas desprotegidas em sua área que sejam do tamanho
+            de uma tocha ou menores.
+          </ListItem>
+
+          <ListItem>
+            A área é terreno difícil para criaturas que não sejam você.
+          </ListItem>
+
+          <ListItem>
+            As jogadas de ataque de armas à distância têm desvantagem se
+            passarem para dentro ou para fora do vento.
+          </ListItem>
+
+          <ListItem>
+            Ele impede vapor, gás e névoa que podem ser dispersos por vento
+            forte.
+          </ListItem>
+        </UList>
+      </>
+    ),
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "druid", "sorcerer", "wizard"],
+    type: ["utility"],
   },
   {
     name: "Sentido de Distorção",
@@ -9723,7 +12488,7 @@ export const SPELLS: Spell[] = [
   //     ""
   //   ],
   //   upcastDescription: "",
-  //   source: "players-handbook",
+  //   source: "",
   //   casters: [""],
   //   type: [""],
   //   damageType: [""],

@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import type { ReactNode } from "react";
+
 export const ATTRIBUTES = ["str", "dex", "con", "int", "wis", "cha"] as const;
 
 export const RACES_NAMES = ["dwarf", "elf"] as const;
@@ -65,7 +67,7 @@ export const SOURCES = [
   "acquisitions-inc",
   "icewind-dale-rime-of-the-frostmaiden",
   "strixhaven-a-curriculum-of-chaos",
-  "astral-adventurer's-guide",
+  "astral-adventurers-guide",
   "lost-laboratory-of-kwalish",
   "deck-of-many-things",
   "planescape-adventures-in-the-multiverse",
@@ -102,7 +104,7 @@ export type Spell = {
   components: { v?: true; s?: true; m?: string };
   duration: string;
 
-  description: string | string[];
+  description: ReactNode;
   upcastDescription?: string;
 
   source: Source;
