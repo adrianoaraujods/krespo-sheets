@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { DocsBody, DocsPage } from "fumadocs-ui/page";
+import { unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
 
 import type { Locale } from "@/lib/config";
 import type { Metadata } from "next";
@@ -16,6 +17,8 @@ export default function KompendiumPage({
     locale: Locale;
   };
 }) {
+  setRequestLocale(locale);
+
   const page = getPage(slug, locale);
 
   if (!page) notFound();

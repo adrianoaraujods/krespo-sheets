@@ -1,4 +1,3 @@
-import React from "react";
 import { DocsLayout } from "fumadocs-ui/layout";
 import { unstable_setRequestLocale as setRequestLocale } from "next-intl/server";
 
