@@ -4,14 +4,13 @@ import createNextIntlPlugin from "next-intl/plugin";
 /** @type {import('fumadocs-mdx/config').CreateMDXOptions} */
 const fumadocsConfig = {
   mdxOptions: {
-    baseUrl: "test",
     lastModifiedTime: "git",
   },
+  rootContentPath: "./public/kompendium",
 };
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -20,9 +19,19 @@ const nextConfig = {
       },
     ],
   },
+  reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: "/kompendium",
+        destination: "/kompendium/dnd5",
+        permanent: true,
+      },
+    ];
+  },
 };
 
-const withNextIntl = createNextIntlPlugin("./lib/intl.ts");
+const withNextIntl = createNextIntlPlugin("./src/lib/intl.ts");
 const withMDX = createMDX(fumadocsConfig);
 
 export default withMDX(withNextIntl(nextConfig));

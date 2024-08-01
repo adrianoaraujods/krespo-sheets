@@ -13,7 +13,7 @@ describe("Kompendium", () => {
 
   locales.map((locale) => {
     kompendiumPages.forEach((page) => {
-      const filePath = `content/kompendium/${page}${locale === defaultLocale ? "" : `.${locale}`}.mdx`;
+      const filePath = `public/kompendium/${page}${locale === defaultLocale ? "" : `.${locale}`}.mdx`;
 
       it(`should exist the file: ${filePath}`, () => {
         let isValidKompendiumPage = true;
