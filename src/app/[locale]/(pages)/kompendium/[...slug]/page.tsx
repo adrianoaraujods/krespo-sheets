@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 
 import { Heading } from "@/components/typography/text";
 
-import { getPage } from "@/app/source";
+import { getPage, getPages } from "@/app/source";
 
 export default function KompendiumPage({
   params: { slug, locale },
@@ -26,7 +26,6 @@ export default function KompendiumPage({
     <DocsPage
       toc={page.data.exports.toc}
       lastUpdate={page.data.exports.lastModified}
-      // tableOfContent={{ enabled: false }}
     >
       <Heading element="h1">{page.data.title}</Heading>
 
@@ -41,6 +40,12 @@ export default function KompendiumPage({
   );
 }
 
+export async function generateStaticParams() {
+  return getPages().map((page) => ({
+    slug: page.slugs,
+  }));
+}
+
 export function generateMetadata({
   params: { slug, locale },
 }: {
@@ -51,7 +56,7 @@ export function generateMetadata({
   if (page == null) notFound();
 
   return {
-    title: page.data.title,
+    title: `${page.data.title} | krespo-sheets`,
     description: page.data.description,
   } satisfies Metadata;
 }
