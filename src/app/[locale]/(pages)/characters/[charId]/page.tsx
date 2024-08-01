@@ -5,9 +5,9 @@ import { db } from "@/lib/db";
 
 import { Section } from "@/components/ui/section";
 import { Skeleton } from "@/components/ui/skeleton";
-import CharacterSheet from "@/components/sheets";
 
-import { ErrorPage, NotAutorized } from "@/app/[locale]/(pages)/errors";
+import { ErrorPage, NotAutorized } from "../../errors";
+import CharacterSheet from "./_char-sheet";
 
 export default function CharacterSheetPage({
   params: { charId },
@@ -46,13 +46,11 @@ export default function CharacterSheetPage({
     }
 
     if (character.userId !== session.user.id) {
-      return <ErrorPage title="pages.characters.responses.403" />;
+      return 403;
     }
 
     try {
-      const System = (
-        await import(`@/components/sheets/character-sheet-${character.system}`)
-      ).default;
+      const System = (await import(`./_${character.system}`)).default;
 
       return (
         <CharacterSheet character={character}>

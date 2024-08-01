@@ -55,7 +55,7 @@ import {
 
 export type CharacterCard = Omit<Character, "createdAt" | "data" | "userId">;
 
-export function CharactersList({
+export default function CharactersList({
   characters,
 }: {
   characters: CharacterCard[];
