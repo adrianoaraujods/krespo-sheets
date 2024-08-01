@@ -158,24 +158,24 @@ const Anchor = React.forwardRef<
     target || "_blank";
 
   return (
-    <Link
-      className={cn(
-        textVariants({ size: "md" }),
-        `relative text-primary hover:underline ${linkTarget === "_blank" ? "pr-4" : ""}`,
-        className
-      )}
-      target={linkTarget}
-      ref={ref}
-      {...props}
-    >
-      {children}
+    <>
+      <Link
+        className={cn(
+          textVariants({ size: "md" }),
+          `group inline-flex text-primary hover:underline`,
+          className
+        )}
+        target={linkTarget}
+        ref={ref}
+        {...props}
+      >
+        <span>{children}</span>
 
-      {linkTarget === "_blank" ? (
-        <ArrowUpRightIcon className="absolute right-0 top-0 size-4" />
-      ) : (
-        children
-      )}
-    </Link>
+        {linkTarget === "_blank" && (
+          <ArrowUpRightIcon className="inline size-4 text-primary" />
+        )}
+      </Link>
+    </>
   );
 });
 Anchor.displayName = "Anchor";
