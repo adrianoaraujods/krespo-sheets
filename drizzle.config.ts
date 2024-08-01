@@ -8,7 +8,7 @@ export default {
   },
   dialect: "postgresql",
   out: "./drizzle",
-  schema: "./lib/schema.ts",
+  schema: "./src/lib/schema.ts",
   strict: true,
   verbose: true,
 } satisfies Config;

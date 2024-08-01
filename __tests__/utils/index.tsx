@@ -1,5 +1,5 @@
 import * as React from "react";
-import messages from "@/locales/en-US";
+import messages from "@/public/locales/en-US";
 import { render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";

@@ -13,6 +13,9 @@ const jestConfig = {
   testEnvironment: "jest-environment-jsdom",
   setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
   moduleNameMapper: {
+    "^@/root/(.*)$": "<rootDir>/$1",
+    "^@/tests/(.*)$": "<rootDir>/__tests__/$1",
+    "^@/public/(.*)$": "<rootDir>/public/$1",
     "^@/(.*)$": "<rootDir>/src/$1",
   },
   testPathIgnorePatterns: ["<rootDir>/__tests__/utils/"],
