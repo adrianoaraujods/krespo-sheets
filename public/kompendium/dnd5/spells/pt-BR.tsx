@@ -904,7 +904,7 @@ export const SPELLS: Spell[] = [
       s: true,
       m: "um copo de água",
     },
-    duration: "",
+    duration: "1 hora",
     description:
       "Uma força magica protetora envolve você, manifestandose como um frio espectral que cobre você e seu equipamento. Você ganha 5 pontos de vida temporários pela duração. Se uma criatura atingir você com um ataque corpo-a-corpo enquanto estiver com esses pontos de vida, a criatura sofrerá 5 de dano de frio.",
     upcastDescription:
@@ -9881,7 +9881,7 @@ export const SPELLS: Spell[] = [
     savingThrow: "dex",
   },
   {
-    name: "Tempestade De Gelo",
+    name: "Tempestade de Gelo",
     originalName: "Ice Storm",
     level: 4,
     school: "evocation",
@@ -9906,7 +9906,7 @@ export const SPELLS: Spell[] = [
     savingThrow: "dex",
   },
   {
-    name: "Tentáculos Negras de Evard",
+    name: "Tentáculos Negros de Evard",
     originalName: "Evard's Black Tentacles",
     level: 4,
     school: "conjuration",
