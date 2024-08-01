@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getTranslations } from "next-intl/server";
 
 import type { Locale } from "@/lib/config";
@@ -15,7 +16,9 @@ export default async function Dnd5SpellsPage({
 
   return (
     <div className="pl-4">
-      <SpellsList spellsList={spells} />
+      <Suspense>
+        <SpellsList spellsList={spells} />
+      </Suspense>
     </div>
   );
 }
