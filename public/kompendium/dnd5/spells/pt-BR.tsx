@@ -12470,6 +12470,125 @@ export const SPELLS: Spell[] = [
     type: ["utility"],
   },
 
+  {
+    name: "Antagonizar",
+    originalName: "Antagonize",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "9 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma carta de baralho com a imagem de um ladino",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você sussurra palavras mágicas que antagonizam uma criatura de sua escolha dentro do alcance. A criatura alvo deve fazer um teste de resistência de Sabedoria. Se falhar no teste, a criatura sofre 4d4 de dano psíquico e deve imediatamente usar sua reação para fazer um ataque corpo a corpo contra outra criatura de sua escolha que você possa ver. Se a criatura alvo não puder realizar esse ataque (por exemplo, porque não há ninguém ao seu alcance ou porque sua reação não está disponível), ela terá desvantagem na próxima rolagem de ataque que fizer antes do início do seu próximo turno. Se tiver sucesso no teste, a criatura sofre apenas metade do dano.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d4 para cada nível de espaço acima do 3°.",
+    source: "deck-of-many-things",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["psychic"],
+    savingThrow: "wis",
+  },
+
+  {
+    name: "Passo de Ashardalon",
+    originalName: "Ashardalon's stride",
+    level: 3,
+    school: "transmutation",
+
+    castingTime: "1 Ação bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "As chamas incandescentes de um dragão emanam de seus pés, concedendo-lhe uma velocidade explosiva. Durante a duração, seu deslocamento aumenta em 6 metros e seu movimento não provoca ataques de oportunidade.",
+      "Quando você se move a até 1,5 metros de uma criatura ou de um objeto que não está sendo vestido ou carregado, ele sofre 1d6 de dano de fogo devido ao seu rastro de calor. Uma criatura ou objeto pode sofrer esse dano apenas uma vez durante um turno.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, seu deslocamento aumenta em 1,5m para cada nível de espaço acima do 3°. A magia causa 1d6 de dano de fogo adicional para cada nível de espaço acima do 3°",
+    source: "fizbans-treasury-of-dragons",
+    casters: ["artificer", "ranger", "sorcerer", "wizard"],
+    type: ["utility", "damage"],
+    damageType: ["fire"],
+  },
+  {
+    name: "Soneca",
+    originalName: "Catnap",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "9 metros",
+    components: {
+      s: true,
+      m: "Uma pitada de areia",
+    },
+    duration: "10 Minutos",
+    description: [
+      "Você faz um gesto calmante e até três criaturas voluntárias de sua escolha que você possa ver dentro do alcance caem inconscientes durante a duração do feitiço. O feitiço termina prematuramente para um alvo se ele sofrer dano ou se alguém usar uma ação para sacudi-lo ou estapeá-lo acordado. Se um alvo permanecer inconsciente durante toda a duração, ele ganha o benefício de um descanso curto e não pode ser afetado por este feitiço novamente até que complete um descanso longo.",
+    ],
+    source: "xanathars-guide-to-everything",
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Inimigos a vista",
+    originalName: "Enemies Abound",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "36 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você afeta a mente de uma criatura que pode ver e a força a fazer um teste de resistência de Inteligência. Uma criatura automaticamente tem sucesso se for imune a ser amedrontada. Se falhar no teste, o alvo perde a capacidade de distinguir amigos de inimigos, considerando todas as criaturas que pode ver como inimigos até o fim do feitiço. Cada vez que o alvo sofrer dano, ele pode repetir o teste de resistência, terminando o efeito sobre si mesmo em um sucesso.",
+      "Sempre que a criatura afetada escolher outra criatura como alvo, ela deve escolher o alvo aleatoriamente entre as criaturas que pode ver dentro do alcance do ataque, feitiço ou outra habilidade que esteja usando. Se um inimigo provocar um ataque de oportunidade da criatura afetada, a criatura deve realizar esse ataque se for capaz de fazê-lo.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+    savingThrow: "int",
+  },
+  {
+    name: "Erupção de terra",
+    originalName: "Erupting earth",
+    level: 3,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um pedaço de obsidiana",
+    },
+    duration: "Instantânea",
+    description: [
+      "Escolha um ponto que você possa ver no solo, dentro do alcance. Uma fonte de terra e pedras se agita e emerge num cubo de 6 metros centrado no ponto. Cada criatura na área deve realizar um teste de resistência de Destreza. Uma criatura sofre 3d12 de dano de concussão se falhar na resistência, ou metade desse dano se obtiver sucesso. Adicionalmente o solo na área se toma terreno difícil até ser limpo. Cada porção de 1,5 metros quadrados da área requer pelo menos 1 minuto para ser limpa manualmente.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d12 para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+  },
+
   // {
   //   name: "",
   //   originalName: "",
