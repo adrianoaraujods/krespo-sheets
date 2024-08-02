@@ -77,7 +77,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
   React.useEffect(() => router.refresh(), [locale, router]);
 
   return (
-    <div className="my-8 mr-4 w-full -md:pl-4">
+    <div className="my-8 mr-4 w-full max-md:pl-4">
       <Heading element="h1">
         {t("systems.dnd5.spells.title")}
         <span className="hidden sm:inline"> - {t("systems.dnd5.title")}</span>
@@ -300,7 +300,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
         <PaginationComponent table={table} setParams={setParams} />
 
         {table.getRowCount() > 0 ? (
-          <Span className="text-center -md:mx-auto">
+          <Span className="text-center max-md:mx-auto">
             {t("ui.pages.amount", {
               initial: Math.max(params.pg * params.amount + 1, 0),
               final: Math.min(

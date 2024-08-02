@@ -34,14 +34,14 @@ export default function LoginDialog({
       <DialogTrigger asChild>
         <Button
           className={cn(
-            "flex items-center gap-2 -md:size-10 -md:p-0",
+            "flex items-center gap-2 max-md:size-10 max-md:p-0",
             className
           )}
           {...props}
         >
           <LogInIcon className="size-5" />
 
-          <Span className="-md:hidden">{t("ui.login")}</Span>
+          <Span className="max-md:hidden">{t("ui.login")}</Span>
         </Button>
       </DialogTrigger>
 
@@ -52,7 +52,7 @@ export default function LoginDialog({
           <DialogDescription>{t("pages.login.description")}</DialogDescription>
         </DialogHeader>
 
-        <div className="grid gap-4 xs:grid-cols-2">
+        <div className="xs:grid-cols-2 grid gap-4">
           <Provider provider="google" loadingState={loadingState}>
             <GoogleIcon className="h-5" />
 

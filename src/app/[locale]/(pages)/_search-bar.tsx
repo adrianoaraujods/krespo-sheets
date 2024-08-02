@@ -20,7 +20,7 @@ export default function SearchBar() {
       <Button
         variant="outline"
         className={
-          "flex justify-between gap-4 px-2 text-muted-foreground -lg:hidden"
+          "flex justify-between gap-4 px-2 text-muted-foreground max-lg:hidden"
         }
         onClick={() => setOpen(true)}
       >
