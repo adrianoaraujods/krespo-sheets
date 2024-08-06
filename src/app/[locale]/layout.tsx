@@ -3,6 +3,7 @@ import { GeistSans } from "geist/font/sans";
 import { getTranslations } from "next-intl/server";
 
 import "fumadocs-ui/style.css";
+import "katex/dist/katex.css";
 import "@/styles/globals.css";
 import "@/styles/themes.css";
 
