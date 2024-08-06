@@ -14,6 +14,11 @@ import { Anchor, Heading, Paragraph, Span } from "@/components/typography/text";
 
 export default {
   a: ({ children, href = "" }) => <Anchor href={href}>{children}</Anchor>,
+  Link: ({ children, href = "" }) => (
+    <Anchor href={href} target="_self">
+      {children}
+    </Anchor>
+  ),
   // h1: ({ children }) => <Heading element="h1">{children}</Heading>,
   // h2: ({ children }) => <Heading element="h2">{children}</Heading>,
   // h3: ({ children }) => <Heading element="h3">{children}</Heading>,
