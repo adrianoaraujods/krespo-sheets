@@ -162,7 +162,7 @@ const Anchor = React.forwardRef<
       <Link
         className={cn(
           textVariants({ size: "md" }),
-          `group inline-flex text-primary hover:underline`,
+          `group inline-flex text-link no-underline decoration-link hover:underline`,
           className
         )}
         target={linkTarget}
@@ -172,7 +172,7 @@ const Anchor = React.forwardRef<
         <span>{children}</span>
 
         {linkTarget === "_blank" && (
-          <ArrowUpRightIcon className="inline size-4 text-primary" />
+          <ArrowUpRightIcon className="inline size-4 text-link" />
         )}
       </Link>
     </>
