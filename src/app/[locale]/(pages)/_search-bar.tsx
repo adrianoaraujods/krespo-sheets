@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { Dialog } from "@radix-ui/react-dialog";
 import DefaultSearchDialog from "fumadocs-ui/components/dialog/search-default";
 import { SearchIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Span } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 
 import { usePagesContext } from "./_provider";
 

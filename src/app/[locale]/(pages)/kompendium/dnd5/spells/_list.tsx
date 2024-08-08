@@ -77,7 +77,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
   React.useEffect(() => router.refresh(), [locale, router]);
 
   return (
-    <div className="my-8 mr-4 w-full max-md:pl-4">
+    <div className="my-8 mr-4 w-full pr-4 max-md:pl-4">
       <Heading element="h1">
         {t("systems.dnd5.spells.title")}
         <span className="hidden sm:inline"> - {t("systems.dnd5.title")}</span>

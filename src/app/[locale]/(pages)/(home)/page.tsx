@@ -95,8 +95,8 @@ export default async function HomePage({
           </div>
         </Section>
 
-        <Section className="grid gap-8 bg-muted/30 lg:grid-cols-[2fr,3fr]">
-          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-black" />
+        <Section className="grid gap-8 bg-muted lg:grid-cols-[2fr,3fr]">
+          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-secondary" />
 
           <div className="flex flex-col items-start justify-center">
             <Heading element="h2">{t("pages.home.characters.title")}</Heading>
@@ -122,11 +122,11 @@ export default async function HomePage({
             </Button>
           </div>
 
-          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-black" />
+          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-secondary max-lg:row-start-1" />
         </Section>
 
-        <Section className="grid gap-8 bg-muted/30 lg:grid-cols-[2fr,3fr]">
-          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-black" />
+        <Section className="grid gap-8 bg-muted lg:grid-cols-[2fr,3fr]">
+          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-secondary" />
 
           <div className="flex flex-col items-start justify-center">
             <Heading element="h2">{t("pages.home.spells.title")}</Heading>
@@ -148,12 +148,12 @@ export default async function HomePage({
             <Text>{t("pages.home.systems.description")}</Text>
           </div>
 
-          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-black" />
+          <div className="mx-auto aspect-[4/3] w-full max-w-[600px] rounded-lg bg-secondary max-lg:row-start-1" />
         </Section>
       </main>
 
       <Section
-        className="flex justify-between gap-4 bg-primary/20 py-2"
+        className="flex justify-between gap-4 bg-accent py-2 text-accent-foreground"
         asChild
       >
         <footer>
