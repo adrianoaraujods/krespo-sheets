@@ -12470,6 +12470,458 @@ export const SPELLS: Spell[] = [
     type: ["utility"],
   },
 
+  {
+    name: "Antagonizar",
+    originalName: "Antagonize",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "9 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma carta de baralho com a imagem de um ladino",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você sussurra palavras mágicas que antagonizam uma criatura de sua escolha dentro do alcance. A criatura alvo deve fazer um teste de resistência de Sabedoria. Se falhar no teste, a criatura sofre 4d4 de dano psíquico e deve imediatamente usar sua reação para fazer um ataque corpo a corpo contra outra criatura de sua escolha que você possa ver. Se a criatura alvo não puder realizar esse ataque (por exemplo, porque não há ninguém ao seu alcance ou porque sua reação não está disponível), ela terá desvantagem na próxima rolagem de ataque que fizer antes do início do seu próximo turno. Se tiver sucesso no teste, a criatura sofre apenas metade do dano.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d4 para cada nível de espaço acima do 3°.",
+    source: "deck-of-many-things",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["psychic"],
+    savingThrow: "wis",
+  },
+
+  {
+    name: "Passo de Ashardalon",
+    originalName: "Ashardalon's stride",
+    level: 3,
+    school: "transmutation",
+
+    castingTime: "1 Ação bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "As chamas incandescentes de um dragão emanam de seus pés, concedendo-lhe uma velocidade explosiva. Durante a duração, seu deslocamento aumenta em 6 metros e seu movimento não provoca ataques de oportunidade.",
+      "Quando você se move a até 1,5 metros de uma criatura ou de um objeto que não está sendo vestido ou carregado, ele sofre 1d6 de dano de fogo devido ao seu rastro de calor. Uma criatura ou objeto pode sofrer esse dano apenas uma vez durante um turno.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, seu deslocamento aumenta em 1,5m para cada nível de espaço acima do 3°. A magia causa 1d6 de dano de fogo adicional para cada nível de espaço acima do 3°",
+    source: "fizbans-treasury-of-dragons",
+    casters: ["artificer", "ranger", "sorcerer", "wizard"],
+    type: ["utility", "damage"],
+    damageType: ["fire"],
+  },
+  {
+    name: "Soneca",
+    originalName: "Catnap",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "9 metros",
+    components: {
+      s: true,
+      m: "Uma pitada de areia",
+    },
+    duration: "10 Minutos",
+    description: [
+      "Você faz um gesto calmante e até três criaturas voluntárias de sua escolha que você possa ver dentro do alcance caem inconscientes durante a duração do feitiço. O feitiço termina prematuramente para um alvo se ele sofrer dano ou se alguém usar uma ação para sacudi-lo ou estapeá-lo acordado. Se um alvo permanecer inconsciente durante toda a duração, ele ganha o benefício de um descanso curto e não pode ser afetado por este feitiço novamente até que complete um descanso longo.",
+    ],
+    source: "xanathars-guide-to-everything",
+    casters: ["artificer", "bard", "sorcerer", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Inimigos a vista",
+    originalName: "Enemies Abound",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "36 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você afeta a mente de uma criatura que pode ver e a força a fazer um teste de resistência de Inteligência. Uma criatura automaticamente tem sucesso se for imune a ser amedrontada. Se falhar no teste, o alvo perde a capacidade de distinguir amigos de inimigos, considerando todas as criaturas que pode ver como inimigos até o fim do feitiço. Cada vez que o alvo sofrer dano, ele pode repetir o teste de resistência, terminando o efeito sobre si mesmo em um sucesso.",
+      "Sempre que a criatura afetada escolher outra criatura como alvo, ela deve escolher o alvo aleatoriamente entre as criaturas que pode ver dentro do alcance do ataque, feitiço ou outra habilidade que esteja usando. Se um inimigo provocar um ataque de oportunidade da criatura afetada, a criatura deve realizar esse ataque se for capaz de fazê-lo.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+    savingThrow: "int",
+  },
+  {
+    name: "Erupção de terra",
+    originalName: "Erupting earth",
+    level: 3,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um pedaço de obsidiana",
+    },
+    duration: "Instantânea",
+    description: [
+      "Escolha um ponto que você possa ver no solo, dentro do alcance. Uma fonte de terra e pedras se agita e emerge num cubo de 6 metros centrado no ponto. Cada criatura na área deve realizar um teste de resistência de Destreza. Uma criatura sofre 3d12 de dano de concussão se falhar na resistência, ou metade desse dano se obtiver sucesso. Adicionalmente o solo na área se toma terreno difícil até ser limpo. Cada porção de 1,5 metros quadrados da área requer pelo menos 1 minuto para ser limpa manualmente.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d12 para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+  },
+
+  {
+    name: "Amizade rápida",
+    originalName: "Fast friends",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 ação",
+    range: "9 metros",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Quando você conjura esta magia, escolha um humanoide dentro do alcance que possa ver e ouvir você, e que possa entendê-lo. A criatura deve ser bem-sucedida em uma resistência de Sabedoria ou ficará encantada por você durante a duração. Enquanto a criatura estiver encantada dessa maneira, ela se compromete a realizar quaisquer serviços ou atividades que você pedir de forma amigável, da melhor maneira possível.",
+      "Você pode atribuir novas tarefas à criatura quando uma tarefa anterior for concluída ou se você decidir encerrar a tarefa atual. Se o serviço ou atividade puder causar dano à criatura, ou se conflitar com as atividades e desejos normais da criatura, a criatura pode fazer outro teste de resistência de Sabedoria para tentar acabar com o efeito. Esta resistência é feita com vantagem se você ou seus companheiros estiverem lutando contra a criatura. Se a atividade resultar em morte certa para a criatura, a magia termina.",
+      "Quando a magia termina, a criatura sabe que foi encantada por você.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, você pode afetar uma criatura adicional para cada nível de espaço acima do 3°.",
+    source: "acquisitions-inc",
+    casters: ["bard", "cleric", "wizard"],
+    type: ["utility"],
+
+    savingThrow: "wis",
+  },
+  {
+    name: "Flechas flamejantes",
+    originalName: "Flame Arrows",
+    level: 3,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Você toca uma aljava contendo flechas ou virotes. Quando um alvo é atingido por um ataque de arma à distância usando uma munição retirada da aljava, o alvo sofre 1d6 de dano de fogo extra. A magia termina em uma munição quando acerta ou erra, e o feitiço termina quando doze munições são retirados da aljava.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o número de flechas ou virotes que podem ser afetados aumenta em dois para cada nível acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "ranger", "sorcerer", "wizard", "artificer"],
+    type: ["damage"],
+    damageType: ["fire"],
+    spellAttack: "weapon",
+  },
+  {
+    name: "Torre de Galder",
+    originalName: "Galder's Tower",
+    level: 3,
+    school: "conjuration",
+
+    castingTime: "10 Minutos",
+    range: "9 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um fragmento de pedra, madeira ou outro material de construção",
+    },
+    duration: "24 Horas",
+    description: [
+      "Você conjura uma torre de dois andares feita de pedra, madeira ou materiais semelhantes adequadamente resistentes. A torre pode ser redonda ou quadrada. Cada andar da torre tem 3 metros de altura e uma área de até 30 metros quadrados. O acesso entre os andares consiste em uma simples escada e alçapão. Cada andar assume uma das seguintes formas, escolhida por você quando lança o feitiço:",
+      "-Um quarto com uma cama, cadeiras, um baú e uma lareira mágica",
+      "-Um escritório com mesas, livros, estantes, pergaminhos, tinta e penas",
+      "-Um espaço de jantar com uma mesa, cadeiras, lareira mágica, recipientes e utensílios de cozinha",
+      "Uma sala de estar com sofás, poltronas, mesas de canto e banquetas para os pés",
+      "Um banheiro com privadas, banheiras, um braseiro mágico e bancos de sauna",
+      "Um observatório com um telescópio e mapas do céu noturno",
+      "Uma sala vazia e sem mobília",
+      "O interior da torre é quente e seco, independentemente das condições externas. Qualquer equipamento ou mobília conjurada com a torre se dissipa em fumaça se removida dela. No final da duração do feitiço, todas as criaturas e objetos dentro da torre que não foram criados pelo feitiço aparecem em segurança do lado de fora, no chão, e todos os traços da torre e seus móveis desaparecem.",
+      "Você pode lançar este feitiço novamente enquanto ele estiver ativo para manter a existência da torre por mais 24 horas. Você pode criar uma torre permanente lançando este feitiço no mesmo local e com a mesma configuração todos os dias durante um ano.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, a torre pode ter um andar adicional para cada nível de espaço acima do 3°",
+    source: "lost-laboratory-of-kwalish",
+    casters: ["wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Incitar Ganância",
+    originalName: "Incite Greed",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 ação",
+    range: "9 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma gema valendo pelo menos 50 PO",
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Quando você lança este feitiço, você apresenta a gema usada como componente material e escolhe qualquer número de criaturas dentro do alcance que possam ver você. Cada alvo deve ter sucesso em uma teste de resistência de Sabedoria ou será encantado por você até que o feitiço termine, ou até que você ou seus companheiros façam algo prejudicial a ele. Enquanto estiver encantada dessa maneira, uma criatura não pode fazer nada além de usar seu movimento para se aproximar de você de maneira segura. Enquanto uma criatura afetada estiver a 1,5 Metros de você, ela não pode se mover, apenas olha avidamente para a gema que você apresenta.",
+      "No final de cada um de seus turnos, um alvo afetado pode fazer um teste de resistência de sabedoria. Se tiver sucesso, esse efeito termina para esse alvo.",
+    ],
+
+    source: "acquisitions-inc",
+    casters: ["wizard"],
+    type: ["utility"],
+    savingThrow: "wis",
+  },
+  {
+    name: "Fortaleza Intelectual",
+    originalName: "Intellect Fortress",
+    level: 3,
+    school: "abjuration",
+
+    castingTime: "1 Ação",
+    range: "9 metros",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Durante a duração, você ou uma criatura voluntária que você possa ver dentro do alcance tem resistência a dano psíquico, bem como vantagem em testes de resistência de Inteligência, Sabedoria e Carisma.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, você pode afetar uma criatura adicional para cada nível de espaço acima do 3°. As criaturas devem estar a 9 metros umas das outras quando você as selecionar ",
+    source: "tashas-cauldron-of-everything",
+    casters: ["artificer", "bard", "sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Transferencia de vida",
+    originalName: "Life Transfer",
+    level: 3,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "9 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você sacrifica parte de sua saúde para reparar lesões de outra criatura. Você sofre 4d8 de dano necrótico, que não podem ser reduzidos de nenhuma maneira e uma criatura a sua escolha que você pode ver dentro do alcance recupera uma quantidade de pontos de vida iguais ao dobro do dano necrótico que você sofre.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d8 para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["cleric", "wizard"],
+    type: ["utility", "damage"],
+    damageType: ["necrotic"],
+  },
+  {
+    name: "Meteoros Momentâneos de Melf",
+    originalName: "Melf's Minute Meteors",
+    level: 3,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "Pessoal",
+    components: {
+      v: true,
+      s: true,
+      m: "Salitre, enxofre e alcatrão de pinheiro formando um cordão",
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Você cria seis pequenos meteoros no seu espaço. Eles voam no ar e orbitam ao seu redor pela duração da magia. Quando você conjura essa magia - e com uma ação bônus em cada um dos turnos subsequentes - você pode gastar um ou dois meteoros, enviando-os diretamente para um ponto ou pontos que você escolher, a até 36 metros de você. Quando um meteoro alcança seu destino ou atinge uma superfície sólida, ele explode. Cada criatura a até 1,5 metros do ponto onde o meteoro explodiu deve realizar um teste de resistência de Destreza. Uma criatura sofre 2d6 de dano de fogo se falhar na resistência, ou metade desse dano se obtiver sucesso.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, a quantidade de meteoros que você cria aumenta em dois para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "wizard"],
+    type: ["damage"],
+    damageType: ["fire"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Discurso Motivacional",
+    originalName: "Motivational Speech",
+    level: 3,
+    school: "enchantment",
+
+    castingTime: "1 minuto",
+    range: "18 Metros",
+    components: {
+      v: true,
+    },
+    duration: "1 hora",
+    description: [
+      "Escolha até cinco criaturas dentro do alcance que possam ouvi-lo. Pela duração, cada criatura afetada ganha 5 pontos de vida temporários e tem vantagem em testes de resistência de Sabedoria. Se uma criatura afetada for atingida por um ataque, ela terá vantagem na próxima jogada de ataque que fizer. Assim que uma criatura afetada perder os pontos de vida temporários concedidos por este feitiço, o feitiço termina para essa criatura.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, os pontos de vida temporários aumentam em 5 para cada nível de espaço acima do 3°",
+    source: "acquisitions-inc",
+    casters: ["bard", "cleric"],
+    type: ["utility"],
+  },
+  {
+    name: "Onde de pulso",
+    originalName: "Pulse wave",
+    level: 3,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "Pessoal(Cone de 9 metros)",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você cria uma pressão intensa, a libera em um cone de 9 metros e decide se a pressão puxa ou empurra criaturas e objetos. Cada criatura nesse cone deve fazer um teste de resistência de Constituição. Uma criatura sofre 6d6 de dano de força se falhar no teste, ou metade desse dano se for bem-sucedida. E cada criatura que falhar no teste é puxada 4,5 metros em sua direção ou empurrada 4,5 metros para longe de você, dependendo da escolha que você fez para o feitiço.",
+      "Além disso, objetos não fixos que estão completamente dentro do cone são igualmente puxados ou empurrados 4,5 metros .",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d6 e a distancia puxada ou empurrada aumenta em 1,5m para cada nível de espaço acima do 3°",
+    source: "explorers-guide-to-wildermount",
+    casters: ["wizard"],
+    type: ["damage", "utility"],
+    damageType: ["force"],
+    savingThrow: "con",
+  },
+  {
+    name: "Mortalha espiritual",
+    originalName: "Spirit Shroud",
+    level: 3,
+    school: "necromancy",
+
+    castingTime: "1 Ação bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você invoca os espíritos dos mortos, que flutuam ao seu redor pela duração do feitiço. Os espíritos são intangíveis e invulneráveis.",
+      "Até o feitiço acabar, qualquer ataque que você fizer causa 1d8 de dano extra quando você atingir uma criatura dentro de 3 metros de você. Esse dano pode ser radiante, necrótico ou de frio (à sua escolha quando lançar o feitiço). Qualquer criatura que sofrer esse dano não pode recuperar pontos de vida até o início do seu próximo turno.",
+      "Além disso, qualquer criatura à sua escolha que você possa ver e que comece seu turno a menos de 10 pés de você tem seu deslocamento reduzido em 3 metros até o início do seu próximo turno.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d8 para cada dois níveis de espaço acima do 3°.",
+    source: "tashas-cauldron-of-everything",
+    casters: ["cleric", "paladin", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["necrotic", "radiant", "cold"],
+    spellAttack: "weapon",
+  },
+  {
+    name: "Passo trovejante",
+    originalName: "Thunder Step",
+    level: 3,
+    school: "conjuration",
+    castingTime: "1 Ação",
+    range: "27 metros",
+    components: {
+      v: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você se teletransporta para um espaço desocupado que possa ver dentro do alcance. Imediatamente após você desaparecer, um estrondo sonoro soa, e cada criatura dentro de 3 metros do espaço que você deixou deve fazer um teste de resistência de Constituição, sofrendo 3d10 de dano trovejante em uma falha na resistência, ou metade desse dano em uma bem-sucedida. O trovão pode ser ouvido a até 300 metros de distância.",
+      "Você pode trazer objetos desde que seu peso não exceda o que você pode carregar. Você também pode teletransportar uma criatura voluntária do seu tamanho ou menor que esteja carregando equipamento até sua capacidade de carga. A criatura deve estar a até 1,5 metro de você quando você lançar este feitiço, e deve haver um espaço desocupado a 1,5 metro do seu espaço de destino para a criatura aparecer; caso contrário, a criatura é deixada para trás.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d10 para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "sorcerer", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["thunder"],
+    savingThrow: "con",
+  },
+  {
+    name: "Maremoto",
+    originalName: "Tidal Wave",
+    level: 3,
+    school: "conjuration",
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma gota d'água",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você conjura uma onda de água que se choca contra uma área dentro do alcance. A área pode ter até 9 metros de comprimento, 3 metros de largura e 3 metros de altura. Cada criatura na área deve realizar um teste de resistência de Destreza. Se fracassar, uma criatura sofre 4d8 de dano de concussão e estará caída no chão. Se obtiver sucesso, uma criatura sofre metade desse dano e não será derrubada. A água então se espalha pelo solo em todas as direções. Extinguindo chamas desprotegidas em sua área e a até 9 metros dela.",
+    ],
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Muralha de areia",
+    originalName: "Wall of sand",
+    level: 3,
+    school: "evocation",
+    castingTime: "1 Ação",
+    range: "27 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um punhado de areia",
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Você conjura uma muralha de areia rodopiante no solo, num ponto que você possa ver, dentro do alcance. Você pode fazer a muralha com até 9 metros de largura, 3 metros de altura e 3 metros de espessura, e ela desaparece quando a magia termina. Ela bloqueia a linha de visão, mas não o movimento. Uma criatura fica cega enquanto estiver no espaço da muralha e devem gastar 4,5 metros de movimento para cada 1,5 metros que se mover nela.",
+    ],
+    source: "xanathars-guide-to-everything",
+    casters: ["wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Muralha de água",
+    originalName: "Wall of Water",
+    level: 3,
+    school: "evocation",
+    castingTime: "1 Ação",
+    range: "18 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma gota d'água",
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Você conjura uma muralha de água no solo, num ponto que você possa ver, dentro do alcance. Você pode fazer a muralha com até 9 metros de largura, 3 metros de altura e 30 centímetros de espessura, ou você pode fazer uma muralha em forma de anel de 6 metros de diâmetro, 6 metros de altura e 30 centímetros de espessura. A muralha desaparece quando a magia termina. O espaço da muralha é de terreno difícil.",
+      "Qualquer ataque à distância com arma que entrar no espaço da muralha tem desvantagem na jogada de ataque, e dano de fogo é reduzido à metade se o efeito de fogo passar através da muralha para alcançar seu alvo. Magias que causem dano de frio que passem através da muralha fazem com que a área da muralha por onde passaram se congelar (pelo menos, uma seção de 1,5 metros é congelada). Cada 1,5 metro quadrado de seção congelada tem CA 5 e 15 pontos de vida. Reduzir uma seção congelada a O pontos de vida, a destrói. Quando uma seção é destruída, a muralha de água não a preenche.",
+    ],
+    source: "xanathars-guide-to-everything",
+    casters: ["wizard", "druid", "sorcerer"],
+    type: ["utility"],
+  },
+
   // {
   //   name: "",
   //   originalName: "",
