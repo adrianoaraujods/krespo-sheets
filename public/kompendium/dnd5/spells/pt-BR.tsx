@@ -12735,7 +12735,7 @@ export const SPELLS: Spell[] = [
       "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, o dano aumenta em 1d8 para cada nível de espaço acima do 3°",
     source: "xanathars-guide-to-everything",
     casters: ["cleric", "wizard"],
-    type: ["utility", "damage"],
+    type: ["healing", "damage"],
     damageType: ["necrotic"],
   },
   {
@@ -12920,6 +12920,977 @@ export const SPELLS: Spell[] = [
     source: "xanathars-guide-to-everything",
     casters: ["wizard", "druid", "sorcerer"],
     type: ["utility"],
+  },
+  {
+    name: "Servo Minúsculo",
+    originalName: "Tiny Servant",
+    level: 3,
+    school: "transmutation",
+    castingTime: "1 Minuto",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "8 Horas",
+    description: (
+      <>
+        <Paragraph>
+          Você toca um objeto minúsculo, não mágico, que não esteja preso a
+          outro objeto ou a uma superfície e que não esteja sendo carregado por
+          outra criatura. O alvo se torna animado e cria pequenos braços e
+          pernas, tornando-se uma criatura sob o seu controle até o feitiço
+          terminar ou até a criatura chegar a 0 pontos de vida. Veja o bloco de
+          estatísticas para suas características.
+        </Paragraph>
+        <Paragraph>
+          Como uma ação bônus, você pode comandar mentalmente a criatura se ela
+          estiver a até 36 metros de você. (Se você controlar várias criaturas
+          com este feitiço, pode comandar qualquer uma ou todas ao mesmo tempo,
+          emitindo o mesmo comando para cada uma.) Você decide que ação a
+          criatura tomará e para onde ela se moverá durante o próximo turno, ou
+          pode emitir um comando simples e geral, como buscar uma chave, ficar
+          de guarda ou empilhar alguns livros. Se você não emitir comandos, o
+          servo não faz nada além de se defender contra criaturas hostis. Uma
+          vez dado um comando, o servo continua a seguir essa ordem até que a
+          tarefa seja concluída.
+        </Paragraph>
+        Quando a criatura chega a 0 pontos de vida, ela retorna à sua forma
+        original, e qualquer dano restante é transferido para essa forma.
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Servo Minúsculo</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Constructo Minúsculo</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Classe de armadura: 15 (Armadura natural)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Pontos de vida: 10 (4d4)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deslocamento: 9 Metros, escalada 9 metros</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>4(-3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>2(-4)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>1(-5)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Imunidades a dano: Veneno, psíquico</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidades a condições: Cego, encantado, surdo, exaustão,
+                amedrontado, paralizado, petrificado, envenenado
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Sentido cego 18m(cego além desse alcance), percepção
+                passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Linguagens: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Pancada: Ataque com arma corpo a corpo: +5 para acertar, alcance
+                1,5m, um alvo, em um acerto: 5 (1d4+3) de dano de concussão.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, você pode animar dois objetos adicionais para cada nível de espaço acima do 3°",
+    source: "xanathars-guide-to-everything",
+    casters: ["wizard", "artificer"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Fada",
+    originalName: "Summon Fey",
+    level: 3,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma flor dourada valendo pelo menos 300 PO",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito feérico. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Feérico. Quando você lança o
+          feitiço, escolha um humor: Furioso, Alegre ou Travesso. A criatura se
+          assemelha a uma criatura feérica de sua escolha, marcada pelo humor
+          escolhido, o que determina um dos traços no seu bloco de estatísticas.
+          A criatura desaparece quando seus pontos de vida chegam a 0 ou quando
+          o feitiço termina.
+        </Paragraph>
+
+        <Paragraph>
+          A criatura é uma aliada para você e seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece seus comandos verbais (não requer uma
+          ação sua). Se você não der nenhum comando, ela realiza a ação Esquivar
+          e usa seu movimento para evitar perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Feérico</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Fada pequena</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 12+o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 30 +10 para cada nível de magia acima do 3°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deslocamento: 12 Metros</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>13(+1)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>11(0)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Imunidades a condições: Encantado</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Sylvan, entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: A fada faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Espada curta: Ataque com arma corpo a corpo: seu modificador de
+                ataque com magia para acertar, alcance 1,5m, um alvo, em um
+                acerto: 1d6+3+o nível da magia como dano perfurante + 1d6 de
+                dano de força.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações Bônus</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Passo Feérico. A fada magicamente se teleporta até 9 metros para
+                um espaço desocupado que ela possa ver, então um dos efeitos
+                seguintes acontece baseado no humor da fada:
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Furioso. A fada tem vantagem na próxima jogada de ataque que ela
+                faz antes do final desse turno.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Alegre. A fada pode forçar uma criatura que ela pode ver dentro
+                de 3 metros a fazer um teste de resistência de sabedoria contra
+                sua Cd de magia. A não ser que o alvo tenha sucesso, ele fica
+                encantado por você e pela fada por 1 minuto ou até que ele tome
+                qualquer dano.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Travesso. A fada preenche um cubo de 1,5m em um alcance de 1,5m
+                de si mesma com escuridão magica, que dura até o final do seu
+                próximo turno.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado",
+    source: "tashas-cauldron-of-everything",
+    casters: ["druid", "ranger", "warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Prole Sombria",
+    originalName: "Summon Shadowspawn",
+    level: 3,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Lágrimas dentro de um frasco de cristal no valor de pelo menos 300 PO",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito sombrio. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Sombrio. Quando você conjurar
+          essa magia, escolha uma emoção: Fúria, Desespero ou Medo. A criatura
+          se assemelha a um bípede disforme marcado pela emoção escolhida, o que
+          determina certos traços no seu bloco de estatísticas. A criatura
+          desaparece quando seus pontos de vida chegam a 0 ou quando o feitiço
+          termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada para você e seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece seus comandos verbais (não requer uma
+          ação sua). Se você não der nenhum comando, ela realiza a ação Esquivar
+          e usa seu movimento para evitar perigo.
+        </Paragraph>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito das Sombras</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Monstruosidade média</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 12 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 35 + 15 para cada nível de magia acima do 3°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deslocamento: 12 Metros</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>13(+1)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>15(+2)</TableCell>
+                      <TableCell>4(-3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Resistência a dano: Necrótico</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Imunidades a condições: Amedrontado</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 36m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Fenesi de Terror (Apenas Fúria) O espírito tem vantagem em
+                ataques contra criaturas amedrontadas
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Peso da tristeza (Apenas desespero) Qualquer criatura, exeto
+                você, que começar o turno dentro de 1,5m do espirito tem seu
+                deslocamento reduzidoem 6m até o inicio do proximo turno da
+                criatura.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Mãos Gelidas: Ataque com arma corpo a corpo: seu modificador de
+                ataque com magia para acertar, alcance 1,5m, um alvo, em um
+                acerto: 1d12+3+o nível da magia como dano de frio.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Grito apavorante (1/dia) O Espirito grita. Cada criatura dentro
+                de 9 metros dele devem passar em um teste de resistência de
+                sabedoria contra a sua Cd de magia ou ficará amedrontado pelo
+                espirito por 1 minuto. A criatura amedrontada pode repetir o
+                teste no final de cada um dos seus turnos, terminando o efeito
+                em um sucesso.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações Bônus</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Furtividade das sombras. Enquanto em luz fraca ou escuridão, o
+                espirito pode usar a ação de se esconder
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado",
+    source: "tashas-cauldron-of-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Morto Vivo",
+    originalName: "Summon Undead",
+    level: 3,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um crânio dourado no valor de pelo menos 300 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito morto-vivo. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Morto-vivo. Quando você lança o
+          feitiço, escolha a forma da criatura: Fantasmagórico, Putrido ou
+          Esquelético. O espírito se assemelha a uma criatura morta-viva com a
+          forma escolhida, o que determina certos traços no seu bloco de
+          estatísticas. A criatura desaparece quando seus pontos de vida chegam
+          a 0 ou quando o feitiço termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada para você e seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece seus comandos verbais (não requer uma
+          ação sua). Se você não der nenhum comando, ela realiza a ação Esquivar
+          e usa seu movimento para evitar perigo.
+        </Paragraph>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Morto Vivo</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Morto vivo médio</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 11 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 30 (Fantasmagórico ou putrido apenas) ou 20
+                (esquelético apenas) + 10 para cada nível de magia acima do 3°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Deslocamento: 9 Metros, voo 12m(planar)(Apenas fantasmagórico){" "}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>12(+1)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>15(+2)</TableCell>
+                      <TableCell>4(-3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>9(-1)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Resistência a dano: Necrótico, veneno</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidades a condições: Exaustão, amedrontado, paralizado,
+                envenenado
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Aura Pestilenta (Somente putrido). Qualquer criatura, exceto
+                você, que comece seu turno a 1,5 metros do espírito deve ser
+                bem-sucedida em um teste de resistência de Constituição contra
+                sua Cd de magia ou ficará envenenada até o início do próximo
+                turno.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Passagem Incorpórea (Somente Fantasmagórico). O espírito pode se
+                mover através de outras criaturas e objetos como se fossem
+                terreno difícil. Se ele terminar seu turno dentro de um objeto,
+                ele é deslocado para o espaço desocupado mais próximo e sofre
+                1d10 de dano de força para cada 1,5 metro percorrido.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Toque mortal(Apenas Fantasmagórico): Ataque com arma corpo a
+                corpo: seu modificador de ataque com magia para acertar, alcance
+                1,5m, um alvo, em um acerto: 1d8+3+o nível da magia como dano
+                necrótico, e a criatura deve ter sucesso em um teste de
+                resistência de sabedoria contra sua Cd de magia ou ficará
+                amedrontada do morto vivo até o final do próximo turno do alvo.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Raio fúnebre (Apenas Esquelétrico): Ataque a distância com
+                magia: seu modificador de ataque com magia para acertar, alcance
+                45m, um alvo, em um acerto: 2d4+3+o nível da magia como dano
+                necrótico.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Garra definhante (Apenas Putrido): Ataque a corpo a corpo com
+                arma: seu modificador de ataque com magia para acertar, alcance
+                1,5m, um alvo, em um acerto: 1d6+3+o nível da magia como dano
+                cortante. Se o alvo estiver envenenado, ele deve ter sucesso em
+                um teste de constituição contra sua Cd de magia ou ficará
+                paralizado até o final do proximo turno dele.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 4° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado",
+    source: "tashas-cauldron-of-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Demônios Menores",
+    originalName: "Summon Lesser Demons",
+    level: 3,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um frasco de sangue de um humanoide morto nas ultimas 24 horas",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você profere palavras profanas, convocando demônios do caos do Abismo.
+          Role na tabela a seguir para determinar o que aparece.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>d6</TableHeader>
+              <TableHeader>Demônios Invocados</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>1-2</TableCell>
+
+              <TableCell>
+                Dois demônios de nível de desafio 1 ou inferior
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>3-4</TableCell>
+
+              <TableCell>
+                Quatro demônios de nível de desafio 1/2 ou inferior
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>5-6</TableCell>
+
+              <TableCell>
+                Oito demônios de nível de desafio 1/4 ou inferior
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Paragraph>
+          O Mestre escolhe os demônios, como manes ou dretches, e você escolhe
+          os espaços desocupados que você pode ver dentro do alcance onde eles
+          aparecem. Um demônio convocado desaparece quando seus pontos de vida
+          chegam a 0 ou quando o feitiço termina.
+        </Paragraph>
+        <Paragraph>
+          Os demônios são hostis a todas as criaturas, incluindo você. Role a
+          iniciativa para os demônios convocados como um grupo, que terá seus
+          próprios turnos. Os demônios perseguem e atacam as criaturas não
+          demoníacas mais próximas, da melhor forma que puderem.
+        </Paragraph>
+        <Paragraph>
+          Como parte da conjuração do feitiço, você pode formar um círculo no
+          chão com o sangue usado como componente material. O círculo é grande o
+          suficiente para abranger seu espaço. Enquanto o feitiço durar, os
+          demônios convocados não podem atravessar o círculo ou danificá-lo, e
+          não podem atacar ninguém dentro dele. Usar o componente material dessa
+          maneira o consome quando o feitiço termina.
+        </Paragraph>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de 6° ou 7° nível, você invoca o dobro de demônios, se conjurar com um espaço de 8° ou 9° nível, você invoca o triplo de demônios",
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+
+  {
+    name: "Enfeitiçar Monstro",
+    originalName: "Charm Monster",
+    level: 4,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "9 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "1 Hora",
+    description: [
+      "Você tenta enfeitiçar uma criatura que possa ver dentro do alcance. Ela deve fazer um teste de resistência de Sabedoria, e o faz com vantagem se você ou seus companheiros estiverem lutando contra ela. Se falhar no teste de resistência, ela ficará enfeitiçada por você até que o feitiço termine ou até que você ou seus companheiros façam algo prejudicial a ela. A criatura enfeitiçada é amigável com você. Quando a magia termina, a criatura sabe que foi enfeitiçada por você.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, você pode ter como alvo uma criatura adicional para cada nível de espaço acima do 4°. As criaturas devem estar a até 9 metros uma da outra quando você conjurar. ",
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "druid", "sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+    savingThrow: "wis",
+  },
+  {
+    name: "Convocar Montaria Maior",
+    originalName: "Find Greater Steed",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "10 Minutos",
+    range: "9 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você convoca um espírito que assume a forma de uma montaria leal e majestosa. Aparecendo em um espaço desocupado dentro do alcance, o espírito assume uma forma que você escolhe: um grifo, um pegasus, um peryton, um lobo atroz, um rinoceronte ou um tigre de dentes de sabre. A criatura tem as estatísticas fornecidas no Manual dos Monstros para a forma escolhido, embora seja um celestial, uma fada ou um demônio (sua escolha) em vez de seu tipo de criatura normal. Além disso, se ela tiver uma pontuação de Inteligência de 5 ou inferior, sua Inteligência toma-se 6 , e ganha a capacidade de compreender um idioma de sua escolha que você fala.",
+      "Você controla a montaria em combate. Enquanto a montaria estiver dentro de 1,6 quilômetros de distância de você, você pode se comunicar com ela de forma telepática. Enquanto estiver montado nela, você pode fazer qualquer magia que você conjure tem somente você como alvo também afetar a montaria.",
+      "A montaria desaparece temporariamente quando cai para O pontos de vida ou quando você a dispensa como uma ação. Conjurar essa magia novamente, reconvoca a montaria ligada, com todos os seus pontos de vida restaurados e todas as condições removidas.",
+      "Você não pode ter mais de uma montaria ligada por esta magia ou convocar montaria ao mesmo tempo. Como uma ação, você pode liberar uma montaria de sua ligação, fazendo com que ela desapareça permanentemente.",
+      "Sempre que a montaria desaparecer, ele deixa para trás os objetos que estava vestindo ou carregando.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["paladin"],
+    type: ["utility"],
+  },
+  {
+    name: "Correio veloz de Galder",
+    originalName: "Galder's Speedy Courier",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "3 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "25 peças de ouro ou bens minerais equivalentes, que o feitiço consome",
+    },
+    duration: "10 Minutos",
+    description: [
+      "Você invoca um pequeno elemental do ar em um ponto dentro do alcance. O elemental do ar não possui forma, é quase transparente, imune a todos os danos, e não pode interagir com outras criaturas ou objetos. Ele carrega um baú aberto e vazio cujas dimensões internas são de 90 centímetros de cada lado. Enquanto o feitiço durar, você pode depositar dentro do baú quantos itens couberem. Em seguida, você pode nomear uma criatura viva que tenha conhecido e visto pelo menos uma vez antes, ou qualquer criatura da qual possua uma parte do corpo, uma mecha de cabelo, um pedaço de unha ou parte semelhante do corpo da criatura.",
+      "Assim que a tampa do baú é fechada, o elemental e o baú desaparecem, reaparecendo ao lado da criatura-alvo. Se a criatura-alvo estiver em outro plano, ou se estiver protegida contra detecção ou localização mágica, o conteúdo do baú reaparece no chão aos seus pés.",
+      "A criatura-alvo é informada do conteúdo do baú antes de decidir se vai abri-lo ou não, e sabe quanto tempo resta da duração do feitiço para poder retirar os itens. Nenhuma outra criatura pode abrir o baú e retirar seu conteúdo. Quando o feitiço expira ou quando todos os conteúdos do baú forem removidos, o elemental e o baú desaparecem. O elemental também desaparece se a criatura-alvo ordenar que ele devolva os itens a você. Quando o elemental desaparece, quaisquer itens que não tenham sido retirados do baú reaparecem no chão aos seus pés.",
+    ],
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de 8° nível ou superior, você pode mandar o baú para uma criatura em um plano de existencia diferente do seu.",
+    source: "lost-laboratory-of-kwalish",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Selar Portal",
+    originalName: "Gate Seal",
+    level: 4,
+    school: "abjuration",
+
+    castingTime: "1 minuto",
+    range: "18 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma chave de portal quebrada, que o feitiço consome",
+    },
+    duration: "24 Horas",
+    description: [
+      "Você fortifica a estrutura dos planos dentro de um cubo de 9 metros que você pode ver dentro do alcance. Dentro dessa área, portais se fecham e não podem ser abertos durante a duração. Feitiços e outros efeitos que permitem viagem planar ou abrem portais, como portal ou mudança de plano, falham se usados para entrar ou sair da área. O cubo é estacionário.",
+    ],
+    upcastDescription:
+      "Quando conjurar essa magia usando um espaço de 6° nível ou superior, ela dura até ser dissipada",
+    source: "planescape-adventures-in-the-multiverse",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Buraco de gravidade",
+    originalName: "",
+    level: 4,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "36 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma bola de gude preta",
+    },
+    duration: "Instantânea",
+    description: [
+      "Uma esfera de força esmagadora com um raio de 6 metros se forma em um ponto que você pode ver dentro do alcance e puxa as criaturas ali presentes. Cada criatura na esfera deve fazer um teste de resistência de Constituição. Em uma falha, a criatura sofre 5d10 de dano de força e é puxada em linha reta em direção ao centro da esfera, terminando em um espaço desocupado o mais próximo possível do centro (mesmo que esse espaço esteja no ar). Em um sucesso, a criatura sofre metade do dano e não é puxada.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de 5° nível ou superior, o dano aumenta em 1d10 para cada nível de espaço acima do 4°.",
+    source: "explorers-guide-to-wildermount",
+    casters: ["wizard"],
+    type: ["damage", "utility"],
+    damageType: ["force"],
+    savingThrow: "con",
+  },
+  {
+    name: "Guardião da natureza",
+    originalName: "Guardian of nature",
+    level: 4,
+    school: "transmutation",
+
+    castingTime: "1 Ação bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Um espírito da natureza responde ao seu chamado e transforma você em um poderoso guardião. A transformação dura até o feitiço terminar. Você escolhe uma das seguintes formas para assumir: Besta Primal ou Grande Árvore.",
+      "Besta Primal. Pelo bestial cobre seu corpo, seus traços faciais se tornam ferozes, e você ganha os seguintes benefícios:",
+      "-Seu deslocamento aumenta em 3 metros.",
+      "-Você ganha visão no escuro com um alcance de 36 metros.",
+      "-Você faz jogadas de ataque baseadas em Força com vantagem.",
+      "-Seus ataques com armas corpo a corpo causam 1d6 de dano de força extra em um acerto.",
+      "Grande Árvore. Sua pele parece de casca, folhas brotam do seu cabelo, e você ganha os seguintes benefícios: ",
+      "-Você ganha 10 pontos de vida temporários.",
+      "-Você faz testes de resistência de Constituição com vantagem.",
+      "-Você faz jogadas de ataque baseadas em Destreza e Sabedoria com vantagem.",
+      "-Enquanto você estiver no chão, o terreno em um raio de 4,5 metros de você é terreno difícil para seus inimigos.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "ranger"],
+    type: ["utility", "damage"],
+  },
+  {
+    name: "Lança Psíquica de Raulothim",
+    originalName: "Raulothim's Psychic Lance",
+    level: 4,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "36 Metros",
+    components: {
+      v: true,
+    },
+    duration: "Instantânea",
+    description: [
+      "Você dispara uma lança cintilante de poder psíquico da sua testa em direção a uma criatura que você pode ver dentro do alcance. Alternativamente, você pode pronunciar o nome de uma criatura. Se o alvo nomeado estiver dentro do alcance, ele se torna o alvo do feitiço, mesmo que você não possa vê-lo. Se o alvo nomeado não estiver dentro do alcance, a lança se dissipa sem efeito.",
+      "O alvo deve fazer um teste de resistência de Inteligência. Em uma falha, o alvo sofre 7d6 de dano psíquico e fica incapacitado até o início do seu próximo turno. Em um sucesso, a criatura sofre metade do dano e não fica incapacitada.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de 5° nível ou superior, o dano aumenta em 1d6 para cada níveld e espaço acima do 4°",
+    source: "fizbans-treasury-of-dragons",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["psychic"],
+    savingThrow: "int",
+  },
+
+  {
+    name: "Sombra de transtorno",
+    originalName: "Shadow of Moil",
+    level: 4,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "Pessoal",
+    components: {
+      v: true,
+      s: true,
+      m: "Um globo ocular de morto-vivo envolto em uma gema no valor de pelo menos 150 po",
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Sombras semelhantes a chamas envolvem seu corpo até o feitiço terminar, fazendo com que você fique fortemente obscurecido para os outros. As sombras transformam luz fraca em um raio de 3 metros ao seu redor em escuridão, e luz brilhante na mesma área em luz fraca.",
+      "Até o feitiço terminar, você tem resistência a dano radiante. Além disso, sempre que uma criatura dentro de 3 metros de você o atingir com um ataque, as sombras atacam essa criatura, causando 2d8 de dano necrótico a ela.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock"],
+    type: ["damage", "utility"],
+    damageType: ["necrotic"],
+  },
+  {
+    name: "Resplendor Enjoativo",
+    originalName: "Sickening Radiance",
+    level: 4,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Uma luz esverdeada e tênue se espalha dentro de uma esfera com raio de 9 metros centrada em um ponto que você escolher dentro do alcance. A luz se espalha ao redor de cantos e dura até o feitiço terminar.",
+      "Quando uma criatura entra na área do feitiço pela primeira vez em um turno ou começa seu turno ali, essa criatura deve fazer um teste de resistência de Constituição. Em uma falha, a criatura sofre 4d10 de dano radiante, sofre um nível de exaustão e emite uma luz esverdeada e tênue em um raio de 1,5 metros. Essa luz torna impossível que a criatura se beneficie de estar invisível. A luz e quaisquer níveis de exaustão causados por este feitiço desaparecem quando o feitiço termina.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["radiant"],
+    savingThrow: "con",
   },
 
   // {
