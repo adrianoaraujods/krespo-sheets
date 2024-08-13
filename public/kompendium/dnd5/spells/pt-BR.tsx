@@ -12685,7 +12685,7 @@ export const SPELLS: Spell[] = [
     },
     duration: "Concentração, até 1 minuto",
     description: [
-      "Quando você lança este feitiço, você apresenta a gema usada como componente material e escolhe qualquer número de criaturas dentro do alcance que possam ver você. Cada alvo deve ter sucesso em uma teste de resistência de Sabedoria ou será encantado por você até que o feitiço termine, ou até que você ou seus companheiros façam algo prejudicial a ele. Enquanto estiver encantada dessa maneira, uma criatura não pode fazer nada além de usar seu movimento para se aproximar de você de maneira segura. Enquanto uma criatura afetada estiver a 1,5 Metros de você, ela não pode se mover, apenas olha avidamente para a gema que você apresenta.",
+      "Quando você lança este feitiço, você apresenta a gema usada como componente material e escolhe qualquer número de criaturas dentro do alcance que possam ver você. Cada alvo deve ter sucesso em uma teste de resistência de Sabedoria ou será enfeitiçado por você até que o feitiço termine, ou até que você ou seus companheiros façam algo prejudicial a ele. Enquanto estiver encantada dessa maneira, uma criatura não pode fazer nada além de usar seu movimento para se aproximar de você de maneira segura. Enquanto uma criatura afetada estiver a 1,5 Metros de você, ela não pode se mover, apenas olha avidamente para a gema que você apresenta.",
       "No final de cada um de seus turnos, um alvo afetado pode fazer um teste de resistência de sabedoria. Se tiver sucesso, esse efeito termina para esse alvo.",
     ],
 
@@ -13009,7 +13009,7 @@ export const SPELLS: Spell[] = [
             </TableRow>
             <TableRow>
               <TableCell>
-                Imunidades a condições: Cego, encantado, surdo, exaustão,
+                Imunidades a condições: Cego, enfeitiçado, surdo, exaustão,
                 amedrontado, paralizado, petrificado, envenenado
               </TableCell>
             </TableRow>
@@ -13137,7 +13137,7 @@ export const SPELLS: Spell[] = [
             </TableRow>
 
             <TableRow>
-              <TableCell>Imunidades a condições: Encantado</TableCell>
+              <TableCell>Imunidades a condições: Enfeitiçado</TableCell>
             </TableRow>
             <TableRow>
               <TableCell>
@@ -13205,8 +13205,8 @@ export const SPELLS: Spell[] = [
                 Alegre. A fada pode forçar uma criatura que ela pode ver dentro
                 de 3 metros a fazer um teste de resistência de sabedoria contra
                 sua Cd de magia. A não ser que o alvo tenha sucesso, ele fica
-                encantado por você e pela fada por 1 minuto ou até que ele tome
-                qualquer dano.
+                enfeitiçado por você e pela fada por 1 minuto ou até que ele
+                tome qualquer dano.
               </TableCell>
             </TableRow>
             <TableRow>
@@ -13891,6 +13891,796 @@ export const SPELLS: Spell[] = [
     type: ["damage", "utility"],
     damageType: ["radiant"],
     savingThrow: "con",
+  },
+  {
+    name: "Espirito da morte",
+    originalName: "Spirit of Death",
+    level: 4,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Uma carta de baralho dourada no valor de pelo menos 400 po e que retrata um avatar da morte",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito que personifica a morte. O espírito se
+          manifesta em um espaço desocupado que você pode ver dentro do alcance
+          e usa o bloco de estatísticas do espírito ceifador. O espírito
+          desaparece quando seus pontos de vida são reduzidos a 0 ou quando o
+          feitiço termina.
+        </Paragraph>
+        <Paragraph>
+          O espírito é um aliado para você e seus companheiros. Em combate, o
+          espírito compartilha sua contagem de iniciativa e age imediatamente
+          após seu turno. Ele obedece aos seus comandos verbais (não requer ação
+          da sua parte). Se você não der comandos ao espírito, ele realiza a
+          ação de Esquiva e usa seu movimento para evitar perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Ceifador</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Morto vivo médio</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 11 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 40 + 10 para cada nível de magia acima do 4°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Deslocamento: 9 Metros, voo 9 metros(planar)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Imunidades a dano: Necrótico, veneno</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidades a condições: Enfeitiçado, exaustão, amedrontado,
+                paralizado, envenenado
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 36m, percepção passiva 13
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Movimento Incorpóreo. O ceifador pode se mover através de outras
+                criaturas e objetos como se fossem terreno difícil. Se ele
+                terminar seu turno dentro de um objeto, ele é empurrado para o
+                espaço desocupado mais próximo e sofre 1d10 de dano de força
+                para cada 1,5 metro percorrido.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Foice Ceifadora. Ataque Corpo a Corpo com Arma: seu modificador
+                de ataque de magia para acertar (com vantagem), alcance 1,5
+                metro, um alvo. Acerto: 1d8 + 3 + o nível da magia em dano
+                necrótico.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações Bônus</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Assombrar Criatura. O espírito tem como alvo em uma criatura que
+                pode ver a até 3 metros de si e começa a assombrá-la. Enquanto o
+                alvo estiver assombrado, você e o espírito sentem a direção e a
+                distância até o alvo se ele estiver no mesmo plano de existência
+                que você. Além disso, se o alvo começar seu turno a até 3 metros
+                do espírito, o alvo deve ser bem-sucedido em um teste de
+                resistência de Sabedoria contra a sua Cd de magia ou ficará
+                amedrontado até o início do próximo turno do alvo. O alvo
+                permanece assombrado até morrer, até o espírito desaparecer ou
+                até o espírito usar essa ação novamente.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado.",
+    source: "deck-of-many-things",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+  },
+
+  {
+    name: "Esfera da Tempestade",
+    originalName: "Storm Sphere",
+    level: 4,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "45 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Uma esfera de 6 metros de raio composta de um turbilhão de ar surge em um ponto à sua escolha dentro do alcance. A esfera permanece durante a duração do feitiço. Cada criatura na esfera quando ela aparece ou que termina seu turno nela deve ser bem-sucedida em um teste de resistência de Força ou sofrerá 2d6 de dano de concussão. O espaço da esfera é considerado terreno difícil.",
+      "Até o fim do feitiço, você pode usar uma ação bônus em cada um dos seus turnos para fazer com que um raio salte do centro da esfera em direção a uma criatura à sua escolha que esteja a até 18 metros do centro. Faça um ataque à distância com magia. Você tem vantagem na jogada de ataque se o alvo estiver na esfera. Em caso de acerto, o alvo sofre 4d6 de dano elétrico.",
+      "As criaturas a até 9 metros da esfera têm desvantagem em testes de Sabedoria (Percepção) feitos para ouvir.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, o dano de cada um dos seus efeitos aumenta em 1d6 para cada nível de espaço acima do 4°.",
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning", "lightning"],
+    savingThrow: "str",
+    spellAttack: "spell-ranged",
+  },
+  {
+    name: "Invocar Aberração",
+    originalName: "Summon Aberration",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito aberrante. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Aberrante. Quando você conjurar
+          essa magia, escolha Beholder, Slaad ou Cria das estrelas. A criatura
+          se assemelha a uma aberração desse tipo, o que determina certos traços
+          em seu bloco de estatísticas. A criatura desaparece quando seus pontos
+          de vida caem para 0 ou quando o feitiço termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada sua e de seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece a seus comandos verbais (não requer ação
+          da sua parte). Se você não der nenhum comando, ela realiza a ação de
+          Esquiva e usa seu movimento para evitar o perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Aberrante</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Aberração média</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 11 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 40 + 10 para cada nível de magia acima do 4°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Deslocamento: 9 Metros, voo 9 metros(planar)(Apenas Beholder)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>15(+2)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>6(-2)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Imunidades a dano: Psíquico</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Dialeto do subterranio, Entende as linguas que você
+                fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Regeneração (somente Slaad): A aberração recupera 5 pontos de
+                vida no início de seu turno se tiver pelo menos 1 ponto de vida.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Aura Sussurrante (somente Cria das estrelas): No início de cada
+                um dos turnos da aberração, cada criatura a até 1,5 metro da
+                aberração deve ser bem-sucedida em um teste de resistência de
+                Sabedoria contra a CD do seu feitiço ou sofrerá 2d6 de dano
+                psíquico, desde que a aberração não esteja incapacitada.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Garras (somente Slaad): Ataque Corpo a Corpo com Arma: seu
+                modificador de ataque com magia para atingir, alcance 1,5 metro,
+                um alvo. Acerto: 1d10 + 3 + o nível da magia de dano cortante.
+                Se o alvo for uma criatura, ela não pode recuperar pontos de
+                vida até o início do próximo turno da aberração.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Raio Ocular (somente Beholder): Ataque à Distância com Magia:
+                seu modificador de ataque com magia para atingir, alcance 45
+                metros, uma criatura. Acerto: 1d8 + 3 + o nível da magia de dano
+                psíquico.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Golpe Psíquico (somente Cria das estrelas): Ataque Corpo a Corpo
+                com Magia: seu modificador de ataque com magia para atingir,
+                alcance 1,5 metro, uma criatura. Acerto: 1d8 + 3 + o nível da
+                magia de dano psíquico.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado.",
+    source: "tashas-cauldron-of-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+
+  {
+    name: "Invocar Constructo",
+    originalName: "Summon Construct",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "uma caixa de bloqueio ornamentada de pedra e metal no valor de pelo menos 400 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você invoca o espírito de um construto. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito de Construto. Quando você
+          conjurar a magia, escolha um material: Argila, Metal ou Pedra. A
+          criatura se assemelha a um golem ou a um modron (à sua escolha) feito
+          do material escolhido, o que determina certos traços em seu bloco de
+          estatísticas. A criatura desaparece quando seus pontos de vida caem
+          para 0 ou quando o feitiço termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada sua e de seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece a seus comandos verbais (não requer ação
+          da sua parte). Se você não der nenhum comando, ela realiza a ação de
+          Esquiva e usa seu movimento para evitar o perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito de Constructo</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Constructo médio</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 13 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 40 + 15 para cada nível de magia acima do 4°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deslocamento: 9 Metros</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>18(+4)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>18(+4)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>11(0)</TableCell>
+                      <TableCell>5(-3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Resistências a dano: Veneno</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidade a condição: Enfeitiçado, exaustão, amedrontado,
+                incapacitado, paralizado, petrificado, envenenado{" "}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Corpo Aquecido (somente Metal): Uma criatura que toque o
+                construto ou o atinja com um ataque corpo a corpo enquanto
+                estiver a 1,5 metro dele sofre 1d10 de dano de fogo.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Letargia Rochosa (somente Pedra): Quando uma criatura que o
+                construto pode ver começa seu turno a até 3 metros do construto,
+                o construto pode forçá-la a fazer um teste de resistência de
+                Sabedoria contra a sua Cd de magia. Em uma falha, o alvo não
+                pode usar reações e sua velocidade é reduzida pela metade até o
+                início do próximo turno.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pancada. Ataque Corpo a Corpo com Arma: seu modificador de
+                ataque com magia para acertar, alcance 1,5 metro, um alvo.
+                Acerto: 1d8 + 4 + o nível da magia de dano de concussão.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Reações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Chicotada Furiosa (somente Argila): Quando o construto sofre
+                dano, ele faz um ataque de pancada contra uma criatura aleatória
+                a 1,5 metro dele. Se não houver nenhuma criatura ao alcance, o
+                construto se move até metade de sua velocidade em direção a um
+                inimigo que ele possa ver, sem provocar ataques de oportunidade.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado.",
+    source: "tashas-cauldron-of-everything",
+    casters: ["artificer", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Elemental",
+    originalName: "Summon Elemental",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "ar, uma pedrinha, cinzas e água dentro de um frasco com incrustações de ouro no valor de pelo menos 400 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você invoca um espírito elemental. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Esta forma corpórea
+          usa o bloco de estatísticas Espírito Elemental. Quando você lança o
+          feitiço, escolha um elemento: Ar, Terra, Fogo ou Água. A criatura se
+          assemelha a uma forma bípede envolta no elemento escolhido, o que
+          determina certos traços em seu bloco de estatísticas. A criatura
+          desaparece quando seus pontos de vida caem para 0 ou quando o feitiço
+          termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada sua e de seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age imediatamente
+          após o seu turno. Ela obedece a seus comandos verbais (não requer ação
+          da sua parte). Se você não der nenhum comando, ela realiza a ação de
+          Esquiva e usa seu movimento para evitar o perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Elemental</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Elemental médio</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 11 + o nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 50 + 10 para cada nível de magia acima do 4°
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Deslocamento: 12 Metros, escavar 12 metros (apenas terra), voar
+                12 metros(planar)(apenas ar), nadar 12 metros(apenas água)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>18(+4)</TableCell>
+                      <TableCell>15(+2)</TableCell>
+                      <TableCell>17(+3)</TableCell>
+                      <TableCell>4(-3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                Resistências a dano: Acido(Apenas água); elétrico e
+                trovejante(apenas ar); perfurante e cortante(apenas terra)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Imunidade a dano: Veneno; Fogo(Apenas fogo)</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidade a condição: Exaustão, amedrontado, paralizado,
+                petrificado, envenenado, inconsciente{" "}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18m, percepção passiva 10
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Primordial, Entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Forma Amorfa (somente Ar, Fogo e Água): O elemental pode se
+                mover através de um espaço tão estreito quanto 2,5 cm de largura
+                sem se espremer.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O Espirito faz um numero de ataques igual a
+                metade do nível dessa magia (Arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pancada. Ataque Corpo a Corpo com Arma: seu modificador de
+                ataque com magia para acertar, alcance 1,5 metro, um alvo.
+                Acerto: 1d10 + 4 + o nível da magia de dano de concussão
+                (somente Ar, Terra e Água) ou de fogo (somente Fogo).
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, use o nível mais alto quando o nível de feitiço for mencionado.",
+    source: "tashas-cauldron-of-everything",
+    casters: ["druid", "ranger", "wizard"],
+    type: ["utility"],
+  },
+
+  {
+    name: "Invocar demônio maior",
+    originalName: "Summon Greater Demon",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "um frasco de sangue de um humanoide morto nas últimas 24 horas",
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Você profere palavras profanas, invocando um demônio do caos do Abismo. Você escolhe o tipo do demônio, que deve ter um nível de desafio 5 ou inferior, como um demônio das sombras ou um barlgura. O demônio aparece em um espaço desocupado que você possa ver dentro do alcance, e o demônio desaparece quando seus pontos de vida caem para 0 ou quando o feitiço termina.",
+      "Role a iniciativa para o demônio, que terá seus próprios turnos. Quando você o invoca e em cada um dos seus turnos subsequentes, você pode dar um comando verbal a ele (não requer ação da sua parte), dizendo o que ele deve fazer em seu próximo turno. Se você não emitir nenhum comando, ele passará o turno atacando qualquer criatura ao alcance que o tenha atacado.",
+      "No final de cada turno do demônio, ele faz um teste de resistência de Carisma. O demônio tem desvantagem nesse teste de resistência se você pronunciar seu verdadeiro nome. Em uma falha no teste, o demônio continua a obedecer a você. Em um sucesso no teste, seu controle sobre o demônio termina pelo restante da duração, e o demônio passará seus turnos perseguindo e atacando as criaturas não demoníacas mais próximas da melhor maneira possível. Se você parar de se concentrar no feitiço antes de sua duração completa, um demônio sem controle não desaparece por 1d6 rodadas se ainda tiver pontos de vida.",
+      "Como parte da conjuração do feitiço, você pode formar um círculo no chão com o sangue usado como componente material. O círculo é grande o suficiente para abranger o seu espaço. Enquanto o feitiço durar, o demônio invocado não pode cruzar o círculo nem danificá-lo, e não pode atacar ninguém dentro dele. Usar o componente material desta maneira o consome quando o feitiço termina.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, o nível de desafio aumenta em 1 para cada nível de espaço acima do 4°",
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Esfera Cáustica",
+    originalName: "Vitrolitic Sphere",
+    level: 4,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "45 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "uma gota de bile de lesma gigante",
+    },
+    duration: "Instantânea",
+    description: [
+      "Você aponta para um local dentro do alcance, e uma esfera brilhante de ácido esmeralda de 30 centímetros é lançada até lá e explode em um raio de 6 metros. Cada criatura nessa área deve fazer um teste de resistência de Destreza. Em uma falha, a criatura sofre 10d4 de dano ácido e 5d4 de dano ácido no final de seu próximo turno. Em um sucesso, a criatura sofre metade do dano inicial e nenhum dano no final de seu próximo turno.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 5° nível ou superior, o dano aumenta em 2d4 para cada nível de espaço acima do 4°.",
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "wizard"],
+    type: ["damage"],
+    damageType: ["acid"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Esfera Aquosa",
+    originalName: "Watery Sphere",
+    level: 4,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "uma gota de água",
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você conjura uma esfera de água com um raio de 1,5 metro em um ponto que você pode ver dentro do alcance. A esfera pode flutuar no ar, mas não mais do que 3 metros acima do chão. A esfera permanece durante a duração da magia.",
+      "Qualquer criatura no espaço da esfera deve fazer um teste de resistência de Força. Em um sucesso, a criatura é ejetada para o espaço desocupado mais próximo fora da esfera. Uma criatura Enorme ou maior tem sucesso automaticamente nesse teste de resistência. Em uma falha, a criatura fica presa pela esfera e é engolida pela água. No final de cada um dos seus turnos, o alvo restrito pode repetir o teste de resistência.",
+      "A esfera pode prender um máximo de quatro criaturas Médias ou menores ou uma criatura Grande. Se a esfera prender uma criatura além desse número, uma criatura aleatória que já estava presa pela esfera cai dela e fica caída em um espaço a até 1,5 metro dela.",
+      "Como uma ação, você pode mover a esfera até 9 metros em linha reta. Se ela se mover sobre um buraco, penhasco ou outra queda, ela desce em segurança até flutuar a 3 metros do chão. Qualquer criatura presa pela esfera se move com ela. Você pode arremessar a esfera contra criaturas, forçando-as a fazer o teste de resistência, mas não mais do que uma vez por turno.",
+      "Quando o feitiço termina, a esfera cai no chão e extingue todas as chamas normais dentro de um raio de 9 metros. Qualquer criatura presa pela esfera é derrubada no espaço onde ela cai.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["utility"],
+    savingThrow: "str",
   },
 
   // {
