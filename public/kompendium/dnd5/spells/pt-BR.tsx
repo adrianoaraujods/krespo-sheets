@@ -14682,6 +14682,242 @@ export const SPELLS: Spell[] = [
     type: ["utility"],
     savingThrow: "str",
   },
+  {
+    name: "Criar Elmo de Interferência Arcana",
+    originalName: "Create Spelljamming Helm",
+    level: 5,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+      m: "uma haste de cristal no valor de pelo menos 5000 po, que é consumida pelo feitiço",
+    },
+    duration: "Instantânea",
+    description: [
+      "Segurando a haste usada na conjuração do feitiço, você toca uma cadeira Grande ou menor que esteja desocupada. A haste desaparece, e a cadeira é transformada em um Elmo de Interferência Arcana.",
+    ],
+
+    source: "astral-adventurers-guide",
+    casters: ["wizard", "artificer"],
+    type: ["utility"],
+  },
+  {
+    name: "Controlar Ventos",
+    originalName: "Control Winds",
+    level: 5,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "90 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Você assume o controle do ar em um cubo de 30 metros que você pode ver dentro do alcance. Escolha um dos seguintes efeitos ao conjurar a magia. O efeito dura enquanto a magia durar, a menos que você use sua ação em um turno posterior para alternar para um efeito diferente. Você também pode usar sua ação para interromper temporariamente o efeito ou reiniciar um que você tenha interrompido.",
+      "-Rajadas: Um vento se levanta dentro do cubo, soprando continuamente em uma direção horizontal que você escolhe. Você escolhe a intensidade do vento: calma, moderada ou forte. Se o vento for moderado ou forte, ataques com armas à distância que passem por ele ou que sejam feitos contra alvos dentro do cubo têm desvantagem nas jogadas de ataque. Se o vento for forte, qualquer criatura que se mova contra o vento deve gastar 1 metro de movimento adicional para cada metro movido.",
+      "-Descida: Você causa uma rajada sustentada de vento forte soprando para baixo a partir do topo do cubo. Ataques com armas à distância que passem pelo cubo ou que sejam feitos contra alvos dentro dele têm desvantagem nas jogadas de ataque. Uma criatura deve fazer um teste de resistência de Força se voar para dentro do cubo pela primeira vez em um turno ou começar seu turno lá voando. Em uma falha no teste de resistência, a criatura é derrubada.",
+      "-Corrente Ascendente: Você cria uma corrente ascendente sustentada dentro do cubo, subindo da borda inferior do cubo. Criaturas que terminam uma queda dentro do cubo sofrem apenas metade do dano da queda. Quando uma criatura no cubo faz um salto vertical, a criatura pode saltar até 3 metros mais alto que o normal.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["utility"],
+    savingThrow: "str",
+  },
+  {
+    name: "Dança Macabra",
+    originalName: "Danse Macabre",
+    level: 5,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Fios de poder sombrio saltam dos seus dedos para perfurar até cinco corpos Pequenos ou Médios que você pode ver dentro do alcance. Cada corpo imediatamente se levanta e se torna um morto-vivo. Você decide se ele será um zumbi ou um esqueleto (as estatísticas para zumbis e esqueletos estão no Livro dos Monstros), e ele ganha um bônus nas jogadas de ataque e dano igual ao modificador da sua habilidade de conjuração. Você pode usar uma ação bônus para comandar mentalmente as criaturas que você criou com esta magia, emitindo o mesmo comando para todas elas. Para receber o comando, a criatura deve estar a até 18 metros de você. Você decide qual ação as criaturas tomarão e para onde se moverão durante o próximo turno, ou pode emitir um comando geral, como guardar uma câmara ou passagem contra seus inimigos. Se você não emitir comandos, as criaturas não fazem nada além de se defender contra criaturas hostis. Uma vez dada uma ordem, as criaturas continuam a segui-la até que a tarefa esteja concluída.",
+      "As criaturas estão sob seu controle até que a magia termine, após isso elas se tornam inanimadas novamente.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, você pode animar até dois cadáveres adicionais para cada nível de espaço acima do 5°",
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Amanhecer",
+    originalName: "Dawn",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "18 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um pingente de explosão solar no valor de pelo menos 100 po",
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "A luz da manha brilha sobre um local que você especifica dentro do alcance. Até que a magia termine, um cilindro de luz brilhante com 9 metros de raio e 12 metros de altura cintila ali. Esta luz é luz do sol. Quando o cilindro aparece, cada criatura nele deve fazer um teste de resistência de Constituição, sofrendo 4d10 de dano radiante em uma falha, ou metade desse dano em um sucesso. Uma criatura também deve fazer este teste de resistência sempre que terminar seu turno dentro do cilindro. Se você estiver a até 18 metros do cilindro, pode movê-lo até 18 metros como uma ação bônus no seu turno.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["cleric", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["radiant"],
+    savingThrow: "con",
+  },
+  {
+    name: "Enervação",
+    originalName: "Enervation",
+    level: 5,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Um tentáculo de escuridão tingida se estende de você, tocando uma criatura que você possa ver dentro do alcance para drenar sua vida. O alvo deve fazer um teste de resistência de Destreza. Em um sucesso, o alvo sofre 2d8 de dano necrótico, e a magia termina. Em um fracasso, o alvo sofre 4d8 de dano necrótico, e até que a magia termine, você pode usar sua ação em cada um de seus turnos para causar automaticamente 4d8 de dano necrótico ao alvo. A magia termina se você usar sua ação para fazer qualquer outra coisa, se o alvo estiver fora do alcance da magia ou se o alvo tiver cobertura total de você. Sempre que a magia causar dano ao alvo, você recupera pontos de vida igual à metade da quantidade de dano necrótico que o alvo sofreu.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, o dano aumenta em 1d8 para cada nível de espaço acima do 5°",
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["damage", "healing"],
+    damageType: ["necrotic"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Passo Distante",
+    originalName: "Far Step",
+    level: 5,
+    school: "conjuration",
+
+    castingTime: "1 Ação Bônus",
+    range: "Pessoal",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você teleporta até 18 metros para um espaço desocupado que possa ver, em cada um dos seus turnos antes da magia acabar, você pode usar sua ação bônus para se teleportar dessa maneira novamente",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Arma Sagrada",
+    originalName: "Holy Weapon",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 Ação bônus",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Você pode imbuir uma arma que você toca com poder sagrado. Até que a magia termine, a arma emite luz brilhante em um raio de 9 metros e luz fraca por mais 9 metros adicionais. Além disso, ataques com essa arma causam 2d8 de dano radiante extra ao acertar. Se a arma não for mágica, ela se torna uma arma mágica pela duração da magia. Como uma ação bônus em seu turno, você pode dissipar essa magia e fazer com que a arma emita um clarão de radiância. Cada criatura à sua escolha que você possa ver dentro de 9 metros da arma deve fazer um teste de resistência de Constituição. Em um fracasso, a criatura sofre 4d8 de dano radiante e fica cega por 1 minuto. Em um sucesso, a criatura sofre metade do dano e não fica cega. No final de cada um de seus turnos, uma criatura cega pode fazer um teste de resistência de Constituição, encerrando o efeito sobre si mesma em caso de sucesso.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["paladin", "cleric"],
+    type: ["damage", "utility"],
+    damageType: ["radiant"],
+    savingThrow: "con",
+    spellAttack: "weapon",
+  },
+  {
+    name: "Imolação",
+    originalName: "Immolation",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 Alçao",
+    range: "27 Metros",
+    components: {
+      v: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Chamas envolvem uma criatura que você pode ver dentro do alcance. O alvo deve fazer um teste de resistência de Destreza. Ele sofre 7d6 de dano de fogo em um fracasso, ou metade desse dano em um sucesso. Em um fracasso, o alvo também permanece em chamas pela duração da magia. O alvo em chamas emite luz brilhante em um raio de 9 metros e luz fraca por mais 9 metros adicionais. No final de cada um de seus turnos, o alvo repete o teste de resistência. Ele sofre 3d6 de dano de fogo em um fracasso, e a magia termina em um sucesso. Essas chamas mágicas não podem ser extintas por meios não mágicos.",
+      "Se o dano dessa magia reduzir o alvo a 0 pontos de vida, ele é reduzido a cinzas.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "wizard"],
+    type: ["damage"],
+    damageType: ["fire"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Chamado Infernal",
+    originalName: "Infernal Calling",
+    level: 5,
+    school: "conjuration",
+
+    castingTime: "1 Minuto",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "um rubi no valor de pelo menos 999 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: [
+      "Proferindo uma incantação sombria, você invoca um diabo dos Nove Infernos. Você escolhe o tipo do diabo, que deve ser de nível de desafio 6 ou inferior, como um diabo espinhado ou um diabo barbado. O diabo aparece em um espaço desocupado que você pode ver dentro do alcance. O diabo desaparece quando seus pontos de vida chegam a 0 ou quando a magia termina.",
+      "O diabo é hostil a você e seus companheiros. Role a iniciativa do diabo, que tem seus próprios turnos. Ele está sob o controle do Mestre e age de acordo com sua natureza em cada um de seus turnos, o que pode resultar em um ataque a você, se achar que pode vencer, ou tentar tentá-lo a realizar um ato maligno em troca de serviço limitado. O Mestre possui as estatísticas da criatura.",
+      'Em cada um de seus turnos, você pode tentar dar um comando verbal ao diabo (não requer ação da sua parte). Ele obedece ao comando se o provável resultado estiver de acordo com seus desejos, especialmente se o resultado o levar ao mal. Caso contrário, você deve fazer um teste de Carisma (Enganação, Intimidação ou Persuasão) contestado pelo teste de Sabedoria (Intuição) do diabo. Você faz o teste com vantagem se disser o verdadeiro nome do diabo. Se seu teste falhar, o diabo se torna imune aos seus comandos verbais pela duração da magia, embora ainda possa cumprir seus comandos se desejar. Se seu teste for bem-sucedido, o diabo executa seu comando — como "ataque meus inimigos" "explore a sala à frente" ou "leve esta mensagem à rainha" — até concluir a atividade, momento em que retorna a você para relatar o feito.',
+      "Se sua concentração terminar antes da duração total da magia, o diabo não desaparece se se tornou imune aos seus comandos verbais. Em vez disso, ele age da maneira que escolher por 3d6 minutos, e então desaparece.",
+      "Se você possuir o talismã individual de um diabo, poderá invocar esse diabo se ele for do nível de desafio apropriado mais 1, e ele obedecerá a todos os seus comandos, sem necessidade de testes de Carisma.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, o nível de desafio aumenta em 1 para cada nível de espaço acima do 5°",
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "wizard"],
+    type: ["utility"],
+  },
+  {
+    name: "Redemoinho",
+    originalName: "Maelstrom",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 ação",
+    range: "36 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Papel ou folha em forma de funil",
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Uma massa de água com 1,5 metros de profundidade aparece e gira em um raio de 9 metros centrado em um ponto que você pode ver dentro do alcance. O ponto deve estar no solo ou em um corpo de água. Até que a magia termine, essa área é terreno difícil, e qualquer criatura que começar seu turno lá deve ter sucesso em um teste de resistência de Força ou sofrerá 6d6 de dano de concussão e será puxada 3 metros em direção ao centro.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "str",
+  },
 
   // {
   //   name: "",
