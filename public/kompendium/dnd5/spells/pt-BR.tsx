@@ -14919,6 +14919,544 @@ export const SPELLS: Spell[] = [
     savingThrow: "str",
   },
 
+  {
+    name: "Inundação de Energia Negativa",
+    originalName: "Negative Energy Flood",
+    level: 5,
+    school: "necromancy",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "um osso quebrado e um quadrado de seda negra",
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você envia fitas de energia negativa em direção a uma criatura que você pode ver dentro do alcance. A menos que o alvo seja um morto-vivo, ele deve fazer um teste de resistência de Constituição, sofrendo 5d12 de dano necrótico em uma falha ou metade desse dano em um sucesso. Um alvo morto por esse dano se levanta como um zumbi no início do seu próximo turno. O zumbi persegue a criatura mais próxima que puder ver. As estatísticas do zumbi estão no Manual dos Monstros. Se você mirar em um morto-vivo com essa magia, o alvo não faz um teste de resistência. Em vez disso, role 5d12, e o alvo recebe metade do total como pontos de vida temporários.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["warlock", "wizard"],
+    type: ["damage", "healing"],
+    damageType: ["necrotic"],
+    savingThrow: "con",
+  },
+
+  {
+    name: "Fortalecimento ded Perícia",
+    originalName: "Skill Empowerment",
+    level: 5,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "Toque",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração. até 1 hora",
+    description: [
+      "Sua magia aprofunda a compreensão de uma criatura sobre seu próprio talento. Você toca uma criatura disposta e concede a ela expertise em uma habilidade à sua escolha; até que a magia termine, a criatura dobra seu bônus de proficiência para testes de habilidade que usem a habilidade escolhida.",
+      "Você deve escolher uma habilidade na qual o alvo já seja proficiente e que não esteja beneficiada por um efeito, como expertise, que já dobre o bônus de proficiência.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "sorcerer", "wizard", "artificer"],
+    type: ["utility"],
+  },
+
+  {
+    name: "Ataque do Vento de Aço",
+    originalName: "Steel Wind Strike",
+    level: 5,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "9 metros",
+    components: {
+      s: true,
+      m: "uma arma corpo a corpo no valor de pelo menos 1 pc",
+    },
+    duration: "Instantânea",
+    description: [
+      "Você brande a arma usada na conjuração e então desaparece para atacar como o vento. Escolha até cinco criaturas que você possa ver dentro do alcance. Faça um ataque mágico corpo a corpo contra cada alvo. Em um acerto, o alvo recebe 6d10 de dano de força.",
+      "Você pode então se teletransportar para um espaço desocupado que você possa ver a até 1,5 metros de um dos alvos que você acertou ou errou.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["ranger", "wizard"],
+    type: ["damage"],
+    damageType: ["force"],
+
+    spellAttack: "spell-melee",
+  },
+  {
+    name: "Estática Sináptica",
+    originalName: "Synaptic Static",
+    level: 5,
+    school: "enchantment",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Instantâneo",
+    description: [
+      "Você escolhe um ponto dentro do alcance e faz com que a energia psíquica exploda lá. Cada criatura em uma esfera com raio de 6 metros centrada nesse ponto deve fazer um teste de resistência de Inteligência. Uma criatura com uma pontuação de Inteligência de 2 ou menos não pode ser afetada por esta magia. Um alvo recebe 8d6 de dano psíquico em uma falha no teste de resistência, ou metade desse dano em um sucesso.",
+      "Após uma falha no teste de resistência, o alvo tem pensamentos confusos por 1 minuto. Durante esse tempo, ele rola um d6 e subtrai o número obtido de todas as suas jogadas de ataque e testes de habilidade, assim como dos testes de resistência de Constituição para manter a concentração. O alvo pode fazer um teste de resistência de Inteligência no final de cada um de seus turnos, terminando o efeito sobre si mesmo em um sucesso.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["bard", "sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["psychic"],
+    savingThrow: "int",
+  },
+  {
+    name: "Desvio Temporal",
+    originalName: "Temporal Shunt",
+    level: 5,
+    school: "transmutation",
+
+    castingTime:
+      "1 reação, tomada quando uma criatura que você vê faz uma jogada de ataque ou começa a lançar uma magia",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "1 rodada",
+    description: [
+      "Você mira na criatura desencadeante, que deve ser bem-sucedida em um teste de resistência de Sabedoria ou irá desaparecer, sendo lançada para outro ponto no tempo, fazendo com que o ataque erre ou a magia seja desperdiçada. No início do próximo turno dela, o alvo reaparece onde estava ou no espaço desocupado mais próximo. O alvo não se lembra de você lançando a magia ou de ter sido afetado por ela.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, você pode escolher um alvo adicional para cada nível acima do 5º. Todos os alvos devem estar dentro de 9 metros uns dos outros.",
+    source: "explorers-guide-to-wildermount",
+    casters: ["wizard"],
+    type: ["utility"],
+    savingThrow: "wis",
+  },
+  {
+    name: "Transmutar rocha",
+    originalName: "Transmute Rock",
+    level: 5,
+    school: "transmutation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "argila e água",
+    },
+    duration: "Até ser dissipado",
+    description: [
+      "Você escolhe uma área de pedra ou lama que pode ver dentro de um cubo de 12 metros de lado e que esteja dentro do alcance, e escolhe um dos seguintes efeitos:",
+      "Transmutar Rocha em lama:",
+      "-Rocha não mágica de qualquer tipo na área se torna um volume igual de lama espessa e fluida que permanece pela duração da magia.",
+      "-Se você lançar a magia em uma área de chão, ela se torna lamacenta o suficiente para que criaturas possam afundar nela. Cada metro que uma criatura se move através da lama custa 4 metros de movimento, e qualquer criatura no chão quando você lançar a magia deve fazer um teste de resistência de Força. Uma criatura também deve fazer esse teste ao entrar na área pela primeira vez em um turno ou ao terminar seu turno ali. Em uma falha no teste de resistência, a criatura afunda na lama e fica contida, mas pode usar uma ação para terminar a condição de contida em si mesma puxando-se para fora da lama.",
+      "-Se você lançar a magia em um teto, a lama cai. Qualquer criatura sob a lama quando ela cair deve fazer um teste de resistência de Destreza. A criatura sofre 4d8 de dano de concussão em uma falha no teste de resistência, ou metade desse dano em um sucesso.",
+      "Transmutar Lama em Rocha:",
+      "-Lama não mágica ou areia movediça na área com no máximo 3 metros de profundidade se transforma em pedra macia pela duração da magia. Qualquer criatura na lama quando ela se transforma deve fazer um teste de resistência de Destreza. Em uma falha no teste, a criatura fica contida pela rocha. A criatura contida pode usar uma ação para tentar se libertar com um teste de Força (CD 20) bem-sucedido ou causando 25 pontos de dano à rocha ao redor. Em um sucesso no teste de resistência, a criatura é movida com segurança para a superfície em um espaço desocupado.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "wizard", "artificer"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning"],
+    savingThrow: "dex",
+  },
+  {
+    name: "Muralha de Luz",
+    originalName: "Wall of Light",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+      m: "Um espelho de mão",
+    },
+    duration: "Concentração, até 10 minutos",
+    description: [
+      "Uma muralha cintilante de luz brilhante aparece em um ponto que você escolher dentro do alcance. A muralha aparece em qualquer orientação que você escolher: horizontalmente, verticalmente ou diagonalmente. Ela pode estar flutuando livremente ou apoiada em uma superfície sólida. A muralha pode ter até 18 metros de comprimento, 3 metros de altura e 1,5 metro de espessura. A muralha bloqueia a linha de visão, mas criaturas e objetos podem passar através dela. Ela emite luz brilhante em um raio de 36 metros e luz fraca por mais 36 metros.",
+      "Quando a muralha aparece, cada criatura na sua área deve fazer um teste de resistência de Constituição. Em uma falha, a criatura sofre 4d8 de dano radiante e fica cega por 1 minuto. Em um sucesso, ela sofre metade do dano e não fica cega. Uma criatura cega pode fazer um teste de resistência de Constituição no final de cada um de seus turnos, terminando o efeito em si mesma com um sucesso.",
+      "Uma criatura que terminar seu turno na área da muralha sofre 4d8 de dano radiante.",
+      "Até a magia acabar, você pode usar uma ação para lançar um raio de luz da muralha em uma criatura que você puder ver a até 18 metros dela. Faça um ataque de magia à distância. Em um acerto, o alvo sofre 4d8 de dano radiante. Independentemente de acertar ou errar, reduza o comprimento da muralha em 3 metros. Se o comprimento da muralha chegar a 0 metros, a magia termina.",
+    ],
+    upcastDescription:
+      "Quando você conjurar essa magia usando um espaço de magia de 6° nível ou superior, o dano aumenta em 1d8 para cada nível de espaço acima do 5°.",
+    source: "xanathars-guide-to-everything",
+    casters: ["sorcerer", "warlock", "wizard"],
+    type: ["damage", "utility"],
+    damageType: ["radiant"],
+    savingThrow: "con",
+  },
+  {
+    name: "Ira da Natureza",
+    originalName: "Wrath Of Nature",
+    level: 5,
+    school: "evocation",
+
+    castingTime: "1 Ação",
+    range: "36 metros",
+    components: {
+      v: true,
+      s: true,
+    },
+    duration: "Concentração, até 1 minuto",
+    description: [
+      "Você invoca os espíritos da natureza para instiga-los contra seus inimigos. Escolha um ponto que você possa ver dentro do alcance. Os espíritos fazem com que árvores, rochas e grama em um cubo de 18 metros de lado, centrado naquele ponto, se animem até que a magia termine.",
+      "-Grama e Vegetação. Qualquer área de chão no cubo coberta por grama ou vegetação rasteira se torna terreno difícil para seus inimigos.",
+      "-Árvores. No início de cada um dos seus turnos, cada um de seus inimigos a até 3 metros de qualquer árvore no cubo deve ter sucesso em um teste de resistência de Destreza ou sofrerá 4d6 de dano cortante dos galhos chicoteantes.",
+      "-Raízes e Vinhas. No final de cada um dos seus turnos, uma criatura à sua escolha que esteja no chão dentro do cubo deve ter sucesso em um teste de resistência de Força ou ficará impedida até que a magia termine. Uma criatura impedida pode usar uma ação para fazer um teste de Atletismo (Força) contra a CD da sua magia, terminando o efeito sobre si mesma com um sucesso.",
+      "-Rochas. Como uma ação bônus no seu turno, você pode fazer com que uma rocha solta no cubo seja lançada contra uma criatura que você possa ver no cubo. Faça um ataque de magia à distância contra o alvo. Em um acerto, o alvo sofre 3d8 de dano de concussão não mágico e deve ter sucesso em um teste de resistência de Força ou cairá no chão, ficando caído.",
+    ],
+
+    source: "xanathars-guide-to-everything",
+    casters: ["druid", "ranger"],
+    type: ["damage", "utility"],
+    damageType: ["bludgeoning", "piercing"],
+    savingThrow: "con",
+    spellAttack: "spell-ranged",
+  },
+  {
+    name: "Invocar Celestial",
+    originalName: "Summon Celestial",
+    level: 5,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "27 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "um relicário dourado no valor de pelo menos 500 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito celestial. Ele se manifesta em uma forma
+          angelical em um espaço desocupado que você possa ver dentro do
+          alcance. Essa forma corpórea usa o bloco de estatísticas Espírito
+          Celestial. Quando você conjura a magia, escolha Vingador ou Defensor.
+          Sua escolha determina o ataque da criatura no bloco de estatísticas. A
+          criatura desaparece quando seus pontos de vida caem a 0 ou quando a
+          magia termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada sua e dos seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age logo após
+          você. Ela obedece seus comandos verbais (não requer ação). Se você não
+          der nenhum comando, ela realiza a ação Esquivar e usa seu movimento
+          para evitar o perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Celestial</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Celestial Grande</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 11+ O nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 40 +10 Para cada nível de magia acima do 5°{" "}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Deslocamento: 9 Metros, voo 12 metros</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>16(+3)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>Resistências a dano: Radiante</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidades a condições: Enfeitiçado, amedrontado
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: Visão no escuro 18 metros, percepção passiva 12
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Celestial, entende as linguas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                Ataques múltiplos: O celestial faz um numero de ataques igual a
+                metade do nível dessa magia(arredondado para baixo)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Arco Radiante (Somente Vingador). Ataque à Distância com Arma:
+                seu modificador de ataque de magia para acertar, alcance 45/180
+                m, um alvo. Acerto: 2d6 + 2 + o nível da magia em dano radiante.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Maça Radiante (Somente Defensor). Ataque Corpo a Corpo com Arma:
+                seu modificador de ataque de magia para acertar, alcance 1,5 m,
+                um alvo. Acerto: 1d10 + 3 + o nível da magia em dano radiante, e
+                o celestial pode escolher a si mesmo ou outra criatura que possa
+                ver a até 3 metros do alvo. A criatura escolhida ganha 1d10
+                pontos de vida temporários.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Toque Curativo (1/Dia). O celestial toca outra criatura. O alvo
+                recupera magicamente pontos de vida iguais a 2d8 + o nível da
+                magia.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 6º nível ou superior, use o nível mais alto sempre que o nível da magia aparecer no bloco de estatísticas.",
+    source: "tashas-cauldron-of-everything",
+    casters: ["cleric", "paladin"],
+    type: ["utility"],
+  },
+  {
+    name: "Invocar Espirito Dracônico",
+    originalName: "Summon Draconic Spirit",
+    level: 5,
+    school: "conjuration",
+
+    castingTime: "1 Ação",
+    range: "18 Metros",
+    components: {
+      v: true,
+      s: true,
+      m: "um objeto com a imagem de um dragão gravada, no valor de pelo menos 500 po",
+    },
+    duration: "Concentração, até 1 hora",
+    description: (
+      <>
+        <Paragraph>
+          Você convoca um espírito dracônico. Ele se manifesta em um espaço
+          desocupado que você possa ver dentro do alcance. Essa forma corpórea
+          usa o bloco de estatísticas Espírito Dracônico. Quando você conjura
+          essa magia, escolha uma família de dragão: cromático, gema ou
+          metálico. A criatura se assemelha a um dragão da família escolhida, o
+          que determina certos traços no bloco de estatísticas. A criatura
+          desaparece quando seus pontos de vida caem a 0 ou quando a magia
+          termina.
+        </Paragraph>
+        <Paragraph>
+          A criatura é uma aliada sua e de seus companheiros. Em combate, a
+          criatura compartilha sua contagem de iniciativa, mas age logo após
+          você. Ela obedece seus comandos verbais (não requer ação). Se você não
+          der nenhum comando, ela realiza a ação Esquivar e usa seu movimento
+          para evitar o perigo.
+        </Paragraph>
+
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Espirito Dracônico</TableHeader>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            <TableRow>
+              <TableCell>Dragão Grande</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Classe de armadura: 14+ O nível da magia (Armadura natural)
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Pontos de vida: 50 +10 Para cada nível de magia acima do 5°(o
+                dragão tem um número de dados de vida [d10] igual ao nível da
+                magia){" "}
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Deslocamento: 9 Metros, voo 18 metros, nado 9 metros
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableHeader>STR</TableHeader>
+                      <TableHeader>DEX</TableHeader>
+                      <TableHeader>CON</TableHeader>
+                      <TableHeader>INT</TableHeader>
+                      <TableHeader>WIS</TableHeader>
+                      <TableHeader>CHA</TableHeader>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    <TableRow>
+                      <TableCell>19(+4)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>17(+3)</TableCell>
+                      <TableCell>10(0)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                      <TableCell>14(+2)</TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </TableCell>
+            </TableRow>
+
+            <TableRow>
+              <TableCell>
+                Resistências a Dano (somente Cromático e Metálico): ácido, frio,
+                fogo, relâmpago, veneno
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Resistências a Dano (somente Gema): força, necrótico, psíquico,
+                radiante, trovão
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Imunidades a Condições: enfeitiçado, amedrontado, envenenado
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sentidos: visão cega 9 m, visão no escuro 18 m, Percepção
+                passiva 12
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Linguagens: Dracônico, entende os idiomas que você fala
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Desafio: ---</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Bônus de proficiência: Igual ao seu bônus</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Resistências Compartilhadas. Quando você convoca o dragão,
+                escolha uma de suas resistências a dano. Você tem resistência ao
+                tipo de dano escolhido até o fim da magia.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Ações</TableHeader>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>
+                O dragão faz um número de ataques Dilacerar igual à metade do
+                nível da magia (arredondado para baixo) e usa o Sopro de
+                Energia.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Dilacerar. Ataque Corpo a Corpo com Arma: seu modificador de
+                ataque de magia para acertar, alcance 3 metros, um alvo. Acerto:
+                1d6 + 4 + o nível da magia em dano perfurante.
+              </TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>
+                Sopro de Energia. O dragão exala energia destrutiva em um cone
+                de 9 metros. Cada criatura na área deve fazer um teste de
+                resistência de Destreza contra a CD da sua magia. Uma criatura
+                sofre 2d6 de dano de um tipo ao qual o dragão tem resistência (à
+                sua escolha) se falhar no teste de resistência, ou metade do
+                dano se obtiver sucesso.
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </>
+    ),
+    upcastDescription:
+      "Quando você conjura essa magia usando um espaço de magia de 6º nível ou superior, use o nível mais alto sempre que o nível da magia aparecer no bloco de estatísticas.",
+    source: "fizbans-treasury-of-dragons",
+    casters: ["druid", "sorcerer", "wizard"],
+    type: ["utility"],
+  },
+
   // {
   //   name: "",
   //   originalName: "",
