@@ -18,7 +18,7 @@ export default async function KompendiumHomePage({
   const t = await getTranslations();
 
   return (
-    <div className="my-8 mr-4 w-full -md:pl-4">
+    <div className="my-8 mr-4 w-full max-md:pl-4">
       <Heading element="h1">{t("pages.kompendium.title")}</Heading>
     </div>
   );

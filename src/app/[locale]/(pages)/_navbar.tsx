@@ -58,13 +58,13 @@ export async function NavbarContent() {
         <Logo />
       </div>
 
-      <NavbarLinks className="-md:hidden" items={mainItems} />
+      <NavbarLinks className="max-md:hidden" items={mainItems} />
 
       <div className="flex gap-4">
         <SearchBar />
 
         {!session && (
-          <div className="flex gap-4 -md:hidden">
+          <div className="flex gap-4 max-md:hidden">
             <LocaleSelector />
 
             <ThemeSelector />
@@ -84,7 +84,7 @@ export function NavbarSkeleton() {
         <Logo />
       </Button>
 
-      <Skeleton className="h-6 w-64 rounded-full -md:hidden" />
+      <Skeleton className="h-6 w-64 rounded-full max-md:hidden" />
 
       <div className="flex items-center gap-4">
         <Skeleton className="h-10 w-40 lg:w-64" />

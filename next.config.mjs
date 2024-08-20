@@ -1,10 +1,14 @@
 import createMDX from "fumadocs-mdx/config";
 import createNextIntlPlugin from "next-intl/plugin";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 /** @type {import('fumadocs-mdx/config').CreateMDXOptions} */
 const fumadocsConfig = {
   mdxOptions: {
     lastModifiedTime: "git",
+    remarkPlugins: [remarkMath],
+    rehypePlugins: (p) => [rehypeKatex, ...p],
   },
   rootContentPath: "./public/kompendium",
 };

@@ -32,7 +32,7 @@ export default async function Providers({
         disableTransitionOnChange
       >
         <I18nProvider locale={locale} translations={mdxTranslations}>
-          <RootProvider>
+          <RootProvider theme={{ enabled: false }} search={{ enabled: false }}>
             {children}
 
             <Toaster />

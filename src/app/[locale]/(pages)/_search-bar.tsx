@@ -1,13 +1,13 @@
 "use client";
 
 import * as React from "react";
-import { Dialog } from "@radix-ui/react-dialog";
 import DefaultSearchDialog from "fumadocs-ui/components/dialog/search-default";
 import { SearchIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 import { Span } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 
 import { usePagesContext } from "./_provider";
 
@@ -20,7 +20,7 @@ export default function SearchBar() {
       <Button
         variant="outline"
         className={
-          "flex justify-between gap-4 px-2 text-muted-foreground -lg:hidden"
+          "flex justify-between gap-4 px-2 text-muted-foreground max-lg:hidden"
         }
         onClick={() => setOpen(true)}
       >

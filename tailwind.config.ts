@@ -24,6 +24,7 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+        link: "hsl(var(--link))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
@@ -73,17 +74,6 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      screens: {
-        "2xs": { min: "320px" },
-        xs: { min: "480px" },
-        "-2xs": { max: "319px" },
-        "-xs": { max: "479px" },
-        "-sm": { max: "639px" },
-        "-md": { max: "767px" },
-        "-lg": { max: "1023px" },
-        "-xl": { max: "1279px" },
-        "-2xl": { max: "1535px" },
       },
     },
   },
