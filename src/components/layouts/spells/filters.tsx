@@ -4,7 +4,7 @@ import * as React from "react";
 
 import { useTranslations } from "next-intl";
 
-import { Span } from "@/components/typography/text";
+import { Text } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -31,7 +31,6 @@ import {
   ATTRIBUTES,
   CLASSES_NAMES,
   DAMAGE_TYPES,
-  SOURCES,
   SPELL_ATTACK_TYPES,
   SPELL_SCHOOLS,
   SPELL_TYPES,
@@ -44,7 +43,7 @@ import {
   ChevronDownIcon,
 } from "lucide-react";
 
-import type { Spell } from "@/systems/dnd5";
+import type { Spell } from "@/app/actions/spells";
 import type { ColumnFiltersState, Table } from "@tanstack/react-table";
 
 import { FiltersParams, initialFiltersParams } from "./table";
@@ -56,16 +55,17 @@ export default function Filters({
     order,
     pg,
     sort,
-    attack,
+    spellAttack,
     casters,
     compM,
     compS,
     compV,
-    dmgType,
+    damageTypes,
     levelMax,
     levelMin,
     name,
     ritual,
+    concentration,
     savingThrow,
     school,
     source,
@@ -111,11 +111,11 @@ export default function Filters({
     if (source !== undefined && source.length > 0) {
       filters.push({ id: "source", value: source });
     }
-    if (attack !== undefined && attack.length > 0) {
-      filters.push({ id: "spellAttack", value: attack });
+    if (spellAttack !== undefined && spellAttack.length > 0) {
+      filters.push({ id: "spellAttack", value: spellAttack });
     }
-    if (dmgType !== undefined && dmgType.length > 0) {
-      filters.push({ id: "damageType", value: dmgType });
+    if (damageTypes !== undefined && damageTypes.length > 0) {
+      filters.push({ id: "damageType", value: damageTypes });
     }
     if (savingThrow !== undefined && savingThrow.length > 0) {
       filters.push({ id: "savingThrow", value: savingThrow });
@@ -123,26 +123,29 @@ export default function Filters({
     if (type !== undefined && type.length > 0) {
       filters.push({ id: "type", value: type });
     }
-    if (compV === "true") {
+    if (compV) {
       filters.push({ id: "components", value: "v" });
     }
-    if (compS === "true") {
+    if (compS) {
       filters.push({ id: "components", value: "s" });
     }
-    if (compM === "true") {
+    if (compM) {
       filters.push({ id: "components", value: "m" });
     }
-    if (ritual === "true") {
+    if (ritual) {
       filters.push({ id: "ritual", value: true });
+    }
+    if (concentration) {
+      filters.push({ id: "concentration", value: true });
     }
     table.setColumnFilters(filters);
   }, [
-    attack,
+    spellAttack,
     casters,
     compM,
     compS,
     compV,
-    dmgType,
+    damageTypes,
     levelMax,
     levelMin,
     name,
@@ -152,6 +155,7 @@ export default function Filters({
     source,
     type,
     table,
+    concentration,
   ]);
 
   return (
@@ -174,8 +178,6 @@ export default function Filters({
         <AttackTypeSelector />
 
         <SavingThrowSelector />
-
-        <SourceSelector />
 
         <IsRitual />
       </div>
@@ -229,7 +231,7 @@ export default function Filters({
           }}
         />
 
-        <Span>-</Span>
+        <Text>-</Text>
 
         <DebounceInput
           className="w-16 text-center"
@@ -248,13 +250,13 @@ export default function Filters({
   }
 
   function SchoolSelector() {
-    const t = useTranslations("systems.dnd5.spells");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("school")}</Span>
+            <Text size="sm">{t("spells.school")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -278,7 +280,7 @@ export default function Filters({
                 })
               }
             >
-              <Span size="sm">{t(`schools.${name}`)}</Span>
+              <Text size="sm">{t(`spells.schools.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -287,13 +289,13 @@ export default function Filters({
   }
 
   function CasterSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.casters")}</Span>
+            <Text size="sm">{t("spells.casters")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -317,7 +319,7 @@ export default function Filters({
                 })
               }
             >
-              <Span size="sm">{t(`classes.${name}`)}</Span>
+              <Text size="sm">{t(`dnd5.classes.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -326,13 +328,13 @@ export default function Filters({
   }
 
   function ComponentsSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.components")}</Span>
+            <Text size="sm">{t("spells.components")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -340,39 +342,30 @@ export default function Filters({
 
         <DropdownMenuContent align="end">
           <DropdownMenuCheckboxItem
-            checked={compV === "true"}
+            checked={compV}
             onCheckedChange={() =>
-              setParams((prev) => ({
-                ...prev,
-                compV: prev.compV === "true" ? undefined : "true",
-              }))
+              setParams((prev) => ({ ...prev, compV: prev.compV }))
             }
           >
-            <Span size="sm">{t(`spells.verbal`)}</Span>
+            <Text size="sm">{t(`spells.verbal`)}</Text>
           </DropdownMenuCheckboxItem>
 
           <DropdownMenuCheckboxItem
-            checked={compS === "true"}
+            checked={compS}
             onCheckedChange={() =>
-              setParams((prev) => ({
-                ...prev,
-                compS: prev.compS === "true" ? undefined : "true",
-              }))
+              setParams((prev) => ({ ...prev, compS: prev.compS }))
             }
           >
-            <Span size="sm">{t(`spells.somatic`)}</Span>
+            <Text size="sm">{t(`spells.somatic`)}</Text>
           </DropdownMenuCheckboxItem>
 
           <DropdownMenuCheckboxItem
-            checked={compM === "true"}
+            checked={compM}
             onCheckedChange={() =>
-              setParams((prev) => ({
-                ...prev,
-                compM: prev.compM === "true" ? undefined : "true",
-              }))
+              setParams((prev) => ({ ...prev, compM: prev.compM }))
             }
           >
-            <Span size="sm">{t(`spells.material`)}</Span>
+            <Text size="sm">{t(`spells.material`)}</Text>
           </DropdownMenuCheckboxItem>
         </DropdownMenuContent>
       </DropdownMenu>
@@ -380,13 +373,13 @@ export default function Filters({
   }
 
   function TypeSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.spellType")}</Span>
+            <Text size="sm">{t("spells.spellType")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -410,7 +403,7 @@ export default function Filters({
                 })
               }
             >
-              <Span size="sm">{t(`spells.types.${name}`)}</Span>
+              <Text size="sm">{t(`spells.types.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -419,13 +412,13 @@ export default function Filters({
   }
 
   function DamageTypeSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.damageType")}</Span>
+            <Text size="sm">{t("spells.damageType")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -435,21 +428,21 @@ export default function Filters({
           {DAMAGE_TYPES.map((name) => (
             <DropdownMenuCheckboxItem
               key={`spell-damage-type-filter:${name}`}
-              checked={dmgType && dmgType.includes(name)}
+              checked={damageTypes && damageTypes.includes(name)}
               onCheckedChange={() =>
                 setParams((prev) => {
-                  const dmgType = prev.dmgType || [];
+                  const damageTypes = prev.damageTypes || [];
 
                   return {
                     ...prev,
-                    dmgType: dmgType.includes(name)
-                      ? dmgType.filter((value) => value !== name)
-                      : [...dmgType, name],
+                    damageTypes: damageTypes.includes(name)
+                      ? damageTypes.filter((value) => value !== name)
+                      : [...damageTypes, name],
                   };
                 })
               }
             >
-              <Span size="sm">{t(`damageTypes.${name}`)}</Span>
+              <Text size="sm">{t(`dnd5.damageTypes.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -458,13 +451,13 @@ export default function Filters({
   }
 
   function AttackTypeSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.spellAttack")}</Span>
+            <Text size="sm">{t("spells.spellAttack")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -474,21 +467,21 @@ export default function Filters({
           {SPELL_ATTACK_TYPES.map((name) => (
             <DropdownMenuCheckboxItem
               key={`spell-attack-type-filter:${name}`}
-              checked={attack && attack.includes(name)}
+              checked={spellAttack && spellAttack.includes(name)}
               onCheckedChange={() =>
                 setParams((prev) => {
-                  const attack = prev.attack || [];
+                  const spellAttack = prev.spellAttack || [];
 
                   return {
                     ...prev,
-                    attack: attack.includes(name)
-                      ? attack.filter((value) => value !== name)
-                      : [...attack, name],
+                    spellAttack: spellAttack.includes(name)
+                      ? spellAttack.filter((value) => value !== name)
+                      : [...spellAttack, name],
                   };
                 })
               }
             >
-              <Span size="sm">{t(`spells.attackTypes.${name}`)}</Span>
+              <Text size="sm">{t(`spells.attackTypes.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -497,13 +490,13 @@ export default function Filters({
   }
 
   function SavingThrowSelector() {
-    const t = useTranslations("systems.dnd5");
+    const t = useTranslations("systems");
 
     return (
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.savingThrows")}</Span>
+            <Text size="sm">{t("spells.savingThrows")}</Text>
 
             <ChevronDownIcon className="size-4" />
           </Button>
@@ -527,46 +520,7 @@ export default function Filters({
                 })
               }
             >
-              <Span size="sm">{t(`attributes.${name}`)}</Span>
-            </DropdownMenuCheckboxItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
-    );
-  }
-
-  function SourceSelector() {
-    const t = useTranslations("systems.dnd5");
-
-    return (
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" className="gap-2">
-            <Span size="sm">{t("spells.source")}</Span>
-
-            <ChevronDownIcon className="size-4" />
-          </Button>
-        </DropdownMenuTrigger>
-
-        <DropdownMenuContent align="end">
-          {SOURCES.map((name) => (
-            <DropdownMenuCheckboxItem
-              key={`spell-source-filter:${name}`}
-              checked={source && source.includes(name)}
-              onCheckedChange={() =>
-                setParams((prev) => {
-                  const source = prev.source || [];
-
-                  return {
-                    ...prev,
-                    source: source.includes(name)
-                      ? source.filter((value) => value !== name)
-                      : [...source, name],
-                  };
-                })
-              }
-            >
-              <Span size="sm">{t(`sources.${name}`)}</Span>
+              <Text size="sm">{t(`dnd5.attributes.${name}`)}</Text>
             </DropdownMenuCheckboxItem>
           ))}
         </DropdownMenuContent>
@@ -581,14 +535,9 @@ export default function Filters({
       <Button
         variant="outline"
         className="mr-auto gap-2"
-        onClick={() =>
-          setParams((prev) => ({
-            ...prev,
-            ritual: prev.ritual === "true" ? undefined : "true",
-          }))
-        }
+        onClick={() => setParams((prev) => ({ ...prev, ritual: prev.ritual }))}
       >
-        <Span size="sm">{t("systems.dnd5.spells.ritual")}?</Span>
+        <Text size="sm">{t("systems.spells.ritual")}?</Text>
 
         {ritual && <CheckIcon className="size-4" />}
       </Button>
@@ -607,9 +556,9 @@ export default function Filters({
         onClick={() => inputRef.current && inputRef.current.focus()}
       >
         <div>
-          <Span size="xs">{t("pages.perPage")}: </Span>
+          <Text size="xs">{t("pages.perPage")}: </Text>
 
-          <Span size="sm" asChild>
+          <Text size="sm" asChild>
             <input
               className="w-8 bg-transparent text-center [-moz-appearance:_textfield] focus:outline-none [&::-webkit-inner-spin-button]:m-0 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:m-0 [&::-webkit-outer-spin-button]:appearance-none"
               type="number"
@@ -627,7 +576,7 @@ export default function Filters({
               }}
               ref={inputRef}
             />
-          </Span>
+          </Text>
         </div>
       </Button>
     );
@@ -638,9 +587,9 @@ export default function Filters({
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="outline" className="gap-1">
-            <Span size="xs">{t("sortBy")}: </Span>
+            <Text size="xs">{t("sortBy")}: </Text>
 
-            <Span size="sm">{t(sort)}</Span>
+            <Text size="sm">{t(sort)}</Text>
 
             {desc ? (
               <ArrowUpIcon className="size-4" />
@@ -657,7 +606,7 @@ export default function Filters({
               setParams((prev) => ({ ...prev, sort: "name", order: "asc" }))
             }
           >
-            <Span size="sm">{t("name")}</Span>
+            <Text size="sm">{t("name")}</Text>
 
             <ArrowDownIcon className="ml-auto size-4" />
           </DropdownMenuItem>
@@ -672,7 +621,7 @@ export default function Filters({
               }))
             }
           >
-            <Span size="sm">{t("name")}</Span>
+            <Text size="sm">{t("name")}</Text>
 
             <ArrowUpIcon className="ml-auto size-4" />
           </DropdownMenuItem>
@@ -689,7 +638,7 @@ export default function Filters({
               }))
             }
           >
-            <Span size="sm">{t("level")}</Span>
+            <Text size="sm">{t("level")}</Text>
 
             <ArrowDownIcon className="ml-auto size-4" />
           </DropdownMenuItem>
@@ -704,7 +653,7 @@ export default function Filters({
               }))
             }
           >
-            <Span size="sm">{t("level")}</Span>
+            <Text size="sm">{t("level")}</Text>
 
             <ArrowUpIcon className="ml-auto size-4" />
           </DropdownMenuItem>
@@ -743,14 +692,14 @@ export function PaginationComponent({
         <PaginationContent>
           <PaginationItem>
             <PaginationFirst
-              disabled={pageIndex === 0}
+              aria-disabled={pageIndex === 0}
               onClick={() => setParams((prev) => ({ ...prev, pg: 0 }))}
             />
           </PaginationItem>
 
           <PaginationItem>
             <PaginationPrevious
-              disabled={pageIndex === 0}
+              aria-disabled={pageIndex === 0}
               onClick={() =>
                 setParams((prev) => ({ ...prev, pg: pageIndex - 1 }))
               }
@@ -823,7 +772,7 @@ export function PaginationComponent({
 
           <PaginationItem>
             <PaginationNext
-              disabled={lastPage <= currentPage}
+              aria-disabled={lastPage <= currentPage}
               onClick={() =>
                 setParams((prev) => ({ ...prev, pg: pageIndex + 1 }))
               }
@@ -832,7 +781,7 @@ export function PaginationComponent({
 
           <PaginationItem>
             <PaginationLast
-              disabled={lastPage === currentPage}
+              aria-disabled={lastPage === currentPage}
               onClick={() =>
                 setParams((prev) => ({ ...prev, pg: lastPage - 1 }))
               }

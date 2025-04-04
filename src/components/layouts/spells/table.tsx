@@ -4,14 +4,15 @@ import { formatStringForSearch } from "@/lib/utils";
 import {
   ATTRIBUTES,
   CLASSES_NAMES,
+  CONDITIONS,
   DAMAGE_TYPES,
-  SOURCES,
+  RANGE_TYPES,
   SPELL_ATTACK_TYPES,
   SPELL_SCHOOLS,
   SPELL_TYPES,
 } from "@/systems/dnd5";
 
-import type { Spell } from "@/systems/dnd5";
+import type { Spell } from "@/app/actions/spells";
 import type { ColumnDef } from "@tanstack/react-table";
 
 export const tableColumns: ColumnDef<Spell>[] = [
@@ -100,29 +101,37 @@ export const tableColumns: ColumnDef<Spell>[] = [
   },
 ];
 
-export const filtersSchema = z.object({
+export const filtersParamsSchema = z.object({
   amount: z.number(),
   order: z.enum(["asc", "desc"]),
   pg: z.number(),
   sort: z.enum(["name", "level"]),
+  grid: z.literal(true).optional(),
 
   name: z.string().optional(),
-  source: z.array(z.enum([...SOURCES])).optional(),
   levelMin: z.number().optional(),
   levelMax: z.number().optional(),
+  compV: z.literal(true).optional(),
+  compS: z.literal(true).optional(),
+  compM: z.literal(true).optional(),
+  ritual: z.literal(true).optional(),
+  upcast: z.literal(true).optional(),
+  concentration: z.literal(true).optional(),
+  source: z.array(z.string()).optional(),
+  range: z.array(z.string()).optional(),
+  duration: z.array(z.string()).optional(),
+  castingTime: z.array(z.string()).optional(),
   school: z.array(z.enum([...SPELL_SCHOOLS])).optional(),
-  type: z.array(z.enum([...SPELL_TYPES])).optional(),
-  dmgType: z.array(z.enum([...DAMAGE_TYPES])).optional(),
-  attack: z.array(z.enum([...SPELL_ATTACK_TYPES])).optional(),
-  savingThrow: z.array(z.enum([...ATTRIBUTES])).optional(),
   casters: z.array(z.enum([...CLASSES_NAMES])).optional(),
-  compV: z.enum(["true"]).optional(),
-  compS: z.enum(["true"]).optional(),
-  compM: z.enum(["true"]).optional(),
-  ritual: z.enum(["true"]).optional(),
+  type: z.array(z.enum([...SPELL_TYPES])).optional(),
+  conditions: z.array(z.enum([...CONDITIONS])).optional(),
+  damageTypes: z.array(z.enum([...DAMAGE_TYPES])).optional(),
+  savingThrow: z.array(z.enum([...ATTRIBUTES])).optional(),
+  spellAttack: z.array(z.enum([...SPELL_ATTACK_TYPES])).optional(),
+  rangeType: z.array(z.enum([...RANGE_TYPES])).optional(),
 });
 
-export type FiltersParams = z.infer<typeof filtersSchema>;
+export type FiltersParams = z.infer<typeof filtersParamsSchema>;
 
 export const initialFiltersParams: FiltersParams = {
   amount: 10,

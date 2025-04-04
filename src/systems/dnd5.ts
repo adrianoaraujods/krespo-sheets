@@ -1,17 +1,23 @@
 import { z } from "zod";
 
-import type { ReactNode } from "react";
-
 export const ATTRIBUTES = ["str", "dex", "con", "int", "wis", "cha"] as const;
 
-export const RACES_NAMES = ["dwarf", "elf"] as const;
-
-export const SUBRACES_NAMES = [
-  "dwarf-hill",
-  "dwarf-mountain",
-  "elf-high",
-  "elf-forest",
-  "elf-drow",
+export const CONDITIONS = [
+  "blinded",
+  "charmed",
+  "deafened",
+  "exhaustion",
+  "frightened",
+  "grappled",
+  "incapacitated",
+  "invisible",
+  "paralyzed",
+  "petrified",
+  "poisoned",
+  "prone",
+  "restrained",
+  "stunned",
+  "unconscious",
 ] as const;
 
 export const CLASSES_NAMES = [
@@ -56,23 +62,6 @@ export const SPELL_SCHOOLS = [
   "transmutation",
 ] as const;
 
-export const SOURCES = [
-  "explorers-guide-to-wildermount",
-  "fizbans-treasury-of-dragons",
-  "guildmasters-guide-to-ravnica",
-  "mordenkainens-tome-of-foes",
-  "players-handbook",
-  "tashas-cauldron-of-everything",
-  "xanathars-guide-to-everything",
-  "acquisitions-inc",
-  "icewind-dale-rime-of-the-frostmaiden",
-  "strixhaven-a-curriculum-of-chaos",
-  "astral-adventurers-guide",
-  "lost-laboratory-of-kwalish",
-  "deck-of-many-things",
-  "planescape-adventures-in-the-multiverse",
-] as const;
-
 export const SPELL_TYPES = ["damage", "healing", "utility"] as const;
 
 export const SPELL_ATTACK_TYPES = [
@@ -81,60 +70,48 @@ export const SPELL_ATTACK_TYPES = [
   "weapon",
 ] as const;
 
-export type Attribute = (typeof ATTRIBUTES)[number];
-export type ClassName = (typeof CLASSES_NAMES)[number];
-export type RaceName = (typeof RACES_NAMES)[number];
-export type SubraceName = (typeof SUBRACES_NAMES)[number];
-export type DamageType = (typeof DAMAGE_TYPES)[number];
-export type SpellSchool = (typeof SPELL_SCHOOLS)[number];
-export type Source = (typeof SOURCES)[number];
-export type SpellType = (typeof SPELL_TYPES)[number];
-export type SpellAttackType = (typeof SPELL_ATTACK_TYPES)[number];
+export const RANGE_TYPES = [
+  "line",
+  "cone",
+  "cube",
+  "spere",
+  "cylinder",
+] as const;
 
-export type Spell = {
-  name: string;
-  originalName?: string;
-
-  level: number;
-  school: SpellSchool;
-  ritual?: true;
-
-  castingTime: string;
-  range: string;
-  components: { v?: true; s?: true; m?: string };
-  duration: string;
-
-  description: ReactNode;
-  upcastDescription?: string;
-
-  source: Source;
-  casters: ClassName[];
-
-  type: SpellType[];
-  damageType?: DamageType[];
-  savingThrow?: Attribute;
-  spellAttack?: SpellAttackType;
-};
-
-export type CharacterClass = {
-  name: ClassName;
-  level: number;
-};
-
-export type CharacterAttribute = Record<
-  Attribute,
-  {
-    value: number;
-    mod: number;
-    bonus: Record<string, number>;
-  }
->;
-
-export const characterSheetSchema = z.object({
-  race: z.enum(SUBRACES_NAMES).optional(),
-  classes: z
-    .array(z.object({ name: z.enum(CLASSES_NAMES), level: z.number() }))
-    .optional(),
+export const spellSchema = z.object({
+  name: z.string(),
+  originalName: z.string().optional(),
+  level: z.number().min(0).max(9),
+  school: z.enum([...SPELL_SCHOOLS]),
+  components: z.object({
+    v: z.boolean().optional(),
+    s: z.boolean().optional(),
+    m: z.string().optional(),
+  }),
+  source: z.string(),
+  casters: z.array(z.enum([...CLASSES_NAMES])),
+  type: z.array(z.enum([...SPELL_TYPES])),
+  range: z.string(),
+  duration: z.string(),
+  castingTime: z.string(),
+  concentration: z.boolean().optional(),
+  ritual: z.boolean().optional(),
+  conditions: z.array(z.enum([...CONDITIONS])).optional(),
+  damageTypes: z.array(z.enum([...DAMAGE_TYPES])).optional(),
+  upcast: z.boolean().optional(),
+  upcastDescription: z.string().optional(),
+  savingThrow: z.array(z.enum([...ATTRIBUTES])).optional(),
+  spellAttack: z.enum([...SPELL_ATTACK_TYPES]).optional(),
+  rangeType: z.enum([...RANGE_TYPES]).optional(),
+  description: z.custom<React.ReactNode>(),
 });
 
-export type CharacterSheet = z.infer<typeof characterSheetSchema>;
+export type Attribute = (typeof ATTRIBUTES)[number];
+export type Condition = (typeof CONDITIONS)[number];
+export type Class = (typeof CLASSES_NAMES)[number];
+export type DamageType = (typeof DAMAGE_TYPES)[number];
+export type SpellSchool = (typeof SPELL_SCHOOLS)[number];
+export type SpellType = (typeof SPELL_TYPES)[number];
+export type SpellAttackType = (typeof SPELL_ATTACK_TYPES)[number];
+export type RangeType = (typeof RANGE_TYPES)[number];
+export type Spell = z.infer<typeof spellSchema>;
