@@ -5,7 +5,6 @@ import { getTranslations } from "next-intl/server";
 import "fumadocs-ui/style.css";
 import "katex/dist/katex.css";
 import "@/styles/globals.css";
-import "@/styles/theme.css";
 
 import { Locale, locales } from "@/lib/config";
 

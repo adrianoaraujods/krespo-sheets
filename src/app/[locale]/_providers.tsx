@@ -10,8 +10,6 @@ import { ThemeProvider } from "next-themes";
 import type { Locale } from "@/lib/config";
 import type { Translations } from "fumadocs-ui/i18n";
 
-import { Toaster } from "@/components/ui/toaster";
-
 export default async function Providers({
   children,
   locale,
@@ -34,8 +32,6 @@ export default async function Providers({
         <I18nProvider locale={locale} translations={mdxTranslations}>
           <RootProvider theme={{ enabled: false }} search={{ enabled: false }}>
             {children}
-
-            <Toaster />
           </RootProvider>
         </I18nProvider>
       </ThemeProvider>

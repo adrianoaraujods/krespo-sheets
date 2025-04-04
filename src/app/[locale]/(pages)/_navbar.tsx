@@ -1,8 +1,5 @@
 import { Suspense } from "react";
 
-import type { NavLinkWithItems } from "@/lib/navigation";
-
-import { auth } from "@/lib/auth";
 import { navItems } from "@/lib/config";
 
 import { Button } from "@/components/ui/button";
@@ -16,10 +13,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Logo } from "@/components/icons/logo";
 
 import LocaleSelector from "./_locale-selector";
-import LoginDialog from "./_login-dialog";
 import SearchBar from "./_search-bar";
 import ThemeSelector from "./_theme-selector";
-import UserSettings from "./_user-settings";
 
 export default function Navbar() {
   return (
@@ -32,21 +27,11 @@ export default function Navbar() {
 }
 
 export async function NavbarContent() {
-  const session = await auth();
-
-  const { authOnly: authOnlyItems, public: publicItems } = navItems;
-
-  let mainItems: NavLinkWithItems[] = !session
-    ? publicItems
-    : [...authOnlyItems, ...publicItems];
-
-  let menuItems: NavLinkWithItems[] = [...mainItems];
-
   return (
     <>
       <div className="flex">
         <NavbarMenu side="left">
-          <NavbarMenuLinks items={menuItems} />
+          <NavbarMenuLinks items={navItems} />
 
           <div className="mt-auto flex">
             <LocaleSelector />
@@ -58,20 +43,16 @@ export async function NavbarContent() {
         <Logo />
       </div>
 
-      <NavbarLinks className="max-md:hidden" items={mainItems} />
+      <NavbarLinks className="max-md:hidden" items={navItems} />
 
       <div className="flex gap-4">
         <SearchBar />
 
-        {!session && (
-          <div className="flex gap-4 max-md:hidden">
-            <LocaleSelector />
+        <div className="flex gap-4 max-md:hidden">
+          <LocaleSelector />
 
-            <ThemeSelector />
-          </div>
-        )}
-
-        {session ? <UserSettings session={session} /> : <LoginDialog />}
+          <ThemeSelector />
+        </div>
       </div>
     </>
   );
