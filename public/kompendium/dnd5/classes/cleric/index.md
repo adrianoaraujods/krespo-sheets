@@ -131,43 +131,13 @@ You can use a holy symbol as a spellcasting focus for your cleric spells.
 
 Choose one domain related to your deity:
 
-<Cards>
-  <Card
-    title="Knowledge Domain"
-    href="/kompendium/dnd5/classes/cleric/knowledge-domain"
-    target="_blank"
-  />
-  <Card
-    title="Life Domain"
-    href="/kompendium/dnd5/classes/cleric/life-domain"
-    target="_blank"
-  />
-  <Card
-    title="Light Domain"
-    href="/kompendium/dnd5/classes/cleric/light-domain"
-    target="_blank"
-  />
-  <Card
-    title="Nature Domain"
-    href="/kompendium/dnd5/classes/cleric/nature-domain"
-    target="_blank"
-  />
-  <Card
-    title="Tempest Domain"
-    href="/kompendium/dnd5/classes/cleric/tempest-domain"
-    target="_blank"
-  />
-  <Card
-    title="Trickery Domain"
-    href="/kompendium/dnd5/classes/cleric/trickery-domain"
-    target="_blank"
-  />
-  <Card
-    title="War Domain"
-    href="/kompendium/dnd5/classes/cleric/war-domain"
-    target="_blank"
-  />
-</Cards>
+- [Knowledge Domain](_/kompendium/dnd5/classes/cleric/knowledge-domain)
+- [Life Domain](_/kompendium/dnd5/classes/cleric/life-domain)
+- [Light Domain](_/kompendium/dnd5/classes/cleric/light-domain)
+- [Nature Domain](_/kompendium/dnd5/classes/cleric/nature-domain)
+- [Tempest Domain](_/kompendium/dnd5/classes/cleric/tempest-domain)
+- [Trickery Domain](_/kompendium/dnd5/classes/cleric/trickery-domain)
+- [War Domain](_/kompendium/dnd5/classes/cleric/war-domain)
 
 Each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level.
 

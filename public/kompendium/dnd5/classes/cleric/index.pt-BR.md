@@ -134,43 +134,13 @@ Você pode usar um símbolo sagrado como foco de conjuração das suas magias de
 
 Escolha um domínio relacionado à sua divindade:
 
-<Cards>
-  <Card
-    title="Domínio do Conhecimento"
-    href="/kompendium/dnd5/classes/cleric/knowledge-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Enganação"
-    href="/kompendium/dnd5/classes/cleric/trickery-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Guerra"
-    href="/kompendium/dnd5/classes/cleric/war-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Luz"
-    href="/kompendium/dnd5/classes/cleric/light-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Natureza"
-    href="/kompendium/dnd5/classes/cleric/nature-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Tempestade"
-    href="/kompendium/dnd5/classes/cleric/tempest-domain"
-    target="_blank"
-  />
-  <Card
-    title="Domínio do Vida"
-    href="/kompendium/dnd5/classes/cleric/life-domain"
-    target="_blank"
-  />
-</Cards>
+- [Domínio do Conhecimento](_/kompendium/dnd5/classes/cleric/knowledge-domain)
+- [Domínio do Enganação](_/kompendium/dnd5/classes/cleric/trickery-domain)
+- [Domínio do Guerra](_/kompendium/dnd5/classes/cleric/war-domain)
+- [Domínio do Luz](_/kompendium/dnd5/classes/cleric/light-domain)
+- [Domínio do Natureza](_/kompendium/dnd5/classes/cleric/nature-domain)
+- [Domínio do Tempestade](_/kompendium/dnd5/classes/cleric/tempest-domain)
+- [Domínio do Vida](_/kompendium/dnd5/classes/cleric/life-domain)
 
 Cada um, fornece exemplos dos deuses associados a eles. Essa escolha, realizada no 1° nível, concede magias de domínio e outras características. Ela também concede a você outras formas de utilizar seu [Canalizar Divindade](#channel-divinity) quando você ganhá-lo no 2° nível, bem como outros benefícios no 6°, 8° e 17° níveis.
 

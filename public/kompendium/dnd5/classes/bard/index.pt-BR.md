@@ -156,11 +156,8 @@ Os pontos de vida adicionais aumentam quando você alcança determinados níveis
 
 No 3° nível, você investiga as técnicas avançadas de um colégio de bardo, à sua escolha:
 
-<Cards>
-  <Card title="Colégio do Conhecimento" href="/kompendium/dnd5/classes/bard/college-of-lore" target="_blank" />
-
-  <Card title="Colégio da Bravura" href="/kompendium/dnd5/classes/bard/college-of-valor" target="_blank" />
-</Cards>
+- [Colégio do Conhecimento](_/kompendium/dnd5/classes/bard/college-of-lore)
+- [Colégio da Bravura](_/kompendium/dnd5/classes/bard/college-of-valor)
 
 Sua escolha lhe concede características no 3° nível e novamente no 6° e 14° nível.
 

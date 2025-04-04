@@ -74,23 +74,9 @@ Você começa com o seguinte equipamento, além do equipamento concedido pelo se
 
 No 1° nível, você conclui uma barganha com um ser transcendental, à sua escolha:
 
-<Cards>
-  <Card
-    title="A Arquifada"
-    href="/kompendium/dnd5/classes/warlock/the-archfey"
-    target="_blank"
-  />
-  <Card
-    title="O Corruptor"
-    href="/kompendium/dnd5/classes/warlock/the-fiend"
-    target="_blank"
-  />
-  <Card
-    title="O Grande Antigo"
-    href="/kompendium/dnd5/classes/warlock/the-great-old-one"
-    target="_blank"
-  />
-</Cards>
+- [A Arquifada](_/kompendium/dnd5/classes/warlock/the-archfey)
+- [O Corruptor](_/kompendium/dnd5/classes/warlock/the-fiend)
+- [O Grande Antigo](_/kompendium/dnd5/classes/warlock/the-great-old-one)
 
 Sua escolha lhe confere traços no 1° nível e novamente no 6°, 10° e 14° nível.
 
@@ -164,21 +150,15 @@ Seu patrono lhe deu um grimório chamado Livro das Sombras. Quando você adquire
 
 Se você perder seu Livro das Sombras, você pode realizar uma cerimônia de 1 hora para receber um substituto do seu patrono. Essa cerimônia pode ser realizada durante um descanso curto ou longo e destrói o livro anterior. O livro se torna cinzas quando você morre.
 
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout>
-
-### Sua Dádiva do Pacto [#your-pact-boon]
-
-Cada opção de Dádiva do Pacto produz uma criatura ou objeto especial que reflete a natureza do seu patrono.
-
-**Pacto da Corrente.** Seu familiar é mais esperto que um familiar típico. Sua forma padrão pode ser reflexo do seu patrono, com sprites e pseudodragões vinculados à Arquifada e diabretes e quasits vinculados ao Corruptor. Devido à natureza inescrutável do Grande Antigo, qualquer familiar é aceitável para ele.
-
-**Pacto da Lâmina.** Se o seu patrono for a Arquifada, sua arma deveria ser uma lâmina fina entalhada com frondosas videiras. Se você serve o Corruptor, sua arma poderia ser um machado feito de metal negro e adornado com chamas decorativas. Se o seu patrono for o Grande Antigo, sua arma deveria ser uma lança de aparência antiga, com gemas encrustadas na sua ponta, esculpida para se parecer com um terrível olho aberto.
-
-**Pacto do Tomo.** Seu Livro das Sombras deveria ser um tomo elegante com adornos em suas pontas e repleto de magias de encantamento e ilusão dado a você nobremente pela Arquifada. Ele poderia ser um tomo pesado costurado com couro de demônio e cravado com ferro, contendo magias de conjuração e rico em conhecimento proibido sobre regiões sinistras do cosmos, um presente do Corruptor. Ou poderia ser um diário esfarrapado de um lunático que enlouqueceu ao contatar o Grande Antigo, contendo restos de magias que apenas sua insanidade crescente permite que você as entenda e conjure.
-
-</Callout>
+> ### Sua Dádiva do Pacto [#your-pact-boon]
+>
+> Cada opção de Dádiva do Pacto produz uma criatura ou objeto especial que reflete a natureza do seu patrono.
+>
+> **Pacto da Corrente.** Seu familiar é mais esperto que um familiar típico. Sua forma padrão pode ser reflexo do seu patrono, com sprites e pseudodragões vinculados à Arquifada e diabretes e quasits vinculados ao Corruptor. Devido à natureza inescrutável do Grande Antigo, qualquer familiar é aceitável para ele.
+>
+> **Pacto da Lâmina.** Se o seu patrono for a Arquifada, sua arma deveria ser uma lâmina fina entalhada com frondosas videiras. Se você serve o Corruptor, sua arma poderia ser um machado feito de metal negro e adornado com chamas decorativas. Se o seu patrono for o Grande Antigo, sua arma deveria ser uma lança de aparência antiga, com gemas encrustadas na sua ponta, esculpida para se parecer com um terrível olho aberto.
+>
+> **Pacto do Tomo.** Seu Livro das Sombras deveria ser um tomo elegante com adornos em suas pontas e repleto de magias de encantamento e ilusão dado a você nobremente pela Arquifada. Ele poderia ser um tomo pesado costurado com couro de demônio e cravado com ferro, contendo magias de conjuração e rico em conhecimento proibido sobre regiões sinistras do cosmos, um presente do Corruptor. Ou poderia ser um diário esfarrapado de um lunático que enlouqueceu ao contatar o Grande Antigo, contendo restos de magias que apenas sua insanidade crescente permite que você as entenda e conjure.
 
 ---
 

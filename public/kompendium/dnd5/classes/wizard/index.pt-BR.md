@@ -105,27 +105,21 @@ A partir do 1° nível, você conhece três truques à sua escolha da [lista de 
 
 No 1° nível, você possui um grimório contendo seis magias de mago de 1° nível, à sua escolha. Um grimório não contém truques.
 
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout>
-
-#### O Seu Grimório [#your-spellbook]
-
-As magias que você pode adicionar em seu grimório, à medida que sobe de nível, refletem suas próprias pesquisas arcanas, conduzidas à sua maneira, bem como as suas descobertas sobre a natureza do multiverso. Você pode encontrar outras magias durante suas aventuras, como um feitiço escrito em um pergaminho que estava no baú de um mago maligno, por exemplo, ou em um tomo empoeirado de uma biblioteca antiga.
-
-**Copiar uma Magia para o Grimório.** Quando você encontrar uma magia de mago de 1° nível ou superior, você pode adicioná-la em seu grimório, desde que seja de um nível que você possua espaços de magia, além de dispor de tempo para decifrá-la e copiá-la. A magia copiada deve ser de um nível de magia que o mago possa preparar.
-
-Copiar uma magia para seu grimório envolve reproduzir suas formas básicas e então precisa decifrar a notação singular utilizada pelo mago que a escreveu. Você deve praticar a magia até entender os sons e gestos exigidos, para então transcrevê-la em seu grimório com sua própria notação.
-
-Para cada nível da magia a ser copiada, gasta-se 2 horas e 50 po. O custo representa os componentes materiais que você gasta para experimentar a magia até dominá-la, bem como as finas tintas utilizadas para escrevê-la. Uma vez gasto o tempo e o dinheiro, você pode preparar a magia copiada como as suas outras magias.
-
-**Substituir o Grimório.** Você pode copiar uma magia de seu grimório em outro livro - por exemplo, se você quiser fazer uma cópia reserva de seu grimório. O processo é igual ao de copiar uma nova magia em seu grimório, só que mais rápido e fácil, pois o mago entende suas próprias notações e sabe como conjurar a magia. Você precisa gastar somente 1 hora e 10 po para cada nível de magia copiada.
-
-Se perder o seu grimório, você pode usar o mesmo procedimento para transcrever suas magias preparadas em um novo grimório. Preencher o restante do grimório exigirá que você encontre novas magias, como normalmente se faz. Por essa razão, muitos magos mantêm seus grimórios reservas em lugares seguros.
-
-**A Aparência do Grimório.** Seu grimório é uma compilação de magias, com sua própria decoração e anotações de rodapé. Pode ser um livro de couro simples e funcional, recebido como presente de seu mestre, ou um tomo finamente encadernado com bordas douradas que você encontrou em uma antiga biblioteca, ou mesmo um conjunto de folhas soltas amontoadas após você perder seu grimório anterior em um acidente.
-
-</Callout>
+> #### O Seu Grimório [#your-spellbook]
+>
+> As magias que você pode adicionar em seu grimório, à medida que sobe de nível, refletem suas próprias pesquisas arcanas, conduzidas à sua maneira, bem como as suas descobertas sobre a natureza do multiverso. Você pode encontrar outras magias durante suas aventuras, como um feitiço escrito em um pergaminho que estava no baú de um mago maligno, por exemplo, ou em um tomo empoeirado de uma biblioteca antiga.
+>
+> **Copiar uma Magia para o Grimório.** Quando você encontrar uma magia de mago de 1° nível ou superior, você pode adicioná-la em seu grimório, desde que seja de um nível que você possua espaços de magia, além de dispor de tempo para decifrá-la e copiá-la. A magia copiada deve ser de um nível de magia que o mago possa preparar.
+>
+> Copiar uma magia para seu grimório envolve reproduzir suas formas básicas e então precisa decifrar a notação singular utilizada pelo mago que a escreveu. Você deve praticar a magia até entender os sons e gestos exigidos, para então transcrevê-la em seu grimório com sua própria notação.
+>
+> Para cada nível da magia a ser copiada, gasta-se 2 horas e 50 po. O custo representa os componentes materiais que você gasta para experimentar a magia até dominá-la, bem como as finas tintas utilizadas para escrevê-la. Uma vez gasto o tempo e o dinheiro, você pode preparar a magia copiada como as suas outras magias.
+>
+> **Substituir o Grimório.** Você pode copiar uma magia de seu grimório em outro livro - por exemplo, se você quiser fazer uma cópia reserva de seu grimório. O processo é igual ao de copiar uma nova magia em seu grimório, só que mais rápido e fácil, pois o mago entende suas próprias notações e sabe como conjurar a magia. Você precisa gastar somente 1 hora e 10 po para cada nível de magia copiada.
+>
+> Se perder o seu grimório, você pode usar o mesmo procedimento para transcrever suas magias preparadas em um novo grimório. Preencher o restante do grimório exigirá que você encontre novas magias, como normalmente se faz. Por essa razão, muitos magos mantêm seus grimórios reservas em lugares seguros.
+>
+> **A Aparência do Grimório.** Seu grimório é uma compilação de magias, com sua própria decoração e anotações de rodapé. Pode ser um livro de couro simples e funcional, recebido como presente de seu mestre, ou um tomo finamente encadernado com bordas douradas que você encontrou em uma antiga biblioteca, ou mesmo um conjunto de folhas soltas amontoadas após você perder seu grimório anterior em um acidente.
 
 ### Preparando e Conjurando [#preparing-and-casting-spells]
 
@@ -164,48 +158,14 @@ Você aprendeu como recuperar um pouco de sua energia mágica estudando seu grim
 
 Quando alcança o 2° nível, você pode escolher uma Tradição Arcana, moldando sua prática de magia em uma das oito escolas:
 
-<Cards>
-  <Card
-    title="Escola de Abjuração"
-    href="/kompendium/dnd5/classes/wizard/school-of-abjuration"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Adivinhação"
-    href="/kompendium/dnd5/classes/wizard/school-of-divination"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Conjuração"
-    href="/kompendium/dnd5/classes/wizard/school-of-conjuration"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Encantamento"
-    href="/kompendium/dnd5/classes/wizard/school-of-enchantment"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Evocação"
-    href="/kompendium/dnd5/classes/wizard/school-of-evocation"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Ilusão"
-    href="/kompendium/dnd5/classes/wizard/school-of-illusion"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Necromancia"
-    href="/kompendium/dnd5/classes/wizard/school-of-necromancy"
-    target="_blank"
-  />
-  <Card
-    title="Escola de Transmutação"
-    href="/kompendium/dnd5/classes/wizard/school-of-transmutation"
-    target="_blank"
-  />
-</Cards>
+- [Escola de Abjuração](_/kompendium/dnd5/classes/wizard/school-of-abjuration)
+- [Escola de Adivinhação](_/kompendium/dnd5/classes/wizard/school-of-divination)
+- [Escola de Conjuração](_/kompendium/dnd5/classes/wizard/school-of-conjuration)
+- [Escola de Encantamento](_/kompendium/dnd5/classes/wizard/school-of-enchantment)
+- [Escola de Evocação](_/kompendium/dnd5/classes/wizard/school-of-evocation)
+- [Escola de Ilusão](_/kompendium/dnd5/classes/wizard/school-of-illusion)
+- [Escola de Necromancia](_/kompendium/dnd5/classes/wizard/school-of-necromancy)
+- [Escola de Transmutação](_/kompendium/dnd5/classes/wizard/school-of-transmutation)
 
 Sua escolha confere características no 2° nível e de novo no 6°, 10° e 14° nível.
 

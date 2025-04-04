@@ -76,23 +76,9 @@ You start with the following equipment, in addition to the equipment granted by 
 
 At 1st level, you have struck a bargain with an otherworldly being of your choice:
 
-<Cards>
-  <Card
-    title="The Archfey"
-    href="/kompendium/dnd5/classes/warlock/the-archfey"
-    target="_blank"
-  />
-  <Card
-    title="The Fiend"
-    href="/kompendium/dnd5/classes/warlock/the-fiend"
-    target="_blank"
-  />
-  <Card
-    title="The Great Old One"
-    href="/kompendium/dnd5/classes/warlock/the-great-old-one"
-    target="_blank"
-  />
-</Cards>
+- [The Archfey](_/kompendium/dnd5/classes/warlock/the-archfey)
+- [The Fiend](_/kompendium/dnd5/classes/warlock/the-fiend)
+- [The Great Old One](_/kompendium/dnd5/classes/warlock/the-great-old-one)
 
 Your choice grants you features at 1st level and again at 6th, 10th, and 14th level.
 
@@ -161,21 +147,15 @@ You can transform one magic weapon into your pact weapon by performing a special
 
 Your patron gives you a grimoire called a Book of Shadows. When you gain this feature, choose three cantrips from any class’s spell list. While the book is on your person, you can cast those cantrips at will. They don’t count against your number of cantrips known. If you lose your Book of Shadows, you can perform a 1-hour ceremony to receive a replacement from your patron. This ceremony can be performed during a short or long rest, and it destroys the previous book. The book turns to ash when you die.
 
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout>
-
-### Your Pact Boon
-
-Each Pact Boon option produces a special creature or an object that reflects your patron’s nature.
-
-**Pact of the Chain**. Your familiar is more cunning than a typical familiar. Its default form can be a reflection of your patron, with sprites and pseudodragons tied to the Archfey and imps and quasits tied to the Fiend. Because the Great Old One’s nature is inscrutable, any familiar form is suitable for it.
-
-**Pact of the Blade**. If your patron is the Archfey, your weapon might be a slender blade wrapped in leafy vines. If you serve the Fiend, your weapon could be an axe made of black metal and adorned with decorative flames. If your patron is the Great Old One, your weapon might be an ancient-looking spear, with a gemstone embedded in its head, carved to look like a terrible unblinking eye.
-
-**Pact of the Tome**. Your Book of Shadows might be a fine, gilt-edged tome with spells of enchantment and illusion, gifted to you by the lordly Archfey. It could be a weighty tome bound in demon hide studded with iron, holding spells of conjuration and a wealth of forbidden lore about the sinister regions of the cosmos, a gift of the Fiend. Or it could be the tattered diary of a lunatic driven mad by contact with the Great Old One, holding scraps of spells that only your own burgeoning insanity allows you to understand and cast.
-
-</Callout>
+> ### Your Pact Boon
+>
+> Each Pact Boon option produces a special creature or an object that reflects your patron’s nature.
+>
+> **Pact of the Chain**. Your familiar is more cunning than a typical familiar. Its default form can be a reflection of your patron, with sprites and pseudodragons tied to the Archfey and imps and quasits tied to the Fiend. Because the Great Old One’s nature is inscrutable, any familiar form is suitable for it.
+>
+> **Pact of the Blade**. If your patron is the Archfey, your weapon might be a slender blade wrapped in leafy vines. If you serve the Fiend, your weapon could be an axe made of black metal and adorned with decorative flames. If your patron is the Great Old One, your weapon might be an ancient-looking spear, with a gemstone embedded in its head, carved to look like a terrible unblinking eye.
+>
+> **Pact of the Tome**. Your Book of Shadows might be a fine, gilt-edged tome with spells of enchantment and illusion, gifted to you by the lordly Archfey. It could be a weighty tome bound in demon hide studded with iron, holding spells of conjuration and a wealth of forbidden lore about the sinister regions of the cosmos, a gift of the Fiend. Or it could be the tattered diary of a lunatic driven mad by contact with the Great Old One, holding scraps of spells that only your own burgeoning insanity allows you to understand and cast.
 
 ---
 

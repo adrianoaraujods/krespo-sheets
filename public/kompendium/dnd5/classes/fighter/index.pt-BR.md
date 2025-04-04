@@ -112,23 +112,9 @@ Uma vez que você use essa característica, você precisa terminar um descanso c
 
 No 3° nível, você escolhe um arquétipo o qual se esforçará para seguir as técnicas e estilos de combate dele.
 
-<Cards>
-  <Card
-    title="Campeão"
-    href="/kompendium/dnd5/classes/fighter/champion"
-    target="_blank"
-  />
-  <Card
-    title="Cavaleiro Arcano"
-    href="/kompendium/dnd5/classes/fighter/eldritch-knight"
-    target="_blank"
-  />
-  <Card
-    title="Mestre de Batalha"
-    href="/kompendium/dnd5/classes/fighter/battle-master"
-    target="_blank"
-  />
-</Cards>
+- [Campeão](_/kompendium/dnd5/classes/fighter/champion)
+- [Cavaleiro Arcano](_/kompendium/dnd5/classes/fighter/eldritch-knight)
+- [Mestre de Batalha](_/kompendium/dnd5/classes/fighter/battle-master)
 
 O arquétipo confere a você características especiais no 3° nível e de novo no 7°, 10°, 15° e 18° nível.
 

@@ -97,11 +97,8 @@ At 2nd level, you gain an uncanny sense of when things nearby aren’t as they s
 
 At 3rd level, you choose a path that shapes the nature of your rage.
 
-<Cards>
-  <Card title="Path of the Berserker" href="/kompendium/dnd5/classes/barbarian/path-of-the-berserker" target="_blank" />
-
-  <Card title="Path of the Totem Warrior" href="/kompendium/dnd5/classes/barbarian/path-of-the-totem-warrior" target="_blank" />
-</Cards>
+- [Path of the Berserker](_/kompendium/dnd5/classes/barbarian/path-of-the-berserker)
+- [Path of the Totem Warrior](_/kompendium/dnd5/classes/barbarian/path-of-the-totem-warrior)
 
 Your choice grants you features at 3rd level and again at 6th, 10th, and 14th levels.
 

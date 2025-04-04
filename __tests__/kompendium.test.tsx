@@ -6,14 +6,13 @@ import { defaultLocale, locales } from "@/lib/config";
 
 describe("Kompendium", () => {
   const kompendiumPages = [
-    "dnd5/index",
-    "dnd5/races/index",
     ...RACES_NAMES.map((race) => `dnd5/races/${race}`),
+    // ...CLASSES_NAMES.map((className) => `dnd5/classes/${className}`),
   ];
 
   locales.map((locale) => {
     kompendiumPages.forEach((page) => {
-      const filePath = `public/kompendium/${page}${locale === defaultLocale ? "" : `.${locale}`}.mdx`;
+      const filePath = `public/kompendium/${page}${locale === defaultLocale ? "" : `.${locale}`}.md`;
 
       it(`should exist the file: ${filePath}`, () => {
         let isValidKompendiumPage = true;

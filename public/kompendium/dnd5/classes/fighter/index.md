@@ -114,23 +114,9 @@ Once you use this feature, you must finish a short or long rest before you can u
 
 At 3rd level, you choose an archetype that you strive to emulate in your combat styles and techniques.
 
-<Cards>
-  <Card
-    title="Battle Master"
-    href="/kompendium/dnd5/classes/fighter/battle-master"
-    target="_blank"
-  />
-  <Card
-    title="Eldritch Knight"
-    href="/kompendium/dnd5/classes/fighter/eldritch-knight"
-    target="_blank"
-  />
-  <Card
-    title="Champion"
-    href="/kompendium/dnd5/classes/fighter/champion"
-    target="_blank"
-  />
-</Cards>
+- [Battle Master](_/kompendium/dnd5/classes/fighter/battle-master")
+- [Eldritch Knight](_/kompendium/dnd5/classes/fighter/eldritch-knight")
+- [Champion](_/kompendium/dnd5/classes/fighter/champion")
 
 The archetype you choose grants you features at 3rd level and again at 7th, 10th, 15th, and 18th level.
 

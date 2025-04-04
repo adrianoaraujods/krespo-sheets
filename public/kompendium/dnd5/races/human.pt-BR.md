@@ -18,18 +18,12 @@ title: Humano
 
 **_Idiomas._** Você pode falar, ler e escrever Comum e outro idioma adicional, à sua escolha. Os humanos normalmente aprendem os idiomas dos povos que convivem, incluindo dialetos obscuros. Eles gostam de rechear seu discurso com palavras emprestadas de outras línguas: xingamentos orcs, expressões musicais élficas, frases militares anãs e outros.
 
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout>
-
-### Traços Raciais Alternativos
-
-Se sua campanha usa as regras opcionais de talentos, seu Mestre pode permitir que você utilize os traços raciais alternativos que substituem a característica: **_Aumento no Valor de Habilidade_**.
-
-**_Aumento no Valor de Habilidade._** Dois valores de habilidade, à sua escolha, aumentam em 1.
-
-**_Perícia._** Você ganha proficiência em uma perícia, à sua escolha.
-
-**_Talento._** Você adquire um talento de sua escolha.
-
-</Callout>
+> ### Traços Raciais Alternativos
+>
+> Se sua campanha usa as regras opcionais de talentos, seu Mestre pode permitir que você utilize os traços raciais alternativos que substituem a característica: **_Aumento no Valor de Habilidade_**.
+>
+> **_Aumento no Valor de Habilidade._** Dois valores de habilidade, à sua escolha, aumentam em 1.
+>
+> **_Perícia._** Você ganha proficiência em uma perícia, à sua escolha.
+>
+> **_Talento._** Você adquire um talento de sua escolha.

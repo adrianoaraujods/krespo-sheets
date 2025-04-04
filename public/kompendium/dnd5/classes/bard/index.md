@@ -154,11 +154,8 @@ The extra hit points increase when you reach certain levels in this class: to $1
 
 At 3rd level, you delve into the advanced techniques of a bard college of your choice:
 
-<Cards>
-  <Card title="College of Lore" href="/kompendium/dnd5/classes/bard/college-of-lore" target="_blank" />
-
-  <Card title="College of Valor" href="/kompendium/dnd5/classes/bard/college-of-valor" target="_blank" />
-</Cards>
+- [College of Lore](_/kompendium/dnd5/classes/bard/college-of-lore)
+- [College of Valor](_/kompendium/dnd5/classes/bard/college-of-valor)
 
 Your choice grants you features at 3rd level and again at 6th and 14th level.
 

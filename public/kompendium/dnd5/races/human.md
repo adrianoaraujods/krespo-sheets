@@ -18,18 +18,12 @@ It’s hard to make generalizations about humans, but your human character has t
 
 **_Languages._** You can speak, read, and write Common and one extra language of your choice. Humans typically learn the languages of other peoples they deal with, including obscure dialects. They are fond of sprinkling their speech with words borrowed from other tongues: Orc curses, Elvish musical expressions, Dwarvish military phrases, and so on.
 
-import { Callout } from "fumadocs-ui/components/callout";
-
-<Callout>
-
-### Variant Human Traits
-
-If your campaign uses the optional feat rules, your Dungeon Master might allow these variant traits, all of which replace the human’s **_Ability Score Increase_** trait.
-
-**_Ability Score Increase._** Two diffrent abillity scores of your choice increase by 1.
-
-**_Skills._** You gain proficiency in one skill of your choice.
-
-**_Feat._** You gain one feat of your choice.
-
-</Callout>
+> ### Variant Human Traits
+>
+> If your campaign uses the optional feat rules, your Dungeon Master might allow these variant traits, all of which replace the human’s **_Ability Score Increase_** trait.
+>
+> **_Ability Score Increase._** Two diffrent abillity scores of your choice increase by 1.
+>
+> **_Skills._** You gain proficiency in one skill of your choice.
+>
+> **_Feat._** You gain one feat of your choice.

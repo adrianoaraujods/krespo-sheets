@@ -99,11 +99,8 @@ Você possui vantagem em testes de resistência de Destreza contra efeitos que v
 
 No 3° nível, você escolhe um caminho que molda a natureza da sua fúria:
 
-<Cards>
-  <Card title="Caminho do Furioso" href="/kompendium/dnd5/classes/barbarian/path-of-the-berserker" target="_blank" />
-
-  <Card title="Caminho do Guerreiro Totêmico" href="/kompendium/dnd5/classes/barbarian/path-of-the-totem-warrior" target="_blank" />
-</Cards>
+- [Caminho do Furioso](_/kompendium/dnd5/classes/barbarian/path-of-the-berserker)
+- [Caminho do Guerreiro Totêmico](_/kompendium/dnd5/classes/barbarian/path-of-the-totem-warrior)
 
 Sua escolha lhe concederá características no 3° nível e novamente no 6°, 10° e 14° níveis.
 
