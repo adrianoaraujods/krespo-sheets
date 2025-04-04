@@ -1,9 +1,9 @@
 import createMiddleware from "next-intl/middleware";
 
-import { middlewareConfig } from "@/lib/intl";
-
-export default createMiddleware(middlewareConfig);
+import { routing } from "@/intl/routing";
 
 export const config = {
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
+
+export default createMiddleware(routing);

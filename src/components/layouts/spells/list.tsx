@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+
 import {
   getCoreRowModel,
   getFilteredRowModel,
@@ -10,18 +11,8 @@ import {
 } from "@tanstack/react-table";
 import { useLocale, useTranslations } from "next-intl";
 
-import type { Spell } from "@/systems/dnd5";
-import type {
-  ColumnDef,
-  ColumnFiltersState,
-  PaginationState,
-  SortingState,
-} from "@tanstack/react-table";
-
-import { useSearchParamsState } from "@/lib/hooks";
-import { useRouter } from "@/lib/navigation";
-
-import { Heading, Paragraph, Span } from "@/components/typography/text";
+import { useSearchParamsState } from "@/hooks/use-search-params-state";
+import { Paragraph, Span } from "@/components/typography/text";
 import {
   Card,
   CardContent,
@@ -31,9 +22,18 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { useRouter } from "@/intl/navigation";
 
-import Filters, { PaginationComponent } from "./_filters";
-import { filtersSchema, initialFiltersParams, tableColumns } from "./_table";
+import type { Spell } from "@/systems/dnd5";
+import type {
+  ColumnDef,
+  ColumnFiltersState,
+  PaginationState,
+  SortingState,
+} from "@tanstack/react-table";
+
+import Filters, { PaginationComponent } from "./filters";
+import { filtersSchema, initialFiltersParams, tableColumns } from "./table";
 
 export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
   const t = useTranslations();
@@ -77,12 +77,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
   React.useEffect(() => router.refresh(), [locale, router]);
 
   return (
-    <div className="my-8 mr-4 w-full pr-4 max-md:pl-4">
-      <Heading element="h1">
-        {t("systems.dnd5.spells.title")}
-        <span className="hidden sm:inline"> - {t("systems.dnd5.title")}</span>
-      </Heading>
-
+    <div>
       <Filters table={table} params={params} setParams={setParams} />
 
       <div className="my-4 grid gap-4 lg:grid-cols-2">
@@ -91,7 +86,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
 
           return (
             <Card key={id} className="h-fit">
-              <CardHeader className="border-b border-muted pb-2">
+              <CardHeader className="border-muted border-b pb-2">
                 <CardTitle
                   id={spell.name.toLocaleLowerCase().replaceAll(" ", "-")}
                 >
@@ -100,7 +95,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                   {spell.originalName && (
                     <>
                       {" "}
-                      <span className="text-nowrap font-normal text-muted-foreground">
+                      <span className="text-muted-foreground font-normal text-nowrap">
                         ({spell.originalName})
                       </span>
                     </>
@@ -140,7 +135,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                     <>
                       {" | "}
                       <span
-                        className="cursor-pointer text-card-foreground hover:underline"
+                        className="text-card-foreground cursor-pointer hover:underline"
                         onClick={() =>
                           setParams((prev) => ({ ...prev, ritual: "true" }))
                         }
@@ -254,7 +249,7 @@ export default function SpellsList({ spellsList }: { spellsList: Spell[] }) {
                 </ScrollArea>
               </CardContent>
 
-              <CardFooter className="grid border-t border-muted pt-2">
+              <CardFooter className="border-muted grid border-t pt-2">
                 <Span>
                   <Span variant="bold">
                     {t("systems.dnd5.spells.source")}:{" "}

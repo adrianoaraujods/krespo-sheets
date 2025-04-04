@@ -1,12 +1,14 @@
 import * as React from "react";
+
 import { Slot } from "@radix-ui/react-slot";
 import { cva } from "class-variance-authority";
+
+import { cn } from "@/lib/utils";
+import { Link } from "@/intl/navigation";
+
 import { ArrowUpRightIcon } from "lucide-react";
 
 import type { VariantProps } from "class-variance-authority";
-
-import { Link } from "@/lib/navigation";
-import { cn } from "@/lib/utils";
 
 const textVariants = cva("", {
   variants: {
@@ -162,7 +164,7 @@ const Anchor = React.forwardRef<
       <Link
         className={cn(
           textVariants({ size: "md" }),
-          `group inline-flex text-link no-underline decoration-link hover:underline`,
+          `group text-link decoration-link inline-flex no-underline hover:underline`,
           className
         )}
         target={linkTarget}
@@ -172,7 +174,7 @@ const Anchor = React.forwardRef<
         <span>{children}</span>
 
         {linkTarget === "_blank" && (
-          <ArrowUpRightIcon className="inline size-4 text-link" />
+          <ArrowUpRightIcon className="text-link inline size-4" />
         )}
       </Link>
     </>

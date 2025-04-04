@@ -1,9 +1,11 @@
-/* eslint-disable no-unused-vars */
-import Messages from "@/public/locales/en-US";
+import messages from "@/public/locales/en-US";
+import { formats } from "@/intl/request";
+import { routing } from "@/intl/routing";
 
-import type { MessageKeys as IntlMessagesKeys, NestedKeyOf } from "next-intl";
-
-declare global {
-  type IntlMessages = typeof Messages;
-  type MessageKeys = IntlMessagesKeys<IntlMessages, NestedKeyOf<IntlMessages>>;
+declare module "next-intl" {
+  interface AppConfig {
+    Locale: (typeof routing.locales)[number];
+    Messages: typeof messages;
+    Formats: typeof formats;
+  }
 }

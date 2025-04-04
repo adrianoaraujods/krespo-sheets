@@ -1,38 +1,53 @@
-// @ts-check
-
-/** @type {import("@ianvs/prettier-plugin-sort-imports").PrettierConfig} */
-module.exports = {
+/**
+ * @type {
+ *   import('prettier').Config
+ *   & import('prettier-plugin-tailwindcss').PluginOptions
+ *   & import('@ianvs/prettier-plugin-sort-imports').PluginConfig
+ * }
+ * */
+const config = {
   endOfLine: "lf",
   semi: true,
   singleQuote: false,
   tabWidth: 2,
   trailingComma: "es5",
   plugins: [
-    "prettier-plugin-tailwindcss",
     "@ianvs/prettier-plugin-sort-imports",
+    "prettier-plugin-tailwindcss",
   ],
+
+  /* @ianvs/prettier-plugin-sort-imports */
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",
+    "",
     "<BUILTIN_MODULES>",
     "<THIRD_PARTY_MODULES>",
     "",
-    "^types$",
-    "^@/types/(.*)$",
-    "<TYPES>",
-    "",
+    "^@/public/(.*)$",
     "^@/tests/(.*)$",
+    "",
+    "^@/hooks/(.*)$",
     "^@/lib/(.*)$",
+    "^@/(.*)$",
     "",
     "^@/components/typography/(.*)$",
     "^@/components/ui/(.*)$",
     "^@/components/(.*)$",
     "",
-    "^@/app/(.*)$",
-    "^@/styles/(.*)$",
+    "^(lucide-react/(.*)$)|^(lucide-react$)",
+    "",
+    "^types$",
+    "^@/types/(.*)$",
+    "<TYPES>",
     "",
     "^[./]",
   ],
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
   importOrderTypeScriptVersion: "5.0.0",
+  importOrderCaseSensitive: false,
+  importOrderSeparation: true,
+  importOrderSortSpecifiers: true,
 };
+
+export default config;

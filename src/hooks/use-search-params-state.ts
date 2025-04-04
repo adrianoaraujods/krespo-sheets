@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import { useSearchParams } from "next/navigation";
+
 import { z } from "zod";
 
-import { usePathname, useRouter } from "@/lib/navigation";
+import { usePathname, useRouter } from "@/intl/navigation";
 
 type Params = Record<string, string | string[] | number | number[]>;
 
@@ -85,7 +86,6 @@ export function useSearchParamsState<StateType extends Params>(
   }, []);
 
   const setState = React.useCallback(
-    // eslint-disable-next-line no-unused-vars
     (value: StateType | ((prevState: StateType) => StateType)) => {
       const newParams = typeof value === "function" ? value(state) : value;
 

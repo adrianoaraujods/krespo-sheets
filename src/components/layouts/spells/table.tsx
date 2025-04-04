@@ -1,3 +1,6 @@
+import { z } from "zod";
+
+import { formatStringForSearch } from "@/lib/utils";
 import {
   ATTRIBUTES,
   CLASSES_NAMES,
@@ -7,12 +10,9 @@ import {
   SPELL_SCHOOLS,
   SPELL_TYPES,
 } from "@/systems/dnd5";
-import { z } from "zod";
 
 import type { Spell } from "@/systems/dnd5";
 import type { ColumnDef } from "@tanstack/react-table";
-
-import { formatStringForSearch } from "@/lib/utils";
 
 export const tableColumns: ColumnDef<Spell>[] = [
   {

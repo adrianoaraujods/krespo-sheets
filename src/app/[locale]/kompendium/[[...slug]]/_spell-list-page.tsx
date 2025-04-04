@@ -1,25 +1,20 @@
 import { Suspense } from "react";
+
 import { getTranslations } from "next-intl/server";
+
+import SpellsList from "@/components/layouts/spells/list";
 
 import type { Locale } from "@/lib/config";
 import type { Spell } from "@/systems/dnd5";
 import type { Metadata } from "next";
 
-import SpellsList from "./_list";
-
-export default async function Dnd5SpellsPage({
-  params: { locale },
-}: {
-  params: { slug?: string[]; locale: Locale };
-}) {
+export default async function SpellsListPage({ locale }: { locale: Locale }) {
   const spells = await getSpells(locale);
 
   return (
-    <div className="pl-4">
-      <Suspense>
-        <SpellsList spellsList={spells} />
-      </Suspense>
-    </div>
+    <Suspense>
+      <SpellsList spellsList={spells} />
+    </Suspense>
   );
 }
 

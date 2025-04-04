@@ -1,6 +1,6 @@
-// @ts-check
-
 /** @type {import("@commitlint/types").UserConfig} */
-module.exports = {
+const commitlintConfig = {
   extends: ["@commitlint/config-conventional"],
 };
+
+export default commitlintConfig;

@@ -1,25 +1,8 @@
 "use client";
 
 import * as React from "react";
-import {
-  ATTRIBUTES,
-  CLASSES_NAMES,
-  DAMAGE_TYPES,
-  SOURCES,
-  SPELL_ATTACK_TYPES,
-  SPELL_SCHOOLS,
-  SPELL_TYPES,
-} from "@/systems/dnd5";
-import {
-  ArrowDownIcon,
-  ArrowUpIcon,
-  CheckIcon,
-  ChevronDownIcon,
-} from "lucide-react";
-import { useTranslations } from "next-intl";
 
-import type { Spell } from "@/systems/dnd5";
-import type { ColumnFiltersState, Table } from "@tanstack/react-table";
+import { useTranslations } from "next-intl";
 
 import { Span } from "@/components/typography/text";
 import { Button } from "@/components/ui/button";
@@ -44,8 +27,27 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
+import {
+  ATTRIBUTES,
+  CLASSES_NAMES,
+  DAMAGE_TYPES,
+  SOURCES,
+  SPELL_ATTACK_TYPES,
+  SPELL_SCHOOLS,
+  SPELL_TYPES,
+} from "@/systems/dnd5";
 
-import { FiltersParams, initialFiltersParams } from "./_table";
+import {
+  ArrowDownIcon,
+  ArrowUpIcon,
+  CheckIcon,
+  ChevronDownIcon,
+} from "lucide-react";
+
+import type { Spell } from "@/systems/dnd5";
+import type { ColumnFiltersState, Table } from "@tanstack/react-table";
+
+import { FiltersParams, initialFiltersParams } from "./table";
 
 export default function Filters({
   table,
@@ -600,7 +602,7 @@ export default function Filters({
     return (
       <Button
         asChild
-        className="cursor-text gap-2 focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2"
+        className="focus-within:ring-ring cursor-text gap-2 focus-within:ring-2 focus-within:ring-offset-2 focus-within:outline-none"
         variant="outline"
         onClick={() => inputRef.current && inputRef.current.focus()}
       >
